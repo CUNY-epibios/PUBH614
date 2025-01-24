@@ -2,8 +2,8 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    # Only build on main or master branch
-    branches: [main, master]
+    # Only build on main branch
+    branches: [main]
   # Or when triggered manually
   workflow_dispatch: {}
 
