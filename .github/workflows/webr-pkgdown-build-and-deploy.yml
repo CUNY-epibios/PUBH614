@@ -64,7 +64,13 @@ jobs:
           use-public-rspm: true
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown, local::., quarto
+          extra-packages: any::pkgdown, local::.
+
+      # Install Quarto CLI
+      - name: Install Quarto
+        run: |
+          wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.313/quarto-1.2.313-linux-amd64.deb
+          sudo dpkg -i quarto-1.2.313-linux-amd64.deb
 
       # Change the build directory from `docs` to `_site`
       # For parity with where the R WASM package repository is setup
