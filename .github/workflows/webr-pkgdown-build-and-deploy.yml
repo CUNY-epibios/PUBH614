@@ -87,8 +87,7 @@ jobs:
           install.packages("quarto")
           export QUARTO_LOG_LEVEL=DEBUG
           export QUARTO_PRINT_STACK=true
-          pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE, dest_dir = "_site")
-        shell: Rscript {0}
+          Rscript -e 'pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE, dest_dir = "_site")'
 
       # New material ---
 
