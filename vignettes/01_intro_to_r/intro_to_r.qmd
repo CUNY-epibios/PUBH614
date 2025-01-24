@@ -16,10 +16,21 @@ filters:
   - webr
 ---
 
+# A note about this lab
 
-After pressing enter/return, a stream of text will begin, communicating the process `R` is going through to install the package from the location you selected when you installed `R`. If you were not prompted to select a server for downloading packages when you installed `R`, RStudio may prompt you to select a server from which to download; any of them will work.
+If you are viewing this lab on https://cuny-epibios.github.io/PUBH614/, you can 
+enter, edit, and run the R code directly in your web browser. Try it! Also try 
+changing the value assigned to `x`, and try some different calculator-like commands.
 
-You only need to *install* packages once, but you need to *load* them each time you relaunch R. In this lab, the packages are already installed, but you can install new packages using `install.packages("packagename")`. We load packages with the `library` function. The following line load the tidyverse library which provides many data manipulation and plotting functions that you will use into your working environment.
+```{webr}
+x = 2
+x + 2
+```
+
+# Installing and loading packages
+
+You only need to *install* packages once, but you need to *load* them each time you relaunch R. In this lab, the packages are already installed, but you can install new packages using `install.packages("packagename")`. We load packages with the `library` function. The following line load the tidyverse library which provides many data manipulation and plotting functions that you will use into your working environment, and the openintro package
+which provides the `arbuthnot` dataset used in this lab.
 
 ```{webr-r}
 #| message: TRUE
