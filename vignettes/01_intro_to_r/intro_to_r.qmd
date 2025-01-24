@@ -2,11 +2,15 @@
 title: "Introduction to R and RStudio"
 output:
   html_document:
-    css: ../lab.css
+    css: lab.css
     highlight: pygments
     theme: cerulean
     toc: true
     toc_float: true
+vignette: >
+  %\VignetteIndexEntry{Introduction to R and RStudio}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 engine: knitr
 filters:
   - webr
