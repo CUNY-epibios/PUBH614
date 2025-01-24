@@ -1,0 +1,11 @@
+Package: PUBH614
+Title: Executable OpenIntro Labs
+Version: 0.0.0.9000
+Authors@R: 
+    person("Levi", "Waldron", , "levi.waldron@sph.cuny.edu", role = c("aut", "cre"))
+Description: This repository redistributes labs from OpenIntro "tidy" labs from https://github.com/OpenIntroStat/oilabs-tidy using Quarto and webr to allow students to execute the code in their web browser.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
