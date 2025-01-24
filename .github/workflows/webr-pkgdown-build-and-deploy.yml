@@ -72,11 +72,21 @@ jobs:
           wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.40/quarto-1.6.40-linux-amd64.deb
           sudo dpkg -i quarto-1.6.40-linux-amd64.deb
 
+      # Check Quarto Installation
+      - name: Check Quarto Installation
+        run: quarto check
+
+      # Check Quarto Version
+      - name: Check Quarto Version
+        run: quarto --version
+
       # Change the build directory from `docs` to `_site`
       # For parity with where the R WASM package repository is setup
       - name: Build site
         run: |
           install.packages("quarto")
+          export QUARTO_LOG_LEVEL=DEBUG
+          export QUARTO_PRINT_STACK=true
           pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE, dest_dir = "_site")
         shell: Rscript {0}
 
