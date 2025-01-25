@@ -66,11 +66,8 @@ jobs:
         with:
           extra-packages: any::pkgdown, local::.
 
-      # Install Quarto CLI
-      - name: Install Quarto
-        run: |
-          wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.40/quarto-1.6.40-linux-amd64.deb
-          sudo dpkg -i quarto-1.6.40-linux-amd64.deb
+      # Setup Quarto
+      - uses: quarto-dev/quarto-actions/setup@v2
 
       # Check Quarto Installation
       - name: Check Quarto Installation
@@ -87,8 +84,7 @@ jobs:
           QUARTO_LOG_LEVEL: DEBUG
           QUARTO_PRINT_STACK: true
         run: |
-          Rscript -e 'install.packages("quarto")'
-          Rscript -e 'pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE, dest_dir = "_site", quiet = FALSE)'
+          Rscript -e 'pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE, dest_dir = "_site")'
 
       # New material ---
 
