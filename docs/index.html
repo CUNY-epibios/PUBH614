@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Executable OpenIntro Labs • PUBH614</title>
-<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
@@ -18,11 +18,11 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="index.html">PUBH614</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,6 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
@@ -43,6 +42,14 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
+<li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
+  </ul>
+</li>
       </ul>
 </div>
 
@@ -50,16 +57,78 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><p>OpenIntro Labs promote the understanding and application of statistics through applied data analysis. Labs are titled based on topic area, which correspond to particular chapters in all three versions of OpenIntro Statistics, a free and open-source textbook. The textbook as well as the html version of the labs can be found at <a href="http://www.openintro.org/stat/labs.php" class="external-link">http://www.openintro.org/stat/labs.php</a>.</p>
-<p>This repository is a fork of the original base-R labs. It incorporates the tidyverse syntax from the <code>dplyr</code> package for data manipulation, the <code>ggplot2</code> package for graphics, and the <code>infer</code> package for statistical inference.</p>
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="about-openintro-labs">About OpenIntro Labs<a class="anchor" aria-label="anchor" href="#about-openintro-labs"></a>
+</h1></div>
+<p>OpenIntro Labs promote the understanding and application of statistics through<br>
+applied data analysis. Labs are titled based on topic area, which correspond to<br>
+particular chapters in all three versions of OpenIntro Statistics, a free and<br>
+open-source textbook. The textbook as well as original versions of the labs can be found at <a href="https://www.openintro.org/stat/labs.php" class="external-link">https://www.openintro.org/stat/labs.php</a>.</p>
+</div>
+<div class="section level1">
+<h1 id="about-r-and-how-to-run-these-labs">About R and how to run these labs<a class="anchor" aria-label="anchor" href="#about-r-and-how-to-run-these-labs"></a>
+</h1>
 <div class="section level2">
-<h2 id="labs">Labs<a class="anchor" aria-label="anchor" href="#labs"></a>
+<h2 id="what-are-r-and-cran">What are R and CRAN?<a class="anchor" aria-label="anchor" href="#what-are-r-and-cran"></a>
 </h2>
+<p><strong>R</strong> is a powerful programming language and environment specifically designed for statistical computing and graphics. It is widely used among statisticians and data scientists for data analysis and visualization. <strong>CRAN</strong> (Comprehensive R Archive Network) is a repository that hosts R packages, which are collections of R functions, data, and compiled code that extend the capabilities of R. As of June 2024, CRAN hosts around 21,018 active packages<a href="https://journal.r-project.org/news/RJ-2024-1-cran/" class="external-link">1</a>.</p>
+<div class="section level3">
+<h3 id="how-is-r-different-from-sas-and-spss">How is R Different from SAS and SPSS?<a class="anchor" aria-label="anchor" href="#how-is-r-different-from-sas-and-spss"></a>
+</h3>
+<p>R is an open-source language, which means it is free to use and has a large community contributing to its development. Unlike <strong>SAS</strong> and <strong>SPSS</strong>, which are commercial software with licensing fees, R offers flexibility and a vast array of packages for various statistical techniques. While SAS and SPSS have user-friendly interfaces and are often used in corporate settings, R is highly customizable and preferred in academic and research environments for its extensibility and active community support.</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="rstudio-a-powerful-ide-for-r">RStudio: A Powerful IDE for R<a class="anchor" aria-label="anchor" href="#rstudio-a-powerful-ide-for-r"></a>
+</h2>
+<p><strong>RStudio</strong> is a popular integrated development environment (IDE) for running R. It provides a user-friendly interface, tools for plotting, history, debugging, and workspace management. While RStudio is powerful, it does have a learning curve, especially for those new to programming or R.</p>
+</div>
+<div class="section level2">
+<h2 id="cloud-services-for-running-r">Cloud Services for Running R<a class="anchor" aria-label="anchor" href="#cloud-services-for-running-r"></a>
+</h2>
+<p>There are several cloud services that offer free tiers for running R, making it accessible without the need for local installation:</p>
+<ul>
+<li>
+<strong>posit.cloud</strong>: A cloud-based service by Posit (formerly RStudio) that allows you to run R and RStudio in your browser.</li>
+<li>
+<strong>Google Colab</strong>: A free cloud service that uses Jupyter notebooks, an alternative system for running code interactively. While primarily used for Python, it can also run R with some setup.</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="using-wasm-and-webr-for-browser-based-labs">Using WASM and webR for Browser-Based Labs<a class="anchor" aria-label="anchor" href="#using-wasm-and-webr-for-browser-based-labs"></a>
+</h2>
+<p>These labs use <strong>WASM</strong> (WebAssembly) and <strong>webR</strong> to provide a user-friendly alternative for running R directly in your browser. This approach eliminates the need for local installation and allows for interactive coding and visualization within the browser environment.</p>
+<div class="section level3">
+<h3 id="common-issues-and-resources">Common Issues and Resources<a class="anchor" aria-label="anchor" href="#common-issues-and-resources"></a>
+</h3>
+<p>Running R in your web browser can sometimes lead to issues such as:</p>
+<ul>
+<li>
+<strong>Performance Limitations</strong>: Browser-based execution may be slower compared to local execution.</li>
+<li>
+<strong>Browser Compatibility</strong>: Ensure you are using a modern browser that supports WebAssembly.</li>
+</ul>
+<p>For more information and troubleshooting, you can refer to the following resources:</p>
+<ul>
+<li><a href="https://docs.r-wasm.org/webr/latest/" class="external-link">webR Documentation</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/WebAssembly" class="external-link">WASM Documentation</a></li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="reporting-issues">Reporting Issues<a class="anchor" aria-label="anchor" href="#reporting-issues"></a>
+</h3>
+<p>If you encounter any issues with running these labs, please report them at <a href="https://github.com/CUNY-epibios/PUBH614/issues" class="external-link uri">https://github.com/CUNY-epibios/PUBH614/issues</a>.</p>
+</div>
+</div>
+</div>
+<div class="section level1">
+<h1 id="labs">Labs<a class="anchor" aria-label="anchor" href="#labs"></a>
+</h1>
 <ol style="list-style-type: decimal">
-<li><a href="http://cuny-epibios.github.io/01_intro_to_r/intro_to_r.html" class="external-link">Intro to R</a></li>
-<li><a href="http://cuny-epibios.github.io/02_intro_to_data/intro_to_data.html" class="external-link">Intro to data</a></li>
-<li><a href="http://cuny-epibios.github.io/03_probability/probability.html" class="external-link">Probability</a></li>
-<li><a href="http://cuny-epibios.github.io/04_normal_distribution/normal_distribution.html" class="external-link">Normal distribution</a></li>
+<li><a href="https://cuny-epibios.github.io/PUBH614/articles/intro_to_r.html">Intro to R</a></li>
+<li><a href="https://cuny-epibios.github.io/PUBH614/articles/intro_to_data.html">Intro to data</a></li>
+<li><a href="https://cuny-epibios.github.io/PUBH614/articles/probability.html">Probability</a></li>
+<li><a href="https://cuny-epibios.github.io/PUBH614/articles/normal_distribution.html">Normal distribution</a></li>
 <li>Foundations of inference<br>
 </li>
 </ol>
@@ -71,28 +140,11 @@
 </ol>
 <ol start="6" style="list-style-type: decimal">
 <li><a href="https://openintro.shinyapps.io/inf_for_categorical_data/" class="external-link">Inference for categorical data</a></li>
-<li><a href="http://cuny-epibios.github.io/07_inf_for_numerical_data/inf_for_numerical_data.html" class="external-link">Inference for numerical data</a></li>
-<li><a href="http://cuny-epibios.github.io/08_simple_regression/simple_regression.html" class="external-link">Simple linear regression</a></li>
-<li><a href="http://cuny-epibios.github.io/09_multiple_regression/multiple_regression.html" class="external-link">Multiple linear regression</a></li>
+<li><a href="https://cuny-epibios.github.io/PUBH614/articles/inf_for_numerical_data.html">Inference for numerical data</a></li>
+<li><a href="https://cuny-epibios.github.io/PUBH614/articles/simple_regression.html">Simple linear regression</a></li>
+<li><a href="https://cuny-epibios.github.io/PUBH614/articles/multiple_regression.html">Multiple linear regression</a></li>
 </ol>
-</div>
-<div class="section level2">
-<h2 id="source-code-for-labs">Source code for labs<a class="anchor" aria-label="anchor" href="#source-code-for-labs"></a>
-</h2>
-<p>We currently support our source files in the RMarkdown (.Rmd) format, which can be output into html format (though output to pdf is also possible). The source files are processed using the <a href="http://yihui.name/knitr/" class="external-link">knitr</a> package in R, and are easiest to use in <a href="https://www.rstudio.com/products/rstudio/download/" class="external-link">RStudio</a>.</p>
-</div>
-<div class="section level2">
-<h2 id="feedback--collaboration">Feedback / collaboration<a class="anchor" aria-label="anchor" href="#feedback--collaboration"></a>
-</h2>
-<p>Your feedback is most welcomed! If you have suggestions for minor updates (fixing typos, etc.) please do not hesitate to issue a pull request. If you have ideas for major revamp of a lab (replacing outdated code with modern version, overhaul in pedagogy, etc.) please create an issue so to start the conversation.</p>
-<p>It is our hope that these materials are useful for instructors and students of statistics. If you end up developing some interesting variants of these labs or creating new ones, please let us know!</p>
-</div>
-<div class="section level2">
-<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
-</h2>
-<p>Please note that the oilabs-tidy project is released with a Contributor Code of Conduct. By contributing to this project, you agree to abide by its terms.</p>
-<hr>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+<p><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a><br>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
 </div>
 
   </main><aside class="col-md-3"><div class="license">

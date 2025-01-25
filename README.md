@@ -1,43 +1,77 @@
-OpenIntro Labs promote the understanding and application of statistics through  applied data analysis.
-Labs are titled based on topic area, which correspond to  particular chapters in all three versions of OpenIntro Statistics, a free and  open-source textbook.
-The textbook as well as the html version of the labs can be found at [http://www.openintro.org/stat/labs.php](http://www.openintro.org/stat/labs.php).
+# About OpenIntro Labs
 
-This repository is a fork of the original base-R labs.
-It incorporates the tidyverse syntax from the `dplyr` package for data manipulation, the `ggplot2` package for graphics, and the `infer` package for statistical inference.
+OpenIntro Labs promote the understanding and application of statistics through  
+applied data analysis. Labs are titled based on topic area, which correspond to  
+particular chapters in all three versions of OpenIntro Statistics, a free and  
+open-source textbook. The textbook as well as original versions of the labs can 
+be found at [https://www.openintro.org/stat/labs.php](https://www.openintro.org/stat/labs.php).
 
-## Labs
+# About R and how to run these labs
 
-1. [Intro to R](http://cuny-epibios.github.io/01_intro_to_r/intro_to_r.html)
-2. [Intro to data](http://cuny-epibios.github.io/02_intro_to_data/intro_to_data.html)
-4. [Probability](http://cuny-epibios.github.io/03_probability/probability.html)
-3. [Normal distribution](http://cuny-epibios.github.io/04_normal_distribution/normal_distribution.html)
+## What are R and CRAN?
+
+**R** is a powerful programming language and environment specifically designed for statistical computing and graphics. It is widely used among statisticians and data scientists for data analysis and visualization. **CRAN** (Comprehensive R Archive Network) is a repository that hosts R packages, which are collections of R functions, data, and compiled code that extend the capabilities of R. As of June 2024, CRAN hosts around 21,018 active packages[1](https://journal.r-project.org/news/RJ-2024-1-cran/).
+
+### How is R Different from SAS and SPSS?
+
+R is an open-source language, which means it is free to use and has a large 
+community contributing to its development. Unlike **SAS** and **SPSS**, which 
+are commercial software with licensing fees, R offers flexibility and a vast 
+array of packages for various statistical techniques. R is highly 
+customizable and preferred in academic and research environments for its 
+extensibility and active community support.
+
+## RStudio: A Powerful IDE for R
+
+**RStudio** is a popular integrated development environment (IDE) for running R. 
+It provides a user-friendly interface, tools for plotting, history, debugging, 
+and workspace management. While RStudio is powerful, it does have a learning 
+curve, especially for those new to programming or R.
+
+## Cloud Services for Running R
+
+There are several cloud services that offer free tiers for running R, making it 
+accessible without the need for local installation:
+
+- **posit.cloud**: A cloud-based service by Posit (formerly RStudio) that allows you to run R and RStudio in your browser.
+- **Google Colab**: A free cloud service that uses Jupyter notebooks, an alternative system for running code interactively. While primarily used for Python, it can also run R with some setup.
+
+## Using WASM and webR for Browser-Based Labs
+
+These labs use **WASM** (WebAssembly) and **webR** to provide a user-friendly 
+alternative for running R directly in your browser. This approach eliminates the 
+need for local installation or a Cloud service, and allows for interactive 
+coding and visualizationwithin the browser environment.
+
+### Common Issues and Resources
+
+Running R in your web browser can sometimes lead to issues such as:
+
+- **Performance Limitations**: Browser-based execution may be slower compared to local execution.
+- **Browser Compatibility**: Ensure you are using a modern browser that supports WebAssembly.
+
+For more information and troubleshooting, you can refer to the following resources:
+
+- [webR Documentation](https://docs.r-wasm.org/webr/latest/)
+- [WASM Documentation](https://developer.mozilla.org/en-US/docs/WebAssembly)
+
+### Reporting Issues
+
+If you encounter any issues with running these labs, please report them at https://github.com/CUNY-epibios/PUBH614/issues.
+
+# Labs
+
+1. [Intro to R](https://cuny-epibios.github.io/PUBH614/articles/intro_to_r.html)
+2. [Intro to data](https://cuny-epibios.github.io/PUBH614/articles/intro_to_data.html)
+4. [Probability](https://cuny-epibios.github.io/PUBH614/articles/probability.html)
+3. [Normal distribution](https://cuny-epibios.github.io/PUBH614/articles/normal_distribution.html)
 5. Foundations of inference  
   a. [Sampling distributions](https://openintro.shinyapps.io/sampling_distributions/)  
   b. [Confidence intervals](https://openintro.shinyapps.io/confidence_intervals/)
 6. [Inference for categorical data](https://openintro.shinyapps.io/inf_for_categorical_data/)
-7. [Inference for numerical data](http://cuny-epibios.github.io/07_inf_for_numerical_data/inf_for_numerical_data.html)
-8. [Simple linear regression](http://cuny-epibios.github.io/08_simple_regression/simple_regression.html)
-9. [Multiple linear regression](http://cuny-epibios.github.io/09_multiple_regression/multiple_regression.html)
+7. [Inference for numerical data](https://cuny-epibios.github.io/PUBH614/articles/inf_for_numerical_data.html)
+8. [Simple linear regression](https://cuny-epibios.github.io/PUBH614/articles/simple_regression.html)
+9. [Multiple linear regression](https://cuny-epibios.github.io/PUBH614/articles/multiple_regression.html)
 
-## Source code for labs
-
-We currently support our source files in the RMarkdown (.Rmd) format, which can be output into html format (though output to pdf is also possible).
-The source files are processed using the [knitr](http://yihui.name/knitr/) package in R, and are easiest to use in [RStudio](https://www.rstudio.com/products/rstudio/download/).
-
-## Feedback / collaboration
-
-Your feedback is most welcomed! If you have suggestions for minor updates (fixing typos, etc.) please do not hesitate to issue a pull request.
-If you have ideas for major revamp of a lab (replacing outdated code with modern version, overhaul in  pedagogy, etc.) please create an issue so to start the conversation.
-
-It is our hope that these materials are useful for instructors and students of  statistics.
-If you end up developing some interesting variants of these labs or  creating new ones, please let us know!
-
-## Code of Conduct
-
-Please note that the oilabs-tidy project is released with a Contributor Code of Conduct.
-By contributing to this project, you agree to abide by its terms.
-
-* * *
-
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
