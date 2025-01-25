@@ -101,11 +101,6 @@ Let's think about some questions we might want to answer with these data:
 
 # Analysis
 
-## Lab report
-
-To record your analysis in a reproducible format, you can adapt the general Lab Report template from the **openintro** package.
-Watch the video above to learn how.
-
 ## Departure delays
 
 Let's start by examining the distribution of departure delays of all flights with a histogram.
@@ -130,9 +125,6 @@ ggplot(data = nycflights, aes(x = dep_delay)) +
 
 1.  Look carefully at these three histograms. How do they compare? Are features revealed in one that are obscured in another?
 
-```{webr-r}
-# Enter code here
-```
 <form>
   <label for="comments">Comments:</label>
   <textarea id="comments" name="comments" class="textarea-box"></textarea>
@@ -272,22 +264,6 @@ nycflights %>%
   <textarea id="comments" name="comments" class="textarea-box"></textarea>
 </form>
 
-```{=html}
-<!--
-Which month has the highest average departure delay from an NYC airport? What
-    about the highest median departure delay? Which of these measures is more 
-    reliable for deciding which month(s) to avoid flying if you really dislike 
-    delayed flights.
--->
-```
-
-```{webr-r}
-# Enter code here
-```
-<form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
 
 ## On time departure rate for NYC airports
 
@@ -355,7 +331,7 @@ ggplot(data = nycflights, aes(x = origin, fill = dep_type)) +
 # Enter code here
 ```
 
-3.  Create a scatter plot.
+3.  Create a scatterplot.
     **Hint:** The data frame plotted only contains flights from American Airlines, Delta Airlines, and United Airlines, and the points are `color`ed by `carrier`.
     Once you create the plot, determine (roughly) what the cutoff point is for departure delays where you can still expect to get to your destination on time.
 
