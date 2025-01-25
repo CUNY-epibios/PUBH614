@@ -115,3 +115,24 @@ label {
 .textarea-box {
     height: 100px; /* Adjust the height as needed */
 }
+
+/* Style the dropdown menu to match the Cerulean theme */
+.dropdown-menu {
+  background-color: #2FA4E7; /* Cerulean primary color */
+  color: #fff; /* White text for readability */
+}
+
+.dropdown-menu a {
+  color: #fff; /* White text for links */
+}
+
+.dropdown-menu a:hover {
+  background-color: #1B6DA8; /* Darker Cerulean color for hover effect */
+  color: #fff; /* Ensure text remains white on hover */
+}
+
+.dropdown-menu .active > a {
+  background-color: #1B6DA8; /* Darker Cerulean color for active item */
+  color: #fff; /* Ensure text remains white for active item */
+}
+
