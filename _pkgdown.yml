@@ -1,7 +1,7 @@
 url: https://cuny-epibios.github.io/PUBH614/
 template:
   bootstrap: 5
-  light-switch: true
+  light-switch: false
 navbar:
   structure:
     left:  [intro, articles]
@@ -10,3 +10,4 @@ navbar:
     labs:
       text: "Labs"
       menu: articles
+extra_css: pkgdown/lab.css

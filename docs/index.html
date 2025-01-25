@@ -6,11 +6,18 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Executable OpenIntro Labs • PUBH614</title>
-<script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
+<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Executable OpenIntro Labs">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<meta property="og:title" content="Executable OpenIntro Labs">
 <meta name="description" content='This repository redistributes labs from OpenIntro "tidy" labs from https://github.com/OpenIntroStat/oilabs-tidy using Quarto and webr to allow students to execute the code in their web browser.'>
 <meta property="og:description" content='This repository redistributes labs from OpenIntro "tidy" labs from https://github.com/OpenIntroStat/oilabs-tidy using Quarto and webr to allow students to execute the code in their web browser.'>
 </head>
@@ -18,7 +25,7 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="index.html">PUBH614</a>
 
@@ -42,14 +49,6 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
-  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
-<li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
-    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
-    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
-  </ul>
-</li>
       </ul>
 </div>
 
@@ -58,24 +57,29 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="about-openintro-labs">About OpenIntro Labs<a class="anchor" aria-label="anchor" href="#about-openintro-labs"></a>
+<div class="page-header"><h1 id="cuny-sph-labs-">CUNY SPH labs <img src="reference/figures/CUNYlogo.png" align="right" width="75" height="75"><a class="anchor" aria-label="anchor" href="#cuny-sph-labs-"></a>
 </h1></div>
-<p>OpenIntro Labs promote the understanding and application of statistics through<br>
+</div>
+<div class="section level1">
+<h1 id="about-openintro-labs">About OpenIntro Labs<a class="anchor" aria-label="anchor" href="#about-openintro-labs"></a>
+</h1>
+<p>These labs were developed by <a href="https://www.openintro.org/" class="external-link">OpenIntro Statistics</a> and adapted for use on the web by Levi Waldron at CUNY SPH. OpenIntro Labs promote the understanding and application of statistics through<br>
 applied data analysis. Labs are titled based on topic area, which correspond to<br>
 particular chapters in all three versions of OpenIntro Statistics, a free and<br>
 open-source textbook. The textbook as well as original versions of the labs can be found at <a href="https://www.openintro.org/stat/labs.php" class="external-link">https://www.openintro.org/stat/labs.php</a>.</p>
+<p>Use the <strong>Articles</strong> button above to see all available labs.</p>
 </div>
 <div class="section level1">
-<h1 id="about-r-and-how-to-run-these-labs">About R and how to run these labs<a class="anchor" aria-label="anchor" href="#about-r-and-how-to-run-these-labs"></a>
+<h1 id="about-r-and-how-to-use-these-labs">About R and how to use these labs<a class="anchor" aria-label="anchor" href="#about-r-and-how-to-use-these-labs"></a>
 </h1>
 <div class="section level2">
 <h2 id="what-are-r-and-cran">What are R and CRAN?<a class="anchor" aria-label="anchor" href="#what-are-r-and-cran"></a>
 </h2>
-<p><strong>R</strong> is a powerful programming language and environment specifically designed for statistical computing and graphics. It is widely used among statisticians and data scientists for data analysis and visualization. <strong>CRAN</strong> (Comprehensive R Archive Network) is a repository that hosts R packages, which are collections of R functions, data, and compiled code that extend the capabilities of R. As of June 2024, CRAN hosts around 21,018 active packages<a href="https://journal.r-project.org/news/RJ-2024-1-cran/" class="external-link">1</a>.</p>
+<p><strong>R</strong> is a powerful programming language and environment specifically designed for statistical computing and graphics. It is widely used among statisticians and data scientists for data analysis and visualization. <strong>CRAN</strong> (Comprehensive R Archive Network) is a repository that hosts R packages, which are collections of R functions, data, and compiled code that extend the capabilities of R. CRAN hosts more than 20,000 active packages, or libraries, each adding extra functionality to R<a href="https://journal.r-project.org/news/RJ-2024-1-cran/" class="external-link">1</a>.</p>
 <div class="section level3">
 <h3 id="how-is-r-different-from-sas-and-spss">How is R Different from SAS and SPSS?<a class="anchor" aria-label="anchor" href="#how-is-r-different-from-sas-and-spss"></a>
 </h3>
-<p>R is an open-source language, which means it is free to use and has a large community contributing to its development. Unlike <strong>SAS</strong> and <strong>SPSS</strong>, which are commercial software with licensing fees, R offers flexibility and a vast array of packages for various statistical techniques. While SAS and SPSS have user-friendly interfaces and are often used in corporate settings, R is highly customizable and preferred in academic and research environments for its extensibility and active community support.</p>
+<p>R is an open-source language, which means it is free to use and has a large community contributing to its development. Unlike <strong>SAS</strong> and <strong>SPSS</strong>, which are commercial software with licensing fees, R offers flexibility and a vast array of packages for various statistical techniques. R is highly customizable and preferred in academic and research environments for its extensibility and active community support.</p>
 </div>
 </div>
 <div class="section level2">
@@ -97,27 +101,18 @@ open-source textbook. The textbook as well as original versions of the labs can 
 <div class="section level2">
 <h2 id="using-wasm-and-webr-for-browser-based-labs">Using WASM and webR for Browser-Based Labs<a class="anchor" aria-label="anchor" href="#using-wasm-and-webr-for-browser-based-labs"></a>
 </h2>
-<p>These labs use <strong>WASM</strong> (WebAssembly) and <strong>webR</strong> to provide a user-friendly alternative for running R directly in your browser. This approach eliminates the need for local installation and allows for interactive coding and visualization within the browser environment.</p>
-<div class="section level3">
-<h3 id="common-issues-and-resources">Common Issues and Resources<a class="anchor" aria-label="anchor" href="#common-issues-and-resources"></a>
-</h3>
+<p>These labs use <strong><a href="https://developer.mozilla.org/en-US/docs/WebAssembly" class="external-link">WASM</a></strong> (WebAssembly) and <strong><a href="https://docs.r-wasm.org/webr/latest/" class="external-link">webR</a></strong> to provide a user-friendly alternative for running R directly in your browser. This approach eliminates the need for local installation or a Cloud service, and allows for interactive coding and visualizationwithin the browser environment.</p>
 <p>Running R in your web browser can sometimes lead to issues such as:</p>
 <ul>
 <li>
-<strong>Performance Limitations</strong>: Browser-based execution may be slower compared to local execution.</li>
+<strong>Performance Limitations</strong>: Browser-based execution may be slower compared to local execution. Even if you have a powerful computer, your browser likely only supports up to 4GB of memory for WebAssembly applications.</li>
 <li>
 <strong>Browser Compatibility</strong>: Ensure you are using a modern browser that supports WebAssembly.</li>
 </ul>
-<p>For more information and troubleshooting, you can refer to the following resources:</p>
-<ul>
-<li><a href="https://docs.r-wasm.org/webr/latest/" class="external-link">webR Documentation</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/WebAssembly" class="external-link">WASM Documentation</a></li>
-</ul>
-</div>
 <div class="section level3">
 <h3 id="reporting-issues">Reporting Issues<a class="anchor" aria-label="anchor" href="#reporting-issues"></a>
 </h3>
-<p>If you encounter any issues with running these labs, please report them at <a href="https://github.com/CUNY-epibios/PUBH614/issues" class="external-link uri">https://github.com/CUNY-epibios/PUBH614/issues</a>.</p>
+<p>If you encounter any issues with running these labs, please report them <a href="https://github.com/CUNY-epibios/PUBH614/issues" class="external-link">here</a>.</p>
 </div>
 </div>
 </div>

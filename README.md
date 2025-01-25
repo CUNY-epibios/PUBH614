@@ -1,16 +1,29 @@
+# CUNY SPH labs <img src="man/figures/CUNYlogo.png" align="right" width="75" height="75"/>
+
 # About OpenIntro Labs
 
-OpenIntro Labs promote the understanding and application of statistics through  
+These labs were developed by [OpenIntro Statistics][OpenIntro] and adapted for use on the web by
+Levi Waldron at CUNY SPH. OpenIntro Labs promote the understanding and application of statistics through  
 applied data analysis. Labs are titled based on topic area, which correspond to  
 particular chapters in all three versions of OpenIntro Statistics, a free and  
 open-source textbook. The textbook as well as original versions of the labs can 
 be found at [https://www.openintro.org/stat/labs.php](https://www.openintro.org/stat/labs.php).
 
-# About R and how to run these labs
+Use the **Articles** button above to see all available labs.
+
+[OpenIntro]: https://www.openintro.org/
+
+# About R and how to use these labs
 
 ## What are R and CRAN?
 
-**R** is a powerful programming language and environment specifically designed for statistical computing and graphics. It is widely used among statisticians and data scientists for data analysis and visualization. **CRAN** (Comprehensive R Archive Network) is a repository that hosts R packages, which are collections of R functions, data, and compiled code that extend the capabilities of R. As of June 2024, CRAN hosts around 21,018 active packages[1](https://journal.r-project.org/news/RJ-2024-1-cran/).
+**R** is a powerful programming language and environment specifically designed 
+for statistical computing and graphics. It is widely used among statisticians 
+and data scientists for data analysis and visualization. **CRAN** (Comprehensive 
+R Archive Network) is a repository that hosts R packages, which are collections 
+of R functions, data, and compiled code that extend the capabilities of R. 
+CRAN hosts more than 20,000 active packages, or libraries, each adding extra
+functionality to R[1](https://journal.r-project.org/news/RJ-2024-1-cran/).
 
 ### How is R Different from SAS and SPSS?
 
@@ -38,26 +51,25 @@ accessible without the need for local installation:
 
 ## Using WASM and webR for Browser-Based Labs
 
-These labs use **WASM** (WebAssembly) and **webR** to provide a user-friendly 
+These labs use **[WASM]** (WebAssembly) and **[webR]** to provide a user-friendly 
 alternative for running R directly in your browser. This approach eliminates the 
 need for local installation or a Cloud service, and allows for interactive 
 coding and visualizationwithin the browser environment.
 
-### Common Issues and Resources
-
 Running R in your web browser can sometimes lead to issues such as:
 
-- **Performance Limitations**: Browser-based execution may be slower compared to local execution.
+- **Performance Limitations**: Browser-based execution may be slower compared to 
+local execution. Even if you have a powerful computer, your browser likely only
+supports up to 4GB of memory for WebAssembly applications.
 - **Browser Compatibility**: Ensure you are using a modern browser that supports WebAssembly.
 
-For more information and troubleshooting, you can refer to the following resources:
-
-- [webR Documentation](https://docs.r-wasm.org/webr/latest/)
-- [WASM Documentation](https://developer.mozilla.org/en-US/docs/WebAssembly)
+[webR]: https://docs.r-wasm.org/webr/latest/
+[WASM]: https://developer.mozilla.org/en-US/docs/WebAssembly
 
 ### Reporting Issues
 
-If you encounter any issues with running these labs, please report them at https://github.com/CUNY-epibios/PUBH614/issues.
+If you encounter any issues with running these labs, please report them 
+[here](https://github.com/CUNY-epibios/PUBH614/issues).
 
 # Labs
 

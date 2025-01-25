@@ -6,7 +6,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Introduction to R and RStudio • PUBH614</title>
-<script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
@@ -40,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"x = 2\nx + 2","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-1","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":1},{"code":"library(tidyverse)\nlibrary(openintro)","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"FALSE","results":"markup","warning":"true","label":"unnamed-chunk-2","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"TRUE","editor-font-scale":"1"},"id":2},{"code":"arbuthnot","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-3","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":3},{"code":"Arbuthnot","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-4","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":4},{"code":"glimpse(arbuthnot)","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-5","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":5},{"code":"arbuthnot$boys","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-6","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":6},{"code":"ggplot(data = arbuthnot, aes(x = year, y = girls)) + \n  geom_point()","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-7","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":7},{"code":"ggplot(data = arbuthnot, aes(x = year, y = girls)) +\n  geom_line()","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-8","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":8},{"code":"?ggplot","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-9","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":9},{"code":"5218 + 4683","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-10","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":10},{"code":"arbuthnot$boys + arbuthnot$girls","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-11","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":11},{"code":"arbuthnot <- arbuthnot %>%\n  mutate(total = boys + girls)","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-12","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":12},{"code":"ggplot(data = arbuthnot, aes(x = year, y = total)) + \n  geom_line()","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-13","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":13},{"code":"5218 / 4683","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-14","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":14},{"code":"arbuthnot <- arbuthnot %>%\n  mutate(boy_to_girl_ratio = boys / girls)","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-15","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":15},{"code":"5218 / (5218 + 4683)","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-16","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":16},{"code":"arbuthnot <- arbuthnot %>%\n  mutate(boy_ratio = boys / total)","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-17","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":17},{"code":"# Enter your solution here, using the comment symbol \"#\" to start lines of plain text.","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-18","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":18},{"code":"arbuthnot <- arbuthnot %>%\n  mutate(more_boys = boys > girls)","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-19","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":19},{"code":"arbuthnot %>%\n  summarize(min = min(boys),\n            max = max(boys)\n            )","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-20","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":20},{"code":"# Enter your solution here, using the comment symbol \"#\" to start lines of plain text.","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-21","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":21},{"code":"# Enter your solution here, using the comment symbol \"#\" to start lines of plain text.","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-22","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":22},{"code":"# Enter your solution here, using the comment symbol \"#\" to start lines of plain text.","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-23","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":23},{"code":"# Enter your solution here, using the comment symbol \"#\" to start lines of plain text.\n# Sample code:\npresent %>%\n  arrange(desc(total))","options":{"fig-width":7,"dpi":72,"out-width":"700px","editor-quick-suggestions":"false","out-height":"","context":"interactive","classes":"","read-only":"false","results":"markup","warning":"true","label":"unnamed-chunk-24","autorun":"false","editor-max-height":"","comment":"","output":"true","fig-cap":"","fig-height":5,"editor-word-wrap":"true","message":"true","editor-font-scale":"1"},"id":24}];
+  globalThis.qwebrCellDetails = [{"code":"x = 2\nx + 2","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-1","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":1},{"code":"library(tidyverse)\nlibrary(openintro)","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-2","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":2},{"code":"arbuthnot","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-3","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":3},{"code":"Arbuthnot","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-4","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":4},{"code":"glimpse(arbuthnot)","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-5","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":5},{"code":"arbuthnot$boys","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-6","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":6},{"code":"","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-7","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":7},{"code":"ggplot(data = arbuthnot, aes(x = year, y = girls)) + \n  geom_point()","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-8","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":8},{"code":"ggplot(data = arbuthnot, aes(x = year, y = girls)) +\n  geom_line()","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-9","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":9},{"code":"?ggplot","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-10","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":10},{"code":"5218 + 4683","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-11","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":11},{"code":"arbuthnot$boys + arbuthnot$girls","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-12","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":12},{"code":"arbuthnot <- arbuthnot %>%\n  mutate(total = boys + girls)","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-13","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":13},{"code":"ggplot(data = arbuthnot, aes(x = year, y = total)) + \n  geom_line()","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-14","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":14},{"code":"5218 / 4683","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-15","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":15},{"code":"arbuthnot <- arbuthnot %>%\n  mutate(boy_to_girl_ratio = boys / girls)","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-16","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":16},{"code":"5218 / (5218 + 4683)","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-17","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":17},{"code":"arbuthnot <- arbuthnot %>%\n  mutate(boy_ratio = boys / total)","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-18","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":18},{"code":"# Enter your solution here, using \"#\" for comments.","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-19","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":19},{"code":"arbuthnot <- arbuthnot %>%\n  mutate(more_boys = boys > girls)","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-20","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":20},{"code":"arbuthnot %>%\n  summarize(min = min(boys),\n            max = max(boys)\n            )","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-21","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":21},{"code":"# Enter your solution here, using \"#\" for comments.","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-22","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":22},{"code":"# Enter your solution here, using \"#\" for comments.","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-23","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":23},{"code":"# Enter your solution here, using \"#\" for comments.","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-24","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":24},{"code":"# Enter your solution here, using \"#\" for comments.\n# Sample code:\npresent %>%\n  arrange(desc(total))","options":{"editor-quick-suggestions":"false","context":"interactive","fig-cap":"","out-width":"700px","autorun":"false","label":"unnamed-chunk-25","message":"true","fig-width":7,"read-only":"false","dpi":72,"output":"true","editor-max-height":"","editor-word-wrap":"true","comment":"","warning":"true","fig-height":5,"editor-font-scale":"1","out-height":"","results":"markup","classes":""},"id":25}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1287,13 +1293,14 @@
       }
   }
 
-  </script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to R and RStudio">
+  </script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<meta property="og:title" content="Introduction to R and RStudio">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="../index.html">PUBH614</a>
 
@@ -1317,14 +1324,6 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
-  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
-<li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
-    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
-    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
-  </ul>
-</li>
       </ul>
 </div>
 
@@ -1626,21 +1625,27 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   };
 
 }
-</script><section class="section level2"><h2 id="a-note-about-this-lab">A note about this lab<a class="anchor" aria-label="anchor" href="#a-note-about-this-lab"></a>
+</script><p><img src="CUNYlogo.png" class="article-logo" alt="Logo"></p>
+<p>Fill out for printing and handing in. Please test printing the page as a PDF before doing lots of work on it!</p>
+<form>
+<p><label for="name">Name:</label> <input type="text" id="name" name="name" class="input-box"></p>
+<label for="date">Date:</label> <input type="date" id="date" name="date" class="input-box">
+</form>
+<section class="section level2"><h2 id="a-note-about-this-lab">A note about this lab<a class="anchor" aria-label="anchor" href="#a-note-about-this-lab"></a>
 </h2>
-<p>If you are viewing this lab on https://cuny-epibios.github.io/PUBH614/, you can enter, edit, and run the R code directly in your web browser. Try it! Also try changing the value assigned to <code>x</code>, and try some different calculator-like commands.</p>
+<p>If you are viewing this lab on <a href="https://cuny-epibios.github.io/PUBH614/">https://cuny-epibios.github.io/PUBH614/</a>, you can enter, edit, and run the R code directly in your web browser. Try it! Also try changing the value assigned to <code>x</code>, and try some different calculator-like commands.</p>
 <div class="cell">
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
-</section><section class="section level2"><h2 id="installing-and-loading-packages">Installing and loading packages<a class="anchor" aria-label="anchor" href="#installing-and-loading-packages"></a>
+</section><section class="section level2"><h2 id="loading-packages">Loading packages<a class="anchor" aria-label="anchor" href="#loading-packages"></a>
 </h2>
-<p>You only need to <em>install</em> packages once, but you need to <em>load</em> them each time you relaunch R. In this lab, the packages are already installed, but you can install new packages using <code>install.packages("packagename")</code>. We load packages with the <code>library</code> function. The following line load the tidyverse library which provides many data manipulation and plotting functions that you will use into your working environment, and the openintro package which provides the <code>arbuthnot</code> dataset used in this lab.</p>
+<p>Load packages with the <code>library</code> function. The following line loads the tidyverse library, which provides data manipulation and plotting functions that you will use into your working environment, and the openintro package which provides the <code>arbuthnot</code> dataset used in this lab. Don’t worry about the warnings and messages it produces, they aren’t important in this case.</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>We are choosing to use the tidyverse package because it consists of a set of packages necessary for different aspects of working with data, anything from loading data to wrangling data to visualizing data to analyzing data. Additionally, these packages share common philosophies and are designed to work together. You can find more about the packages in the tidyverse at <a href="http://tidyverse.org/" class="external-link">tidyverse.org</a>.</p>
-<section class="level2"><h3 id="dr--arbuthnots-baptism-records">Dr. Arbuthnot’s Baptism Records<a class="anchor" aria-label="anchor" href="#dr--arbuthnots-baptism-records"></a>
-</h3>
+</section><section class="section level2"><h2 id="dr--arbuthnots-baptism-records">Dr. Arbuthnot’s Baptism Records<a class="anchor" aria-label="anchor" href="#dr--arbuthnots-baptism-records"></a>
+</h2>
 <p>To get started, let’s take a peek at the data.</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1663,8 +1668,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Although we previously said that it is best practice to type all of your <code>R</code> code into the code chunk, it is better practice to type this command into your console. Generally, you should type all of the code that is necessary for your solution into the code chunk. Because this command is used to explore the data, it is not necessary for your solution code and <strong>should not</strong> be included in your solution file.</p>
 <p>We can see that there are 82 observations and 3 variables in this dataset. The variable names are <code>year</code>, <code>boys</code>, and <code>girls</code>. At this point, you might notice that many of the commands in <code>R</code> look a lot like functions from math class; that is, invoking <code>R</code> commands means supplying a function with some number of inputs (what are called arguments) which the function uses to produce an output. The <code>glimpse()</code> command, for example, took a single argument, the name of a data frame and produced a display of the dataset as an output.</p>
-</section><section class="level2"><h3 id="some-exploration">Some Exploration<a class="anchor" aria-label="anchor" href="#some-exploration"></a>
-</h3>
+</section><section class="section level2"><h2 id="some-exploration">Some Exploration<a class="anchor" aria-label="anchor" href="#some-exploration"></a>
+</h2>
 <p>Let’s start to examine the data a little more closely. We can access the data in a single column of a data frame by extracting the column with a <code>$</code>. For example, the code below extracts the <code>boys</code> column from the <code>arbuthnot</code> data frame.</p>
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1672,11 +1677,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ol type="1">
 <li>What command would you use to extract just the counts of girls baptized? Try it out in the console!</li>
 </ol>
-<p>Notice that the way <code>R</code> has printed these data is different. When we looked at the complete data frame, we saw 82 rows, one on each line of the display. These data have been extracted from the data frame, so they are no longer structured in a table with other variables. Instead, these data are displayed one right after another. Objects that print out in this way are called <em>vectors</em>; similar to the vectors you have seen in mathematics courses, vectors represent a list of numbers. <code>R</code> has added numbers displayed in [brackets] along the left side of the printout to indicate each entry’s location within the vector. For example, 5218 follows <code>[1]</code>, indicating that <code>5218</code> is the first entry in the vector. If <code>[43]</code> was displayed at the beginning of a line, that indicate that the first number displayed on that line would correspond to the 43<sup>rd</sup> entry in that vector.</p>
-<section class="level3"><h4 id="data-visualization">Data visualization<a class="anchor" aria-label="anchor" href="#data-visualization"></a>
-</h4>
-<p><code>R</code> has some powerful functions for making graphics. We can create a simple plot of the number of girls baptized per year with the following code:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+<p>Notice that the way <code>R</code> has printed these data is different. When we looked at the complete data frame, we saw 82 rows, one on each line of the display. These data have been extracted from the data frame, so they are no longer structured in a table with other variables. Instead, these data are displayed one right after another. Objects that print out in this way are called <em>vectors</em>; similar to the vectors you have seen in mathematics courses, vectors represent a list of numbers. <code>R</code> has added numbers displayed in [brackets] along the left side of the printout to indicate each entry’s location within the vector. For example, 5218 follows <code>[1]</code>, indicating that <code>5218</code> is the first entry in the vector. If <code>[43]</code> was displayed at the beginning of a line, that indicate that the first number displayed on that line would correspond to the 43<sup>rd</sup> entry in that vector.</p>
+</section><section class="section level2"><h2 id="data-visualization">Data visualization<a class="anchor" aria-label="anchor" href="#data-visualization"></a>
+</h2>
+<p><code>R</code> has some powerful functions for making graphics. We can create a simple plot of the number of girls baptized per year with the following code:</p>
+<div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>In this code, we use the <code>ggplot()</code> function to build a plot. If you run this code chunk, a plot will appear below the code chunk. The R Markdown document displays the plot below the code that was used to generate it, to give you an idea of what the plot would look like in a final report.</p>
 <p>The command above also looks like a mathematical function. This time, however, the function requires multiple inputs (arguments), which are separated by commas.</p>
@@ -1691,32 +1700,33 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>then specify the <code>geom</code>etric object to be used to create the plot.</li>
 </ul>
 <p>Since we want to scatterplot, we use <code>geom_point()</code>. This tells <code>ggplot()</code> that each data point should be represented by one point on the plot. If you wanted to visualize the above plot using a line graph instead of a scatterplot, you would replace <code>geom_point()</code> with <code>geom_line()</code>. This tells <code>ggplot()</code> to draw a line from each observation with the next observation (sequentially).</p>
-<div id="qwebr-insertion-location-8"></div>
+<div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Use the plot to address the following question:</p>
 <ol type="1">
 <li>Is there an apparent trend in the number of girls baptized over the years? How would you describe it? (To ensure that your lab report is comprehensive, be sure to include the code needed to make the plot as well as your written interpretation.)</li>
 </ol>
-<div>
-<label for="user-input">Enter your answer here:</label><br><textarea id="user-input" name="user-input" rows="10" cols="50"></textarea>
-</div>
+<form>
+<label for="comments">Response:</label>
+<textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
 <p>You might wonder how you are supposed to know the syntax for the <code>ggplot()</code> function. Thankfully, <code>R</code> documents all of its functions extensively. To learn what a function does and how to use it (e.g. the function’s arguments), just type in a question mark followed by the name of the function that you’re interested in into the console. Type the following in your console:</p>
-<div id="qwebr-insertion-location-9"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Notice that the help file comes to the forefront, replacing the plot in the lower right panel. You can toggle between the tabs by clicking on their names.</p>
-</section><section class="level3"><h4 id="r-as-a-big-calculator">R as a big calculator<a class="anchor" aria-label="anchor" href="#r-as-a-big-calculator"></a>
-</h4>
-<p>Now, suppose we want to plot the total number of baptisms. To compute this, we could use the fact that we can use <code>R</code> as a big calculator. To do this, we can type in mathematical expressions such as the below calculation into the console.</p>
 <div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>This calculation would provide us with the total number of baptisms in 1629. We could then repeat this calculation once for each year. This would probably take us a while, but luckily there is a faster way! If we add the vector for baptisms for boys to that of girls, <code>R</code> can compute each of these sums simultaneously.</p>
+<p>Notice that the help file comes to the forefront, replacing the plot in the lower right panel. You can toggle between the tabs by clicking on their names.</p>
+</section><section class="section level2"><h2 id="r-as-a-big-calculator">R as a big calculator<a class="anchor" aria-label="anchor" href="#r-as-a-big-calculator"></a>
+</h2>
+<p>Now, suppose we want to plot the total number of baptisms. To compute this, we could use the fact that we can use <code>R</code> as a big calculator. To do this, we can type in mathematical expressions such as the below calculation into the console.</p>
 <div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>What you will see is a list of 82 numbers. These numbers appear as a list, because we are working with vectors rather than a data frame. Each number represents the sum of how many boys and girls were baptized that year. You can take a look at the first few rows of the <code>boys</code> and <code>girls</code> columns to see if the calculation is right.</p>
-</section><section class="level3"><h4 id="adding-a-new-variable-to-the-data-frame">Adding a new variable to the data frame<a class="anchor" aria-label="anchor" href="#adding-a-new-variable-to-the-data-frame"></a>
-</h4>
-<p>We are interested in using this new vector of the total number of baptisms to generate some plots, so we’ll want to save it as a permanent column in our data frame. We can do this using the following code:</p>
+<p>This calculation would provide us with the total number of baptisms in 1629. We could then repeat this calculation once for each year. This would probably take us a while, but luckily there is a faster way! If we add the vector for baptisms for boys to that of girls, <code>R</code> can compute each of these sums simultaneously.</p>
 <div id="qwebr-insertion-location-12"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>What you will see is a list of 82 numbers. These numbers appear as a list, because we are working with vectors rather than a data frame. Each number represents the sum of how many boys and girls were baptized that year. You can take a look at the first few rows of the <code>boys</code> and <code>girls</code> columns to see if the calculation is right.</p>
+</section><section class="section level2"><h2 id="adding-a-new-variable-to-the-data-frame">Adding a new variable to the data frame<a class="anchor" aria-label="anchor" href="#adding-a-new-variable-to-the-data-frame"></a>
+</h2>
+<p>We are interested in using this new vector of the total number of baptisms to generate some plots, so we’ll want to save it as a permanent column in our data frame. We can do this using the following code:</p>
+<div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>This code has a lot of new pieces to it, so let’s break it down. In the first line we are doing two things, (1) adding a new <code>total</code> column to this updated data frame, and (2) overwriting the existing <code>arbuthnot</code> data frame with an updated data frame that includes the new <code>total</code> column. We are able to chain these two processes together using the <strong>piping</strong> (<code>%&gt;%</code>) operator. The piping operator takes the output of the previous expression and “pipes it” into the first argument of the next expression.</p>
 <p>To continue our analogy with mathematical functions, <code>x %&gt;% f(y)</code> is equivalent to <code>f(x, y)</code>. Connecting <code>arbuthnot</code> and <code>mutate(total = boys + girls)</code> with the pipe operator is the same as typing <code>mutate(arbuthnot, total = boys + girls)</code>, where <code>arbuthnot</code> becomes the first argument included in the <code>mutate()</code> function.</p>
@@ -1730,64 +1740,64 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </div>
 <p>You’ll see that there is now a new column called <code>total</code> that has been tacked onto the data frame. The special symbol <code>&lt;-</code> performs an <em>assignment</em>, taking the output of the piping operations and saving it into an object in your environment. In this case, you already have an object called <code>arbuthnot</code> in your environment, so this command updates that data set with the new mutated column.</p>
 <p>You can make a line plot of the total number of baptisms per year with the following code:</p>
-<div id="qwebr-insertion-location-13"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>In an similar fashion, once you know the total number of baptisms for boys and girls in 1629, you can compute the ratio of the number of boys to the number of girls baptized with the following code:</p>
 <div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Alternatively, you could calculate this ratio for every year by acting on the complete <code>boys</code> and <code>girls</code> columns, and then save those calculations into a new variable named <code>boy_to_girl_ratio</code>:</p>
+<p>In an similar fashion, once you know the total number of baptisms for boys and girls in 1629, you can compute the ratio of the number of boys to the number of girls baptized with the following code:</p>
 <div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>You can also compute the proportion of newborns that are boys in 1629 with the following code:</p>
+<p>Alternatively, you could calculate this ratio for every year by acting on the complete <code>boys</code> and <code>girls</code> columns, and then save those calculations into a new variable named <code>boy_to_girl_ratio</code>:</p>
 <div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Or you can compute this for all years simultaneously and add it as a new variable named <code>boy_ratio</code> to the dataset:</p>
+<p>You can also compute the proportion of newborns that are boys in 1629 with the following code:</p>
 <div id="qwebr-insertion-location-17"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Or you can compute this for all years simultaneously and add it as a new variable named <code>boy_ratio</code> to the dataset:</p>
+<div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Notice that rather than dividing by <code>boys + girls</code> we are using the <code>total</code> variable we created earlier in our calculations!</p>
 <ol start="3" type="1">
 <li>Now, generate a plot of the proportion of boys born over time. What do you see?</li>
 </ol>
-<div id="qwebr-insertion-location-18"></div>
+<div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div>
 <p><strong>Tip:</strong> If you use the up and down arrow keys in the console, you can scroll through your previous commands, your so-called command history. You can also access your command history by clicking on the history tab in the upper right panel. This can save you a lot of typing in the future.</p>
 </div>
 <p>Finally, in addition to simple mathematical operators like subtraction and division, you can ask R to make comparisons like greater than, <code>&gt;</code>, less than, <code>&lt;</code>, and equality, <code>==</code>. For example, we can create a new variable called <code>more_boys</code> that tells us whether the number of births of boys outnumbered that of girls in each year with the following code:</p>
-<div id="qwebr-insertion-location-19"></div>
+<div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>This command adds a new variable to the <code>arbuthnot</code> data frame containing the values of either <code>TRUE</code> if that year had more boys than girls, or <code>FALSE</code> if that year did not (the answer may surprise you). This variable contains a different kind of data than we have encountered so far. All other columns in the <code>arbuthnot</code> data frame have values that are numerical (the year, the number of boys and girls). Here, we’ve asked R to create <em>logical</em> data, data where the values are either <code>TRUE</code> or <code>FALSE</code>. In general, data analysis will involve many different kinds of data types, and one reason for using <code>R</code> is that it is able to represent and compute with many of them.</p>
-</section></section><section class="level2"><h3 id="more-practice">More Practice<a class="anchor" aria-label="anchor" href="#more-practice"></a>
-</h3>
+</section><section class="section level2"><h2 id="more-practice">More Practice<a class="anchor" aria-label="anchor" href="#more-practice"></a>
+</h2>
 <p>In the previous few pages, you recreated some of the displays and preliminary analysis of Arbuthnot’s baptism data. Your assignment involves repeating these steps, but for present day birth records in the United States. The data are stored in a data frame called <code>present</code>.</p>
 <p>To find the minimum and maximum values of columns, you can use the functions <code><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min()</a></code> and <code><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max()</a></code> within a <code>summarize()</code> call, which you will learn more about in the following lab.</p>
 <p>Here’s an example of how to find the minimum and maximum amount of boy births in a year:</p>
-<div id="qwebr-insertion-location-20"></div>
+<div id="qwebr-insertion-location-21"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Answer the following questions with the <code>present</code> data frame:</p>
 <ol type="1">
 <li>What years are included in this data set? What are the dimensions of the data frame? What are the variable (column) names?</li>
 </ol>
-<div id="qwebr-insertion-location-21"></div>
+<div id="qwebr-insertion-location-22"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ol start="2" type="1">
 <li>How do these counts compare to Arbuthnot’s? Are they of a similar magnitude?</li>
 </ol>
-<div id="qwebr-insertion-location-22"></div>
+<div id="qwebr-insertion-location-23"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ol start="3" type="1">
 <li>Make a plot that displays the proportion of boys born over time. What do you see? Does Arbuthnot’s observation about boys being born in greater proportion than girls hold up in the U.S.? Include the plot in your response. <em>Hint:</em> You should be able to reuse your code from Exercise 3 above, just replace the name of the data frame.</li>
 </ol>
-<div id="qwebr-insertion-location-23"></div>
+<div id="qwebr-insertion-location-24"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ol start="4" type="1">
 <li>In what year did we see the most total number of births in the U.S.? <em>Hint:</em> First calculate the totals and save it as a new variable. Then, sort your dataset in descending order based on the <code>total</code> column. You can do this interactively in the data viewer by clicking on the arrows next to the variable names. To include the sorted result in your report you will need to use two new functions. First we use <code>arrange()</code> to sorting the variable. Then we can arrange the data in a descending order with another function, <code>desc()</code>, for descending order. The sample code is provided below.</li>
 </ol>
-<div id="qwebr-insertion-location-24"></div>
+<div id="qwebr-insertion-location-25"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>These data come from reports by the Centers for Disease Control. You can learn more about them by bringing up the help file using the command <code>?present</code>.</p>
-</section><section class="level2"><h3 id="resources-for-learning-r-and-working-in-rstudio">Resources for learning R and working in RStudio<a class="anchor" aria-label="anchor" href="#resources-for-learning-r-and-working-in-rstudio"></a>
-</h3>
+</section><section class="section level2"><h2 id="resources-for-learning-r-and-working-in-rstudio">Resources for learning R and working in RStudio<a class="anchor" aria-label="anchor" href="#resources-for-learning-r-and-working-in-rstudio"></a>
+</h2>
 <p>That was a short introduction to R and RStudio, but we will provide you with more functions and a more complete sense of the language as the course progresses.</p>
 <p>In this course we will be using the suite of R packages from the <strong>tidyverse</strong>. The book <a href="https://r4ds.had.co.nz/" class="external-link">R For Data Science</a> by Grolemund and Wickham is a fantastic resource for data analysis in R with the tidyverse. If you are Googling for R code, make sure to also include these package names in your search query. For example, instead of Googling “scatterplot in R”, Google “scatterplot in R with the tidyverse”.</p>
 <p>These may come in handy throughout the semester:</p>
@@ -1799,7 +1809,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Note that some of the code on these cheatsheets may be too advanced for this course. However the majority of it will become useful throughout the semester.</p>
 <hr>
 <p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0" alt="Creative Commons License"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
-</section></section><script id="quarto-html-after-body" type="application/javascript">
+</section><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -2015,8 +2025,7 @@ qwebrInstance.then(
     );
   }
 );
-</script></main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
-    </nav></aside>
+</script></main>
 </div>
 
 

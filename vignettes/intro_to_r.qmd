@@ -2,7 +2,6 @@
 title: "Introduction to R and RStudio"
 output:
   html_document:
-    css: lab.css
     highlight: pygments
     theme: default
     toc: true
@@ -16,9 +15,20 @@ filters:
   - webr
 ---
 
+Fill out for printing and handing in. Please test printing the page as a PDF
+before doing lots of work on it!
+
+<form>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" class="input-box">
+  
+  <label for="date">Date:</label>
+  <input type="date" id="date" name="date" class="input-box">
+</form>
+
 # A note about this lab
 
-If you are viewing this lab on https://cuny-epibios.github.io/PUBH614/, you can 
+If you are viewing this lab on [https://cuny-epibios.github.io/PUBH614/](https://cuny-epibios.github.io/PUBH614/), you can 
 enter, edit, and run the R code directly in your web browser. Try it! Also try 
 changing the value assigned to `x`, and try some different calculator-like commands.
 
@@ -27,21 +37,22 @@ x = 2
 x + 2
 ```
 
-# Installing and loading packages
+# Loading packages
 
-You only need to *install* packages once, but you need to *load* them each time you relaunch R. In this lab, the packages are already installed, but you can install new packages using `install.packages("packagename")`. We load packages with the `library` function. The following line load the tidyverse library which provides many data manipulation and plotting functions that you will use into your working environment, and the openintro package
-which provides the `arbuthnot` dataset used in this lab.
+Load packages with the `library` function. The following line loads the 
+tidyverse library, which provides data manipulation and plotting functions that 
+you will use into your working environment, and the openintro package
+which provides the `arbuthnot` dataset used in this lab. Don't worry about the
+warnings and messages it produces, they aren't important in this case.
 
 ```{webr-r}
-#| message: TRUE
-#| read-only: FALSE
 library(tidyverse)
 library(openintro)
 ```
 
 We are choosing to use the tidyverse package because it consists of a set of packages necessary for different aspects of working with data, anything from loading data to wrangling data to visualizing data to analyzing data. Additionally, these packages share common philosophies and are designed to work together. You can find more about the packages in the tidyverse at [tidyverse.org](http://tidyverse.org/).
 
-## Dr. Arbuthnot's Baptism Records
+# Dr. Arbuthnot's Baptism Records
 
 To get started, let's take a peek at the data.
 
@@ -79,7 +90,7 @@ Although we previously said that it is best practice to type all of your `R` cod
 
 We can see that there are 82 observations and 3 variables in this dataset. The variable names are `year`, `boys`, and `girls`. At this point, you might notice that many of the commands in `R` look a lot like functions from math class; that is, invoking `R` commands means supplying a function with some number of inputs (what are called arguments) which the function uses to produce an output. The `glimpse()` command, for example, took a single argument, the name of a data frame and produced a display of the dataset as an output.
 
-## Some Exploration
+# Some Exploration
 
 Let's start to examine the data a little more closely. We can access the data in a single column of a data frame by extracting the column with a `$`. For example, the code below extracts the `boys` column from the `arbuthnot` data frame.
 
@@ -91,9 +102,13 @@ This command will only show the number of boys baptized each year. `R` interpret
 
 1.  What command would you use to extract just the counts of girls baptized? Try it out in the console!
 
+```{webr}
+
+```
+
 Notice that the way `R` has printed these data is different. When we looked at the complete data frame, we saw 82 rows, one on each line of the display. These data have been extracted from the data frame, so they are no longer structured in a table with other variables. Instead, these data are displayed one right after another. Objects that print out in this way are called *vectors*; similar to the vectors you have seen in mathematics courses, vectors represent a list of numbers. `R` has added numbers displayed in [brackets] along the left side of the printout to indicate each entry's location within the vector. For example, 5218 follows `[1]`, indicating that `5218` is the first entry in the vector. If `[43]` was displayed at the beginning of a line, that indicate that the first number displayed on that line would correspond to the 43<sup>rd</sup> entry in that vector.
 
-### Data visualization
+# Data visualization
 
 `R` has some powerful functions for making graphics. We can create a simple plot of the number of girls baptized per year with the following code:
 
@@ -127,10 +142,10 @@ Use the plot to address the following question:
 
 1.  Is there an apparent trend in the number of girls baptized over the years? How would you describe it? (To ensure that your lab report is comprehensive, be sure to include the code needed to make the plot as well as your written interpretation.)
 
-<div>
-  <label for="user-input">Enter your answer here:</label><br>
-  <textarea id="user-input" name="user-input" rows="10" cols="50"></textarea>
-</div>
+<form>
+  <label for="comments">Response:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
 
 You might wonder how you are supposed to know the syntax for the `ggplot()` function. Thankfully, `R` documents all of its functions extensively. To learn what a function does and how to use it (e.g. the function's arguments), just type in a question mark followed by the name of the function that you're interested in into the console. Type the following in your console:
 
@@ -140,7 +155,7 @@ You might wonder how you are supposed to know the syntax for the `ggplot()` func
 
 Notice that the help file comes to the forefront, replacing the plot in the lower right panel. You can toggle between the tabs by clicking on their names.
 
-### R as a big calculator
+# R as a big calculator
 
 Now, suppose we want to plot the total number of baptisms. To compute this, we could use the fact that we can use `R` as a big calculator. To do this, we can type in mathematical expressions such as the below calculation into the console.
 
@@ -156,7 +171,7 @@ arbuthnot$boys + arbuthnot$girls
 
 What you will see is a list of 82 numbers. These numbers appear as a list, because we are working with vectors rather than a data frame. Each number represents the sum of how many boys and girls were baptized that year. You can take a look at the first few rows of the `boys` and `girls` columns to see if the calculation is right.
 
-### Adding a new variable to the data frame
+# Adding a new variable to the data frame
 
 We are interested in using this new vector of the total number of baptisms to generate some plots, so we'll want to save it as a permanent column in our data frame. We can do this using the following code:
 
@@ -223,7 +238,7 @@ Notice that rather than dividing by `boys + girls` we are using the `total` vari
 3.  Now, generate a plot of the proportion of boys born over time. What do you see?
 
 ```{webr-r}
-# Enter your solution here, using the comment symbol "#" to start lines of plain text.
+# Enter your solution here, using "#" for comments.
 ```
 <div>
 
@@ -240,7 +255,7 @@ arbuthnot <- arbuthnot %>%
 
 This command adds a new variable to the `arbuthnot` data frame containing the values of either `TRUE` if that year had more boys than girls, or `FALSE` if that year did not (the answer may surprise you). This variable contains a different kind of data than we have encountered so far. All other columns in the `arbuthnot` data frame have values that are numerical (the year, the number of boys and girls). Here, we've asked R to create *logical* data, data where the values are either `TRUE` or `FALSE`. In general, data analysis will involve many different kinds of data types, and one reason for using `R` is that it is able to represent and compute with many of them.
 
-## More Practice
+# More Practice
 
 In the previous few pages, you recreated some of the displays and preliminary analysis of Arbuthnot's baptism data. Your assignment involves repeating these steps, but for present day birth records in the United States. The data are stored in a data frame called `present`.
 
@@ -259,23 +274,23 @@ Answer the following questions with the `present` data frame:
 
 1.  What years are included in this data set? What are the dimensions of the data frame? What are the variable (column) names?
 ```{webr-r}
-# Enter your solution here, using the comment symbol "#" to start lines of plain text.
+# Enter your solution here, using "#" for comments.
 ```
 
 2.  How do these counts compare to Arbuthnot's? Are they of a similar magnitude?
 ```{webr-r}
-# Enter your solution here, using the comment symbol "#" to start lines of plain text.
+# Enter your solution here, using "#" for comments.
 ```
 
 3.  Make a plot that displays the proportion of boys born over time. What do you see? Does Arbuthnot's observation about boys being born in greater proportion than girls hold up in the U.S.? Include the plot in your response. *Hint:* You should be able to reuse your code from Exercise 3 above, just replace the name of the data frame.
 ```{webr-r}
-# Enter your solution here, using the comment symbol "#" to start lines of plain text.
+# Enter your solution here, using "#" for comments.
 ```
 
 4.  In what year did we see the most total number of births in the U.S.? *Hint:* First calculate the totals and save it as a new variable. Then, sort your dataset in descending order based on the `total` column. You can do this interactively in the data viewer by clicking on the arrows next to the variable names. To include the sorted result in your report you will need to use two new functions. First we use `arrange()` to sorting the variable. Then we can arrange the data in a descending order with another function, `desc()`, for descending order. The sample code is provided below.
 
 ```{webr-r}
-# Enter your solution here, using the comment symbol "#" to start lines of plain text.
+# Enter your solution here, using "#" for comments.
 # Sample code:
 present %>%
   arrange(desc(total))
@@ -283,7 +298,7 @@ present %>%
 
 These data come from reports by the Centers for Disease Control. You can learn more about them by bringing up the help file using the command `?present`.
 
-## Resources for learning R and working in RStudio
+# Resources for learning R and working in RStudio
 
 That was a short introduction to R and RStudio, but we will provide you with more functions and a more complete sense of the language as the course progresses.
 

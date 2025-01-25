@@ -31,7 +31,7 @@ ol > li:before {
     /* Position and style the number */
     position:absolute;
     top:-2px;
-    left:-2em;
+    left:-4em;
     -moz-box-sizing:border-box;
     -webkit-box-sizing:border-box;
     box-sizing:border-box;
@@ -84,4 +84,23 @@ div#license {
     padding: 10px 10px;
     background-color: rgba(76, 114, 29, 0.2);
     border-radius: 5px;
+}
+
+.short-input {
+  width: 300px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input-box, .textarea-box {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px; /* Add space between input fields */
+}
+
+.textarea-box {
+  height: 100px; /* Adjust the height as needed */
 }
