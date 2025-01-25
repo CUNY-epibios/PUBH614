@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>01. Introduction to R and RStudio • PUBH614</title>
+<title>05a. Foundations for statistical inference - Sampling distributions • PUBH614</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -16,8 +16,8 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="intro_to_r_files/libs/quarto-html/popper.min.js"></script><script src="intro_to_r_files/libs/quarto-html/tippy.umd.min.js"></script><link href="intro_to_r_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="intro_to_r_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="sampling_distributions_files/libs/quarto-html/popper.min.js"></script><script src="sampling_distributions_files/libs/quarto-html/tippy.umd.min.js"></script><link href="sampling_distributions_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="sampling_distributions_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script type="module">
@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-1","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"x = 2\nx + 2"},{"id":2,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-2","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"library(tidyverse)\nlibrary(openintro)"},{"id":3,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-3","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"arbuthnot"},{"id":4,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-4","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"Arbuthnot"},{"id":5,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-5","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"glimpse(arbuthnot)"},{"id":6,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-6","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"arbuthnot$boys"},{"id":7,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-7","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"# enter code here"},{"id":8,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-8","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"ggplot(data = arbuthnot, aes(x = year, y = girls)) + \n  geom_point()"},{"id":9,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-9","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"ggplot(data = arbuthnot, aes(x = year, y = girls)) +\n  geom_line()"},{"id":10,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-10","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"?ggplot"},{"id":11,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-11","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"5218 + 4683"},{"id":12,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-12","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"arbuthnot$boys + arbuthnot$girls"},{"id":13,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-13","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"arbuthnot <- arbuthnot %>%\n  mutate(total = boys + girls)"},{"id":14,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-14","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"ggplot(data = arbuthnot, aes(x = year, y = total)) + \n  geom_line()"},{"id":15,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-15","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"5218 / 4683"},{"id":16,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-16","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"arbuthnot <- arbuthnot %>%\n  mutate(boy_to_girl_ratio = boys / girls)"},{"id":17,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-17","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"5218 / (5218 + 4683)"},{"id":18,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-18","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"arbuthnot <- arbuthnot %>%\n  mutate(boy_ratio = boys / total)"},{"id":19,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-19","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"# Enter code here"},{"id":20,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-20","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"arbuthnot <- arbuthnot %>%\n  mutate(more_boys = boys > girls)"},{"id":21,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-21","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"arbuthnot %>%\n  summarize(min = min(boys),\n            max = max(boys)\n            )"},{"id":22,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-22","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"# Enter code here"},{"id":23,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-23","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"# Enter code here"},{"id":24,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-24","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"# Enter code here"},{"id":25,"options":{"editor-word-wrap":"true","fig-height":5,"comment":"","results":"markup","out-height":"","context":"interactive","out-width":"700px","message":"true","editor-quick-suggestions":"false","editor-font-scale":"1","fig-cap":"","fig-width":7,"read-only":"false","autorun":"false","label":"unnamed-chunk-25","classes":"","output":"true","editor-max-height":"","warning":"true","dpi":72},"code":"# Sample code:\npresent %>%\n  arrange(desc(total))\n code here"}];
+  globalThis.qwebrCellDetails = [{"code":"library(tidyverse)\nlibrary(openintro)\nlibrary(infer)","id":1,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-1","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"global_monitor <- tibble(\n  scientist_work = c(rep(\"Benefits\", 80000), rep(\"Doesn't benefit\", 20000))\n)","id":2,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-2","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"ggplot(global_monitor, aes(x = scientist_work)) +\n  geom_bar() +\n  labs(\n    x = \"\", y = \"\",\n    title = \"Do you believe that the work scientists do benefit people like you?\"\n  ) +\n  coord_flip() ","id":3,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","classes":"","editor-max-height":"","context":"interactive","fig.height":"2.5","read-only":"false","warning":"true","label":"unnamed-chunk-3","fig.width":"10","out-height":"","fig-width":7,"autorun":"false"}},{"code":"global_monitor %>%\n  count(scientist_work) %>%\n  mutate(p = n /sum(n))","id":4,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-4","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"samp1 <- global_monitor %>%\n  sample_n(50)","id":5,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-5","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"# Enter code here","id":6,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-6","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"samp1 %>%\n  count(scientist_work) %>%\n  mutate(p_hat = n /sum(n))","id":7,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-7","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"# For use inline below\nsamp1_p_hat <- samp1 %>% \n  count(scientist_work) %>% \n  mutate(p_hat = n /sum(n)) %>% \n  filter(scientist_work == \"Doesn't benefit\") %>% \n  pull(p_hat) %>% \n  round(2)\nsamp1_p_hat","id":8,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-8","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"# Enter code here","id":9,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-9","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"sample_props50 <- global_monitor %>%\n                    rep_sample_n(size = 50, reps = 15000, replace = TRUE) %>%\n                    count(scientist_work) %>%\n                    mutate(p_hat = n /sum(n)) %>%\n                    filter(scientist_work == \"Doesn't benefit\")","id":10,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-10","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"ggplot(data = sample_props50, aes(x = p_hat)) +\n  geom_histogram(binwidth = 0.02) +\n  labs(\n    x = \"p_hat (Doesn't benefit)\",\n    title = \"Sampling distribution of p_hat\",\n    subtitle = \"Sample size = 50, Number of samples = 15000\"\n  )","id":11,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-11","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"# Enter code here","id":12,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-12","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"global_monitor %>%\n  sample_n(size = 50, replace = TRUE) %>%\n  count(scientist_work) %>%\n  mutate(p_hat = n /sum(n)) %>%\n  filter(scientist_work == \"Doesn't benefit\")","id":13,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-13","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"# Enter code here","id":14,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-14","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"ggplot(data = sample_props50, aes(x = p_hat)) +\n  geom_histogram(binwidth = 0.02)","id":15,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-15","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"# Edit the following to change the analysis below\noutcome <- \"Doesn't benefit\"\nn_samp <- 30\nn_rep <- 15000\nbinwidth <- 0.02\n# Don't edit below this line\nsampling_mean <- mean(sampling_dist$p_hat)\nsampling_se <- sd(sampling_dist$p_hat)\n# Take sample\nsampling_dist <- global_monitor %>%\n  rep_sample_n(size = n_samp, reps = n_rep, replace = TRUE) %>%\n  count(scientist_work) %>%\n  mutate(p_hat = n / sum(n)) %>%\n  filter(scientist_work == outcome)\n# Plot histogram\nggplot(sampling_dist, aes(x = p_hat)) +\n  geom_histogram(binwidth = binwidth) +\n  xlim(0, 1) +\n  labs(\n    x = paste0(\"p_hat (\", outcome, \")\"),\n    title = \"Sampling distribution of p_hat\",\n    subtitle = paste0(\"Sample size = \", n_samp, \" Number of samples = \", n_rep)\n  ) +\n  theme(plot.title = element_text(face = \"bold\", size = 16))\n# Print mean and standard error\ncat(\"Mean of sampling distribution =\", round(sampling_mean, 2), \"\\n\")\ncat(\"Standard Error of sampling distribution =\", round(sampling_se, 2), \"\\n\")","id":16,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-16","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"# Enter code here","id":17,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-17","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"# Enter code here","id":18,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-18","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"# Enter code here","id":19,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-19","classes":"","out-height":"","fig-width":7,"autorun":"false"}},{"code":"# Enter code here","id":20,"options":{"comment":"","dpi":72,"message":"true","fig-cap":"","fig-height":5,"out-width":"700px","editor-quick-suggestions":"false","output":"true","editor-font-scale":"1","results":"markup","editor-word-wrap":"true","editor-max-height":"","context":"interactive","read-only":"false","warning":"true","label":"unnamed-chunk-20","classes":"","out-height":"","fig-width":7,"autorun":"false"}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1294,7 +1294,7 @@
   }
 
   </script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="01. Introduction to R and RStudio">
+<meta property="og:title" content="05a. Foundations for statistical inference - Sampling distributions">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -1335,7 +1335,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>01. Introduction to R and RStudio</h1>
+      <h1>05a. Foundations for statistical inference - Sampling distributions</h1>
 
 
 
@@ -1634,130 +1634,150 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <label for="comments">Feedback and questions about this lab for your instructor:</label>
 <textarea id="comments" name="comments" class="textarea-box"></textarea>
 </form>
-<section class="section level2"><h2 id="a-note-about-this-lab">A note about this lab<a class="anchor" aria-label="anchor" href="#a-note-about-this-lab"></a>
+<p>In this lab, you will investigate the ways in which the statistics from a random sample of data can serve as point estimates for population parameters. We’re interested in formulating a <em>sampling distribution</em> of our estimate in order to learn about the properties of the estimate, such as its distribution.</p>
+<div id="boxedtext">
+<p><strong>Setting a seed:</strong> We will take some random samples and build sampling distributions in this lab, which means you should set a seed at the start of your lab. If this concept is new to you, review the lab on probability.</p>
+</div>
+<section class="section level2"><h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
-<p>If you are viewing this lab on <a href="https://cuny-epibios.github.io/PUBH614/">https://cuny-epibios.github.io/PUBH614/</a>, you can enter, edit, and run the R code directly in your web browser. Try it! Also try changing the value assigned to <code>x</code>, and try some different calculator-like commands.</p>
+<section class="level2"><h3 id="load-packages">Load packages<a class="anchor" aria-label="anchor" href="#load-packages"></a>
+</h3>
+<p>In this lab, we will explore and visualize the data using the <strong>tidyverse</strong> suite of packages. We will also use the <strong>infer</strong> package for resampling.</p>
+<p>Let’s load the packages.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section><section class="section level2"><h2 id="loading-packages">Loading packages<a class="anchor" aria-label="anchor" href="#loading-packages"></a>
-</h2>
-<p>Load packages with the <code>library</code> function. The following line loads the tidyverse library, which provides data manipulation and plotting functions that you will use into your working environment, and the openintro package which provides the <code>arbuthnot</code> dataset used in this lab. Don’t worry about the warnings and messages it produces, they aren’t important in this case.</p>
+</section><section class="level2"><h3 id="creating-a-reproducible-lab-report">Creating a reproducible lab report<a class="anchor" aria-label="anchor" href="#creating-a-reproducible-lab-report"></a>
+</h3>
+<p>To create your new lab report, in RStudio, go to New File -&gt; R Markdown… Then, choose From Template and then choose <code>Lab Report for OpenIntro Statistics Labs</code> from the list of templates.</p>
+</section><section class="level2"><h3 id="the-data">The data<a class="anchor" aria-label="anchor" href="#the-data"></a>
+</h3>
+<p>A 2019 Gallup report states the following:</p>
+<blockquote>
+<p>The premise that scientific progress benefits people has been embodied in discoveries throughout the ages – from the development of vaccinations to the explosion of technology in the past few decades, resulting in billions of supercomputers now resting in the hands and pockets of people worldwide. Still, not everyone around the world feels science benefits them personally.</p>
+<p><strong>Source:</strong> <a href="https://news.gallup.com/opinion/gallup/268121/world-science-day-knowledge-power.aspx" class="external-link">World Science Day: Is Knowledge Power?</a></p>
+</blockquote>
+<p>The Wellcome Global Monitor finds that 20% of people globally do not believe that the work scientists do benefits people like them. In this lab, you will assume this 20% is a true population proportion and learn about how sample proportions can vary from sample to sample by taking smaller samples from the population. We will first create our population assuming a population size of 100,000. This means 20,000 (20%) of the population think the work scientists do does not benefit them personally and the remaining 80,000 think it does.</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>We are choosing to use the tidyverse package because it consists of a set of packages necessary for different aspects of working with data, anything from loading data to wrangling data to visualizing data to analyzing data. Additionally, these packages share common philosophies and are designed to work together. You can find more about the packages in the tidyverse at <a href="http://tidyverse.org/" class="external-link">tidyverse.org</a>.</p>
-</section><section class="section level2"><h2 id="dr--arbuthnots-baptism-records">Dr. Arbuthnot’s Baptism Records<a class="anchor" aria-label="anchor" href="#dr--arbuthnots-baptism-records"></a>
-</h2>
-<p>To get started, let’s take a peek at the data.</p>
+<p>The name of the data frame is <code>global_monitor</code> and the name of the variable that contains responses to the question <em>“Do you believe that the work scientists do benefit people like you?”</em> is <code>scientist_work</code>.</p>
+<p>We can quickly visualize the distribution of these responses using a bar plot.</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Again, you can run the code above by:</p>
-<ul>
-<li>placing your cursor on the line and pressing <code>Ctrl-Enter</code> or <code>Cmd-Enter</code>
-</li>
-<li>placing your cursor on the line and pressing the “Run” button in the upper right hand corner of the R Markdown file, or</li>
-<li>by clicking on the green arrow at the top right hand corner of the code chunk</li>
-</ul>
-<p>The single line of code included in this code chunk instructs <code>R</code> to load some data: the Arbuthnot baptism counts for boys and girls. You should see that the <em>Environment</em> tab in the upper right hand corner of the RStudio window now lists a data set called <code>arbuthnot</code> that has 82 observations on 3 variables. As you interact with <code>R</code>, you will create objects for a variety of purposes. Sometimes you load the objects into your workspace by loading a package, as we have done here, but sometimes you create objects yourself as a byproduct of a computation process, for an analysis you have performed, or for a visualization you have created.</p>
-<p>The Arbuthnot data set refers to the work of Dr. John Arbuthnot, an 18<sup>th</sup> century physician, writer, and mathematician. He was interested in the ratio of newborn boys to newborn girls, so he gathered the baptism records for children born in London for every year from 1629 to 1710. Once again, we can view the data by running the code below or by typing the name of the dataset into the console. Be careful the spelling and capitalization you use! <code>R</code> is case sensitive, so if you accidentally type <code>Arbuthnot</code> <code>R</code> will tell you that object cannot be found.</p>
+<p>We can also obtain summary statistics to confirm we constructed the data frame correctly.</p>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>This command does display the data for us, however, printing the whole dataset in the console is not that useful. One advantage of RStudio is that it comes with a built-in data viewer. The <em>Environment</em> tab (in the upper right pane) lists the objects in your environment. Clicking on the name <code>arbuthnot</code> will open up a <em>Data Viewer</em> tab next to your R Markdown file, which provides an alternative display of the data set. This display should feel similar to viewing data in Excel, where you are able to scroll through the dataset to inspect it. However, unlike Excel, you <strong>will not</strong> be able to edit the data in this tab. Once you are done viewing the data, you can close this tab by clicking on the <code>x</code> in the upper left hand corner.</p>
-<p>When inspecting the data, you should see four columns of numbers and 82 rows. Each row represents a different year that Arbuthnot collected data. The first entry in each row is the row number (an index we can use to access the data from individual years if we want), the second is the year, and the third and fourth are the numbers of boys and girls baptized that year, respectively. Use the scrollbar on the right side of the console window to examine the complete data set.</p>
-<p>Note that the row numbers in the first column are not part of Arbuthnot’s data. <code>R</code> adds these row numbers as part of its printout to help you make visual comparisons. You can think of them as the index that you see on the left side of a spreadsheet. In fact, the comparison of the data to a spreadsheet will generally be helpful. <code>R</code> has stored Arbuthnot’s data in an object similar to a spreadsheet or a table, which <code>R</code> calls a <em>data frame</em>.</p>
-<p>You can see the dimensions of this data frame as well as the names of the variables and the first few observations by inserting the name of the dataset into the <code>glimpse()</code> function, as seen below:</p>
+</section></section><section class="section level2"><h2 id="the-unknown-sampling-distribution">The unknown sampling distribution<a class="anchor" aria-label="anchor" href="#the-unknown-sampling-distribution"></a>
+</h2>
+<p>In this lab, you have access to the entire population, but this is rarely the case in real life. Gathering information on an entire population is often extremely costly or impossible. Because of this, we often take a sample of the population and use that to understand the properties of the population.</p>
+<p>If you are interested in estimating the proportion of people who don’t think the work scientists do benefits them, you can use the <code>sample_n</code> command to survey the population.</p>
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Although we previously said that it is best practice to type all of your <code>R</code> code into the code chunk, it is better practice to type this command into your console. Generally, you should type all of the code that is necessary for your solution into the code chunk. Because this command is used to explore the data, it is not necessary for your solution code and <strong>should not</strong> be included in your solution file.</p>
-<p>We can see that there are 82 observations and 3 variables in this dataset. The variable names are <code>year</code>, <code>boys</code>, and <code>girls</code>. At this point, you might notice that many of the commands in <code>R</code> look a lot like functions from math class; that is, invoking <code>R</code> commands means supplying a function with some number of inputs (what are called arguments) which the function uses to produce an output. The <code>glimpse()</code> command, for example, took a single argument, the name of a data frame and produced a display of the dataset as an output.</p>
-</section><section class="section level2"><h2 id="some-exploration">Some Exploration<a class="anchor" aria-label="anchor" href="#some-exploration"></a>
-</h2>
-<p>Let’s start to examine the data a little more closely. We can access the data in a single column of a data frame by extracting the column with a <code>$</code>. For example, the code below extracts the <code>boys</code> column from the <code>arbuthnot</code> data frame.</p>
+<p>This command collects a simple random sample of size 50 from the <code>global_monitor</code> dataset, and assigns the result to <code>samp1</code>. This is similar to randomly drawing names from a hat that contains the names of all in the population. Working with these 50 names is considerably simpler than working with all 100,000 people in the population.</p>
+<ol type="1">
+<li>Describe the distribution of responses in this sample. How does it compare to the distribution of responses in the population. <strong>Hint:</strong> Although the <code>sample_n</code> function takes a random sample of observations (i.e. rows) from the dataset, you can still refer to the variables in the dataset with the same names. Code you presented earlier for visualizing and summarising the population data will still be useful for the sample, however be careful to not label your proportion <code>p</code> since you’re now calculating a sample statistic, not a population parameters. You can customize the label of the statistics to indicate that it comes from the sample.</li>
+</ol>
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>This command will only show the number of boys baptized each year. <code>R</code> interprets the <code>$</code> as saying “go to the data frame that comes before me, and find the variable that comes after me.”</p>
-<ol type="1">
-<li>What command would you use to extract just the counts of girls baptized? Try it out!</li>
-</ol>
-<div class="cell">
+<form>
+<label for="comments">Comments:</label>
+<textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+<p>If you’re interested in estimating the proportion of all people who do not believe that the work scientists do benefits them, but you do not have access to the population data, your best single guess is the sample proportion.</p>
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-<p>Notice that the way <code>R</code> has printed these data is different. When we looked at the complete data frame, we saw 82 rows, one on each line of the display. These data have been extracted from the data frame, so they are no longer structured in a table with other variables. Instead, these data are displayed one right after another. Objects that print out in this way are called <em>vectors</em>; similar to the vectors you have seen in mathematics courses, vectors represent a list of numbers. <code>R</code> has added numbers displayed in [brackets] along the left side of the printout to indicate each entry’s location within the vector. For example, 5218 follows <code>[1]</code>, indicating that <code>5218</code> is the first entry in the vector. If <code>[43]</code> was displayed at the beginning of a line, that indicate that the first number displayed on that line would correspond to the 43<sup>rd</sup> entry in that vector.</p>
-</section><section class="section level2"><h2 id="data-visualization">Data visualization<a class="anchor" aria-label="anchor" href="#data-visualization"></a>
-</h2>
-<p><code>R</code> has some powerful functions for making graphics. We can create a simple plot of the number of girls baptized per year with the following code:</p>
 <div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>In this code, we use the <code>ggplot()</code> function to build a plot. If you run this code chunk, a plot will appear below the code chunk. The R Markdown document displays the plot below the code that was used to generate it, to give you an idea of what the plot would look like in a final report.</p>
-<p>The command above also looks like a mathematical function. This time, however, the function requires multiple inputs (arguments), which are separated by commas.</p>
-<p>With <code>ggplot()</code>:</p>
-<ul>
-<li>The first argument is always the name of the dataset you wish to use for plotting.</li>
-<li>Next, you provide the variables from the dataset to be assigned to different <code>aes</code>thetic elements of the plot, such as the x and the y axes.</li>
-</ul>
-<p>These commands will build a blank plot, with the variables you assigned to the x and y axes. Next, you need to tell <code>ggplot()</code> what type of visualization you would like to add to the blank template. You add another layer to the <code>ggplot()</code> by:</p>
-<ul>
-<li>adding a <code>+</code> at the end of the line, to indicate that you are adding a layer</li>
-<li>then specify the <code>geom</code>etric object to be used to create the plot.</li>
-</ul>
-<p>Since we want to scatterplot, we use <code>geom_point()</code>. This tells <code>ggplot()</code> that each data point should be represented by one point on the plot. If you wanted to visualize the above plot using a line graph instead of a scatterplot, you would replace <code>geom_point()</code> with <code>geom_line()</code>. This tells <code>ggplot()</code> to draw a line from each observation with the next observation (sequentially).</p>
-<div id="qwebr-insertion-location-9"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Use the plot to address the following question:</p>
+<p>Depending on which 50 people you selected, your estimate could be a bit above or a bit below the true population proportion of 80%. In general, though, the sample proportion turns out to be a pretty good estimate of the true population proportion, and you were able to get it by sampling less than 1% of the population.</p>
 <ol type="1">
-<li>Is there an apparent trend in the number of girls baptized over the years? How would you describe it? (To ensure that your lab report is comprehensive, be sure to include the code needed to make the plot as well as your written interpretation.)</li>
+<li>Would you expect the sample proportion to match the sample proportion of another student’s sample? Why, or why not? If the answer is no, would you expect the proportions to be somewhat different or very different?</li>
 </ol>
 <form>
 <label for="comments">Comments:</label>
 <textarea id="comments" name="comments" class="textarea-box"></textarea>
 </form>
-<p>You might wonder how you are supposed to know the syntax for the <code>ggplot()</code> function. Thankfully, <code>R</code> documents all of its functions extensively. To learn what a function does and how to use it (e.g. the function’s arguments), just type in a question mark followed by the name of the function that you’re interested in into the console. Type the following in your console:</p>
+<ol start="2" type="1">
+<li>Take a second sample, also of size 50, and call it <code>samp2</code>. How does the sample proportion of <code>samp2</code> compare with that of <code>samp1</code>? Suppose we took two more samples, one of size 100 and one of size 1000. Which would you think would provide a more accurate estimate of the population proportion?</li>
+</ol>
+<div id="qwebr-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<form>
+<label for="comments">Comments:</label>
+<textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+<p>Not surprisingly, every time you take another random sample, you might get a different sample proportion. It’s useful to get a sense of just how much variability you should expect when estimating the population mean this way. The distribution of sample proportions, called the <em>sampling distribution (of the proportion)</em>, can help you understand this variability. In this lab, because you have access to the population, you can build up the sampling distribution for the sample proportion by repeating the above steps many times. Here, we use R to take 15,000 different samples of size 50 from the population, calculate the proportion of responses in each sample, filter for only the <em>Doesn’t benefit</em> responses, and store each result in a vector called <code>sample_props50</code>. Note that we specify that <code>replace = TRUE</code> since sampling distributions are constructed by sampling with replacement.</p>
 <div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Notice that the help file comes to the forefront, replacing the plot in the lower right panel. You can toggle between the tabs by clicking on their names.</p>
-</section><section class="section level2"><h2 id="r-as-a-big-calculator">R as a big calculator<a class="anchor" aria-label="anchor" href="#r-as-a-big-calculator"></a>
-</h2>
-<p>Now, suppose we want to plot the total number of baptisms. To compute this, we could use the fact that we can use <code>R</code> as a big calculator. To do this, we can type in mathematical expressions such as the below calculation into the console.</p>
+<p>And we can visualize the distribution of these proportions with a histogram.</p>
 <div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>This calculation would provide us with the total number of baptisms in 1629. We could then repeat this calculation once for each year. This would probably take us a while, but luckily there is a faster way! If we add the vector for baptisms for boys to that of girls, <code>R</code> can compute each of these sums simultaneously.</p>
+<p>Next, you will review how this set of code works.</p>
+<ol type="1">
+<li>How many elements are there in <code>sample_props50</code>? Describe the sampling distribution, and be sure to specifically note its center. Make sure to include a plot of the distribution in your answer.</li>
+</ol>
 <div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>What you will see is a list of 82 numbers. These numbers appear as a list, because we are working with vectors rather than a data frame. Each number represents the sum of how many boys and girls were baptized that year. You can take a look at the first few rows of the <code>boys</code> and <code>girls</code> columns to see if the calculation is right.</p>
-</section><section class="section level2"><h2 id="adding-a-new-variable-to-the-data-frame">Adding a new variable to the data frame<a class="anchor" aria-label="anchor" href="#adding-a-new-variable-to-the-data-frame"></a>
+<form>
+<label for="comments">Comments:</label>
+<textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+</section><section class="section level2"><h2 id="interlude-sampling-distributions">Interlude: Sampling distributions<a class="anchor" aria-label="anchor" href="#interlude-sampling-distributions"></a>
 </h2>
-<p>We are interested in using this new vector of the total number of baptisms to generate some plots, so we’ll want to save it as a permanent column in our data frame. We can do this using the following code:</p>
+<p>The idea behind the <code>rep_sample_n</code> function is <em>repetition</em>. Earlier, you took a single sample of size <code>n</code> (50) from the population of all people in the population. With this new function, you can repeat this sampling procedure <code>rep</code> times in order to build a distribution of a series of sample statistics, which is called the <strong>sampling distribution</strong>.</p>
+<p>Note that in practice one rarely gets to build true sampling distributions, because one rarely has access to data from the entire population.</p>
+<p>Without the <code>rep_sample_n</code> function, this would be painful. We would have to manually run the following code 15,000 times</p>
 <div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>This code has a lot of new pieces to it, so let’s break it down. In the first line we are doing two things, (1) adding a new <code>total</code> column to this updated data frame, and (2) overwriting the existing <code>arbuthnot</code> data frame with an updated data frame that includes the new <code>total</code> column. We are able to chain these two processes together using the <strong>piping</strong> (<code>%&gt;%</code>) operator. The piping operator takes the output of the previous expression and “pipes it” into the first argument of the next expression.</p>
-<p>To continue our analogy with mathematical functions, <code>x %&gt;% f(y)</code> is equivalent to <code>f(x, y)</code>. Connecting <code>arbuthnot</code> and <code>mutate(total = boys + girls)</code> with the pipe operator is the same as typing <code>mutate(arbuthnot, total = boys + girls)</code>, where <code>arbuthnot</code> becomes the first argument included in the <code>mutate()</code> function.</p>
-<div id="boxedtext">
-<p><strong>A note on piping:</strong> Note that we can read these two lines of code as the following:</p>
-<p><em>“Take the <code>arbuthnot</code> dataset and <strong>pipe</strong> it into the <code>mutate</code> function. Mutate the <code>arbuthnot</code> data set by creating a new variable called <code>total</code> that is the sum of the variables called <code>boys</code> and <code>girls</code>. Then assign the resulting dataset to the object called <code>arbuthnot</code>, i.e. overwrite the old <code>arbuthnot</code> dataset with the new one containing the new variable.”</em></p>
-<p>This is equivalent to going through each row and adding up the <code>boys</code> and <code>girls</code> counts for that year and recording that value in a new column called <code>total</code>.</p>
-</div>
-<div>
-<p><strong>Where is the new variable?</strong> When you make changes to variables in your dataset, click on the name of the dataset again to update it in the data viewer.</p>
-</div>
-<p>You’ll see that there is now a new column called <code>total</code> that has been tacked onto the data frame. The special symbol <code>&lt;-</code> performs an <em>assignment</em>, taking the output of the piping operations and saving it into an object in your environment. In this case, you already have an object called <code>arbuthnot</code> in your environment, so this command updates that data set with the new mutated column.</p>
-<p>You can make a line plot of the total number of baptisms per year with the following code:</p>
+<p>as well as store the resulting sample proportions each time in a separate vector.</p>
+<p>Note that for each of the 15,000 times we computed a proportion, we did so from a <strong>different</strong> sample!</p>
+<ol type="1">
+<li>To make sure you understand how sampling distributions are built, and exactly what the <code>rep_sample_n</code> function does, try modifying the code to create a sampling distribution of <strong>25 sample proportions</strong> from <strong>samples of size 10</strong>, and put them in a data frame named <code>sample_props_small</code>. Print the output. How many observations are there in this object called <code>sample_props_small</code>? What does each observation represent?</li>
+</ol>
 <div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>In an similar fashion, once you know the total number of baptisms for boys and girls in 1629, you can compute the ratio of the number of boys to the number of girls baptized with the following code:</p>
+<form>
+<label for="comments">Comments:</label>
+<textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+</section><section class="section level2"><h2 id="sample-size-and-the-sampling-distribution">Sample size and the sampling distribution<a class="anchor" aria-label="anchor" href="#sample-size-and-the-sampling-distribution"></a>
+</h2>
+<p>Mechanics aside, let’s return to the reason we used the <code>rep_sample_n</code> function: to compute a sampling distribution, specifically, the sampling distribution of the proportions from samples of 50 people.</p>
 <div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Alternatively, you could calculate this ratio for every year by acting on the complete <code>boys</code> and <code>girls</code> columns, and then save those calculations into a new variable named <code>boy_to_girl_ratio</code>:</p>
+<p>The sampling distribution that you computed tells you much about estimating the true proportion of people who think that the work scientists do doesn’t benefit them. Because the sample proportion is an unbiased estimator, the sampling distribution is centered at the true population proportion, and the spread of the distribution indicates how much variability is incurred by sampling only 50 people at a time from the population.</p>
+<p>In the remainder of this section, you will work on getting a sense of the effect that sample size has on your sampling distribution.</p>
+<ol type="1">
+<li>Use the code below to create sampling distributions of proportions of <em>Doesn’t benefit</em> from samples of size 10, 50, and 100. Use 5,000 simulations. What does each observation in the sampling distribution represent? How does the mean, standard error, and shape of the sampling distribution change as the sample size increases? How (if at all) do these values change if you increase the number of simulations? (You do not need to include plots in your answer.)</li>
+</ol>
 <div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>You can also compute the proportion of newborns that are boys in 1629 with the following code:</p>
+<form>
+<label for="comments">Comments:</label>
+<textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+<hr></section><section class="section level2"><h2 id="more-practice">More Practice<a class="anchor" aria-label="anchor" href="#more-practice"></a>
+</h2>
+<p>So far, you have only focused on estimating the proportion of those you think the work scientists doesn’t benefit them. Now, you’ll try to estimate the proportion of those who think it does.</p>
+<p>Note that while you might be able to answer some of these questions using the app, you are expected to write the required code and produce the necessary plots and summary statistics. You are welcome to use the app for exploration.</p>
+<ol type="1">
+<li>Take a sample of size 15 from the population and calculate the proportion of people in this sample who think the work scientists do enchances their lives. Using this sample, what is your best point estimate of the population proportion of people who think the work scientists do enchances their lives?</li>
+</ol>
 <div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Or you can compute this for all years simultaneously and add it as a new variable named <code>boy_ratio</code> to the dataset:</p>
+<form>
+<label for="comments">Comments:</label>
+<textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+<ol start="2" type="1">
+<li>Since you have access to the population, simulate the sampling distribution of proportion of those who think the work scientists do enhances their lives for samples of size 15 by taking 2000 samples from the population of size 15 and computing 2000 sample proportions. Store these proportions in as <code>sample_props15</code>. Plot the data, then describe the shape of this sampling distribution. Based on this sampling distribution, what would you guess the true proportion of those who think the work scientists do enhances their lives to be? Finally, calculate and report the population proportion.</li>
+</ol>
 <div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Notice that rather than dividing by <code>boys + girls</code> we are using the <code>total</code> variable we created earlier in our calculations!</p>
+<form>
+<label for="comments">Comments:</label>
+<textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
 <ol start="3" type="1">
-<li>Now, generate a plot of the proportion of boys born over time. What do you see?</li>
+<li>Change your sample size from 15 to 150, then compute the sampling distribution using the same method as above, and store these proportions in a new object called <code>sample_props150</code>. Describe the shape of this sampling distribution and compare it to the sampling distribution for a sample size of 15. Based on this sampling distribution, what would you guess to be the true proportion of those who think the work scientists do enhances their lives?</li>
 </ol>
 <div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1765,69 +1785,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <label for="comments">Comments:</label>
 <textarea id="comments" name="comments" class="textarea-box"></textarea>
 </form>
-<div>
-<p><strong>Tip:</strong> If you use the up and down arrow keys in the console, you can scroll through your previous commands, your so-called command history. You can also access your command history by clicking on the history tab in the upper right panel. This can save you a lot of typing in the future.</p>
-</div>
-<p>Finally, in addition to simple mathematical operators like subtraction and division, you can ask R to make comparisons like greater than, <code>&gt;</code>, less than, <code>&lt;</code>, and equality, <code>==</code>. For example, we can create a new variable called <code>more_boys</code> that tells us whether the number of births of boys outnumbered that of girls in each year with the following code:</p>
+<ol start="4" type="1">
+<li>Of the sampling distributions from 2 and 3, which has a smaller spread? If you’re concerned with making estimates that are more often close to the true value, would you prefer a sampling distribution with a large or small spread?</li>
+</ol>
 <div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>This command adds a new variable to the <code>arbuthnot</code> data frame containing the values of either <code>TRUE</code> if that year had more boys than girls, or <code>FALSE</code> if that year did not (the answer may surprise you). This variable contains a different kind of data than we have encountered so far. All other columns in the <code>arbuthnot</code> data frame have values that are numerical (the year, the number of boys and girls). Here, we’ve asked R to create <em>logical</em> data, data where the values are either <code>TRUE</code> or <code>FALSE</code>. In general, data analysis will involve many different kinds of data types, and one reason for using <code>R</code> is that it is able to represent and compute with many of them.</p>
-</section><section class="section level2"><h2 id="more-practice">More Practice<a class="anchor" aria-label="anchor" href="#more-practice"></a>
-</h2>
-<p>In the previous few pages, you recreated some of the displays and preliminary analysis of Arbuthnot’s baptism data. Your assignment involves repeating these steps, but for present day birth records in the United States. The data are stored in a data frame called <code>present</code>.</p>
-<p>To find the minimum and maximum values of columns, you can use the functions <code><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min()</a></code> and <code><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max()</a></code> within a <code>summarize()</code> call, which you will learn more about in the following lab.</p>
-<p>Here’s an example of how to find the minimum and maximum amount of boy births in a year:</p>
-<div id="qwebr-insertion-location-21"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Answer the following questions with the <code>present</code> data frame:</p>
-<ol type="1">
-<li>What years are included in this data set? What are the dimensions of the data frame? What are the variable (column) names?</li>
-</ol>
-<div id="qwebr-insertion-location-22"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
 <label for="comments">Comments:</label>
 <textarea id="comments" name="comments" class="textarea-box"></textarea>
 </form>
-<ol start="2" type="1">
-<li>How do these counts compare to Arbuthnot’s? Are they of a similar magnitude?</li>
-</ol>
-<div id="qwebr-insertion-location-23"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="3" type="1">
-<li>Make a plot that displays the proportion of boys born over time. What do you see? Does Arbuthnot’s observation about boys being born in greater proportion than girls hold up in the U.S.? Include the plot in your response. <em>Hint:</em> You should be able to reuse your code from Exercise 3 above, just replace the name of the data frame.</li>
-</ol>
-<div id="qwebr-insertion-location-24"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="4" type="1">
-<li>In what year did we see the most total number of births in the U.S.? <em>Hint:</em> First calculate the totals and save it as a new variable. Then, sort your dataset in descending order based on the <code>total</code> column. You can do this interactively in the data viewer by clicking on the arrows next to the variable names. To include the sorted result in your report you will need to use two new functions. First we use <code>arrange()</code> to sorting the variable. Then we can arrange the data in a descending order with another function, <code>desc()</code>, for descending order. The sample code is provided below.</li>
-</ol>
-<div id="qwebr-insertion-location-25"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<p>These data come from reports by the Centers for Disease Control. You can learn more about them by bringing up the help file using the command <code>?present</code>.</p>
-</section><section class="section level2"><h2 id="resources-for-learning-r-and-working-in-rstudio">Resources for learning R and working in RStudio<a class="anchor" aria-label="anchor" href="#resources-for-learning-r-and-working-in-rstudio"></a>
-</h2>
-<p>That was a short introduction to R and RStudio, but we will provide you with more functions and a more complete sense of the language as the course progresses.</p>
-<p>In this course we will be using the suite of R packages from the <strong>tidyverse</strong>. The book <a href="https://r4ds.had.co.nz/" class="external-link">R For Data Science</a> by Grolemund and Wickham is a fantastic resource for data analysis in R with the tidyverse. If you are Googling for R code, make sure to also include these package names in your search query. For example, instead of Googling “scatterplot in R”, Google “scatterplot in R with the tidyverse”.</p>
-<p>These may come in handy throughout the semester:</p>
-<ul>
-<li><a href="https://github.com/rstudio/cheatsheets/raw/main/rmarkdown-2.0.pdf" class="external-link">RMarkdown cheatsheet</a></li>
-<li><a href="https://github.com/rstudio/cheatsheets/raw/main/data-transformation.pdf" class="external-link">Data transformation cheatsheet</a></li>
-<li><a href="https://github.com/rstudio/cheatsheets/raw/main/data-visualization-2.1.pdf" class="external-link">Data visualization cheatsheet</a></li>
-</ul>
-<p>Note that some of the code on these cheatsheets may be too advanced for this course. However the majority of it will become useful throughout the semester.</p>
 <hr>
 <p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0" alt="Creative Commons License"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
 </section><script id="quarto-html-after-body" type="application/javascript">
@@ -2046,7 +2012,8 @@ qwebrInstance.then(
     );
   }
 );
-</script></main>
+</script></main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 

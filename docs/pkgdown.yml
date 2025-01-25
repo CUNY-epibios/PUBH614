@@ -2,8 +2,10 @@ pandoc: '3.2'
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
-  intro_to_r: intro_to_r.html
-last_built: 2025-01-25T21:21Z
+  01_intro_to_r: 01_intro_to_r.html
+  02_intro_to_data: 02_intro_to_data.html
+  05a_sampling_distributions: 05a_sampling_distributions.html
+last_built: 2025-01-25T22:53Z
 urls:
   reference: https://cuny-epibios.github.io/PUBH614/reference
   article: https://cuny-epibios.github.io/PUBH614/articles

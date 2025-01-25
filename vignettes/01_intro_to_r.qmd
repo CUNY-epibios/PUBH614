@@ -15,7 +15,8 @@ filters:
   - webr
 ---
 
-Fill out for printing and handing in. Please test printing the page as a PDF
+Fill out for printing and handing in. Note that there is no "save" feature, 
+so please test printing the page as a PDF, and keep a record of your code and text,
 before doing lots of work on it!
 
 <form>
@@ -36,7 +37,7 @@ If you are viewing this lab on [https://cuny-epibios.github.io/PUBH614/](https:/
 enter, edit, and run the R code directly in your web browser. Try it! Also try 
 changing the value assigned to `x`, and try some different calculator-like commands.
 
-```{webr}
+```{webr-r}
 x = 2
 x + 2
 ```

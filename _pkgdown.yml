@@ -5,8 +5,8 @@ template:
   light-switch: false
 navbar:
   structure:
-    left:  [intro, articles, search]
-    right: [github, lightswitch]
+    left:  [intro, articles]
+    right: [github, lightswitch, search]
   components:
     labs:
       text: "Labs"
