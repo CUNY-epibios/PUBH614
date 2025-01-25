@@ -93,8 +93,13 @@ div#license {
   border-radius: 4px;
 }
 
+label {
+  display: block;
+  margin-bottom: 5px; /* Add some space below the label */
+}
+
 .input-box, .textarea-box {
-  width: 100%;
+  width: 50%;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -103,10 +108,4 @@ div#license {
 
 .textarea-box {
   height: 100px; /* Adjust the height as needed */
-}
-
-.article-logo {
-  display: block;
-  margin: 0 auto 20px auto; /* Center the logo and add some space below */
-  width: 100px; /* Adjust the width as needed */
 }

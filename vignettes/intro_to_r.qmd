@@ -1,5 +1,5 @@
 ---
-title: "Introduction to R and RStudio"
+title: "01. Introduction to R and RStudio"
 output:
   html_document:
     highlight: pygments
@@ -24,6 +24,10 @@ before doing lots of work on it!
   
   <label for="date">Date:</label>
   <input type="date" id="date" name="date" class="input-box">
+  
+  <label for="comments">Feedback and questions about this lab for your instructor:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+
 </form>
 
 # A note about this lab
@@ -100,10 +104,10 @@ arbuthnot$boys
 
 This command will only show the number of boys baptized each year. `R` interprets the `$` as saying "go to the data frame that comes before me, and find the variable that comes after me."
 
-1.  What command would you use to extract just the counts of girls baptized? Try it out in the console!
+1.  What command would you use to extract just the counts of girls baptized? Try it out!
 
 ```{webr}
-
+# enter code here
 ```
 
 Notice that the way `R` has printed these data is different. When we looked at the complete data frame, we saw 82 rows, one on each line of the display. These data have been extracted from the data frame, so they are no longer structured in a table with other variables. Instead, these data are displayed one right after another. Objects that print out in this way are called *vectors*; similar to the vectors you have seen in mathematics courses, vectors represent a list of numbers. `R` has added numbers displayed in [brackets] along the left side of the printout to indicate each entry's location within the vector. For example, 5218 follows `[1]`, indicating that `5218` is the first entry in the vector. If `[43]` was displayed at the beginning of a line, that indicate that the first number displayed on that line would correspond to the 43<sup>rd</sup> entry in that vector.
@@ -143,7 +147,7 @@ Use the plot to address the following question:
 1.  Is there an apparent trend in the number of girls baptized over the years? How would you describe it? (To ensure that your lab report is comprehensive, be sure to include the code needed to make the plot as well as your written interpretation.)
 
 <form>
-  <label for="comments">Response:</label>
+  <label for="comments">Comments:</label>
   <textarea id="comments" name="comments" class="textarea-box"></textarea>
 </form>
 
@@ -238,8 +242,13 @@ Notice that rather than dividing by `boys + girls` we are using the `total` vari
 3.  Now, generate a plot of the proportion of boys born over time. What do you see?
 
 ```{webr-r}
-# Enter your solution here, using "#" for comments.
+# Enter code here
 ```
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+
 <div>
 
 **Tip:** If you use the up and down arrow keys in the console, you can scroll through your previous commands, your so-called command history. You can also access your command history by clicking on the history tab in the upper right panel. This can save you a lot of typing in the future.
@@ -274,27 +283,43 @@ Answer the following questions with the `present` data frame:
 
 1.  What years are included in this data set? What are the dimensions of the data frame? What are the variable (column) names?
 ```{webr-r}
-# Enter your solution here, using "#" for comments.
+# Enter code here
 ```
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
 
 2.  How do these counts compare to Arbuthnot's? Are they of a similar magnitude?
 ```{webr-r}
-# Enter your solution here, using "#" for comments.
+# Enter code here
 ```
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
 
 3.  Make a plot that displays the proportion of boys born over time. What do you see? Does Arbuthnot's observation about boys being born in greater proportion than girls hold up in the U.S.? Include the plot in your response. *Hint:* You should be able to reuse your code from Exercise 3 above, just replace the name of the data frame.
 ```{webr-r}
-# Enter your solution here, using "#" for comments.
+# Enter code here
 ```
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
 
 4.  In what year did we see the most total number of births in the U.S.? *Hint:* First calculate the totals and save it as a new variable. Then, sort your dataset in descending order based on the `total` column. You can do this interactively in the data viewer by clicking on the arrows next to the variable names. To include the sorted result in your report you will need to use two new functions. First we use `arrange()` to sorting the variable. Then we can arrange the data in a descending order with another function, `desc()`, for descending order. The sample code is provided below.
 
 ```{webr-r}
-# Enter your solution here, using "#" for comments.
 # Sample code:
 present %>%
   arrange(desc(total))
+ code here
 ```
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
 
 These data come from reports by the Centers for Disease Control. You can learn more about them by bringing up the help file using the command `?present`.
 

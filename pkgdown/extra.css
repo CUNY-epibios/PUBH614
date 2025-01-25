@@ -93,8 +93,13 @@ div#license {
   border-radius: 4px;
 }
 
+label {
+  display: block;
+  margin-bottom: 5px; /* Add some space below the label */
+}
+
 .input-box, .textarea-box {
-  width: 100%;
+  width: 50%;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
