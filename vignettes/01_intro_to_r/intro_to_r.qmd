@@ -4,7 +4,7 @@ output:
   html_document:
     css: lab.css
     highlight: pygments
-    theme: cerulean
+    theme: default
     toc: true
     toc_float: true
 vignette: >
