@@ -3,64 +3,70 @@ body {
 }
 
 h1 {
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight:bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #2FA4E7; /* Cerulean primary color */
 }
 
 h2 {
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight:bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
     margin-top: 24px;
+    color: #2FA4E7; /* Cerulean primary color */
 }
 
 ol {
-    margin-left:0; /* Remove the default left margin */
-    padding-left:0; /* Remove the default left padding */
+    margin-left: 0; /* Remove the default left margin */
+    padding-left: 0; /* Remove the default left padding */
 }
 ol > li {
-    position:relative; /* Create a positioning context */
-    margin:0 0 10px 2em; /* Give each list item a left margin to make room for the numbers */
-    padding:10px 80px; /* Add some spacing around the content */
-    list-style:none; /* Disable the normal item numbering */
-    border-top:2px solid #317EAC;
-    background:rgba(49, 126, 172, 0.1);
+    position: relative; /* Create a positioning context */
+    margin: 0 0 10px 2em; /* Give each list item a left margin to make room for the numbers */
+    padding: 10px 80px; /* Add some spacing around the content */
+    list-style: none; /* Disable the normal item numbering */
+    border-top: 2px solid #2FA4E7; /* Cerulean primary color */
+    background: rgba(47, 164, 231, 0.1); /* Cerulean primary color with transparency */
 }
 ol > li:before {
-    content:"Exercise " counter(li); /* Use the counter as content */
-    counter-increment:li; /* Increment the counter by 1 */
+    content: "Exercise " counter(li); /* Use the counter as content */
+    counter-increment: li; /* Increment the counter by 1 */
     /* Position and style the number */
-    position:absolute;
-    top:-2px;
-    left:-4em;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-    box-sizing:border-box;
-    width:7em;
+    position: absolute;
+    top: -2px;
+    left: -4em;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 7em;
     /* Some space between the number and the content in browsers that support
        generated content but not positioning it (Camino 2 is one example) */
-    margin-right:8px;
-    padding:4px;
-    border-top:2px solid #317EAC;
-    color:#fff;
-    background:#317EAC;
-    font-weight:bold;
-    font-family:"Helvetica Neue", Arial, sans-serif;
-    text-align:center;
+    margin-right: 8px;
+    padding: 4px;
+    border-top: 2px solid #2FA4E7; /* Cerulean primary color */
+    color: #fff;
+    background: #2FA4E7; /* Cerulean primary color */
+    font-weight: bold;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    text-align: center;
 }
 li ol,
-li ul {margin-top:6px;}
-ol ol li:last-child {margin-bottom:0;}
+li ul {
+    margin-top: 6px;
+}
+ol ol li:last-child {
+    margin-bottom: 0;
+}
 
 .oyo ul {
-    list-style-type:decimal;
+    list-style-type: decimal;
 }
 
 hr {
-    border: 1px solid #357FAA;
+    border: 1px solid #2FA4E7; /* Cerulean primary color */
 }
 
 div#boxedtext {
-    background-color: rgba(86, 155, 189, 0.2);
+    background-color: rgba(47, 164, 231, 0.2); /* Cerulean primary color with transparency */
     padding: 20px;
     margin-bottom: 20px;
     font-size: 10pt;
@@ -69,43 +75,43 @@ div#boxedtext {
 div#template {
     margin-top: 30px;
     margin-bottom: 30px;
-    color: #808080;
-    border:1px solid #808080;
+    color: #5BC0DE; /* Cerulean info color */
+    border: 1px solid #5BC0DE; /* Cerulean info color */
     padding: 10px 10px;
-    background-color: rgba(128, 128, 128, 0.2);
+    background-color: rgba(91, 192, 222, 0.2); /* Cerulean info color with transparency */
     border-radius: 5px;
 }
 
-div#license { 
+div#license {
     margin-top: 30px;
     margin-bottom: 30px;
-    color: #4C721D;
-    border:1px solid #4C721D;
+    color: #5CB85C; /* Cerulean success color */
+    border: 1px solid #5CB85C; /* Cerulean success color */
     padding: 10px 10px;
-    background-color: rgba(76, 114, 29, 0.2);
+    background-color: rgba(92, 184, 92, 0.2); /* Cerulean success color with transparency */
     border-radius: 5px;
 }
 
 .short-input {
-  width: 300px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 label {
-  display: block;
-  margin-bottom: 5px; /* Add some space below the label */
+    display: block;
+    margin-bottom: 5px; /* Add some space below the label */
 }
 
 .input-box, .textarea-box {
-  width: 50%;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 15px; /* Add space between input fields */
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px; /* Add space between input fields */
 }
 
 .textarea-box {
-  height: 100px; /* Adjust the height as needed */
+    height: 100px; /* Adjust the height as needed */
 }

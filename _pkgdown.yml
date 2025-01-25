@@ -1,11 +1,12 @@
 url: https://cuny-epibios.github.io/PUBH614/
 template:
   bootstrap: 5
+  bootswatch: cerulean
   light-switch: false
 navbar:
   structure:
-    left:  [intro, articles]
-    right: [search, github, lightswitch]
+    left:  [intro, articles, search]
+    right: [github, lightswitch]
   components:
     labs:
       text: "Labs"
