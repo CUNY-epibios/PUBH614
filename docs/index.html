@@ -43,7 +43,14 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="articles/01_intro_to_r.html">01. Introduction to R and RStudio</a></li>
     <li><a class="dropdown-item" href="articles/02_intro_to_data.html">02. Introduction to Data</a></li>
+    <li><a class="dropdown-item" href="articles/03_probability.html">03. Probability</a></li>
+    <li><a class="dropdown-item" href="articles/04_normal_distribution.html">04. The normal distribution</a></li>
     <li><a class="dropdown-item" href="articles/05a_sampling_distributions.html">05a. Foundations for statistical inference - Sampling distributions</a></li>
+    <li><a class="dropdown-item" href="articles/05b_confidence_intervals.html">05b. Foundations for statistical inference - Confidence intervals</a></li>
+    <li><a class="dropdown-item" href="articles/06_inf_for_categorical_data.html">06. Inference for categorical Data</a></li>
+    <li><a class="dropdown-item" href="articles/07_inf_for_numerical_data.html">07. Inference for numerical data</a></li>
+    <li><a class="dropdown-item" href="articles/08_simple_regression.html">08. Introduction to linear regression</a></li>
+    <li><a class="dropdown-item" href="articles/09_multiple_regression.html">09. Multiple regression</a></li>
   </ul>
 </li>
       </ul>
@@ -59,17 +66,13 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="cuny-sph-labs-">CUNY SPH labs <img src="reference/figures/CUNYlogo.png" align="right" width="75" height="75"><a class="anchor" aria-label="anchor" href="#cuny-sph-labs-"></a>
+<div class="page-header"><h1 id="cuny-sph-labs-">CUNY SPH labs <img src="reference/figures/CUNYlogo.png" align="right" width="75" height="75" alt="logo"><a class="anchor" aria-label="anchor" href="#cuny-sph-labs-"></a>
 </h1></div>
 </div>
 <div class="section level1">
 <h1 id="about-openintro-labs">About OpenIntro Labs<a class="anchor" aria-label="anchor" href="#about-openintro-labs"></a>
 </h1>
-<p>These labs were developed by <a href="https://www.openintro.org/" class="external-link">OpenIntro Statistics</a> and adapted for use on the web by Levi Waldron at CUNY SPH. OpenIntro Labs promote the understanding and application of statistics through<br>
-applied data analysis. Labs are titled based on topic area, which correspond to<br>
-particular chapters in all three versions of OpenIntro Statistics, a free and<br>
-open-source textbook. The textbook as well as original versions of the labs can be found at <a href="https://www.openintro.org/stat/labs.php" class="external-link">https://www.openintro.org/stat/labs.php</a>.</p>
-<p>Use the <strong>Articles</strong> button above to see all available labs.</p>
+<p>These labs were developed by <a href="https://www.openintro.org/" class="external-link">OpenIntro Statistics</a> and adapted for use on the web by Levi Waldron at CUNY SPH. OpenIntro Labs promote the understanding and application of statistics through applied data analysis. Labs are titled based on topic area, which correspond to particular chapters in all three versions of OpenIntro Statistics, a free and open-source textbook. The textbook as well as original versions of the labs can be found at <a href="https://www.openintro.org/book/ims/" class="external-link">https://www.openintro.org/book/ims/</a>. Use the <strong>Articles</strong> button above to see all available labs.</p>
 </div>
 <div class="section level1">
 <h1 id="about-r-and-how-to-use-these-labs">About R and how to use these labs<a class="anchor" aria-label="anchor" href="#about-r-and-how-to-use-these-labs"></a>
@@ -77,7 +80,7 @@ open-source textbook. The textbook as well as original versions of the labs can 
 <div class="section level2">
 <h2 id="what-are-r-and-cran">What are R and CRAN?<a class="anchor" aria-label="anchor" href="#what-are-r-and-cran"></a>
 </h2>
-<p><strong>R</strong> is a powerful programming language and environment specifically designed for statistical computing and graphics. It is widely used among statisticians and data scientists for data analysis and visualization. <strong>CRAN</strong> (Comprehensive R Archive Network) is a repository that hosts R packages, which are collections of R functions, data, and compiled code that extend the capabilities of R. CRAN hosts more than 20,000 active packages, or libraries, each adding extra functionality to R<a href="https://journal.r-project.org/news/RJ-2024-1-cran/" class="external-link">1</a>.</p>
+<p><strong>R</strong> is a powerful programming language and environment specifically designed for statistical computing and graphics. It is widely used among statisticians and data scientists for data analysis and visualization. <strong>CRAN</strong> (Comprehensive R Archive Network) is a repository that hosts R packages, which are collections of R functions, data, and compiled code that extend the capabilities of R. CRAN hosts more than 20,000 active packages, or libraries, each adding extra functionality to R [<a href="https://cran.r-project.org" class="external-link">1</a>].</p>
 <div class="section level3">
 <h3 id="how-is-r-different-from-sas-and-spss">How is R Different from SAS and SPSS?<a class="anchor" aria-label="anchor" href="#how-is-r-different-from-sas-and-spss"></a>
 </h3>
@@ -115,33 +118,9 @@ open-source textbook. The textbook as well as original versions of the labs can 
 <h3 id="reporting-issues">Reporting Issues<a class="anchor" aria-label="anchor" href="#reporting-issues"></a>
 </h3>
 <p>If you encounter any issues with running these labs, please report them <a href="https://github.com/CUNY-epibios/PUBH614/issues" class="external-link">here</a>.</p>
-</div>
-</div>
-</div>
-<div class="section level1">
-<h1 id="labs">Labs<a class="anchor" aria-label="anchor" href="#labs"></a>
-</h1>
-<ol style="list-style-type: decimal">
-<li><a href="https://cuny-epibios.github.io/PUBH614/articles/intro_to_r.html">Intro to R</a></li>
-<li><a href="https://cuny-epibios.github.io/PUBH614/articles/intro_to_data.html">Intro to data</a></li>
-<li><a href="https://cuny-epibios.github.io/PUBH614/articles/probability.html">Probability</a></li>
-<li><a href="https://cuny-epibios.github.io/PUBH614/articles/normal_distribution.html">Normal distribution</a></li>
-<li>Foundations of inference<br>
-</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>
-<a href="https://openintro.shinyapps.io/sampling_distributions/" class="external-link">Sampling distributions</a><br>
-</li>
-<li><a href="https://openintro.shinyapps.io/confidence_intervals/" class="external-link">Confidence intervals</a></li>
-</ol>
-<ol start="6" style="list-style-type: decimal">
-<li><a href="https://openintro.shinyapps.io/inf_for_categorical_data/" class="external-link">Inference for categorical data</a></li>
-<li><a href="https://cuny-epibios.github.io/PUBH614/articles/inf_for_numerical_data.html">Inference for numerical data</a></li>
-<li><a href="https://cuny-epibios.github.io/PUBH614/articles/simple_regression.html">Simple linear regression</a></li>
-<li><a href="https://cuny-epibios.github.io/PUBH614/articles/multiple_regression.html">Multiple linear regression</a></li>
-</ol>
 <p><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a><br>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+</div>
+</div>
 </div>
 
   </main><aside class="col-md-3"><div class="license">

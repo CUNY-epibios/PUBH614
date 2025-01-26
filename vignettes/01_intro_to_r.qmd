@@ -107,7 +107,7 @@ This command will only show the number of boys baptized each year. `R` interpret
 
 1.  What command would you use to extract just the counts of girls baptized? Try it out!
 
-```{webr}
+```{webr-r}
 # enter code here
 ```
 
@@ -324,15 +324,14 @@ present %>%
 
 These data come from reports by the Centers for Disease Control. You can learn more about them by bringing up the help file using the command `?present`.
 
-# Resources for learning R and working in RStudio
+# Resources for learning R
 
-That was a short introduction to R and RStudio, but we will provide you with more functions and a more complete sense of the language as the course progresses.
+That was a short introduction to R, but we will provide you with more functions and a more complete sense of the language as the course progresses.
 
 In this course we will be using the suite of R packages from the **tidyverse**. The book [R For Data Science](https://r4ds.had.co.nz/) by Grolemund and Wickham is a fantastic resource for data analysis in R with the tidyverse. If you are Googling for R code, make sure to also include these package names in your search query. For example, instead of Googling "scatterplot in R", Google "scatterplot in R with the tidyverse".
 
 These may come in handy throughout the semester:
 
--   [RMarkdown cheatsheet](https://github.com/rstudio/cheatsheets/raw/main/rmarkdown-2.0.pdf)
 -   [Data transformation cheatsheet](https://github.com/rstudio/cheatsheets/raw/main/data-transformation.pdf)
 -   [Data visualization cheatsheet](https://github.com/rstudio/cheatsheets/raw/main/data-visualization-2.1.pdf)
 

@@ -55,10 +55,6 @@ library(openintro)
 library(infer)
 ```
 
-## Creating a reproducible lab report
-
-To create your new lab report, in RStudio, go to New File -\> R Markdown... Then, choose From Template and then choose `Lab Report for OpenIntro Statistics Labs` from the list of templates.
-
 ## The data
 
 A 2019 Gallup report states the following:
