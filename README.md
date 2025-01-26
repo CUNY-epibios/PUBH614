@@ -1,4 +1,4 @@
-# CUNY SPH labs <img src="man/figures/CUNYlogo.png" align="right" width="75" height="75" alt="logo"/>
+# Labs for CUNY SPH PUBH 614 <img src="man/figures/CUNYlogo.png" align="right" width="75" height="75" alt="logo"/>
 
 # About OpenIntro Labs
 
@@ -36,18 +36,33 @@ extensibility and active community support.
 
 ## RStudio: A Powerful IDE for R
 
-**RStudio** is a popular integrated development environment (IDE) for running R. 
+[RStudio] is a popular integrated development environment (IDE) for running R. 
 It provides a user-friendly interface, tools for plotting, history, debugging, 
 and workspace management. While RStudio is powerful, it does have a learning 
-curve, especially for those new to programming or R.
+curve, especially for those new to programming or R. You can install R and 
+RStudio for free on your own computer [here][RStudio].
+
+[RStudio]: https://posit.co/download/rstudio-desktop/
 
 ## Cloud Services for Running R
 
 There are several cloud services that offer free tiers for running R, making it 
 accessible without the need for local installation:
 
-- **posit.cloud**: A cloud-based service by Posit (formerly RStudio) that allows you to run R and RStudio in your browser.
-- **Google Colab**: A free cloud service that uses Jupyter notebooks, an alternative system for running code interactively. While primarily used for Python, it can also run R with some setup.
+- [posit.cloud] is cloud-based service by Posit (formerly RStudio) 
+that allows you to run R and RStudio using your browser. The
+free tier has limited resources but is sufficient for running the labs in this
+course. Note: whereas https://cuny-epibios.github.io/PUBH614/ runs code in your 
+browser and it is actually running on your computer, [posit.cloud] and other
+cloud services run code on a remote server.
+- [Google Colab](https://colab.research.google.com/) is another cloud-based 
+service that uses Jupyter notebooks, an alternative system for running code 
+interactively. Jupyter notebooks are widely used in data science and machine 
+learning, and are less feature-rich and simpler to use than RStudio. Google 
+Colab provides more generous resources in the free tier cheaper paid tiers than
+posit.cloud, and makes use of your Google Drive for storage.
+
+[posit.cloud]: https://posit.cloud/
 
 ## Using WASM and webR for Browser-Based Labs
 
@@ -68,8 +83,9 @@ supports up to 4GB of memory for WebAssembly applications.
 
 ### Reporting Issues
 
-If you encounter any issues with running these labs, please report them 
-[here](https://github.com/CUNY-epibios/PUBH614/issues).
+If you encounter any issues, notice any errors or problems, or have suggestions
+for improvement, please let Levi Waldron and other potential contributors know 
+by [opening an issue](https://github.com/CUNY-epibios/PUBH614/issues).
 
 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
