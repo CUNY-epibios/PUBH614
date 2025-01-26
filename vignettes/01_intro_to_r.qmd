@@ -1,5 +1,5 @@
 ---
-title: "01. Introduction to R and RStudio"
+title: "01. Introduction to R"
 output:
   html_document:
     highlight: pygments
@@ -7,7 +7,7 @@ output:
     toc: true
     toc_float: true
 vignette: >
-  %\VignetteIndexEntry{Introduction to R and RStudio}
+  %\VignetteIndexEntry{Introduction to R}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 engine: knitr

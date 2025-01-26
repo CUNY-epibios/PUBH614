@@ -5,10 +5,35 @@ template:
   light-switch: false
 navbar:
   structure:
-    left:  [intro, articles]
+    left:  [intro, labs, exercises]
     right: [github, lightswitch, search]
   components:
     labs:
       text: "Labs"
-      menu: articles
+      menu:
+        - text: "01 Introduction to R"
+          href: articles/01_intro_to_r.html
+        - text: "02 Introduction to Data"
+          href: articles/02_intro_to_data.html
+        - text: "03 Probability"
+          href: articles/03_probability.html
+        - text: "04 The Normal Distribution"
+          href: articles/04_normal_distribution.html
+        - text: "05a Sampling Distributions"
+          href: articles/05a_sampling_distributions.html
+        - text: "05b Confidence Intervals"
+          href: articles/05b_confidence_intervals.html
+        - text: "06 Inference for Categorical Data"
+          href: articles/06_inf_for_categorical_data.html
+        - text: "07 Inference for Numerical Data"
+          href: articles/07_inf_for_numerical_data.html
+        - text: "08 Linear Regression"
+          href: articles/08_simple_regression.html
+        - text: "09 Multiple Regression"
+          href: articles/09_multiple_regression.html
+    exercises:
+      text: "Exercises"
+      menu:
+        - text: "Blank workbook"
+          href: articles/blank_workbook.html
 extra_css: pkgdown/lab.css

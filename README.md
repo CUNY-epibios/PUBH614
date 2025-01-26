@@ -9,7 +9,7 @@ Labs are titled based on topic area, which correspond to particular chapters in
 all three versions of OpenIntro Statistics, a free and open-source textbook. 
 The textbook as well as original versions of the labs can be found at 
 [https://www.openintro.org/book/ims/](https://www.openintro.org/book/ims/). 
-Use the **Articles** button above to see all available labs.
+Use the **Labs** button above to see all available labs.
 
 [OpenIntro]: https://www.openintro.org/
 
@@ -81,11 +81,25 @@ supports up to 4GB of memory for WebAssembly applications.
 [webR]: https://docs.r-wasm.org/webr/latest/
 [WASM]: https://developer.mozilla.org/en-US/docs/WebAssembly
 
-### Reporting Issues
+## Reporting Issues
 
 If you encounter any issues, notice any errors or problems, or have suggestions
 for improvement, please let Levi Waldron and other potential contributors know 
 by [opening an issue](https://github.com/CUNY-epibios/PUBH614/issues).
+
+## Building this site
+
+Test individual labs from the command-line:
+```sh
+quarto render vignettes/01_intro_to_r.qmd
+```
+
+Rebuild entire site from R:
+```R
+pkgdown::build_site()
+```
+
+Modify website layout in `_pkgdown.yml`, modify custom css in `pkgdown/custom.css`.
 
 <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 

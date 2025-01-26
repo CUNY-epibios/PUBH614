@@ -1,0 +1,128 @@
+---
+title: "A Blank R workbook"
+output:
+  html_document:
+    highlight: pygments
+    theme: default
+    toc: true
+    toc_float: true
+vignette: >
+  %\VignetteIndexEntry{Blank R workbook}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+engine: knitr
+filters:
+  - webr
+---
+
+This is a webR with blank comment and code boxes that you can use for exercises or miscellaneous analyses.
+
+<form>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" class="input-box">
+  
+  <label for="date">Date:</label>
+  <input type="date" id="date" name="date" class="input-box">
+  
+  <label for="comments">Feedback and questions about this lab for your instructor:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+
+</form>
+
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+
+```{webr-r}
+# Enter code here
+```
+
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+
+```{webr-r}
+# Enter code here
+```
+
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+
+```{webr-r}
+# Enter code here
+```
+
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+
+```{webr-r}
+# Enter code here
+```
+
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+
+```{webr-r}
+# Enter code here
+```
+
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+
+```{webr-r}
+# Enter code here
+```
+
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+
+```{webr-r}
+# Enter code here
+```
+
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+
+```{webr-r}
+# Enter code here
+```
+
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+
+```{webr-r}
+# Enter code here
+```
+
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+
+```{webr-r}
+# Enter code here
+```
+
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png){style="border-width:0"}</a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.

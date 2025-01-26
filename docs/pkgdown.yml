@@ -12,7 +12,8 @@ articles:
   07_inf_for_numerical_data: 07_inf_for_numerical_data.html
   08_simple_regression: 08_simple_regression.html
   09_multiple_regression: 09_multiple_regression.html
-last_built: 2025-01-26T10:53Z
+  blank_workbook: blank_workbook.html
+last_built: 2025-01-26T15:41Z
 urls:
   reference: https://cuny-epibios.github.io/PUBH614/reference
   article: https://cuny-epibios.github.io/PUBH614/articles
