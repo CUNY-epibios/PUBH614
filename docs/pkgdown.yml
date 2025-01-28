@@ -1,4 +1,4 @@
-pandoc: '3.2'
+pandoc: 3.1.8
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
@@ -13,7 +13,7 @@ articles:
   08_simple_regression: 08_simple_regression.html
   09_multiple_regression: 09_multiple_regression.html
   blank_workbook: blank_workbook.html
-last_built: 2025-01-26T15:41Z
+last_built: 2025-01-28T08:03Z
 urls:
   reference: https://cuny-epibios.github.io/PUBH614/reference
   article: https://cuny-epibios.github.io/PUBH614/articles

@@ -15,21 +15,6 @@ filters:
   - webr
 ---
 
-Fill out for printing and handing in. Note that there is no "save" feature, 
-so please test printing the page as a PDF, and keep a record of your code and text,
-before doing lots of work on it!
-
-<form>
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" class="input-box">
-  
-  <label for="date">Date:</label>
-  <input type="date" id="date" name="date" class="input-box">
-  
-  <label for="comments">Feedback and questions about this lab for your instructor:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
-
-</form>
 
 # A note about this lab
 
