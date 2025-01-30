@@ -1,20 +1,20 @@
 ---
 title: "01. Introduction to R"
-output:
-  html_document:
+format: 
+  html:
     highlight: pygments
     theme: default
     toc: true
-    toc_float: true
-vignette: >
-  %\VignetteIndexEntry{Introduction to R}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
-engine: knitr
+    toc-location: body
+editor: visual
 filters:
   - webr
+vignette: >
+  %\VignetteIndexEntry{Introduction to R}
+  %\VignetteEncoding{UTF-8}
+javascripts:
+  - "https://cdn.jsdelivr.net/npm/r-wasm@latest/dist/r-wasm.min.js"
 ---
-
 
 # A note about this lab
 
@@ -23,10 +23,9 @@ enter, edit, and run the R code directly in your web browser. Try it! Also try
 changing the value assigned to `x`, and try some different calculator-like commands.
 
 ```{webr-r}
-x = 2
-x + 2
+library(ggplot2)  # Load the ggplot2 package
+library(dplyr)    # Load dplyr for the pipe operator (%>%)
 ```
-
 # Loading packages
 
 Load packages with the `library` function. The following line loads the 
