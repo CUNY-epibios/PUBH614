@@ -1,0 +1,177 @@
+---
+title: "Exercise Workbook"
+author: "Your Name Here"           # Placeholder for student name
+date: "YYYY-MM-DD"                 # Placeholder for date
+output:
+  html_document:
+    highlight: pygments
+    theme: default
+    toc: true                      # Table of contents enabled
+    toc_float: true                 # Floating table of contents
+vignette: >
+  %\VignetteIndexEntry{Blank R Workbook for PUBH614 Exercises}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+engine: knitr
+filters:
+  - webr                           # Filter for running R code in the browser (WASM)
+---
+
+## Introduction
+
+This workbook is designed to guide you through completing the exercises for PUBH614. Please fill in your name and the date above. Each section provides a task, a space for your code, and an area to explain your code and results. All code can be run directly in the browser without the need for any installations.
+
+**Instructions:**
+
+1. **Copy the template** and replace the placeholder text with your own work.
+2. **Write and run the code** in the provided code chunks directly in the browser. The webr package will allow you to run R code without needing any software installations.
+3. **Explain your code and the output** in the provided text blocks below each code chunk.
+4. **Save your work** periodically to ensure no data is lost.
+5. **Knit (render)** the `.qmd` file to generate an HTML, PDF, or other output format when you're done.
+
+---
+
+# Exercise 1: Basic Arithmetic and R Functions
+
+**Task:** In this exercise, you will work with basic arithmetic operations and R functions. Perform simple calculations and use functions like `sum()`, `mean()`, and `sd()`.
+
+```{webr-r}
+# Example code for Exercise 1
+x <- 10
+y <- 20
+z <- x + y
+print(z)
+```
+
+# Exercise 2: Using Basic Mathematical Operations
+
+**Task:**  In this part, you are going to create a program basing on the sample code above that performs the four mathematical operations
+
+```{webr-r}
+
+```
+
+Run the code above , copy and paste your results in the textbox below.
+
+<div>
+  <textarea id="mathematical-operations" rows="4" cols="50" placeholder="Paste your results here..."></textarea>
+</div>
+
+
+# Performing a basic summary of a vector
+
+```{webr-r}
+numbers <- c(1, 2, 3, 4, 5)
+mean(numbers)
+sd(numbers)
+```
+
+**Explanation:** 
+
+**Explain the result of the addition operation and the mean and standard deviation calculations here.**
+
+<div>
+  <textarea id="scatter-plot-explanation" rows="4" cols="50" placeholder="Write your explanation here..."></textarea>
+</div>
+
+# Exercise 3: Data Manipulation with dplyr
+
+**Task:** In this exercise, you'll practice data manipulation using the dplyr package. Load a sample dataset and perform basic operations like filtering, selecting columns, and summarizing data.
+
+```{webr-r}
+# Example code for Exercise 2
+library(dplyr)
+data(mtcars)
+# Filter data to select only cars with mpg > 20
+filtered_data <- mtcars %>%
+  filter(mpg > 20)
+# Select specific columns (mpg and hp)
+selected_data <- filtered_data %>%
+  select(mpg, hp)
+# Summarize data
+summary_data <- selected_data %>%
+  summarize(mean_mpg = mean(mpg), mean_hp = mean(hp))
+
+print(summary_data)
+```
+
+**Explanation:** 
+
+**Explain the filtering, selecting, and summarizing operations here.**
+
+<div>
+  <textarea id="scatter-plot-explanation" rows="4" cols="50" placeholder="Write your explanation here..."></textarea>
+</div>
+
+# Exercise 3: Data Visualization with ggplot2
+
+**Task:** In this exercise, you'll create basic visualizations using the ggplot2 package. You'll plot a scatter plot and customize it with labels, titles, and colors.
+
+**Example code for Exercise 3**
+
+```{webr-r}
+library(ggplot2)
+```
+
+# Scatter plot of mpg vs hp
+
+```{webr-r}
+ggplot(mtcars, aes(x = mpg, y = hp)) +
+  geom_point() +
+  labs(title = "MPG vs Horsepower", x = "Miles per Gallon", y = "Horsepower")
+```
+
+**Explanation:** 
+
+**Explain how you customized the scatter plot with titles and labels here.**
+
+<div>
+  <textarea id="scatter-plot-explanation" rows="4" cols="50" placeholder="Write your explanation here..."></textarea>
+</div>
+
+# Exercise 4: Statistical Analysis
+
+**Task:** In this exercise, you'll perform basic statistical tests in R. You'll use t.test() for hypothesis testing and interpret the results.
+
+**Example code for Exercise 4**
+
+**Perform a t-test to compare mpg between two groups of cars (high mpg vs low mpg)**
+
+```{webr-r}
+high_mpg <- subset(mtcars, mpg > 20)
+low_mpg <- subset(mtcars, mpg <= 20)
+
+t_test_result <- t.test(high_mpg$mpg, low_mpg$mpg)
+print(t_test_result)
+```
+
+**Explanation:** 
+
+**Explain the result of the t-test and how to interpret the p-value here.**
+
+<div>
+  <textarea id="scatter-plot-explanation" rows="4" cols="50" placeholder="Write your explanation here..."></textarea>
+</div>
+
+# Conclusion
+
+**Key Findings:**
+
+Write your key findings below. What new skill have you learnt?
+
+<div>
+  <textarea id="conclusion" rows="4" cols="50" placeholder="Write your explanation here..."></textarea>
+</div>
+
+**Challenges Faced:**
+
+Reflect on any challenges you encountered while completing the exercises. Did you have difficulty with any particular part of the analysis or R code?
+
+<div>
+  <textarea id="conclusion" rows="4" cols="50" placeholder="Write your explanation here..."></textarea>
+</div>
+
+
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png){style="border-width:0"}</a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
