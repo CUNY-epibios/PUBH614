@@ -30,13 +30,13 @@ x + 2
 # Loading packages
 
 Load packages with the `library` function. The following line loads the 
-tidyverse library, which provides data manipulation and plotting functions that 
+`dplyr` library, which provides data manipulation functions that 
 you will use into your working environment, and the openintro package
 which provides the `arbuthnot` dataset used in this lab. Don't worry about the
 warnings and messages it produces, they aren't important in this case.
 
 ```{webr-r}
-library(tidyverse)
+library(dplyr)
 library(openintro)
 ```
 
@@ -60,7 +60,7 @@ The single line of code included in this code chunk instructs `R` to load some d
 
 The Arbuthnot data set refers to the work of Dr. John Arbuthnot, an 18<sup>th</sup> century physician, writer, and mathematician. He was interested in the ratio of newborn boys to newborn girls, so he gathered the baptism records for children born in London for every year from 1629 to 1710. Once again, we can view the data by running the code below or by typing the name of the dataset into the console. Be careful the spelling and capitalization you use! `R` is case sensitive, so if you accidentally type `Arbuthnot` `R` will tell you that object cannot be found.
 
-```{webr-r}
+```{r, eval = FALSE}
 Arbuthnot
 ```
 
@@ -100,9 +100,10 @@ Notice that the way `R` has printed these data is different. When we looked at t
 
 # Data visualization
 
-`R` has some powerful functions for making graphics. We can create a simple plot of the number of girls baptized per year with the following code:
-
+`R` has some powerful functions for making graphics. We use the `ggplot2` package
+to create a simple plot of the number of girls baptized per year with the following code. 
 ```{webr-r}
+library(ggplot2)
 ggplot(data = arbuthnot, aes(x = year, y = girls)) + 
   geom_point()
 ```
@@ -184,8 +185,12 @@ This is equivalent to going through each row and adding up the `boys` and `girls
 
 <div>
 
-**Where is the new variable?** When you make changes to variables in your dataset, click on the name of the dataset again to update it in the data viewer.
+**Where is the new variable?** You can use `ls()` to see the contents of your
+environment:
 
+```{webr-r}
+ls()
+```
 </div>
 
 You'll see that there is now a new column called `total` that has been tacked onto the data frame. The special symbol `<-` performs an *assignment*, taking the output of the piping operations and saving it into an object in your environment. In this case, you already have an object called `arbuthnot` in your environment, so this command updates that data set with the new mutated column.
@@ -300,7 +305,6 @@ Answer the following questions with the `present` data frame:
 # Sample code:
 present %>%
   arrange(desc(total))
- code here
 ```
 <form>
   <label for="comments">Comments:</label>

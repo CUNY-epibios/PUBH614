@@ -34,7 +34,8 @@ The data can be found in the **openintro** package, a companion package for Open
 Let's load the packages.
 
 ```{webr-r}
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 library(openintro)
 library(statsr)
 library(broom)

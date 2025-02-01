@@ -35,10 +35,10 @@ In this lab, we will explore and visualize the data using the **tidyverse** suit
 Let's load the packages.
 
 ```{webr-r}
+library(dplyr)
+library(ggplot2)
 library(openintro)
 library(infer)
-library(ggplot2)
-library(dplyr)
 library(purrr)
 ```
 

@@ -28,7 +28,8 @@ In this lab, we will explore and visualize the data using the **tidyverse** suit
 Let's load the packages.
 
 ```{webr-r}
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 library(openintro)
 ```
 
@@ -135,14 +136,41 @@ Even better than comparing the original plot to a single plot generated from a n
 It shows the Q-Q plot corresponding to the original data in the top left corner, and the Q-Q plots of 8 different simulated normal data.
 It may be helpful to click the zoom button in the plot window.
 
+::: {#boxedtext}
+Note: you can use the double colon `::` to tell R explicitly from which package to 
+use a function. It is not necessary in this case to specify that the function
+_qqnormsim_ comes from the _openintro_ package, because the _openintro_ package
+is already loaded. But if two packages define functions of the same name, you 
+can use `::` to tell R (and anyone reading your code) which package the function
+you want to use comes from. If you load two packages that define functions of
+the same name, the second package loaded will "mask" the function from the first,
+and without use of `::`, the function from the last package loaded will take 
+precedent. A very common example of this is the _select_ function, which is
+defined in _base_ R and by the _dplyr_ library, so when you load `library(dplyr)`,
+its definition of `select` replaces that defined in base R.
+:::
+
 ```{webr-r}
-qqnormsim(sample = cal_fat, data = dairy_queen)
+openintro::qqnormsim(sample = cal_fat, data = dairy_queen)
 ```
 
 4.  Does the normal probability plot for the calories from fat look similar to the plots created for the simulated data?
     That is, do the plots provide evidence that the calories from fat are nearly normal?
 
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
+
 5.  Using the same technique, determine whether or not the calories from McDonald's menu appear to come from a normal distribution.
+
+```{webr-r}
+# Enter code here
+```
+<form>
+  <label for="comments">Comments:</label>
+  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+</form>
 
 # Normal probabilities
 

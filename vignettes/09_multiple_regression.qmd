@@ -35,7 +35,8 @@ The data can be found in the companion package for OpenIntro resources, **openin
 Let's load the packages.
 
 ```{webr-r}
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 library(openintro)
 library(GGally)
 library(broom)

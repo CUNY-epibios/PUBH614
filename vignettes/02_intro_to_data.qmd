@@ -32,7 +32,7 @@ The data can be found in the companion package for OpenIntro labs, **openintro**
 Let's load the packages.
 
 ```{webr-r}
-library(tidyverse)
+library(dplyr)
 library(openintro)
 ```
 
@@ -106,6 +106,7 @@ Let's think about some questions we might want to answer with these data:
 Let's start by examining the distribution of departure delays of all flights with a histogram.
 
 ```{webr-r}
+library(ggplot2)
 ggplot(data = nycflights, aes(x = dep_delay)) +
   geom_histogram()
 ```

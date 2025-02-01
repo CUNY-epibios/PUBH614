@@ -38,7 +38,7 @@ The data can be found in the companion package for OpenIntro labs, **openintro**
 Let's load the packages.
 
 ```{webr-r}
-library(tidyverse)
+library(dplyr)
 library(openintro)
 ```
 
@@ -70,7 +70,8 @@ Their lengths are one, zero, two, zero, zero, zero (in order of occurrence).
 
 1.  What does a streak length of 1 mean, i.e. how many hits and misses are in a streak of 1? What about a streak length of 0?
 
-Counting streak lengths manually for all 133 shots would get tedious, so we'll use the custom function `calc_streak` to calculate them, and store the results in a data frame called `kobe_streak` as the `length` variable.
+Counting streak lengths manually for all 133 shots would get tedious, so we'll use the custom function from the openintro library, `calc_streak`, to calculate them 
+and store the results in a data frame called `kobe_streak` as the `length` variable.
 
 ```{webr-r}
 kobe_streak <- calc_streak(kobe_basket$shot)
@@ -79,6 +80,7 @@ kobe_streak <- calc_streak(kobe_basket$shot)
 We can then take a look at the distribution of these streak lengths.
 
 ```{webr-r}
+library(ggplot2)
 ggplot(data = kobe_streak, aes(x = length)) +
   geom_bar()
 ```
