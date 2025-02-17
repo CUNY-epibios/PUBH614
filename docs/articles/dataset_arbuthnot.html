@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"options":{"fig-width":7,"dpi":72,"editor-word-wrap":"true","context":"interactive","editor-quick-suggestions":"false","message":"true","out-width":"700px","warning":"true","label":"unnamed-chunk-1","fig-height":5,"comment":"","output":"true","editor-font-scale":"1","results":"markup","classes":"","fig-cap":"","out-height":"","autorun":"true","editor-max-height":"","read-only":"false"},"code":"library(openintro)\nsummary(arbuthnot)","id":1},{"options":{"fig-width":7,"dpi":72,"editor-word-wrap":"true","context":"interactive","editor-quick-suggestions":"false","message":"false","out-width":"700px","warning":"true","label":"unnamed-chunk-2","fig-height":5,"comment":"","output":"asis","editor-font-scale":"1","results":"markup","classes":"","fig-cap":"","out-height":"","autorun":"true","editor-max-height":"","read-only":"false"},"code":"library(table1)\ntable1(~ ., data = arbuthnot)","id":2}];
+  globalThis.qwebrCellDetails = [{"code":"library(openintro)\nsummary(arbuthnot)","id":1,"options":{"comment":"","classes":"","results":"markup","dpi":72,"editor-quick-suggestions":"false","out-height":"","warning":"true","fig-width":7,"output":"true","out-width":"700px","editor-font-scale":"1","read-only":"false","label":"unnamed-chunk-1","message":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"context":"interactive","editor-max-height":"","autorun":"true"}},{"code":"download.file(\"https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/arbuthnot.csv\", destfile = \"arbuthnot.csv\")\narbuthnot <- read.csv(file = \"arbuthnot.csv\")","id":2,"options":{"comment":"","classes":"","results":"markup","dpi":72,"editor-quick-suggestions":"false","out-height":"","warning":"true","fig-width":7,"output":"true","out-width":"700px","editor-font-scale":"1","read-only":"false","label":"unnamed-chunk-2","message":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false"}},{"code":"library(table1)\ntable1(~ ., data = arbuthnot)","id":3,"options":{"comment":"","classes":"","results":"markup","dpi":72,"editor-quick-suggestions":"false","out-height":"","warning":"true","fig-width":7,"output":"asis","out-width":"700px","editor-font-scale":"1","read-only":"false","label":"unnamed-chunk-3","message":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"context":"interactive","editor-max-height":"","autorun":"true"}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1337,8 +1337,8 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-datasets" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Datasets</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-datasets">
-<li><a class="dropdown-item" href="../articles/dataset_sclc.html">Small-cell lung cancer</a></li>
-    <li><a class="dropdown-item" href="../articles/dataset_arbuthnot.html">Arbuthnot</a></li>
+<li><a class="dropdown-item" href="../articles/dataset_arbuthnot.html">Arbuthnot</a></li>
+    <li><a class="dropdown-item" href="../articles/dataset_sclc.html">Small-cell lung cancer</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
@@ -1664,10 +1664,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>
 <strong>Location:</strong> Loaded automatically when the <code>openintro</code> package is loaded</li>
 <li>
-<strong>Location:</strong> Also available from</li>
+<strong>Location:</strong> Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets</li>
 </ul>
-<p>Code to load this dataset into R:</p>
+<p>Option 1: load this dataset from the openintro package:</p>
 <div id="qwebr-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Option 2: load this dataset manually</p>
+<div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section><section class="level2"><h3 id="dataset-overview">Dataset Overview<a class="anchor" aria-label="anchor" href="#dataset-overview"></a>
 </h3>
@@ -1709,7 +1712,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <strong>Missing values</strong>: None</li>
 </ul></section></section><section class="level2"><h3 id="summary-statistics">Summary Statistics<a class="anchor" aria-label="anchor" href="#summary-statistics"></a>
 </h3>
-<div id="qwebr-insertion-location-2"></div>
+<div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <section class="level3"><h4 id="time-period-coverage">Time Period Coverage<a class="anchor" aria-label="anchor" href="#time-period-coverage"></a>
 </h4>

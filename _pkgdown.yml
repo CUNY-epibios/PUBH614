@@ -39,10 +39,10 @@ navbar:
     datasets:
       text: "Datasets"
       menu:
-        - text: "Small-cell lung cancer"
-          href: articles/dataset_sclc.html
         - text: "Arbuthnot"
           href: articles/dataset_arbuthnot.html
+        - text: "Small-cell lung cancer"
+          href: articles/dataset_sclc.html
     exercises:
       text: "Exercises"
       menu:

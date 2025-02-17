@@ -2,7 +2,7 @@
 
 # Quick-start
 
-Note the menu bars:
+Use the menu bars above:
 
 - **OpenIntro Labs**: Labs from [OpenIntro Statistics][OpenIntro]
 - **Other Labs**: Labs from other sources
@@ -11,6 +11,10 @@ Note the menu bars:
 you can use to run R in your browser)
 
 Datasets for these labs are stored in a GitHub repository [here](https://github.com/CUNY-epibios/PUBH614/tree/main/datasets).
+
+From these menus you can run R directly in your web browser. It is running in
+your browser, not on a remote server, so you can run it offline. 
+You can also download the code to run in your own R environment.
 
 # About WASM and webR
 

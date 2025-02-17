@@ -21,14 +21,21 @@ filters:
 - 
 - **Dataset name:** `arbuthnot`
 - **Location:** Loaded automatically when the `openintro` package is loaded
-- **Location:** Also available from 
+- **Location:** Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets
 
-Code to load this dataset into R:
+Option 1: load this dataset from the openintro package:
 ```{webr-r}
 #| autorun: true
 #| message: false
 library(openintro)
 summary(arbuthnot)
+```
+
+Option 2: load this dataset manually
+```{webr-r}
+#| message: false
+download.file("https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/arbuthnot.csv", destfile = "arbuthnot.csv")
+arbuthnot <- read.csv(file = "arbuthnot.csv")
 ```
 
 ## Dataset Overview
