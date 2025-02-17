@@ -1,5 +1,39 @@
 # Labs for CUNY SPH PUBH 614 <img src="man/figures/CUNYlogo.png" align="right" width="75" height="75" alt="logo"/>
 
+# Quick-start
+
+Note the menu bars:
+- **OpenIntro Labs**: Labs from [OpenIntro Statistics][OpenIntro]
+- **Other Labs**: Labs from other sources
+- **Datasets**: Codebooks for datasets used in labs
+- **Exercises**: Practice exercises (currently only contains a blank workbook that
+you can use to run R in your browser)
+
+Datasets for these labs are stored in a GitHub repository [here](https://github.com/CUNY-epibios/PUBH614/tree/main/datasets).
+
+# About WASM and webR
+
+These labs use **[WASM]** (WebAssembly) and **[webR]** to provide a user-friendly 
+alternative for running R directly in your browser. This approach eliminates the 
+need for local installation or a Cloud service, and allows for interactive 
+coding and visualizationwithin the browser environment.
+
+Running R in your web browser can sometimes lead to issues such as:
+
+- **Performance Limitations**: Browser-based execution may be slower compared to 
+local execution. Even if you have a powerful computer, your browser likely only
+supports up to 4GB of memory for WebAssembly applications.
+- **Browser Compatibility**: Ensure you are using a modern browser that supports 
+WebAssembly, such as a current version of Chrome, Firefox, Safari, or Edge.
+- **Data Storage**: Data is stored in your browser's local storage, which is 
+separated from your local filesystem. This means that data and code are not 
+persistent across sessions, and you will lose your work if you close the browser.
+You can print the page to save your work, or copy the code to a local text file.
+
+
+[webR]: https://docs.r-wasm.org/webr/latest/
+[WASM]: https://developer.mozilla.org/en-US/docs/WebAssembly
+
 # About OpenIntro Labs
 
 These labs were developed by [OpenIntro Statistics][OpenIntro] and adapted for 
@@ -63,23 +97,6 @@ Colab provides more generous resources in the free tier cheaper paid tiers than
 posit.cloud, and makes use of your Google Drive for storage.
 
 [posit.cloud]: https://posit.cloud/
-
-## Using WASM and webR for Browser-Based Labs
-
-These labs use **[WASM]** (WebAssembly) and **[webR]** to provide a user-friendly 
-alternative for running R directly in your browser. This approach eliminates the 
-need for local installation or a Cloud service, and allows for interactive 
-coding and visualizationwithin the browser environment.
-
-Running R in your web browser can sometimes lead to issues such as:
-
-- **Performance Limitations**: Browser-based execution may be slower compared to 
-local execution. Even if you have a powerful computer, your browser likely only
-supports up to 4GB of memory for WebAssembly applications.
-- **Browser Compatibility**: Ensure you are using a modern browser that supports WebAssembly.
-
-[webR]: https://docs.r-wasm.org/webr/latest/
-[WASM]: https://developer.mozilla.org/en-US/docs/WebAssembly
 
 ## Reporting Issues
 

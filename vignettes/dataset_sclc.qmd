@@ -1,0 +1,78 @@
+---
+title: "Codebook for small-cell lung cancer dataset"
+output:
+  html_document:
+    highlight: pygments
+    theme: default
+    toc: true
+    toc_float: true
+vignette: >
+  %\VignetteIndexEntry{Codebook for small-cell lung cancer dataset}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+engine: knitr
+filters:
+  - webr
+---
+
+# Codebook: Small-Cell Lung Cancer Dataset
+
+## Where to find it, where it is used
+- **Used in:** [Lab 4b: logistic regression](https://cuny-epibios.github.io/PUBH614/articles/04b_logistic.html)
+- **File name:** `Stats4- more.csv`
+- **Location:** https://github.com/CUNY-epibios/PUBH614/tree/main/datasets
+- [Download the dataset now](https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/Stats4-%20more.csv)
+
+Code to load this dataset into R, and ensure all columns are read in as factor type:
+```{webr-r}
+#| autorun: true
+sclc <- read.csv(file = "https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/Stats4-%20more.csv",
+                 colClasses = c("factor", "factor", "factor"))
+```
+
+
+## Dataset Overview
+This dataset contains information about small-cell lung cancer cases, including smoking status, cancer status, and patient sex. The dataset includes 209 observations with 3 variables.
+
+## Variables
+
+### smoke
+- **Description**: Smoking status of the patient
+- **Type**: Binary (0/1)
+- **Values**:
+  - 0 = Non-smoker
+  - 1 = Smoker
+- **Missing values**: None
+
+### lungca
+- **Description**: Lung cancer status
+- **Type**: Binary (0/1)
+- **Values**:
+  - 0 = No lung cancer
+  - 1 = Has lung cancer
+- **Missing values**: None
+
+### sex
+- **Description**: Biological sex of the patient
+- **Type**: Binary (M/F)
+- **Values**:
+  - M = Male
+  - F = Female
+- **Missing values**: None
+
+## Summary Statistics
+
+```{webr-r}
+#| autorun: true
+#| output: asis
+#| message: false
+library(table1)
+table1(~ ., data = sclc, strata = "lungca")
+```
+
+
+## Data Quality Notes
+- The dataset is complete with no missing values
+- All variables are coded consistently
+- `smoke` and `lungca` use 0/1 coding
+- `sex` is coded using single-letter values (M/F)

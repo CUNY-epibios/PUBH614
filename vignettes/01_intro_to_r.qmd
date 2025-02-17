@@ -195,6 +195,8 @@ ls()
 
 You'll see that there is now a new column called `total` that has been tacked onto the data frame. The special symbol `<-` performs an *assignment*, taking the output of the piping operations and saving it into an object in your environment. In this case, you already have an object called `arbuthnot` in your environment, so this command updates that data set with the new mutated column.
 
+See the [arbuthnot codebook](dataset_arbuthnot.html).
+
 You can make a line plot of the total number of baptisms per year with the following code:
 
 ```{webr-r}

@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>07. Inference for numerical data • PUBH614</title>
+<title>Codebook for arbuthnot dataset • PUBH614</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -16,8 +16,8 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="07_inf_for_numerical_data_files/libs/quarto-html/popper.min.js"></script><script src="07_inf_for_numerical_data_files/libs/quarto-html/tippy.umd.min.js"></script><link href="07_inf_for_numerical_data_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="07_inf_for_numerical_data_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="dataset_arbuthnot_files/libs/quarto-html/popper.min.js"></script><script src="dataset_arbuthnot_files/libs/quarto-html/tippy.umd.min.js"></script><link href="dataset_arbuthnot_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="dataset_arbuthnot_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script type="module">
@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-1","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"library(dplyr)\nlibrary(ggplot2)\nlibrary(openintro)\nlibrary(infer)\nlibrary(skimr)"},{"id":2,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-2","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"data(yrbss)"},{"id":3,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-3","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"?yrbss"},{"id":4,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-4","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"# Enter code here"},{"id":5,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-5","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"yrbss %>% \n  skim()"},{"id":6,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-6","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"yrbss <- yrbss %>% \n  mutate(physical_3plus = if_else(physically_active_7d > 2, \"yes\", \"no\"))\ntable(yrbss$physical_3plus) #check the new variable"},{"id":7,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-7","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"# Enter code here"},{"id":8,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-8","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"yrbss %>%\n  group_by(physical_3plus) %>%\n  summarise(mean_weight = mean(weight, na.rm = TRUE))"},{"id":9,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-9","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"obs_diff <- yrbss %>%\n  filter(!is.na(weight)) %>%\n  filter(!is.na(physical_3plus)) %>%\n  specify(weight ~ physical_3plus) %>%\n  calculate(stat = \"diff in means\", order = c(\"yes\", \"no\"))"},{"id":10,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-10","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"null_dist <- yrbss %>%\n  filter(!is.na(weight)) %>%\n  filter(!is.na(physical_3plus)) %>%\n  specify(weight ~ physical_3plus) %>%\n  hypothesize(null = \"independence\") %>%\n  generate(reps = 1000, type = \"permute\") %>%\n  calculate(stat = \"diff in means\", order = c(\"yes\", \"no\"))\nnull_dist #take a look"},{"id":11,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-11","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"ggplot(data = null_dist, aes(x = stat)) +\n  geom_histogram(bins = 30)"},{"id":12,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-12","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"# Enter code here"},{"id":13,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-13","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"null_dist %>%\n  get_p_value(obs_stat = obs_diff, direction = \"two_sided\")"},{"id":14,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-14","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"# Enter code here"},{"id":15,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-15","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"# Enter code here"},{"id":16,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-16","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"# Enter code here"},{"id":17,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-17","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"# Enter code here"},{"id":18,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-18","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"# Enter code here"},{"id":19,"options":{"context":"interactive","classes":"","results":"markup","editor-font-scale":"1","message":"true","editor-quick-suggestions":"false","out-width":"700px","fig-height":5,"dpi":72,"warning":"true","label":"unnamed-chunk-19","read-only":"false","fig-width":7,"editor-word-wrap":"true","comment":"","output":"true","out-height":"","autorun":"false","editor-max-height":"","fig-cap":""},"code":"# Enter code here"}];
+  globalThis.qwebrCellDetails = [{"options":{"fig-width":7,"dpi":72,"editor-word-wrap":"true","context":"interactive","editor-quick-suggestions":"false","message":"true","out-width":"700px","warning":"true","label":"unnamed-chunk-1","fig-height":5,"comment":"","output":"true","editor-font-scale":"1","results":"markup","classes":"","fig-cap":"","out-height":"","autorun":"true","editor-max-height":"","read-only":"false"},"code":"library(openintro)\nsummary(arbuthnot)","id":1},{"options":{"fig-width":7,"dpi":72,"editor-word-wrap":"true","context":"interactive","editor-quick-suggestions":"false","message":"false","out-width":"700px","warning":"true","label":"unnamed-chunk-2","fig-height":5,"comment":"","output":"asis","editor-font-scale":"1","results":"markup","classes":"","fig-cap":"","out-height":"","autorun":"true","editor-max-height":"","read-only":"false"},"code":"library(table1)\ntable1(~ ., data = arbuthnot)","id":2}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1294,7 +1294,7 @@
   }
 
   </script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="07. Inference for numerical data">
+<meta property="og:title" content="Codebook for arbuthnot dataset">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -1313,7 +1313,7 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="active nav-item dropdown">
+<li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-openintro-labs" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">OpenIntro Labs</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-openintro-labs">
 <li><a class="dropdown-item" href="../articles/01_intro_to_r.html">01 Introduction to R</a></li>
@@ -1334,7 +1334,7 @@
 <li><a class="dropdown-item" href="../articles/04b_logistic.html">04b Logistic Regression</a></li>
   </ul>
 </li>
-<li class="nav-item dropdown">
+<li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-datasets" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Datasets</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-datasets">
 <li><a class="dropdown-item" href="../articles/dataset_sclc.html">Small-cell lung cancer</a></li>
@@ -1361,7 +1361,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>07. Inference for numerical data</h1>
+      <h1>Codebook for arbuthnot dataset</h1>
 
 
 
@@ -1653,174 +1653,97 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   };
 
 }
-</script><section class="section level2"><h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
+</script><section class="section level2"><h2 id="codebook-arbuthnot-london-births-dataset">Codebook: Arbuthnot London Births Dataset<a class="anchor" aria-label="anchor" href="#codebook-arbuthnot-london-births-dataset"></a>
 </h2>
-<section class="level2"><h3 id="load-packages">Load packages<a class="anchor" aria-label="anchor" href="#load-packages"></a>
+<section class="level2"><h3 id="where-to-find-it-where-it-is-used">## Where to find it, where it is used<a class="anchor" aria-label="anchor" href="#where-to-find-it-where-it-is-used"></a>
 </h3>
-<p>In this lab, we will explore and visualize the data using the <strong>tidyverse</strong> suite of packages, and perform statistical inference using <strong>infer</strong>. The data can be found in the companion package for OpenIntro resources, <strong>openintro</strong>.</p>
-<p>Let’s load the packages.</p>
+<ul>
+<li>
+<strong>Dataset name:</strong> <code>arbuthnot</code>
+</li>
+<li>
+<strong>Location:</strong> Loaded automatically when the <code>openintro</code> package is loaded</li>
+<li>
+<strong>Location:</strong> Also available from</li>
+</ul>
+<p>Code to load this dataset into R:</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section><section class="level2"><h3 id="the-data">The data<a class="anchor" aria-label="anchor" href="#the-data"></a>
+</section><section class="level2"><h3 id="dataset-overview">Dataset Overview<a class="anchor" aria-label="anchor" href="#dataset-overview"></a>
 </h3>
-<p>Every two years, the Centers for Disease Control and Prevention conduct the Youth Risk Behavior Surveillance System (YRBSS) survey, where it takes data from high schoolers (9th through 12th grade), to analyze health patterns. You will work with a selected group of variables from a random sample of observations during one of the years the YRBSS was conducted.</p>
-<p>Load the <code>yrbss</code> data set into your workspace.</p>
+<p>This dataset contains historical records of births in London from 1629 to 1710, as recorded by John Arbuthnot. The dataset includes 82 observations with 4 variables, documenting the number of boys and girls christened each year.</p>
+</section><section class="level2"><h3 id="variables">Variables<a class="anchor" aria-label="anchor" href="#variables"></a>
+</h3>
+<section class="level3"><h4 id="year">year<a class="anchor" aria-label="anchor" href="#year"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Calendar year of birth records</li>
+<li>
+<strong>Type</strong>: Numeric (integer)</li>
+<li>
+<strong>Range</strong>: 1629 to 1710</li>
+<li>
+<strong>Missing values</strong>: None</li>
+</ul></section><section class="level3"><h4 id="boys">boys<a class="anchor" aria-label="anchor" href="#boys"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Number of male children christened in London</li>
+<li>
+<strong>Type</strong>: Numeric (integer)</li>
+<li>
+<strong>Range</strong>: 2,890 to 8,426</li>
+<li>
+<strong>Missing values</strong>: None</li>
+</ul></section><section class="level3"><h4 id="girls">girls<a class="anchor" aria-label="anchor" href="#girls"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Number of female children christened in London</li>
+<li>
+<strong>Type</strong>: Numeric (integer)</li>
+<li>
+<strong>Range</strong>: 2,722 to 7,779</li>
+<li>
+<strong>Missing values</strong>: None</li>
+</ul></section></section><section class="level2"><h3 id="summary-statistics">Summary Statistics<a class="anchor" aria-label="anchor" href="#summary-statistics"></a>
+</h3>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>There are observations on 13 different variables, some categorical and some numerical. The meaning of each variable can be found by bringing up the help file:</p>
-<div id="qwebr-insertion-location-3"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol type="1">
-<li>What are the cases in this data set? How many cases are there in our sample?</li>
-</ol>
-<p>Remember that you can answer this question by viewing the data in the data viewer or by using <code>glimpse(yrbss)</code>.</p>
-<div id="qwebr-insertion-location-4"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-</section></section><section class="section level2"><h2 id="exploratory-data-analysis">Exploratory data analysis<a class="anchor" aria-label="anchor" href="#exploratory-data-analysis"></a>
-</h2>
-<p>You will first start with analyzing the weight of the participants in kilograms: <code>weight</code>.</p>
-<p>Using visualization and summary statistics, describe the distribution of weights. The <code>skim()</code> function from the <strong>skimr</strong> package produces nice summaries of the variables in the dataset, separating categorical (character) variables from quantitative variables.</p>
-<div id="qwebr-insertion-location-5"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol type="1">
-<li>How many observations are we missing weights from?</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<p>Next, consider the possible relationship between a high schooler’s weight and their physical activity. Plotting the data is a useful first step because it helps us quickly visualize trends, identify strong associations, and develop research questions.</p>
-<p>First, let’s create a new variable <code>physical_3plus</code>, which will be coded as either “yes” if the student is physically active for <em>at least</em> 3 days a week, and “no” if not.</p>
-<div id="qwebr-insertion-location-6"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol start="2" type="1">
-<li>Make a side-by-side violin plots of <code>physical_3plus</code> and <code>weight</code>. Is there a relationship between these two variables? What did you expect and why?</li>
-</ol>
-<div id="qwebr-insertion-location-7"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<p>The box plots show how the medians of the two distributions compare, but we can also compare the means of the distributions using the following to first group the data by the <code>physical_3plus</code> variable, and then calculate the mean <code>weight</code> in these groups using the <code>mean</code> function while ignoring missing values by setting the <code>na.rm</code> argument to <code>TRUE</code>.</p>
-<div id="qwebr-insertion-location-8"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>There is an observed difference, but is this difference large enough to deem it “statistically significant”? In order to answer this question we will conduct a hypothesis test.</p>
-</section><section class="section level2"><h2 id="inference">Inference<a class="anchor" aria-label="anchor" href="#inference"></a>
-</h2>
-<ol start="3" type="1">
-<li>Are all conditions necessary for inference satisfied? Comment on each. You can compute the group sizes with the <code>summarize</code> command above by defining a new variable with the definition <code>n()</code>.</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="4" type="1">
-<li>Write the hypotheses for testing if the average weights are different for those who exercise at least times a week and those who don’t.</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<p>Next, we will work through creating a permutation distribution using tools from the <strong>infer</strong> package.</p>
-<p>But first, we need to initialize the test, which we will save as <code>obs_diff</code>.</p>
-<div id="qwebr-insertion-location-9"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Recall that the <code>specify()</code> function is used to specify the variables you are considering (notated <code>y ~ x</code>), and you can use the <code>calculate()</code> function to specify the <code>stat</code>istic you want to calculate and the <code>order</code> of subtraction you want to use. For this hypothesis, the statistic you are searching for is the difference in means, with the order being <code>yes - no</code>.</p>
-<p>After you have calculated your observed statistic, you need to create a permutation distribution. This is the distribution that is created by shuffling the observed weights into new <code>physical_3plus</code> groups, labeled “yes” and “no”.</p>
-<p>We will save the permutation distribution as <code>null_dist</code>.</p>
-<div id="qwebr-insertion-location-10"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The <code>hypothesize()</code> function is used to declare what the null hypothesis is. Here, we are assuming that student’s weight is independent of whether they exercise at least 3 days or not.</p>
-<p>We should also note that the <code>type</code> argument within <code>generate()</code> is set to <code>"permute"</code>. This ensures that the statistics calculated by the <code>calculate()</code> function come from a reshuffling of the data (not a resampling of the data)! Finally, the <code>specify()</code> and <code>calculate()</code> steps should look familiar, since they are the same as what we used to find the observed difference in means!</p>
-<p>We can visualize this null distribution with the following code:</p>
-<div id="qwebr-insertion-location-11"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol start="5" type="1">
-<li>Add a vertical red line to the plot above, demonstrating where the observed difference in means (<code>obs_diff</code>) falls on the distribution.</li>
-</ol>
-<div id="qwebr-insertion-location-12"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol start="6" type="1">
-<li>How many of these <code>null_dist</code> permutations have a difference at least as large (or larger) as <code>obs_diff</code>?</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<p>Now that you have calculated the observed statistic and generated a permutation distribution, you can calculate the p-value for your hypothesis test using the function <code>get_p_value()</code> from the infer package.</p>
-<div id="qwebr-insertion-location-13"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol start="7" type="1">
-<li>What warning message do you get? Why do you think you get this warning message?</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="8" type="1">
-<li>Construct and record a confidence interval for the difference between the weights of those who exercise at least three times a week and those who don’t, and interpret this interval in context of the data.</li>
-</ol>
-<div id="qwebr-insertion-location-14"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<hr></section><section class="section level2"><h2 id="more-practice">More Practice<a class="anchor" aria-label="anchor" href="#more-practice"></a>
-</h2>
-<ol start="9" type="1">
-<li>Calculate a 95% confidence interval for the average height in meters (<code>height</code>) and interpret it in context.</li>
-</ol>
-<div id="qwebr-insertion-location-15"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="10" type="1">
-<li>Calculate a new confidence interval for the same parameter at the 90% confidence level. Comment on the width of this interval versus the one obtained in the previous exercise.</li>
-</ol>
-<div id="qwebr-insertion-location-16"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="11" type="1">
-<li>Conduct a hypothesis test evaluating whether the average height is different for those who exercise at least three times a week and those who don’t.</li>
-</ol>
-<div id="qwebr-insertion-location-17"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="12" type="1">
-<li>Now, a non-inference task: Determine the number of different options there are in the dataset for the <code>hours_tv_per_school_day</code> there are.</li>
-</ol>
-<div id="qwebr-insertion-location-18"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="13" type="1">
-<li>Come up with a research question evaluating the relationship between height or weight and sleep. Formulate the question in a way that it can be answered using a hypothesis test and/or a confidence interval. Report the statistical results, and also provide an explanation in plain language. Be sure to check all assumptions, state your <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> level, and conclude in context.</li>
-</ol>
-<div id="qwebr-insertion-location-19"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<hr>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0" alt="Creative Commons License"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
-</section><script id="quarto-html-after-body" type="application/javascript">
+<section class="level3"><h4 id="time-period-coverage">Time Period Coverage<a class="anchor" aria-label="anchor" href="#time-period-coverage"></a>
+</h4>
+<ul>
+<li>Start year: 1629</li>
+<li>End year: 1710</li>
+<li>Total years: 82</li>
+</ul></section><section class="level3"><h4 id="birth-totals">Birth Totals<a class="anchor" aria-label="anchor" href="#birth-totals"></a>
+</h4>
+<ul>
+<li>Total boys christened: 484,382</li>
+<li>Total girls christened: 453,841</li>
+<li>Overall boy/girl ratio: 1.067</li>
+</ul></section><section class="level3"><h4 id="annual-averages">Annual Averages<a class="anchor" aria-label="anchor" href="#annual-averages"></a>
+</h4>
+<ul>
+<li>Average boys per year: 5,907</li>
+<li>Average girls per year: 5,535</li>
+<li>Minimum total births (1650): 5,612</li>
+<li>Maximum total births (1705): 16,145</li>
+</ul></section></section><section class="level2"><h3 id="data-quality-notes">Data Quality Notes<a class="anchor" aria-label="anchor" href="#data-quality-notes"></a>
+</h3>
+<ul>
+<li>The dataset is complete with no missing values</li>
+<li>All counts are positive integers</li>
+<li>Consistent annual records for the entire period</li>
+<li>Data represents christenings rather than all births, so actual birth numbers may have been higher</li>
+</ul></section><section class="level2"><h3 id="historical-context">Historical Context<a class="anchor" aria-label="anchor" href="#historical-context"></a>
+</h3>
+<p>This dataset was compiled by John Arbuthnot (1667-1735), a Scottish physician, mathematician, and satirist. He used these records to study the ratio of male to female births, making it one of the earliest known applications of statistical reasoning to a scientific question.</p>
+</section><section class="level2"><h3 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a>
+</h3>
+<p>The original data comes from the London Bills of Mortality, which recorded christenings, burials, and causes of death in London parishes from the 16th to 19th centuries.</p>
+</section></section><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

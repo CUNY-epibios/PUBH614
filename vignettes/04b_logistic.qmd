@@ -18,14 +18,11 @@ filters:
 
 # The data
 
-For this lab we load an external dataset.  When working with files in R, it's important to 
-know what your working directory is, and where the file that you want to load is.
+For this lab we load the Small-cell Lung Cancer dataset (see [codebook](dataset_sclc.html)).  
 
-If you are using RStudio, the "File - Import Dataset" option provides a much
-simplified way to find datasets on your local filesystem and import them - 
-see [here](https://support.posit.co/hc/en-us/articles/218611977-Importing-Data-with-the-RStudio-IDE).
-
-Instead, this lab uses webR/WASM, which is isolated from your computer's filesystem
+When working with files in R, it's important to know what your working directory
+is, and where the file that you want to load is. This lab uses webR/WASM, which 
+runs in your web browser and is isolated from your computer's filesystem.
 You'll see that this R session is in an empty directory that exists only in this 
 session and not otherwise on your computer.
 
@@ -40,8 +37,8 @@ dir()  # What's in that directory?
 You would use these same commands when running R on your computer, but you would
 see the same directories and files as in your file explorer.
 
-Since the webR/WASM filesystem is isolated from your local filesystem, we'll use `download.file()` to download the dataset from the web. For another dataset, you
-could use Dropbox etc to create a downloadable URL for a file you want to use.
+Since the webR/WASM filesystem is isolated from your local filesystem, we'll use `download.file()` to download the dataset from the web, instead of clicking in a web browser. You
+could use Dropbox etc to create a downloadable URL for another file you want to use.
 
 Datasets for PUBH614 labs are kept at [https://github.com/CUNY-epibios/PUBH614/tree/main/datasets](https://github.com/CUNY-epibios/PUBH614/tree/main/datasets).
 After clicking on a dataset, be sure to press the "Raw" button to get the URL
@@ -51,7 +48,6 @@ it is [https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/da
 The `destfile` argument specifies what filename to use for the downloaded file.
 
 ```{webr-r}
-url = "https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/Stats4-%20more.csv"
 download.file(url = "https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/Stats4-%20more.csv", 
               destfile = "Stats4- more.csv")
 ```
@@ -67,6 +63,12 @@ library(readr)
 slca <- read_csv("Stats4- more.csv")
 head(slca)
 ```
+
+::: {#boxedtext}
+If you are using RStudio, the "File - Import Dataset" option provides a much
+simplified way to find datasets on your local filesystem and import them - 
+see [here](https://support.posit.co/hc/en-us/articles/218611977-Importing-Data-with-the-RStudio-IDE).
+:::
 
 # Smoking and Lung Cancer Analysis
 

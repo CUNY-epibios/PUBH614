@@ -5,7 +5,7 @@ template:
   light-switch: false
 navbar:
   structure:
-    left:  [intro, labs, otherlabs, exercises]
+    left:  [intro, labs, otherlabs, datasets, exercises]
     right: [github, lightswitch, search]
   components:
     labs:
@@ -36,6 +36,13 @@ navbar:
       menu:
         - text: "04b Logistic Regression"
           href: articles/04b_logistic.html
+    datasets:
+      text: "Datasets"
+      menu:
+        - text: "Small-cell lung cancer"
+          href: articles/dataset_sclc.html
+        - text: "Arbuthnot"
+          href: articles/dataset_arbuthnot.html
     exercises:
       text: "Exercises"
       menu:
