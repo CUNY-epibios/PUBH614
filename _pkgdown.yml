@@ -5,11 +5,11 @@ template:
   light-switch: false
 navbar:
   structure:
-    left:  [intro, labs, exercises]
+    left:  [intro, labs, otherlabs, exercises]
     right: [github, lightswitch, search]
   components:
     labs:
-      text: "Labs"
+      text: "OpenIntro Labs"
       menu:
         - text: "01 Introduction to R"
           href: articles/01_intro_to_r.html
@@ -31,6 +31,11 @@ navbar:
           href: articles/08_simple_regression.html
         - text: "09 Multiple Regression"
           href: articles/09_multiple_regression.html
+    otherlabs:
+      text: "Other Labs"
+      menu:
+        - text: "04b Logistic Regression"
+          href: articles/04b_logistic.html
     exercises:
       text: "Exercises"
       menu:

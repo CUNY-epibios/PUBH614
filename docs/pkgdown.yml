@@ -6,6 +6,7 @@ articles:
   02_intro_to_data: 02_intro_to_data.html
   03_probability: 03_probability.html
   04_normal_distribution: 04_normal_distribution.html
+  04b_logistic: 04b_logistic.html
   05a_sampling_distributions: 05a_sampling_distributions.html
   05b_confidence_intervals: 05b_confidence_intervals.html
   06_inf_for_categorical_data: 06_inf_for_categorical_data.html
@@ -13,7 +14,7 @@ articles:
   08_simple_regression: 08_simple_regression.html
   09_multiple_regression: 09_multiple_regression.html
   blank_workbook: blank_workbook.html
-last_built: 2025-02-01T21:24Z
+last_built: 2025-02-17T17:43Z
 urls:
   reference: https://cuny-epibios.github.io/PUBH614/reference
   article: https://cuny-epibios.github.io/PUBH614/articles

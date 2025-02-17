@@ -1,0 +1,250 @@
+---
+title: "04b. Logistic regression"
+output:
+  html_document:
+    highlight: pygments
+    theme: default
+    toc: true
+    toc_float: true
+    resources: data/*
+vignette: >
+  %\VignetteIndexEntry{Logistic regression}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+engine: knitr
+filters:
+  - webr
+---
+
+# The data
+
+For this lab we load an external dataset.  When working with files in R, it's important to 
+know what your working directory is, and where the file that you want to load is.
+
+If you are using RStudio, the "File - Import Dataset" option provides a much
+simplified way to find datasets on your local filesystem and import them - 
+see [here](https://support.posit.co/hc/en-us/articles/218611977-Importing-Data-with-the-RStudio-IDE).
+
+Instead, this lab uses webR/WASM, which is isolated from your computer's filesystem
+You'll see that this R session is in an empty directory that exists only in this 
+session and not otherwise on your computer.
+
+```{webr-r}
+getwd()  # What directory is the R session running in?
+```
+
+```{webr-r}
+dir()  # What's in that directory?
+```
+
+You would use these same commands when running R on your computer, but you would
+see the same directories and files as in your file explorer.
+
+Since the webR/WASM filesystem is isolated from your local filesystem, we'll use `download.file()` to download the dataset from the web. For another dataset, you
+could use Dropbox etc to create a downloadable URL for a file you want to use.
+
+Datasets for PUBH614 labs are kept at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets.
+After clicking on a dataset, be sure to press the "Raw" button to get the URL
+for the raw dataset, as opposed to the HTML page displaying it. For this dataset,
+it is https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/Stats4-%20more.csv.
+
+The `destfile` argument specifies what filename to use for the downloaded file.
+
+```{webr-r}
+url = "https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/Stats4-%20more.csv"
+download.file(url = "https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/Stats4-%20more.csv", 
+              destfile = "Stats4- more.csv")
+```
+
+Check now that this file has been downloaded:
+```{webr-r}
+dir()
+```
+
+`readr` provides `read_csv`, a more powerful version of the base-R `read.csv` function.
+```{webr-r}
+library(readr)
+slca <- read_csv("Stats4- more.csv")
+head(slca)
+```
+
+# Smoking and Lung Cancer Analysis
+
+There are other functions such as read_xlsx for other types of excel sheets.
+
+Use glimpse to see what's there:
+```{webr-r}
+library(dplyr)
+glimpse(slca)
+```
+
+## Cross-tabulation of Smoking and Lung Cancer
+Compare with slide 8 of session 4:
+```{webr-r}
+table(slca$smoke, slca$lungca)
+```
+
+## Logistic Regression Analysis
+
+### Basic Model: Smoking and Lung Cancer
+```{webr-r}
+m1 <- glm(lungca ~ smoke, family=binomial(link='logit'), data=slca)
+summary(m1)
+```
+
+The coefficients are in log odds, so we exponentiate to get the odds ratio for smoking on lung cancer:
+```{webr-r}
+exp(m1$coefficients[2])
+```
+
+### Adjusted Model: Smoking, Lung Cancer, and Sex
+```{webr-r}
+m1 <- glm(lungca ~ smoke + sex, family=binomial(link='logit'), data=slca)
+summary(m1)
+
+# Look at the estimate for smoking after exponentiating
+exp(m1$coefficients[2])
+```
+Note that this is now adjusted for sex.
+
+### Sex-specific Estimates
+
+#### Analysis for Men
+```{webr-r}
+slca_m <- slca %>% filter(sex == "M")
+m1 <- glm(lungca ~ smoke, family=binomial(link='logit'), data=slca_m)
+summary(m1)
+exp(m1$coefficients[2])
+```
+
+#### Analysis for Women
+```{webr-r}
+slca_f <- slca %>% filter(sex == "F")
+m1 <- glm(lungca ~ smoke, family=binomial(link='logit'), data=slca_f)
+summary(m1)
+exp(m1$coefficients[2])
+```
+
+This demonstrates that estimating odds ratios from a suitable two-by-two table gives you the same answer as using logistic regression, but logistic regression is much easier to use, particularly when adjusting for confounders. However, you do need to have your data in the right format - here, a row for each person with their smoking status, lung cancer status, and sex.
+
+# Job Callback Analysis
+
+## Initial Data Exploration
+```{webr-r}
+library(openintro)
+glimpse(resume)
+```
+
+## Gender Analysis
+
+### Callback by Gender
+```{webr-r}
+table(resume$gender, resume$received_callback)
+```
+
+### Logistic Regression for Gender
+```{webr-r}
+m1 <- glm(received_callback ~ gender, family=binomial(link='logit'), data=resume)
+summary(m1)
+exp(m1$coefficients[2])
+```
+
+## Education Analysis
+
+### Callback by Years of College
+```{webr-r}
+table(resume$years_college, resume$received_callback)
+```
+
+### Logistic Regression for Education
+```{webr-r}
+m1 <- glm(received_callback ~ factor(years_college), 
+          family=binomial(link='logit'), data=resume)
+summary(m1)
+exp(m1$coefficients)
+```
+
+### Adjusted Education Analysis
+```{webr-r}
+# Create factor variable for years of college
+resume$years_collegef <- as.factor(resume$years_college)
+# Change reference level to 5
+resume <- within(resume, years_collegef <- relevel(years_collegef, ref = 5))
+# Rerun logistic regression
+m1 <- glm(received_callback ~ years_collegef, 
+          family=binomial(link='logit'), data=resume)
+summary(m1)
+exp(m1$coefficients)
+```
+
+## Race Analysis
+
+### Callback by Race
+```{webr-r}
+table(resume$race, resume$received_callback)
+```
+
+### Basic Race Model
+```{webr-r}
+m1 <- glm(received_callback ~ race, family=binomial(link='logit'), data=resume)
+summary(m1)
+exp(m1$coefficients[2])
+```
+
+### Adjusted Race Model
+```{webr-r}
+m1 <- glm(received_callback ~ race + years_college + resume_quality +
+          years_experience + college_degree, 
+          family=binomial(link='logit'), data=resume)
+summary(m1)
+exp(m1$coefficients[2])
+```
+
+## Experience Analysis
+
+### Overall Experience Effect
+```{webr-r}
+m1 <- glm(received_callback ~ years_experience, 
+          family=binomial(link='logit'), data=resume)
+summary(m1)
+exp(m1$coefficients[2])
+```
+
+### Experience Effect by Demographics
+
+#### For Black Candidates
+```{webr-r}
+resume_b <- resume %>% filter(race == "black")
+m1 <- glm(received_callback ~ years_experience, 
+          family=binomial(link='logit'), data=resume_b)
+summary(m1)
+```
+
+#### For White Candidates
+```{webr-r}
+resume_w <- resume %>% filter(race == "white")
+m1 <- glm(received_callback ~ years_experience, 
+          family=binomial(link='logit'), data=resume_w)
+summary(m1)
+```
+
+#### For Male Candidates
+```{webr-r}
+resume_m <- resume %>% filter(gender == "m")
+m1 <- glm(received_callback ~ years_experience, 
+          family=binomial(link='logit'), data=resume_m)
+summary(m1)
+```
+
+#### For Female Candidates
+```{webr-r}
+resume_f <- resume %>% filter(gender == "f")
+m1 <- glm(received_callback ~ years_experience, 
+          family=binomial(link='logit'), data=resume_f)
+summary(m1)
+```
+
+
+------------------------------------------------------------------------
+
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png){style="border-width:0"}</a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
