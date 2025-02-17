@@ -3,6 +3,7 @@
 # Quick-start
 
 Note the menu bars:
+
 - **OpenIntro Labs**: Labs from [OpenIntro Statistics][OpenIntro]
 - **Other Labs**: Labs from other sources
 - **Datasets**: Codebooks for datasets used in labs
