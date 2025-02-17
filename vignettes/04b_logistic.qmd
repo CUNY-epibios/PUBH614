@@ -43,10 +43,10 @@ see the same directories and files as in your file explorer.
 Since the webR/WASM filesystem is isolated from your local filesystem, we'll use `download.file()` to download the dataset from the web. For another dataset, you
 could use Dropbox etc to create a downloadable URL for a file you want to use.
 
-Datasets for PUBH614 labs are kept at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets.
+Datasets for PUBH614 labs are kept at [https://github.com/CUNY-epibios/PUBH614/tree/main/datasets](https://github.com/CUNY-epibios/PUBH614/tree/main/datasets).
 After clicking on a dataset, be sure to press the "Raw" button to get the URL
 for the raw dataset, as opposed to the HTML page displaying it. For this dataset,
-it is https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/Stats4-%20more.csv.
+it is [https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/Stats4-%20more.csv](https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/Stats4-%20more.csv).
 
 The `destfile` argument specifies what filename to use for the downloaded file.
 
