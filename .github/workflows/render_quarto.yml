@@ -47,11 +47,23 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-r-packages-
 
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+
       - name: Install R Dependencies
         run: |
           echo "Installing R packages..."
-          Rscript -e 'install.packages("remotes"); remotes::install_github("quarto-dev/quarto-r")'
-          Rscript -e 'install.packages(c("tidyverse"))'
+          # Install remotes package first (if not installed)
+          Rscript -e 'if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")'
+          # Install quarto-r from GitHub using remotes
+          Rscript -e 'remotes::install_github("quarto-dev/quarto-r")'
+          # Install other required packages
+          Rscript -e 'install.packages(c("tidyverse", "renv"), repos = "http://cran.us.r-project.org")'
+
+          # Optional: Check if the packages were installed successfully
+          Rscript -e 'installed.packages()[,1]'
 
       - name: Verify Installed R Packages
         run: |
