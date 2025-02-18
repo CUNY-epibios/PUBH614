@@ -1,0 +1,97 @@
+name: Render Quarto Website
+
+on:
+  push:
+    branches: [main] 
+  pull_request:
+    branches: [main] 
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  render:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]  # Consider removing self-hosted if not needed
+    runs-on: ${{ matrix.os }}
+
+    permissions:
+      contents: write # Permission to write contents, which is required for deployment
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Pandoc (Required for Quarto)
+        uses: r-lib/actions/setup-pandoc@v2 
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'latest' 
+
+      - name: Install Quarto (Stable Version)
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "1.4.554"  # Pinned version to avoid 404 errors
+
+      - name: Verify Quarto Installation
+        run: |
+          echo "Checking Quarto version..."
+          quarto --version || { echo "Quarto installation failed!"; exit 1; }
+
+      - name: Cache R Packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.local/share/R
+          key: ${{ runner.os }}-r-packages-${{ hashFiles('**/renv.lock') }}  # Cache based on renv.lock
+          restore-keys: |
+            ${{ runner.os }}-r-packages-
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+
+      - name: Install R Dependencies
+        run: |
+          echo "Installing R packages..."
+          # Install remotes package first (if not installed)
+          Rscript -e 'if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")'
+          # Install quarto-r from GitHub using remotes
+          Rscript -e 'remotes::install_github("quarto-dev/quarto-r")'
+          # Install other required packages
+          Rscript -e 'install.packages(c("tidyverse", "renv"), repos = "http://cran.us.r-project.org")'
+
+          # Optional: Check if the packages were installed successfully
+          Rscript -e 'installed.packages()[,1]'
+
+      - name: Verify Installed R Packages
+        run: |
+          echo "Checking installed R packages..."
+          Rscript -e 'installed.packages()[,1]'
+
+      - name: Render Quarto Website
+        run: |
+          echo "Rendering Quarto website..."
+          quarto render
+        continue-on-error: false  # Fail the build on render failure
+
+      - name: Debug Render Failure
+        if: failure()
+        run: |
+          echo "Quarto render failed. Checking logs..."
+          ls -la _site/  # List _site directory content for potential issues
+          cat _site/*.log || echo "No log files found."  # Output logs if they exist
+
+      - name: Deploy to GitHub Pages
+        if: success() && github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages 
+          folder: _site  # Deploy the content of _site to the gh-pages branch
+          clean: true  # Clean old files in the gh-pages branch before deployment
+
+      - name: Notify on Failure
+        if: failure()
+        run: |
+          echo "::error:: Quarto rendering failed! Check logs in GitHub Actions."
