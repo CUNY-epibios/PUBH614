@@ -11,11 +11,11 @@ jobs:
   render:
     strategy:
       matrix:
-        os: [self-hosted, ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]  # Consider removing self-hosted if not needed
     runs-on: ${{ matrix.os }}
-    
+
     permissions:
-      contents: write 
+      contents: write # Permission to write contents, which is required for deployment
 
     steps:
       - name: Checkout repository
@@ -43,7 +43,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.local/share/R
-          key: ${{ runner.os }}-r-packages-${{ hashFiles('**/renv.lock') }}
+          key: ${{ runner.os }}-r-packages-${{ hashFiles('**/renv.lock') }}  # Cache based on renv.lock
           restore-keys: |
             ${{ runner.os }}-r-packages-
 
@@ -62,22 +62,22 @@ jobs:
         run: |
           echo "Rendering Quarto website..."
           quarto render
-        continue-on-error: false 
+        continue-on-error: false  # Fail the build on render failure
 
       - name: Debug Render Failure
         if: failure()
         run: |
           echo "Quarto render failed. Checking logs..."
-          ls -la _site/
-          cat _site/*.log || echo "No log files found."
+          ls -la _site/  # List _site directory content for potential issues
+          cat _site/*.log || echo "No log files found."  # Output logs if they exist
 
       - name: Deploy to GitHub Pages
         if: success() && github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages 
-          folder: _site 
-          clean: true 
+          folder: _site  # Deploy the content of _site to the gh-pages branch
+          clean: true  # Clean old files in the gh-pages branch before deployment
 
       - name: Notify on Failure
         if: failure()
