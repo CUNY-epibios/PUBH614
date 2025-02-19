@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"code":"library(openintro)","options":{"out-width":"700px","out-height":"","editor-max-height":"","fig-width":7,"message":"false","fig-height":5,"results":"markup","comment":"","autorun":"true","editor-quick-suggestions":"false","editor-word-wrap":"true","warning":"true","label":"unnamed-chunk-1","dpi":72,"read-only":"false","classes":"","fig-cap":"","output":"true","editor-font-scale":"1","context":"interactive"}},{"id":2,"code":"download.file(\n  \"https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/kobe_basket.csv\",\n  destfile = \"kobe_basket.csv\"\n)\nkobe_basket <- read.csv(file = \"kobe_basket.csv\")","options":{"out-width":"700px","out-height":"","editor-max-height":"","fig-width":7,"message":"true","fig-height":5,"results":"markup","comment":"","autorun":"false","editor-quick-suggestions":"false","editor-word-wrap":"true","warning":"true","label":"unnamed-chunk-2","dpi":72,"read-only":"false","classes":"","fig-cap":"","output":"true","editor-font-scale":"1","context":"interactive"}},{"id":3,"code":"library(tableone)\nCreateTableOne(data = kobe_basket[, -4:-5])","options":{"out-width":"700px","out-height":"","editor-max-height":"","fig-width":7,"message":"false","fig-height":5,"results":"markup","comment":"","autorun":"true","editor-quick-suggestions":"false","editor-word-wrap":"true","warning":"true","label":"unnamed-chunk-3","dpi":72,"read-only":"false","classes":"","fig-cap":"","output":"true","editor-font-scale":"1","context":"interactive"}}];
+  globalThis.qwebrCellDetails = [{"options":{"warning":"true","results":"markup","out-height":"","autorun":"true","out-width":"700px","message":"false","editor-quick-suggestions":"false","label":"unnamed-chunk-1","editor-max-height":"","read-only":"false","dpi":72,"context":"interactive","output":"true","comment":"","fig-cap":"","fig-height":5,"fig-width":7,"editor-word-wrap":"true","editor-font-scale":"1","classes":""},"code":"library(openintro)","id":1},{"options":{"warning":"true","results":"markup","out-height":"","autorun":"false","out-width":"700px","message":"true","editor-quick-suggestions":"false","label":"unnamed-chunk-2","editor-max-height":"","read-only":"false","dpi":72,"context":"interactive","output":"true","comment":"","fig-cap":"","fig-height":5,"fig-width":7,"editor-word-wrap":"true","editor-font-scale":"1","classes":""},"code":"download.file(\n  \"https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/kobe_basket.csv\",\n  destfile = \"kobe_basket.csv\"\n)\nkobe_basket <- read.csv(file = \"kobe_basket.csv\")","id":2},{"options":{"warning":"true","results":"markup","out-height":"","autorun":"true","out-width":"700px","message":"false","editor-quick-suggestions":"false","label":"unnamed-chunk-3","editor-max-height":"","read-only":"false","dpi":72,"context":"interactive","output":"true","comment":"","fig-cap":"","fig-height":5,"fig-width":7,"editor-word-wrap":"true","editor-font-scale":"1","classes":""},"code":"library(tableone)\nCreateTableOne(data = kobe_basket[, -4:-5], includeNA = TRUE)","id":3}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1341,6 +1341,7 @@
     <li><a class="dropdown-item" href="../articles/dataset_sclc.html">Small-cell lung cancer</a></li>
     <li><a class="dropdown-item" href="../articles/dataset_fastfood.html">Fast food</a></li>
     <li><a class="dropdown-item" href="../articles/dataset_kobe.html">Kobe Bryant Baskets</a></li>
+    <li><a class="dropdown-item" href="../articles/dataset_yrbss.html">Youth Risk Behavior Surveillance System</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
@@ -1665,6 +1666,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </li>
 <li>
 <strong>Location:</strong> Loaded automatically when the <code>openintro</code> package is loaded. Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets</li>
+<li><a href="https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/kobe_basket.csv" class="external-link">Download the dataset now</a></li>
 </ul>
 <p>Option 1: load this dataset from the openintro package:</p>
 <div id="qwebr-insertion-location-1"></div>

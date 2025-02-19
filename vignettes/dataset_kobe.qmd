@@ -21,6 +21,7 @@ filters:
 
 - **Dataset name:** `kobe_basket`
 - **Location:** Loaded automatically when the `openintro` package is loaded. Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets
+- [Download the dataset now](https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/kobe_basket.csv)
 
 Option 1: load this dataset from the openintro package:
 ```{webr-r}
@@ -89,7 +90,7 @@ This dataset contains information about Kobe Bryant's basketball shots, includin
 #| autorun: true
 #| message: false
 library(tableone)
-CreateTableOne(data = kobe_basket[, -4:-5])
+CreateTableOne(data = kobe_basket[, -4:-5], includeNA = TRUE)
 ```
 
 ## Data Quality Notes

@@ -1,0 +1,144 @@
+---
+title: "Codebook for Youth Risk Behavior Surveillance System dataset"
+output:
+  html_document:
+    highlight: pygments
+    theme: default
+    toc: true
+    toc_float: true
+vignette: >
+  %\VignetteIndexEntry{Codebook for Youth Risk Behavior Surveillance System dataset}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+engine: knitr
+filters:
+  - webr
+---
+
+# Codebook: Youth Risk Behavior Surveillance System (YRBSS) Dataset
+
+## Where to find it
+- **Dataset name:** `yrbss`
+- **Location:** Loaded automatically when the `openintro` package is loaded. Also available online at [https://github.com/CUNY-epibios/PUBH614/tree/main/datasets](https://github.com/CUNY-epibios/PUBH614/tree/main/datasets)
+- [Download the dataset now](https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/yrbss.csv)
+- **Data source:** [https://www.cdc.gov/yrbs/data/index.html](https://www.cdc.gov/yrbs/data/index.html)
+
+Option 1: load this dataset from the openintro package:
+```{webr-r}
+#| autorun: true
+#| message: false
+library(openintro)
+```
+
+Option 2: load this dataset manually
+```{webr-r}
+download.file(
+  "https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/yrbss.csv",
+  destfile = "yrbss.csv"
+)
+yrbss <- read.csv(file = "yrbss.csv")
+```
+
+## Dataset Overview
+This dataset contains information from the Youth Risk Behavior Surveillance System (YRBSS), including demographic details, health behaviors, and other related information. The dataset includes 13,583 observations with 13 variables. The `openintro` package also provides a sample of `n=100` from this dataset titled `yrbss_samp`.
+
+## Variables
+
+### age
+- **Description**: Age of the respondent
+- **Type**: Numeric
+- **Values**: Range from 12 to 18
+- **Missing values**: 77
+
+### gender
+- **Description**: Gender of the respondent
+- **Type**: Categorical
+- **Values**: male, female
+- **Missing values**: 12
+
+### grade
+- **Description**: Grade of the respondent
+- **Type**: Categorical
+- **Values**: Range from 9 to 12, plus "other"
+- **Missing values**: 79
+
+### hispanic
+- **Description**: Hispanic ethnicity of the respondent
+- **Type**: Categorical
+- **Values**: hispanic, not
+- **Missing values**: 231
+
+### race
+- **Description**: Race of the respondent
+- **Type**: Categorical
+- **Values**: Various race categories (e.g., Black or African American, White, Asian, etc.)
+- **Missing values**: 2,805
+
+### height
+- **Description**: Height of the respondent in meters
+- **Type**: Numeric
+- **Values**: Range from 1.27 to 2.11 meters
+- **Missing values**: 1,004
+
+### weight
+- **Description**: Weight of the respondent in kilograms
+- **Type**: Numeric
+- **Values**: Range from 29.94 to 180.99 kilograms
+- **Missing values**: 1,004
+
+### helmet_12m
+- **Description**: Frequency of wearing a helmet in the past 12 months
+- **Type**: Categorical
+- **Values**: never, rarely, sometimes, most of time, always, did not ride
+- **Missing values**: 311
+
+### text_while_driving_30d
+- **Description**: Frequency of texting while driving in the past 30 days
+- **Type**: Categorical
+- **Values**: never, 0, 1-2, 3-5, 6-9, 10-19, 20-29, 30, did not drive
+- **Missing values**: 918
+
+### physically_active_7d
+- **Description**: Number of days physically active in the past 7 days
+- **Type**: Numeric
+- **Values**: Range from 0 to 7 days
+- **Missing values**: 273
+
+### hours_tv_per_school_day
+- **Description**: Hours spent watching TV per school day
+- **Type**: Categorical
+- **Values**: do not watch, <1, 1, 2, 3, 4, 5+
+- **Missing values**: 338
+
+### strength_training_7d
+- **Description**: Number of days doing strength training in the past 7 days
+- **Type**: Numeric
+- **Values**: Range from 0 to 7 days
+- **Missing values**: 1,176
+
+### school_night_hours_sleep
+- **Description**: Hours of sleep on a school night
+- **Type**: Categorical
+- **Values**: Range from <5 to 10+ hours
+- **Missing values**: 1,248
+
+## Summary Statistics
+
+```{webr-r}
+#| autorun: true
+#| message: false
+#| results: asis
+library(tableone)
+CreateTableOne(data = yrbss, includeNA = TRUE)
+```
+
+## Data Quality Notes
+- The dataset has missing values in multiple columns.
+- Some inherently numeric data are coded as character with bins. Some analyses
+may benefit from recoding as ordered factor or numeric.
+   - `text_while_driving_30d`
+   - `hours_tv_per_school_day`
+   - `school_night_hours_sleep`
+
+## Acknowledgements
+This codebook was drafted by Microsoft Copilot and edited by Levi Waldron.

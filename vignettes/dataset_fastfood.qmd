@@ -20,8 +20,8 @@ filters:
 ## Where to find it
 
 - **Dataset name:** `fastfood`
-- **Location:** Loaded automatically when the `openintro` package is loaded
-- **Location:** Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets
+- **Location:** Loaded automatically when the `openintro` package is loaded. Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets
+- [Download the dataset now](https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/fastfood.csv)
 
 Option 1: load this dataset from the openintro package:
 ```{webr-r}
@@ -156,7 +156,7 @@ This dataset contains nutritional information for various fast food items from d
 #| autorun: true
 #| message: false
 library(tableone)
-CreateTableOne(data = fastfood[, -2])
+CreateTableOne(data = fastfood[, -2], includeNA = TRUE)
 ```
 
 ## Data Quality Notes

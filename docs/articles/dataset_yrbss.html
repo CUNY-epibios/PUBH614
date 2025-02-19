@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>05b. Foundations for statistical inference - Confidence intervals • PUBH614</title>
+<title>Codebook for Youth Risk Behavior Surveillance System dataset • PUBH614</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -16,8 +16,8 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="05b_confidence_intervals_files/libs/quarto-html/popper.min.js"></script><script src="05b_confidence_intervals_files/libs/quarto-html/tippy.umd.min.js"></script><link href="05b_confidence_intervals_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="05b_confidence_intervals_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="dataset_yrbss_files/libs/quarto-html/popper.min.js"></script><script src="dataset_yrbss_files/libs/quarto-html/tippy.umd.min.js"></script><link href="dataset_yrbss_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="dataset_yrbss_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script type="module">
@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(ggplot2)\nlibrary(openintro)\nlibrary(infer)\nlibrary(purrr)","options":{"context":"interactive","output":"true","fig-height":5,"editor-max-height":"","autorun":"false","dpi":72,"classes":"","warning":"true","message":"true","out-width":"700px","label":"unnamed-chunk-1","comment":"","editor-font-scale":"1","out-height":"","results":"markup","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","fig-width":7,"read-only":"false"},"id":1},{"code":"us_adults <- tibble(\n  climate_change_affects = c(rep(\"Yes\", 62000), rep(\"No\", 38000))\n)\nglimpse(us_adults)","options":{"context":"interactive","output":"true","fig-height":5,"editor-max-height":"","autorun":"false","dpi":72,"classes":"","warning":"true","message":"true","out-width":"700px","label":"unnamed-chunk-2","comment":"","editor-font-scale":"1","out-height":"","results":"markup","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","fig-width":7,"read-only":"false"},"id":2},{"code":"ggplot(us_adults, aes(x = climate_change_affects)) +\n  geom_bar() +\n  labs(\n    x = \"\", y = \"\",\n    title = \"Do you think climate change is affecting your local community?\"\n  ) +\n  coord_flip() ","options":{"context":"interactive","output":"true","fig-height":5,"editor-max-height":"","autorun":"false","dpi":72,"classes":"","warning":"true","message":"true","out-width":"700px","label":"unnamed-chunk-3","comment":"","editor-font-scale":"1","out-height":"","results":"markup","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","fig-width":7,"read-only":"false"},"id":3},{"code":"us_adults %>%\n  count(climate_change_affects) %>%\n  mutate(p = n /sum(n))\nglimpse(us_adults)","options":{"context":"interactive","output":"true","fig-height":5,"editor-max-height":"","autorun":"false","dpi":72,"classes":"","warning":"true","message":"true","out-width":"700px","label":"unnamed-chunk-4","comment":"","editor-font-scale":"1","out-height":"","results":"markup","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","fig-width":7,"read-only":"false"},"id":4},{"code":"n <- 60\nsamp <- us_adults %>%\n  sample_n(size = n)\ntable(samp)","options":{"context":"interactive","output":"true","fig-height":5,"editor-max-height":"","autorun":"false","dpi":72,"classes":"","warning":"true","message":"true","out-width":"700px","label":"unnamed-chunk-5","comment":"","editor-font-scale":"1","out-height":"","results":"markup","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","fig-width":7,"read-only":"false"},"id":5},{"code":"samp %>%\n  specify(response = climate_change_affects, success = \"Yes\") %>%\n  generate(reps = 1000, type = \"bootstrap\") %>%\n  calculate(stat = \"prop\") %>%\n  get_ci(level = 0.95)","options":{"context":"interactive","output":"true","fig-height":5,"editor-max-height":"","autorun":"false","dpi":72,"classes":"","warning":"true","message":"true","out-width":"700px","label":"unnamed-chunk-6","comment":"","editor-font-scale":"1","out-height":"","results":"markup","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","fig-width":7,"read-only":"false"},"id":6},{"code":"# Adjust the following parameters to change the analysis\nn_samp <- 60\nn_rep <- 1000\nconf_level <- 0.95\nn_ci <- 50\nsuccess <- \"Yes\"\np <- ifelse(success == \"Yes\", 0.62, 0.38) # Set true p\n\n#----------------------------\n# No changes below this point\n#----------------------------\n\n# Function to store confidence intervals\nstore_ci <- function(i, n, reps, conf_level, success) {\n  p <- ifelse(success == \"Yes\", 0.62, 0.38)\n  sample_data <- rbinom(n, 1, p)\n  boot_samples <- replicate(reps, mean(sample(sample_data, n, replace = TRUE)))\n  ci <- quantile(boot_samples, probs = c((1 - conf_level) / 2, 1 - (1 - conf_level) / 2))\n  tibble(x_lower = ci[1], x_upper = ci[2])\n}\n\n# Create df_ci\ndf_ci <- map_dfr(1:n_ci, store_ci, n = n_samp, reps = n_rep, conf_level = conf_level, success = success) %>%\n  mutate(\n    y_lower = 1:n_ci,\n    y_upper = 1:n_ci,\n    capture_p = ifelse(x_lower < p & x_upper > p, \"Yes\", \"No\")\n  )\n\n# Plot df_ci\nggplot(df_ci) +\n  geom_segment(aes(x = x_lower, y = y_lower, xend = x_upper, yend = y_upper, color = capture_p)) +\n  geom_point(aes(x = x_lower, y = y_lower, color = capture_p)) +\n  geom_point(aes(x = x_upper, y = y_upper, color = capture_p)) +\n  geom_vline(xintercept = p, color = \"darkgray\") +\n  labs(\n    y = \"\", x = \"Bounds of the confidence interval\",\n    color = \"Does the interval capture the true population proportion?\"\n  ) +\n  theme(legend.position = \"bottom\")","options":{"context":"interactive","output":"true","fig-height":5,"editor-max-height":"","autorun":"false","dpi":72,"classes":"","warning":"true","message":"true","out-width":"700px","label":"unnamed-chunk-7","comment":"","editor-font-scale":"1","out-height":"","results":"markup","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","fig-width":7,"read-only":"false"},"id":7},{"code":"# Enter code here","options":{"context":"interactive","output":"true","fig-height":5,"editor-max-height":"","autorun":"false","dpi":72,"classes":"","warning":"true","message":"true","out-width":"700px","label":"unnamed-chunk-8","comment":"","editor-font-scale":"1","out-height":"","results":"markup","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","fig-width":7,"read-only":"false"},"id":8},{"code":"# Enter code here","options":{"context":"interactive","output":"true","fig-height":5,"editor-max-height":"","autorun":"false","dpi":72,"classes":"","warning":"true","message":"true","out-width":"700px","label":"unnamed-chunk-9","comment":"","editor-font-scale":"1","out-height":"","results":"markup","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","fig-width":7,"read-only":"false"},"id":9}];
+  globalThis.qwebrCellDetails = [{"code":"library(openintro)","id":1,"options":{"message":"false","fig-width":7,"comment":"","output":"true","fig-cap":"","editor-word-wrap":"true","label":"unnamed-chunk-1","editor-max-height":"","context":"interactive","out-width":"700px","dpi":72,"editor-font-scale":"1","classes":"","read-only":"false","editor-quick-suggestions":"false","results":"markup","autorun":"true","out-height":"","fig-height":5,"warning":"true"}},{"code":"download.file(\n  \"https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/yrbss.csv\",\n  destfile = \"yrbss.csv\"\n)\nyrbss <- read.csv(file = \"yrbss.csv\")","id":2,"options":{"message":"true","fig-width":7,"comment":"","output":"true","fig-cap":"","editor-word-wrap":"true","label":"unnamed-chunk-2","editor-max-height":"","context":"interactive","out-width":"700px","dpi":72,"editor-font-scale":"1","classes":"","read-only":"false","editor-quick-suggestions":"false","results":"markup","autorun":"false","out-height":"","fig-height":5,"warning":"true"}},{"code":"library(tableone)\nCreateTableOne(data = yrbss, includeNA = TRUE)","id":3,"options":{"message":"false","fig-width":7,"comment":"","output":"true","fig-cap":"","editor-word-wrap":"true","label":"unnamed-chunk-3","editor-max-height":"","context":"interactive","out-width":"700px","dpi":72,"editor-font-scale":"1","classes":"","read-only":"false","editor-quick-suggestions":"false","results":"asis","autorun":"true","out-height":"","fig-height":5,"warning":"true"}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1294,7 +1294,7 @@
   }
 
   </script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="05b. Foundations for statistical inference - Confidence intervals">
+<meta property="og:title" content="Codebook for Youth Risk Behavior Surveillance System dataset">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -1313,7 +1313,7 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="active nav-item dropdown">
+<li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-openintro-labs" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">OpenIntro Labs</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-openintro-labs">
 <li><a class="dropdown-item" href="../articles/01_intro_to_r.html">01 Introduction to R</a></li>
@@ -1334,7 +1334,7 @@
 <li><a class="dropdown-item" href="../articles/04b_logistic.html">04b Logistic Regression</a></li>
   </ul>
 </li>
-<li class="nav-item dropdown">
+<li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-datasets" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Datasets</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-datasets">
 <li><a class="dropdown-item" href="../articles/dataset_arbuthnot.html">Arbuthnot</a></li>
@@ -1364,7 +1364,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>05b. Foundations for statistical inference - Confidence intervals</h1>
+      <h1>Codebook for Youth Risk Behavior Surveillance System dataset</h1>
 
 
 
@@ -1656,199 +1656,195 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   };
 
 }
-</script><p>If you have access to data on an entire population, say the opinion of every adult in the United States on whether or not they think climate change is affecting their local community, it’s straightforward to answer questions like, “What percent of US adults think climate change is affecting their local community?”. Similarly, if you had demographic information on the population you could examine how, if at all, this opinion varies among young and old adults and adults with different leanings. If you have access to only a sample of the population, as is often the case, the task becomes more complicated. What is your best guess for this proportion if you only have data from a small sample of adults? This type of situation requires that you use your sample to make inference on what your population looks like.</p>
-<div id="boxedtext">
-<p><strong>Setting a seed:</strong> You will take random samples and build sampling distributions in this lab, which means you should set a seed on top of your lab. If this concept is new to you, review the lab on probability.</p>
-</div>
-<section class="level2"><h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
+</script><section class="section level2"><h2 id="codebook-youth-risk-behavior-surveillance-system-yrbss-dataset">Codebook: Youth Risk Behavior Surveillance System (YRBSS) Dataset<a class="anchor" aria-label="anchor" href="#codebook-youth-risk-behavior-surveillance-system-yrbss-dataset"></a>
 </h2>
-<section class="level3"><h3 id="load-packages">Load packages<a class="anchor" aria-label="anchor" href="#load-packages"></a>
+<section class="level2"><h3 id="where-to-find-it">Where to find it<a class="anchor" aria-label="anchor" href="#where-to-find-it"></a>
 </h3>
-<p>In this lab, we will explore and visualize the data using the <strong>tidyverse</strong> suite of packages, and perform statistical inference using <strong>infer</strong>.</p>
-<p>Let’s load the packages.</p>
+<ul>
+<li>
+<strong>Dataset name:</strong> <code>yrbss</code>
+</li>
+<li>
+<strong>Location:</strong> Loaded automatically when the <code>openintro</code> package is loaded. Also available online at <a href="https://github.com/CUNY-epibios/PUBH614/tree/main/datasets" class="external-link">https://github.com/CUNY-epibios/PUBH614/tree/main/datasets</a>
+</li>
+<li><a href="https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/yrbss.csv" class="external-link">Download the dataset now</a></li>
+<li>
+<strong>Data source:</strong> <a href="https://www.cdc.gov/yrbs/data/index.html" class="external-link">https://www.cdc.gov/yrbs/data/index.html</a>
+</li>
+</ul>
+<p>Option 1: load this dataset from the openintro package:</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section><section class="level3"><h3 id="the-data">The data<a class="anchor" aria-label="anchor" href="#the-data"></a>
-</h3>
-<p>A 2019 Pew Research report states the following:</p>
-<p>To keep our computation simple, we will assume a total population size of 100,000 (even though that’s smaller than the population size of all US adults).</p>
-<blockquote>
-<p>Roughly six-in-ten U.S. adults (62%) say climate change is currently affecting their local community either a great deal or some, according to a new Pew Research Center survey.</p>
-<p><strong>Source:</strong> <a href="https://www.pewresearch.org/fact-tank/2019/12/02/most-americans-say-climate-change-impacts-their-community-but-effects-vary-by-region/" class="external-link">Most Americans say climate change impacts their community, but effects vary by region</a></p>
-</blockquote>
-<p>In this lab, you will assume this 62% is a true population proportion and learn about how sample proportions can vary from sample to sample by taking smaller samples from the population. We will first create our population assuming a population size of 100,000. This means 62,000 (62%) of the adult population think climate change impacts their community, and the remaining 38,000 does not think so.</p>
+<p>Option 2: load this dataset manually</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The name of the data frame is <code>us_adults</code> and the name of the variable that contains responses to the question <em>“Do you think climate change is affecting your local community?”</em> is <code>climate_change_affects</code>.</p>
-<p>We can quickly visualize the distribution of these responses using a bar plot.</p>
+</section><section class="level2"><h3 id="dataset-overview">Dataset Overview<a class="anchor" aria-label="anchor" href="#dataset-overview"></a>
+</h3>
+<p>This dataset contains information from the Youth Risk Behavior Surveillance System (YRBSS), including demographic details, health behaviors, and other related information. The dataset includes 13,583 observations with 13 variables. The <code>openintro</code> package also provides a sample of <code>n=100</code> from this dataset titled <code>yrbss_samp</code>.</p>
+</section><section class="level2"><h3 id="variables">Variables<a class="anchor" aria-label="anchor" href="#variables"></a>
+</h3>
+<section class="level3"><h4 id="age">age<a class="anchor" aria-label="anchor" href="#age"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Age of the respondent</li>
+<li>
+<strong>Type</strong>: Numeric</li>
+<li>
+<strong>Values</strong>: Range from 12 to 18</li>
+<li>
+<strong>Missing values</strong>: 77</li>
+</ul></section><section class="level3"><h4 id="gender">gender<a class="anchor" aria-label="anchor" href="#gender"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Gender of the respondent</li>
+<li>
+<strong>Type</strong>: Categorical</li>
+<li>
+<strong>Values</strong>: male, female</li>
+<li>
+<strong>Missing values</strong>: 12</li>
+</ul></section><section class="level3"><h4 id="grade">grade<a class="anchor" aria-label="anchor" href="#grade"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Grade of the respondent</li>
+<li>
+<strong>Type</strong>: Categorical</li>
+<li>
+<strong>Values</strong>: Range from 9 to 12, plus “other”</li>
+<li>
+<strong>Missing values</strong>: 79</li>
+</ul></section><section class="level3"><h4 id="hispanic">hispanic<a class="anchor" aria-label="anchor" href="#hispanic"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Hispanic ethnicity of the respondent</li>
+<li>
+<strong>Type</strong>: Categorical</li>
+<li>
+<strong>Values</strong>: hispanic, not</li>
+<li>
+<strong>Missing values</strong>: 231</li>
+</ul></section><section class="level3"><h4 id="race">race<a class="anchor" aria-label="anchor" href="#race"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Race of the respondent</li>
+<li>
+<strong>Type</strong>: Categorical</li>
+<li>
+<strong>Values</strong>: Various race categories (e.g., Black or African American, White, Asian, etc.)</li>
+<li>
+<strong>Missing values</strong>: 2,805</li>
+</ul></section><section class="level3"><h4 id="height">height<a class="anchor" aria-label="anchor" href="#height"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Height of the respondent in meters</li>
+<li>
+<strong>Type</strong>: Numeric</li>
+<li>
+<strong>Values</strong>: Range from 1.27 to 2.11 meters</li>
+<li>
+<strong>Missing values</strong>: 1,004</li>
+</ul></section><section class="level3"><h4 id="weight">weight<a class="anchor" aria-label="anchor" href="#weight"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Weight of the respondent in kilograms</li>
+<li>
+<strong>Type</strong>: Numeric</li>
+<li>
+<strong>Values</strong>: Range from 29.94 to 180.99 kilograms</li>
+<li>
+<strong>Missing values</strong>: 1,004</li>
+</ul></section><section class="level3"><h4 id="helmet_12m">helmet_12m<a class="anchor" aria-label="anchor" href="#helmet_12m"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Frequency of wearing a helmet in the past 12 months</li>
+<li>
+<strong>Type</strong>: Categorical</li>
+<li>
+<strong>Values</strong>: never, rarely, sometimes, most of time, always, did not ride</li>
+<li>
+<strong>Missing values</strong>: 311</li>
+</ul></section><section class="level3"><h4 id="text_while_driving_30d">text_while_driving_30d<a class="anchor" aria-label="anchor" href="#text_while_driving_30d"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Frequency of texting while driving in the past 30 days</li>
+<li>
+<strong>Type</strong>: Categorical</li>
+<li>
+<strong>Values</strong>: never, 0, 1-2, 3-5, 6-9, 10-19, 20-29, 30, did not drive</li>
+<li>
+<strong>Missing values</strong>: 918</li>
+</ul></section><section class="level3"><h4 id="physically_active_7d">physically_active_7d<a class="anchor" aria-label="anchor" href="#physically_active_7d"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Number of days physically active in the past 7 days</li>
+<li>
+<strong>Type</strong>: Numeric</li>
+<li>
+<strong>Values</strong>: Range from 0 to 7 days</li>
+<li>
+<strong>Missing values</strong>: 273</li>
+</ul></section><section class="level3"><h4 id="hours_tv_per_school_day">hours_tv_per_school_day<a class="anchor" aria-label="anchor" href="#hours_tv_per_school_day"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Hours spent watching TV per school day</li>
+<li>
+<strong>Type</strong>: Categorical</li>
+<li>
+<strong>Values</strong>: do not watch, &lt;1, 1, 2, 3, 4, 5+</li>
+<li>
+<strong>Missing values</strong>: 338</li>
+</ul></section><section class="level3"><h4 id="strength_training_7d">strength_training_7d<a class="anchor" aria-label="anchor" href="#strength_training_7d"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Number of days doing strength training in the past 7 days</li>
+<li>
+<strong>Type</strong>: Numeric</li>
+<li>
+<strong>Values</strong>: Range from 0 to 7 days</li>
+<li>
+<strong>Missing values</strong>: 1,176</li>
+</ul></section><section class="level3"><h4 id="school_night_hours_sleep">school_night_hours_sleep<a class="anchor" aria-label="anchor" href="#school_night_hours_sleep"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Hours of sleep on a school night</li>
+<li>
+<strong>Type</strong>: Categorical</li>
+<li>
+<strong>Values</strong>: Range from &lt;5 to 10+ hours</li>
+<li>
+<strong>Missing values</strong>: 1,248</li>
+</ul></section></section><section class="level2"><h3 id="summary-statistics">Summary Statistics<a class="anchor" aria-label="anchor" href="#summary-statistics"></a>
+</h3>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>We can also obtain summary statistics to confirm we constructed the data frame correctly.</p>
-<div id="qwebr-insertion-location-4"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>In this lab, you’ll start with a simple random sample of size 60 from the population.</p>
-<div id="qwebr-insertion-location-5"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol type="1">
-<li>What percent of the adults in your sample think climate change affects their local community? <strong>Hint:</strong> Just like we did with the population, we can calculate the proportion of those <strong>in this sample</strong> who think climate change affects their local community.</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="2" type="1">
-<li>Would you expect another student’s sample proportion to be identical to yours? Would you expect it to be similar? Why or why not?</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-</section></section><section class="level2"><h2 id="confidence-intervals">Confidence intervals<a class="anchor" aria-label="anchor" href="#confidence-intervals"></a>
-</h2>
-<p>Return for a moment to the question that first motivated this lab: based on this sample, what can you infer about the population? With just one sample, the best estimate of the proportion of US adults who think climate change affects their local community would be the sample proportion, usually denoted as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>p</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math> (here we are calling it <code>p_hat</code>). That serves as a good <strong>point estimate</strong>, but it would be useful to also communicate how uncertain you are of that estimate. This uncertainty can be quantified using a <strong>confidence interval</strong>.</p>
-<p>One way of calculating a confidence interval for a population proportion is based on the Central Limit Theorem, as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo>±</mo><msup><mi>z</mi><mo>⋆</mo></msup><mi>S</mi><msub><mi>E</mi><mover><mi>p</mi><mo accent="true">̂</mo></mover></msub></mrow><annotation encoding="application/x-tex">\hat{p} \pm z^\star SE_{\hat{p}}</annotation></semantics></math> is, or more precisely, as <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo>±</mo><msup><mi>z</mi><mo>⋆</mo></msup><msqrt><mfrac><mrow><mover><mi>p</mi><mo accent="true">̂</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mi>n</mi></mfrac></msqrt></mrow><annotation encoding="application/x-tex"> \hat{p} \pm z^\star \sqrt{ \frac{\hat{p} (1-\hat{p})}{n} } </annotation></semantics></math></p>
-<p>Another way is using simulation, or to be more specific, using <strong>bootstrapping</strong>. The term <strong>bootstrapping</strong> comes from the phrase “pulling oneself up by one’s bootstraps”, which is a metaphor for accomplishing an impossible task without any outside help. In this case the impossible task is estimating a population parameter (the unknown population proportion), and we’ll accomplish it using data from only the given sample. Note that this notion of saying something about a population parameter using only information from an observed sample is the crux of statistical inference, it is not limited to bootstrapping.</p>
-<p>In essence, bootstrapping assumes that there are more of observations in the populations like the ones in the observed sample. So we “reconstruct” the population by resampling from our sample, with replacement. The bootstrapping scheme is as follows:</p>
+</section><section class="level2"><h3 id="data-quality-notes">Data Quality Notes<a class="anchor" aria-label="anchor" href="#data-quality-notes"></a>
+</h3>
 <ul>
-<li>
-<strong>Step 1.</strong> Take a bootstrap sample - a random sample taken <strong>with replacement</strong> from the original sample, of the same size as the original sample.</li>
-<li>
-<strong>Step 2.</strong> Calculate the bootstrap statistic - a statistic such as mean, median, proportion, slope, etc. computed on the bootstrap samples.</li>
-<li>
-<strong>Step 3.</strong> Repeat steps (1) and (2) many times to create a bootstrap distribution - a distribution of bootstrap statistics.</li>
-<li>
-<strong>Step 4.</strong> Calculate the bounds of the XX% confidence interval as the middle XX% of the bootstrap distribution.</li>
-</ul>
-<p>Instead of coding up each of these steps, we will construct confidence intervals using the <strong>infer</strong> package.</p>
-<p>Below is an overview of the functions we will use to construct this confidence interval:</p>
-<table class="table caption-top">
-<colgroup>
-<col style="width: 9%">
-<col style="width: 90%">
-</colgroup>
-<thead><tr class="header">
-<th>Function</th>
-<th>Purpose</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><code>specify</code></td>
-<td>Identify your variable of interest</td>
-</tr>
-<tr class="even">
-<td><code>generate</code></td>
-<td>The number of samples you want to generate</td>
-</tr>
-<tr class="odd">
-<td><code>calculate</code></td>
-<td>The sample statistic you want to do inference with, or you can also think of this as the population parameter you want to do inference for</td>
-</tr>
-<tr class="even">
-<td><code>get_ci</code></td>
-<td>Find the confidence interval</td>
-</tr>
-</tbody>
-</table>
-<p>This code will find the 95 percent confidence interval for proportion of US adults who think climate change affects their local community.</p>
-<div id="qwebr-insertion-location-6"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<li>The dataset has missing values in multiple columns.</li>
+<li>Some inherently numeric data are coded as character with bins. Some analyses may benefit from recoding as ordered factor or numeric.
 <ul>
-<li>In <code>specify</code> we specify the <code>response</code> variable and the level of that variable we are calling a <code>success</code>.</li>
-<li>In <code>generate</code> we provide the number of resamples we want from the population in the <code>reps</code> argument (this should be a reasonably large number) as well as the type of resampling we want to do, which is <code>"bootstrap"</code> in the case of constructing a confidence interval.</li>
-<li>Then, we <code>calculate</code> the sample statistic of interest for each of these resamples, which is <code>prop</code>ortion.</li>
+<li><code>text_while_driving_30d</code></li>
+<li><code>hours_tv_per_school_day</code></li>
+<li><code>school_night_hours_sleep</code></li>
 </ul>
-<p>Feel free to test out the rest of the arguments for these functions, since these commands will be used together to calculate confidence intervals and solve inference problems for the rest of the semester. But we will also walk you through more examples in future chapters.</p>
-<p>To recap: even though we don’t know what the full population looks like, we’re 95% confident that the true proportion of US adults who think climate change affects their local community is between the two bounds reported as result of this pipeline.</p>
-</section><section class="level2"><h2 id="confidence-levels">Confidence levels<a class="anchor" aria-label="anchor" href="#confidence-levels"></a>
-</h2>
-<ol type="1">
-<li>In the interpretation above, we used the phrase “95% confident”. What does “95% confidence” mean?</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<p>In this case, you have the rare luxury of knowing the true population proportion (62%) since you have data on the entire population.</p>
-<ol type="1">
-<li>Does your confidence interval capture the true population proportion of US adults who think climate change affects their local community? If you are working on this lab in a classroom, does your neighbor’s interval capture this value?</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="2" type="1">
-<li>Each student should have gotten a slightly different confidence interval. What proportion of those intervals would you expect to capture the true population mean? Why?</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<p>In the next part of the lab, you will collect many samples to learn more about how sample proportions and confidence intervals constructed based on those samples vary from one sample to another.</p>
-<ul>
-<li>Obtain a random sample.</li>
-<li>Calculate the sample proportion, and use these to calculate and store the lower and upper bounds of the confidence intervals.</li>
-<li>Repeat these steps 50 times.</li>
-</ul>
-<p>Doing this would require learning programming concepts like iteration so that you can automate repeating running the code you’ve developed so far many times to obtain many (50) confidence intervals. In order to keep the programming simpler, we are providing the interactive app below that basically does this for you and created a plot similar to Figure 5.6 on <a href="https://www.openintro.org/os" class="external-link">OpenIntro Statistics, 4th Edition (page 182)</a>.</p>
-<div id="qwebr-insertion-location-7"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol start="6" type="1">
-<li>Given a sample size of 60, 1000 bootstrap samples for each interval, and 50 confidence intervals constructed (the default values for the above app), what proportion of your confidence intervals include the true population proportion? Is this proportion exactly equal to the confidence level? If not, explain why. Make sure to include your plot in your answer.</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<hr></section><section class="level2"><h2 id="more-practice">More Practice<a class="anchor" aria-label="anchor" href="#more-practice"></a>
-</h2>
-<ol start="7" type="1">
-<li>Choose a different confidence level than 95% (changing <code>conf_level &lt;- 0.95</code>) Would you expect a confidence interval at this level to be wider or narrower than the confidence interval you calculated at the 95% confidence level? Explain your reasoning.</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="8" type="1">
-<li>Using code from the <strong>infer</strong> package and data from the one sample you have (<code>samp</code>), find a confidence interval for the proportion of US Adults who think climate change is affecting their local community with a confidence level of your choosing (other than 95%) and interpret it.</li>
-</ol>
-<div id="qwebr-insertion-location-8"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="9" type="1">
-<li>Calculate 50 confidence intervals at the confidence level you chose in the previous question, and plot all intervals on one plot, and calculate the proportion of intervals that include the true population proportion. How does this percentage compare to the confidence level selected for the intervals?</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="10" type="1">
-<li>Lastly, try one more (different) confidence level. First, state how you expect the width of this interval to compare to previous ones you calculated. Then, calculate the bounds of the interval using the <strong>infer</strong> package and data from <code>samp</code> and interpret it. Finally, generate many intervals and calculate the proportion of intervals that are capture the true population proportion.</li>
-</ol>
-<div id="qwebr-insertion-location-9"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="11" type="1">
-<li>Experiment with different sample sizes (n_samp) and comment on how the widths of intervals change as sample size changes (increases and decreases).</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<ol start="12" type="1">
-<li>Finally, given a sample size (say, 60), how does the width of the interval change as you increase the number of bootstrap samples (<code>n_rep</code>). <strong>Hint:</strong> Does changing the number of bootstrap samples affect the standard error?</li>
-</ol>
-<form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
-</form>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0" alt="Creative Commons License"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
-</section><script id="quarto-html-after-body" type="application/javascript">
+</li>
+</ul></section><section class="level2"><h3 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
+</h3>
+<p>This codebook was drafted by Microsoft Copilot and edited by Levi Waldron.</p>
+</section></section><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

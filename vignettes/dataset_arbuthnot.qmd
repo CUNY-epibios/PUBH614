@@ -67,8 +67,8 @@ This dataset contains historical records of births in London from 1629 to 1710, 
 #| autorun: true
 #| output: asis
 #| message: false
-library(table1)
-table1(~ ., data = arbuthnot)
+library(tableone)
+CreateTableOne(data = arbuthnot, includeNA = TRUE)
 ```
 
 ### Time Period Coverage

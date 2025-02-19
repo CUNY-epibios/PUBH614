@@ -47,6 +47,8 @@ navbar:
           href: articles/dataset_fastfood.html
         - text: "Kobe Bryant Baskets"
           href: articles/dataset_kobe.html
+        - text: "Youth Risk Behavior Surveillance System"
+          href: articles/dataset_yrbss.html
     exercises:
       text: "Exercises"
       menu:

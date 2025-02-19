@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"editor-max-height":"","output":"true","out-height":"","comment":"","message":"false","out-width":"700px","context":"interactive","fig-height":5,"results":"markup","editor-word-wrap":"true","read-only":"false","classes":"","autorun":"true","label":"unnamed-chunk-1","editor-font-scale":"1","editor-quick-suggestions":"false","dpi":72,"fig-cap":"","fig-width":7,"warning":"true"},"code":"library(openintro)"},{"id":2,"options":{"editor-max-height":"","output":"true","out-height":"","comment":"","message":"true","out-width":"700px","context":"interactive","fig-height":5,"results":"markup","editor-word-wrap":"true","read-only":"false","classes":"","autorun":"false","label":"unnamed-chunk-2","editor-font-scale":"1","editor-quick-suggestions":"false","dpi":72,"fig-cap":"","fig-width":7,"warning":"true"},"code":"download.file(\n  \"https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/fastfood.csv\",\n  destfile = \"fastfood.csv\"\n)\nfastfood <- read.csv(file = \"fastfood.csv\")"},{"id":3,"options":{"editor-max-height":"","output":"true","out-height":"","comment":"","message":"false","out-width":"700px","context":"interactive","fig-height":5,"results":"markup","editor-word-wrap":"true","read-only":"false","classes":"","autorun":"true","label":"unnamed-chunk-3","editor-font-scale":"1","editor-quick-suggestions":"false","dpi":72,"fig-cap":"","fig-width":7,"warning":"true"},"code":"library(tableone)\nCreateTableOne(data = fastfood[, -2])"}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"out-width":"700px","dpi":72,"editor-quick-suggestions":"false","warning":"true","editor-word-wrap":"true","label":"unnamed-chunk-1","message":"false","context":"interactive","fig-width":7,"editor-font-scale":"1","output":"true","read-only":"false","autorun":"true","results":"markup","fig-cap":"","classes":"","editor-max-height":"","fig-height":5,"out-height":"","comment":""},"code":"library(openintro)"},{"id":2,"options":{"out-width":"700px","dpi":72,"editor-quick-suggestions":"false","warning":"true","editor-word-wrap":"true","label":"unnamed-chunk-2","message":"true","context":"interactive","fig-width":7,"editor-font-scale":"1","output":"true","read-only":"false","autorun":"false","results":"markup","fig-cap":"","classes":"","editor-max-height":"","fig-height":5,"out-height":"","comment":""},"code":"download.file(\n  \"https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/fastfood.csv\",\n  destfile = \"fastfood.csv\"\n)\nfastfood <- read.csv(file = \"fastfood.csv\")"},{"id":3,"options":{"out-width":"700px","dpi":72,"editor-quick-suggestions":"false","warning":"true","editor-word-wrap":"true","label":"unnamed-chunk-3","message":"false","context":"interactive","fig-width":7,"editor-font-scale":"1","output":"true","read-only":"false","autorun":"true","results":"markup","fig-cap":"","classes":"","editor-max-height":"","fig-height":5,"out-height":"","comment":""},"code":"library(tableone)\nCreateTableOne(data = fastfood[, -2], includeNA = TRUE)"}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1341,6 +1341,7 @@
     <li><a class="dropdown-item" href="../articles/dataset_sclc.html">Small-cell lung cancer</a></li>
     <li><a class="dropdown-item" href="../articles/dataset_fastfood.html">Fast food</a></li>
     <li><a class="dropdown-item" href="../articles/dataset_kobe.html">Kobe Bryant Baskets</a></li>
+    <li><a class="dropdown-item" href="../articles/dataset_yrbss.html">Youth Risk Behavior Surveillance System</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
@@ -1664,9 +1665,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <strong>Dataset name:</strong> <code>fastfood</code>
 </li>
 <li>
-<strong>Location:</strong> Loaded automatically when the <code>openintro</code> package is loaded</li>
-<li>
-<strong>Location:</strong> Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets</li>
+<strong>Location:</strong> Loaded automatically when the <code>openintro</code> package is loaded. Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets</li>
+<li><a href="https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/fastfood.csv" class="external-link">Download the dataset now</a></li>
 </ul>
 <p>Option 1: load this dataset from the openintro package:</p>
 <div id="qwebr-insertion-location-1"></div>

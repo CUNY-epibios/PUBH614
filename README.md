@@ -41,14 +41,13 @@ You can print the page to save your work, or copy the code to a local text file.
 
 # About OpenIntro Labs
 
-These labs were developed by [OpenIntro Statistics][OpenIntro] and adapted for 
+THe OpenIntro labs (see **OpenIntro labs** tab above) were developed by [OpenIntro Statistics][OpenIntro] and adapted for 
 use on the web by Levi Waldron at CUNY SPH. OpenIntro Labs promote the 
 understanding and application of statistics through applied data analysis. 
 Labs are titled based on topic area, which correspond to particular chapters in 
 all three versions of OpenIntro Statistics, a free and open-source textbook. 
 The textbook as well as original versions of the labs can be found at 
-[https://www.openintro.org/book/ims/](https://www.openintro.org/book/ims/). 
-Use the **Labs** button above to see all available labs.
+[https://www.openintro.org/book/ims/](https://www.openintro.org/book/ims/).
 
 [OpenIntro]: https://www.openintro.org/
 

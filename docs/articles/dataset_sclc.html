@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"code":"sclc <- read.csv(file = \"https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/Stats4-%20more.csv\",\n                 colClasses = c(\"factor\", \"factor\", \"factor\"))","options":{"autorun":"true","read-only":"false","output":"true","context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","message":"true","comment":"","results":"markup","editor-font-scale":"1","out-height":"","editor-max-height":"","fig-height":5,"label":"unnamed-chunk-1","warning":"true","fig-width":7,"dpi":72,"out-width":"700px","classes":""}},{"id":2,"code":"library(table1)\ntable1(~ ., data = sclc, strata = \"lungca\")","options":{"autorun":"true","read-only":"false","output":"asis","context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","message":"false","comment":"","results":"markup","editor-font-scale":"1","out-height":"","editor-max-height":"","fig-height":5,"label":"unnamed-chunk-2","warning":"true","fig-width":7,"dpi":72,"out-width":"700px","classes":""}}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"dpi":72,"fig-width":7,"fig-cap":"","read-only":"false","out-width":"700px","classes":"","autorun":"true","message":"true","comment":"","label":"unnamed-chunk-1","warning":"true","editor-quick-suggestions":"false","context":"interactive","editor-word-wrap":"true","results":"markup","output":"true","fig-height":5,"out-height":"","editor-font-scale":"1","editor-max-height":""},"code":"sclc <- read.csv(file = \"https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/Stats4-%20more.csv\",\n                 colClasses = c(\"factor\", \"factor\", \"factor\"))"},{"id":2,"options":{"dpi":72,"fig-width":7,"fig-cap":"","read-only":"false","out-width":"700px","classes":"","autorun":"true","message":"false","comment":"","label":"unnamed-chunk-2","warning":"true","editor-quick-suggestions":"false","context":"interactive","editor-word-wrap":"true","results":"markup","output":"asis","fig-height":5,"out-height":"","editor-font-scale":"1","editor-max-height":""},"code":"library(tableone)\nCreateTableOne(data = sclc, includeNA = TRUE)"}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1341,6 +1341,7 @@
     <li><a class="dropdown-item" href="../articles/dataset_sclc.html">Small-cell lung cancer</a></li>
     <li><a class="dropdown-item" href="../articles/dataset_fastfood.html">Fast food</a></li>
     <li><a class="dropdown-item" href="../articles/dataset_kobe.html">Kobe Bryant Baskets</a></li>
+    <li><a class="dropdown-item" href="../articles/dataset_yrbss.html">Youth Risk Behavior Surveillance System</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
@@ -1667,7 +1668,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <strong>File name:</strong> <code>Stats4- more.csv</code>
 </li>
 <li>
-<strong>Location:</strong> https://github.com/CUNY-epibios/PUBH614/tree/main/datasets</li>
+<strong>Location:</strong> Available online at <a href="https://github.com/CUNY-epibios/PUBH614/tree/main/datasets" class="external-link">https://github.com/CUNY-epibios/PUBH614/tree/main/datasets</a>
+</li>
 <li><a href="https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/Stats4-%20more.csv" class="external-link">Download the dataset now</a></li>
 </ul>
 <p>Code to load this dataset into R, and ensure all columns are read in as factor type:</p>
