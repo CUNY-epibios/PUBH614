@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Codebook for arbuthnot dataset • PUBH614</title>
+<title>Codebook for NYC Flights Dataset • PUBH614</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -16,8 +16,8 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="dataset_arbuthnot_files/libs/quarto-html/popper.min.js"></script><script src="dataset_arbuthnot_files/libs/quarto-html/tippy.umd.min.js"></script><link href="dataset_arbuthnot_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="dataset_arbuthnot_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="dataset_nycflights_files/libs/quarto-html/popper.min.js"></script><script src="dataset_nycflights_files/libs/quarto-html/tippy.umd.min.js"></script><link href="dataset_nycflights_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="dataset_nycflights_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script type="module">
@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"warning":"true","results":"markup","message":"false","editor-quick-suggestions":"false","out-height":"","out-width":"700px","fig-cap":"","editor-max-height":"","classes":"","fig-width":7,"comment":"","read-only":"false","editor-font-scale":"1","autorun":"true","dpi":72,"output":"true","context":"interactive","editor-word-wrap":"true","fig-height":5,"label":"unnamed-chunk-1"},"code":"library(openintro)\nsummary(arbuthnot)"},{"id":2,"options":{"warning":"true","results":"markup","message":"false","editor-quick-suggestions":"false","out-height":"","out-width":"700px","fig-cap":"","editor-max-height":"","classes":"","fig-width":7,"comment":"","read-only":"false","editor-font-scale":"1","autorun":"false","dpi":72,"output":"true","context":"interactive","editor-word-wrap":"true","fig-height":5,"label":"unnamed-chunk-2"},"code":"download.file(\"https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/arbuthnot.csv\", destfile = \"arbuthnot.csv\")\narbuthnot <- read.csv(file = \"arbuthnot.csv\")"},{"id":3,"options":{"warning":"true","results":"markup","message":"false","editor-quick-suggestions":"false","out-height":"","out-width":"700px","fig-cap":"","editor-max-height":"","classes":"","fig-width":7,"comment":"","read-only":"false","editor-font-scale":"1","autorun":"true","dpi":72,"output":"asis","context":"interactive","editor-word-wrap":"true","fig-height":5,"label":"unnamed-chunk-3"},"code":"library(tableone)\nCreateTableOne(data = arbuthnot, includeNA = TRUE)"}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"out-width":"700px","editor-word-wrap":"true","dpi":72,"warning":"true","editor-max-height":"","editor-quick-suggestions":"false","label":"unnamed-chunk-1","editor-font-scale":"1","out-height":"","output":"true","classes":"","message":"false","context":"interactive","comment":"","results":"markup","fig-width":7,"read-only":"false","fig-cap":"","fig-height":5,"autorun":"true"},"code":"library(openintro)"},{"id":2,"options":{"out-width":"700px","editor-word-wrap":"true","dpi":72,"warning":"true","editor-max-height":"","editor-quick-suggestions":"false","label":"unnamed-chunk-2","editor-font-scale":"1","out-height":"","output":"true","classes":"","message":"true","context":"interactive","comment":"","results":"markup","fig-width":7,"read-only":"false","fig-cap":"","fig-height":5,"autorun":"false"},"code":"download.file(\n  \"https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/nycflights.csv\",\n  destfile = \"nycflights.csv\"\n)\nnycflights <- read.csv(file = \"nycflights.csv\")"},{"id":3,"options":{"out-width":"700px","editor-word-wrap":"true","dpi":72,"warning":"true","editor-max-height":"","editor-quick-suggestions":"false","label":"unnamed-chunk-3","editor-font-scale":"1","out-height":"","output":"true","classes":"","message":"false","context":"interactive","comment":"","results":"asis","fig-width":7,"read-only":"false","fig-cap":"","fig-height":5,"autorun":"true"},"code":"library(tableone)\nCreateTableOne(data = nycflights[, -c(9, 12)], includeNA = TRUE)"}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1294,7 +1294,7 @@
   }
 
   </script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Codebook for arbuthnot dataset">
+<meta property="og:title" content="Codebook for NYC Flights Dataset">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -1365,7 +1365,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>Codebook for arbuthnot dataset</h1>
+      <h1>Codebook for NYC Flights Dataset</h1>
 
 
 
@@ -1657,18 +1657,15 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   };
 
 }
-</script><section class="section level2"><h2 id="codebook-arbuthnot-london-births-dataset">Codebook: Arbuthnot London Births Dataset<a class="anchor" aria-label="anchor" href="#codebook-arbuthnot-london-births-dataset"></a>
+</script><section class="section level2"><h2 id="codebook-nyc-flights-dataset">Codebook: NYC Flights Dataset<a class="anchor" aria-label="anchor" href="#codebook-nyc-flights-dataset"></a>
 </h2>
-<section class="level2"><h3 id="where-to-find-it">## Where to find it<a class="anchor" aria-label="anchor" href="#where-to-find-it"></a>
-</h3>
 <ul>
 <li>
-<strong>Dataset name:</strong> <code>arbuthnot</code>
+<strong>Dataset name:</strong> <code>nycflights</code>
 </li>
 <li>
-<strong>Location:</strong> Loaded automatically when the <code>openintro</code> package is loaded</li>
-<li>
-<strong>Location:</strong> Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets</li>
+<strong>Location:</strong> Loaded automatically when the <code>openintro</code> package is loaded. Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets</li>
+<li><a href="https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/nycflights.csv" class="external-link">Download the dataset now</a></li>
 </ul>
 <p>Option 1: load this dataset from the openintro package:</p>
 <div id="qwebr-insertion-location-1"></div>
@@ -1676,81 +1673,203 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Option 2: load this dataset manually</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section><section class="level2"><h3 id="dataset-overview">Dataset Overview<a class="anchor" aria-label="anchor" href="#dataset-overview"></a>
+<section class="level2"><h3 id="dataset-overview">Dataset Overview<a class="anchor" aria-label="anchor" href="#dataset-overview"></a>
 </h3>
-<p>This dataset contains historical records of births in London from 1629 to 1710, as recorded by John Arbuthnot. The dataset includes 82 observations with 4 variables, documenting the number of boys and girls christened each year.</p>
+<p>This dataset contains information about all flights that departed from NYC in 2013. The dataset includes 500 observations with 16 variables.</p>
 </section><section class="level2"><h3 id="variables">Variables<a class="anchor" aria-label="anchor" href="#variables"></a>
 </h3>
 <section class="level3"><h4 id="year">year<a class="anchor" aria-label="anchor" href="#year"></a>
 </h4>
 <ul>
 <li>
-<strong>Description</strong>: Calendar year of birth records</li>
+<strong>Description</strong>: Year of the flight</li>
 <li>
-<strong>Type</strong>: Numeric (integer)</li>
+<strong>Type</strong>: Numeric</li>
 <li>
-<strong>Range</strong>: 1629 to 1710</li>
+<strong>Values</strong>: 2013</li>
 <li>
-<strong>Missing values</strong>: None</li>
-</ul></section><section class="level3"><h4 id="boys">boys<a class="anchor" aria-label="anchor" href="#boys"></a>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="month">month<a class="anchor" aria-label="anchor" href="#month"></a>
 </h4>
 <ul>
 <li>
-<strong>Description</strong>: Number of male children christened in London</li>
+<strong>Description</strong>: Month of the flight</li>
 <li>
-<strong>Type</strong>: Numeric (integer)</li>
+<strong>Type</strong>: Numeric</li>
 <li>
-<strong>Range</strong>: 2,890 to 8,426</li>
+<strong>Values</strong>: 1 to 12</li>
 <li>
-<strong>Missing values</strong>: None</li>
-</ul></section><section class="level3"><h4 id="girls">girls<a class="anchor" aria-label="anchor" href="#girls"></a>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="day">day<a class="anchor" aria-label="anchor" href="#day"></a>
 </h4>
 <ul>
 <li>
-<strong>Description</strong>: Number of female children christened in London</li>
+<strong>Description</strong>: Day of the flight</li>
 <li>
-<strong>Type</strong>: Numeric (integer)</li>
+<strong>Type</strong>: Numeric</li>
 <li>
-<strong>Range</strong>: 2,722 to 7,779</li>
+<strong>Values</strong>: 1 to 31</li>
 <li>
-<strong>Missing values</strong>: None</li>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="dep_time">dep_time<a class="anchor" aria-label="anchor" href="#dep_time"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Departure time (in HHMM format)</li>
+<li>
+<strong>Type</strong>: Numeric</li>
+<li>
+<strong>Values</strong>: 1 to 2,400</li>
+<li>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="dep_delay">dep_delay<a class="anchor" aria-label="anchor" href="#dep_delay"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Departure delay (in minutes)</li>
+<li>
+<strong>Type</strong>: Numeric</li>
+<li>
+<strong>Values</strong>: -21 to 1,301</li>
+<li>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="arr_time">arr_time<a class="anchor" aria-label="anchor" href="#arr_time"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Arrival time (in HHMM format)</li>
+<li>
+<strong>Type</strong>: Numeric</li>
+<li>
+<strong>Values</strong>: 1 to 2,400</li>
+<li>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="arr_delay">arr_delay<a class="anchor" aria-label="anchor" href="#arr_delay"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Arrival delay (in minutes)</li>
+<li>
+<strong>Type</strong>: Numeric</li>
+<li>
+<strong>Values</strong>: -73 to 1,272</li>
+<li>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="carrier">carrier<a class="anchor" aria-label="anchor" href="#carrier"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Carrier code</li>
+<li>
+<strong>Type</strong>: Categorical</li>
+<li>
+<strong>Values</strong>: Various carrier codes, e.g. 9E, AA, AS, etc.</li>
+<li>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="tailnum">tailnum<a class="anchor" aria-label="anchor" href="#tailnum"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Tail number of the plane</li>
+<li>
+<strong>Type</strong>: Categorical</li>
+<li>
+<strong>Values</strong>: Various tail numbers, e.g. N0EGMQ, N10156, etc.</li>
+<li>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="flight">flight<a class="anchor" aria-label="anchor" href="#flight"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Flight number</li>
+<li>
+<strong>Type</strong>: Numeric</li>
+<li>
+<strong>Values</strong>: 1 to 6,181</li>
+<li>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="origin">origin<a class="anchor" aria-label="anchor" href="#origin"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Origin airport</li>
+<li>
+<strong>Type</strong>: Categorical</li>
+<li>
+<strong>Values</strong>: JFK, LGA, EWR</li>
+<li>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="dest">dest<a class="anchor" aria-label="anchor" href="#dest"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Destination airport</li>
+<li>
+<strong>Type</strong>: Categorical</li>
+<li>
+<strong>Values</strong>: Various 3-letter destination codes, e.g. ABQ, ACK, ALB, etc.</li>
+<li>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="air_time">air_time<a class="anchor" aria-label="anchor" href="#air_time"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Air time (in minutes)</li>
+<li>
+<strong>Type</strong>: Numeric</li>
+<li>
+<strong>Values</strong>: 22 to 686</li>
+<li>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="distance">distance<a class="anchor" aria-label="anchor" href="#distance"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Distance (in miles)</li>
+<li>
+<strong>Type</strong>: Numeric</li>
+<li>
+<strong>Values</strong>: 94 to 4,983</li>
+<li>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="hour">hour<a class="anchor" aria-label="anchor" href="#hour"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Scheduled departure hour</li>
+<li>
+<strong>Type</strong>: Numeric</li>
+<li>
+<strong>Values</strong>: 0 to 24</li>
+<li>
+<strong>Missing values</strong>: 0</li>
+</ul></section><section class="level3"><h4 id="minute">minute<a class="anchor" aria-label="anchor" href="#minute"></a>
+</h4>
+<ul>
+<li>
+<strong>Description</strong>: Scheduled departure minute</li>
+<li>
+<strong>Type</strong>: Numeric</li>
+<li>
+<strong>Values</strong>: 0 to 59</li>
+<li>
+<strong>Missing values</strong>: 0</li>
 </ul></section></section><section class="level2"><h3 id="summary-statistics">Summary Statistics<a class="anchor" aria-label="anchor" href="#summary-statistics"></a>
 </h3>
+<ul>
+<li>
+<code>tailnum</code> omitted for brevity as it contains 3,490 unique values (one pereach airplane).</li>
+<li>
+<code>dest</code> omitted for brevity as it contains 102 unique values.</li>
+</ul>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section class="level3"><h4 id="time-period-coverage">Time Period Coverage<a class="anchor" aria-label="anchor" href="#time-period-coverage"></a>
-</h4>
-<ul>
-<li>Start year: 1629</li>
-<li>End year: 1710</li>
-<li>Total years: 82</li>
-</ul></section><section class="level3"><h4 id="birth-totals">Birth Totals<a class="anchor" aria-label="anchor" href="#birth-totals"></a>
-</h4>
-<ul>
-<li>Total boys christened: 484,382</li>
-<li>Total girls christened: 453,841</li>
-<li>Overall boy/girl ratio: 1.067</li>
-</ul></section><section class="level3"><h4 id="annual-averages">Annual Averages<a class="anchor" aria-label="anchor" href="#annual-averages"></a>
-</h4>
-<ul>
-<li>Average boys per year: 5,907</li>
-<li>Average girls per year: 5,535</li>
-<li>Minimum total births (1650): 5,612</li>
-<li>Maximum total births (1705): 16,145</li>
-</ul></section></section><section class="level2"><h3 id="data-quality-notes">Data Quality Notes<a class="anchor" aria-label="anchor" href="#data-quality-notes"></a>
+</section><section class="level2"><h3 id="data-quality-notes">Data Quality Notes<a class="anchor" aria-label="anchor" href="#data-quality-notes"></a>
 </h3>
 <ul>
-<li>The dataset is complete with no missing values</li>
-<li>All counts are positive integers</li>
-<li>Consistent annual records for the entire period</li>
-<li>Data represents christenings rather than all births, so actual birth numbers may have been higher</li>
-</ul></section><section class="level2"><h3 id="historical-context">Historical Context<a class="anchor" aria-label="anchor" href="#historical-context"></a>
-</h3>
-<p>This dataset was compiled by John Arbuthnot (1667-1735), a Scottish physician, mathematician, and satirist. He used these records to study the ratio of male to female births, making it one of the earliest known applications of statistical reasoning to a scientific question.</p>
-</section><section class="level2"><h3 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a>
-</h3>
-<p>The original data comes from the London Bills of Mortality, which recorded christenings, burials, and causes of death in London parishes from the 16th to 19th centuries.</p>
-</section><section class="level2"><h3 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
+<li>The dataset has no missing values in any columns.</li>
+<li>Although <code>flight</code> is coded as numeric, it should be considered as a categorical variable.</li>
+</ul></section><section class="level2"><h3 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
 </h3>
 <p>This codebook was drafted by Microsoft Copilot and edited by Levi Waldron.</p>
 </section></section><script id="quarto-html-after-body" type="application/javascript">

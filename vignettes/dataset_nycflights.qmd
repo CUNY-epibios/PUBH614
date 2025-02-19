@@ -1,0 +1,159 @@
+---
+title: "Codebook for NYC Flights Dataset"
+output:
+  html_document:
+    highlight: pygments
+    theme: default
+    toc: true
+    toc_float: true
+vignette: >
+  %\VignetteIndexEntry{Codebook for NYC Flights Dataset}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+engine: knitr
+filters:
+  - webr
+---
+
+# Codebook: NYC Flights Dataset
+
+- **Dataset name:** `nycflights`
+- **Location:** Loaded automatically when the `openintro` package is loaded. Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets
+- [Download the dataset now](https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/nycflights.csv)
+
+Option 1: load this dataset from the openintro package:
+```{webr-r}
+#| autorun: true
+#| message: false
+library(openintro)
+```
+
+Option 2: load this dataset manually
+```{webr-r}
+download.file(
+  "https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/nycflights.csv",
+  destfile = "nycflights.csv"
+)
+nycflights <- read.csv(file = "nycflights.csv")
+```
+
+## Dataset Overview
+This dataset contains information about all flights that departed from NYC in 2013. The dataset includes 500 observations with 16 variables.
+
+## Variables
+
+### year
+- **Description**: Year of the flight
+- **Type**: Numeric
+- **Values**: 2013
+- **Missing values**: 0
+
+### month
+- **Description**: Month of the flight
+- **Type**: Numeric
+- **Values**: 1 to 12
+- **Missing values**: 0
+
+### day
+- **Description**: Day of the flight
+- **Type**: Numeric
+- **Values**: 1 to 31
+- **Missing values**: 0
+
+### dep_time
+- **Description**: Departure time (in HHMM format)
+- **Type**: Numeric
+- **Values**: 1 to 2,400
+- **Missing values**: 0
+
+### dep_delay
+- **Description**: Departure delay (in minutes)
+- **Type**: Numeric
+- **Values**: -21 to 1,301
+- **Missing values**: 0
+
+### arr_time
+- **Description**: Arrival time (in HHMM format)
+- **Type**: Numeric
+- **Values**: 1 to 2,400
+- **Missing values**: 0
+
+### arr_delay
+- **Description**: Arrival delay (in minutes)
+- **Type**: Numeric
+- **Values**: -73 to 1,272
+- **Missing values**: 0
+
+### carrier
+- **Description**: Carrier code
+- **Type**: Categorical
+- **Values**: Various carrier codes, e.g. 9E, AA, AS, etc.
+- **Missing values**: 0
+
+### tailnum
+- **Description**: Tail number of the plane
+- **Type**: Categorical
+- **Values**: Various tail numbers, e.g. N0EGMQ, N10156, etc.
+- **Missing values**: 0
+
+### flight
+- **Description**: Flight number
+- **Type**: Numeric
+- **Values**: 1 to 6,181
+- **Missing values**: 0
+
+### origin
+- **Description**: Origin airport
+- **Type**: Categorical
+- **Values**: JFK, LGA, EWR
+- **Missing values**: 0
+
+### dest
+- **Description**: Destination airport
+- **Type**: Categorical
+- **Values**: Various 3-letter destination codes, e.g. ABQ, ACK, ALB, etc.
+- **Missing values**: 0
+
+### air_time
+- **Description**: Air time (in minutes)
+- **Type**: Numeric
+- **Values**: 22 to 686
+- **Missing values**: 0
+
+### distance
+- **Description**: Distance (in miles)
+- **Type**: Numeric
+- **Values**: 94 to 4,983
+- **Missing values**: 0
+
+### hour
+- **Description**: Scheduled departure hour
+- **Type**: Numeric
+- **Values**: 0 to 24
+- **Missing values**: 0
+
+### minute
+- **Description**: Scheduled departure minute
+- **Type**: Numeric
+- **Values**: 0 to 59
+- **Missing values**: 0
+
+## Summary Statistics
+
+- `tailnum` omitted for brevity as it contains 3,490 unique values (one pereach airplane).
+- `dest` omitted for brevity as it contains 102 unique values.
+
+```{webr-r}
+#| autorun: true
+#| message: false
+#| results: asis
+library(tableone)
+CreateTableOne(data = nycflights[, -c(9, 12)], includeNA = TRUE)
+```
+
+## Data Quality Notes
+- The dataset has no missing values in any columns.
+- Although `flight` is coded as numeric, it should be considered as a categorical variable.
+
+## Acknowledgements
+This codebook was drafted by Microsoft Copilot and edited by Levi Waldron.

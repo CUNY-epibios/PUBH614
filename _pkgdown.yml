@@ -49,6 +49,8 @@ navbar:
           href: articles/dataset_kobe.html
         - text: "Youth Risk Behavior Surveillance System"
           href: articles/dataset_yrbss.html
+        - text: "NYC flights"
+          href: articles/dataset_nycflights.html
     exercises:
       text: "Exercises"
       menu:
