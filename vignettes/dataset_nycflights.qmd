@@ -19,7 +19,7 @@ filters:
 
 - **Dataset name:** `nycflights`
 - **Location:** Loaded automatically when the `openintro` package is loaded. Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets
-- [Download the dataset now](https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/nycflights.csv)
+- [Download the dataset now](https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/main/datasets/nycflights.csv)
 
 Option 1: load this dataset from the openintro package:
 ```{webr-r}
@@ -31,7 +31,7 @@ library(openintro)
 Option 2: load this dataset manually
 ```{webr-r}
 download.file(
-  "https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/nycflights.csv",
+  "https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/nycflights.csv",
   destfile = "nycflights.csv"
 )
 nycflights <- read.csv(file = "nycflights.csv")
