@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(openintro)\nsummary(arbuthnot)","id":1,"options":{"comment":"","classes":"","results":"markup","dpi":72,"editor-quick-suggestions":"false","out-height":"","warning":"true","fig-width":7,"output":"true","out-width":"700px","editor-font-scale":"1","read-only":"false","label":"unnamed-chunk-1","message":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"context":"interactive","editor-max-height":"","autorun":"true"}},{"code":"download.file(\"https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/arbuthnot.csv\", destfile = \"arbuthnot.csv\")\narbuthnot <- read.csv(file = \"arbuthnot.csv\")","id":2,"options":{"comment":"","classes":"","results":"markup","dpi":72,"editor-quick-suggestions":"false","out-height":"","warning":"true","fig-width":7,"output":"true","out-width":"700px","editor-font-scale":"1","read-only":"false","label":"unnamed-chunk-2","message":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false"}},{"code":"library(table1)\ntable1(~ ., data = arbuthnot)","id":3,"options":{"comment":"","classes":"","results":"markup","dpi":72,"editor-quick-suggestions":"false","out-height":"","warning":"true","fig-width":7,"output":"asis","out-width":"700px","editor-font-scale":"1","read-only":"false","label":"unnamed-chunk-3","message":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"context":"interactive","editor-max-height":"","autorun":"true"}}];
+  globalThis.qwebrCellDetails = [{"code":"library(openintro)\nsummary(arbuthnot)","options":{"message":"false","fig-height":5,"results":"markup","editor-word-wrap":"true","warning":"true","dpi":72,"out-width":"700px","read-only":"false","autorun":"true","label":"unnamed-chunk-1","classes":"","fig-cap":"","fig-width":7,"editor-quick-suggestions":"false","output":"true","context":"interactive","editor-font-scale":"1","comment":"","editor-max-height":"","out-height":""},"id":1},{"code":"download.file(\"https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/arbuthnot.csv\", destfile = \"arbuthnot.csv\")\narbuthnot <- read.csv(file = \"arbuthnot.csv\")","options":{"message":"false","fig-height":5,"results":"markup","editor-word-wrap":"true","warning":"true","dpi":72,"out-width":"700px","read-only":"false","autorun":"false","label":"unnamed-chunk-2","classes":"","fig-cap":"","fig-width":7,"editor-quick-suggestions":"false","output":"true","context":"interactive","editor-font-scale":"1","comment":"","editor-max-height":"","out-height":""},"id":2},{"code":"library(table1)\ntable1(~ ., data = arbuthnot)","options":{"message":"false","fig-height":5,"results":"markup","editor-word-wrap":"true","warning":"true","dpi":72,"out-width":"700px","read-only":"false","autorun":"true","label":"unnamed-chunk-3","classes":"","fig-cap":"","fig-width":7,"editor-quick-suggestions":"false","output":"asis","context":"interactive","editor-font-scale":"1","comment":"","editor-max-height":"","out-height":""},"id":3}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1339,6 +1339,8 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-datasets">
 <li><a class="dropdown-item" href="../articles/dataset_arbuthnot.html">Arbuthnot</a></li>
     <li><a class="dropdown-item" href="../articles/dataset_sclc.html">Small-cell lung cancer</a></li>
+    <li><a class="dropdown-item" href="../articles/dataset_fastfood.html">Fast food</a></li>
+    <li><a class="dropdown-item" href="../articles/dataset_kobe.html">Kobe Bryant Baskets</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
@@ -1655,7 +1657,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script><section class="section level2"><h2 id="codebook-arbuthnot-london-births-dataset">Codebook: Arbuthnot London Births Dataset<a class="anchor" aria-label="anchor" href="#codebook-arbuthnot-london-births-dataset"></a>
 </h2>
-<section class="level2"><h3 id="where-to-find-it-where-it-is-used">## Where to find it, where it is used<a class="anchor" aria-label="anchor" href="#where-to-find-it-where-it-is-used"></a>
+<section class="level2"><h3 id="where-to-find-it">## Where to find it<a class="anchor" aria-label="anchor" href="#where-to-find-it"></a>
 </h3>
 <ul>
 <li>
@@ -1746,6 +1748,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section><section class="level2"><h3 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a>
 </h3>
 <p>The original data comes from the London Bills of Mortality, which recorded christenings, burials, and causes of death in London parishes from the 16th to 19th centuries.</p>
+</section><section class="level2"><h3 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
+</h3>
+<p>This codebook was drafted by Microsoft Copilot and edited by Levi Waldron.</p>
 </section></section><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

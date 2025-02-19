@@ -17,7 +17,7 @@ filters:
 
 # Codebook: Arbuthnot London Births Dataset
 
-## Where to find it, where it is used
+## Where to find it
 - 
 - **Dataset name:** `arbuthnot`
 - **Location:** Loaded automatically when the `openintro` package is loaded
@@ -98,3 +98,6 @@ This dataset was compiled by John Arbuthnot (1667-1735), a Scottish physician, m
 
 ## Source
 The original data comes from the London Bills of Mortality, which recorded christenings, burials, and causes of death in London parishes from the 16th to 19th centuries.
+
+## Acknowledgements
+This codebook was drafted by Microsoft Copilot and edited by Levi Waldron.

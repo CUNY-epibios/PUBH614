@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"editor-word-wrap":"true","comment":"","editor-max-height":"","warning":"true","context":"interactive","output":"true","autorun":"true","out-height":"","read-only":"false","dpi":72,"fig-height":5,"classes":"","editor-quick-suggestions":"false","out-width":"700px","label":"unnamed-chunk-1","results":"markup","fig-cap":"","message":"true","fig-width":7,"editor-font-scale":"1"},"code":"sclc <- read.csv(file = \"https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/Stats4-%20more.csv\",\n                 colClasses = c(\"factor\", \"factor\", \"factor\"))"},{"id":2,"options":{"editor-word-wrap":"true","comment":"","editor-max-height":"","warning":"true","context":"interactive","output":"asis","autorun":"true","out-height":"","read-only":"false","dpi":72,"fig-height":5,"classes":"","editor-quick-suggestions":"false","out-width":"700px","label":"unnamed-chunk-2","results":"markup","fig-cap":"","message":"false","fig-width":7,"editor-font-scale":"1"},"code":"library(table1)\ntable1(~ ., data = sclc, strata = \"lungca\")"}];
+  globalThis.qwebrCellDetails = [{"id":1,"code":"sclc <- read.csv(file = \"https://raw.githubusercontent.com/CUNY-epibios/PUBH614/main/datasets/Stats4-%20more.csv\",\n                 colClasses = c(\"factor\", \"factor\", \"factor\"))","options":{"autorun":"true","read-only":"false","output":"true","context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","message":"true","comment":"","results":"markup","editor-font-scale":"1","out-height":"","editor-max-height":"","fig-height":5,"label":"unnamed-chunk-1","warning":"true","fig-width":7,"dpi":72,"out-width":"700px","classes":""}},{"id":2,"code":"library(table1)\ntable1(~ ., data = sclc, strata = \"lungca\")","options":{"autorun":"true","read-only":"false","output":"asis","context":"interactive","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-cap":"","message":"false","comment":"","results":"markup","editor-font-scale":"1","out-height":"","editor-max-height":"","fig-height":5,"label":"unnamed-chunk-2","warning":"true","fig-width":7,"dpi":72,"out-width":"700px","classes":""}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1339,6 +1339,8 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-datasets">
 <li><a class="dropdown-item" href="../articles/dataset_arbuthnot.html">Arbuthnot</a></li>
     <li><a class="dropdown-item" href="../articles/dataset_sclc.html">Small-cell lung cancer</a></li>
+    <li><a class="dropdown-item" href="../articles/dataset_fastfood.html">Fast food</a></li>
+    <li><a class="dropdown-item" href="../articles/dataset_kobe.html">Kobe Bryant Baskets</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
@@ -1655,7 +1657,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script><section class="section level2"><h2 id="codebook-small-cell-lung-cancer-dataset">Codebook: Small-Cell Lung Cancer Dataset<a class="anchor" aria-label="anchor" href="#codebook-small-cell-lung-cancer-dataset"></a>
 </h2>
-<section class="level2"><h3 id="where-to-find-it-where-it-is-used">Where to find it, where it is used<a class="anchor" aria-label="anchor" href="#where-to-find-it-where-it-is-used"></a>
+<section class="level2"><h3 id="where-to-find-it">Where to find it<a class="anchor" aria-label="anchor" href="#where-to-find-it"></a>
 </h3>
 <ul>
 <li>
@@ -1737,7 +1739,10 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <code>smoke</code> and <code>lungca</code> use 0/1 coding</li>
 <li>
 <code>sex</code> is coded using single-letter values (M/F)</li>
-</ul></section></section><script id="quarto-html-after-body" type="application/javascript">
+</ul></section><section class="level2"><h3 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
+</h3>
+<p>This codebook was drafted by Microsoft Copilot and edited by Levi Waldron.</p>
+</section></section><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

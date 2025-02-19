@@ -17,7 +17,7 @@ filters:
 
 # Codebook: Small-Cell Lung Cancer Dataset
 
-## Where to find it, where it is used
+## Where to find it
 - **Used in:** [Lab 4b: logistic regression](https://cuny-epibios.github.io/PUBH614/articles/04b_logistic.html)
 - **File name:** `Stats4- more.csv`
 - **Location:** https://github.com/CUNY-epibios/PUBH614/tree/main/datasets
@@ -76,3 +76,6 @@ table1(~ ., data = sclc, strata = "lungca")
 - All variables are coded consistently
 - `smoke` and `lungca` use 0/1 coding
 - `sex` is coded using single-letter values (M/F)
+
+## Acknowledgements
+This codebook was drafted by Microsoft Copilot and edited by Levi Waldron.

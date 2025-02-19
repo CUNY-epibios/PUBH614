@@ -43,6 +43,10 @@ navbar:
           href: articles/dataset_arbuthnot.html
         - text: "Small-cell lung cancer"
           href: articles/dataset_sclc.html
+        - text: "Fast food"
+          href: articles/dataset_fastfood.html
+        - text: "Kobe Bryant Baskets"
+          href: articles/dataset_kobe.html
     exercises:
       text: "Exercises"
       menu:
