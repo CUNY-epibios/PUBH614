@@ -44,9 +44,9 @@ glimpse(yrbss)
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 2.  What is the proportion of people who have texted while driving every day in the past 30 days and never wear helmets?
 
@@ -54,9 +54,9 @@ glimpse(yrbss)
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 Remember that you can use `filter` to limit the dataset to just non-helmet wearers.
 Here, we will name the dataset `no_helmet`.
@@ -100,9 +100,9 @@ Note that since the goal is to construct an interval estimate for a proportion, 
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 2.  Using the `infer` package, calculate confidence intervals for two other categorical variables (you'll need to decide which level to call "success", and report the associated margins of error. Interpret the interval in context of the data. It may be helpful to create new data sets for each of the two countries first, and then use these data sets to construct the confidence intervals.
 
@@ -110,9 +110,9 @@ Note that since the goal is to construct an interval estimate for a proportion, 
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 # How does the proportion affect the margin of error?
 
@@ -158,9 +158,9 @@ ggplot(data = dd, aes(x = p, y = me)) +
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 # Success-failure condition
 
@@ -205,26 +205,26 @@ ggplot(data = pp, aes(x = p_hat)) +
     Be sure to note the center, spread, and shape.
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 2.  Keep $n$ constant and change $p$.
     How does the shape, center, and spread of the sampling distribution vary as $p$ changes.
     You might want to adjust min and max for the $x$-axis for a better view of the distribution.
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 3.  Now also change $n$.
     How does $n$ appear to affect the distribution of $\hat{p}$?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 ------------------------------------------------------------------------
 
@@ -242,9 +242,9 @@ This means that when using `infer`, you need to include both variables within `s
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 2.  Let's say there has been no difference in likeliness to strength train every day of the week for those who sleep 10+ hours.
     What is the probability that you could detect a change (at a significance level of 0.05) simply by chance?
@@ -254,9 +254,9 @@ This means that when using `infer`, you need to include both variables within `s
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 3.  Suppose you're hired by the local government to estimate the proportion of residents that attend a religious service on a weekly basis.
     According to the guidelines, the estimate must have a margin of error no greater than 1% with 95% confidence.
@@ -269,9 +269,9 @@ This means that when using `infer`, you need to include both variables within `s
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 ------------------------------------------------------------------------
 
