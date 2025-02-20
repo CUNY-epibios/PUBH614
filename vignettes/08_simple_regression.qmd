@@ -53,8 +53,7 @@ The data we're working with is in the openintro package and it's called `hfi`, s
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 
 2.  The dataset spans a lot of years, but we are only interested in data from year 2016.
@@ -90,8 +89,7 @@ It's also useful to be able to describe the relationship of two numerical variab
 4.  Looking at your plot from the previous exercise, describe the relationship between these two variables. Make sure to discuss the form, direction, and strength of the relationship as well as any unusual observations.
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 
 Just as you've used the mean and standard deviation to summarize a single variable, you can summarize the relationship between these two variables by finding the line that best follows their association.
@@ -135,8 +133,7 @@ Note that the output from the `plot_ss` function provides you with the slope and
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 
 # The linear model
@@ -192,8 +189,7 @@ For this model, 71.4% of the variability in `pf_score` is explained by `pf_expre
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 
 # Prediction and prediction errors
@@ -218,8 +214,7 @@ They're also used to compute the residuals.
 7.  If someone saw the least squares regression line and not the actual data, how would they predict a country's personal freedom school for one with a 3 rating for `pf_expression_control`? Is this an overestimate or an underestimate, and by how much? In other words, what is the residual for this prediction?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 
 # Model diagnostics
@@ -251,8 +246,7 @@ After creating the scatterplot on the first layer (first line of code), we overl
 8.  Is there any apparent pattern in the residuals plot? What does this indicate about the linearity of the relationship between the two variables?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 
 </br>
@@ -268,8 +262,7 @@ ggplot(data = m1_aug, aes(x = .resid)) +
 9.  Based on the histogram, does the nearly normal residuals condition appear to be violated? Why or why not?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 
 </br>
@@ -279,8 +272,7 @@ ggplot(data = m1_aug, aes(x = .resid)) +
 10. Based on the residuals vs. fitted plot, does the constant variability condition appear to be violated? Why or why not?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 
 ------------------------------------------------------------------------
@@ -296,8 +288,7 @@ ggplot(data = m1_aug, aes(x = .resid)) +
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 
 
@@ -308,8 +299,7 @@ ggplot(data = m1_aug, aes(x = .resid)) +
 
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 
 -   Check the model diagnostics using appropriate visualizations and evaluate if the model conditions have been met.
@@ -319,8 +309,7 @@ ggplot(data = m1_aug, aes(x = .resid)) +
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 
 -   Pick another pair of variables of interest and visualize the relationship between them.
@@ -332,8 +321,7 @@ ggplot(data = m1_aug, aes(x = .resid)) +
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 
 ------------------------------------------------------------------------

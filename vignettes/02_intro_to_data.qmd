@@ -127,9 +127,10 @@ ggplot(data = nycflights, aes(x = dep_delay)) +
 1.  Look carefully at these three histograms. How do they compare? Are features revealed in one that are obscured in another?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
+
 
 If you want to visualize only delays of flights headed to Los Angeles, you need to first `filter` the data for flights with that destination (`dest == "LAX"`) and then make a histogram of the departure delays of only those flights.
 
@@ -206,9 +207,10 @@ If you are interested in either flights headed to SFO **or** in February, you ca
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
+
 
 2.  Describe the distribution of the **arrival** delays of these flights using a histogram and appropriate summary statistics.
     **Hint:** The summary statistics you use should depend on the shape of the distribution.
@@ -234,9 +236,10 @@ Here, we first grouped the data by `origin` and then calculated the summary stat
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
+
 
 ## Departure delays by month
 
@@ -261,9 +264,9 @@ nycflights %>%
 1.  Suppose you really dislike departure delays and you want to schedule your travel in a month that minimizes your potential departure delay leaving NYC. One option is to choose the month with the lowest mean departure delay. Another option is to choose the month with the lowest median departure delay. What are the pros and cons of these two choices?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 
 ## On time departure rate for NYC airports
@@ -309,9 +312,9 @@ ggplot(data = nycflights, aes(x = origin, fill = dep_type)) +
 ```
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 ------------------------------------------------------------------------
 
@@ -346,9 +349,9 @@ ggplot(data = dl_aa_ua, aes(x = dep_delay, y = arr_delay, color = carrier)) +
 ```
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 ------------------------------------------------------------------------
 

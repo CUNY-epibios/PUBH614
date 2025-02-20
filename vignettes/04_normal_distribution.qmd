@@ -158,9 +158,9 @@ openintro::qqnormsim(sample = cal_fat, data = dairy_queen)
     That is, do the plots provide evidence that the calories from fat are nearly normal?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 5.  Using the same technique, determine whether or not the calories from McDonald's menu appear to come from a normal distribution.
 
@@ -168,9 +168,9 @@ openintro::qqnormsim(sample = cal_fat, data = dairy_queen)
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 # Normal probabilities
 

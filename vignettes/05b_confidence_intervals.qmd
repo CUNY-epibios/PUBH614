@@ -99,18 +99,18 @@ table(samp)
     **Hint:** Just like we did with the population, we can calculate the proportion of those **in this sample** who think climate change affects their local community.
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 2.  Would you expect another student's sample proportion to be identical to yours?
     Would you expect it to be similar?
     Why or why not?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 ## Confidence intervals
 
@@ -175,9 +175,9 @@ To recap: even though we don't know what the full population looks like, we're 9
 1.  In the interpretation above, we used the phrase "95% confident". What does "95% confidence" mean?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 In this case, you have the rare luxury of knowing the true population proportion (62%) since you have data on the entire population.
 
@@ -185,18 +185,18 @@ In this case, you have the rare luxury of knowing the true population proportion
     If you are working on this lab in a classroom, does your neighbor's interval capture this value?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 2.  Each student should have gotten a slightly different confidence interval.
     What proportion of those intervals would you expect to capture the true population mean?
     Why?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 In the next part of the lab, you will collect many samples to learn more about how sample proportions and confidence intervals constructed based on those samples vary from one sample to another.
 
@@ -253,9 +253,9 @@ ggplot(df_ci) +
 6.  Given a sample size of 60, 1000 bootstrap samples for each interval, and 50 confidence intervals constructed (the default values for the above app), what proportion of your confidence intervals include the true population proportion? Is this proportion exactly equal to the confidence level? If not, explain why. Make sure to include your plot in your answer.
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 ------------------------------------------------------------------------
 
@@ -266,9 +266,9 @@ ggplot(df_ci) +
     Explain your reasoning.
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 8.  Using code from the **infer** package and data from the one sample you have (`samp`), find a confidence interval for the proportion of US Adults who think climate change is affecting their local community with a confidence level of your choosing (other than 95%) and interpret it.
 
@@ -276,18 +276,18 @@ ggplot(df_ci) +
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 9.  Calculate 50 confidence intervals at the confidence level you chose in the previous question, and
 plot all intervals on one plot, and calculate the proportion of intervals that include the true population proportion.
 How does this percentage compare to the confidence level selected for the intervals?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 10.  Lastly, try one more (different) confidence level.
     First, state how you expect the width of this interval to compare to previous ones you calculated.
@@ -298,23 +298,23 @@ How does this percentage compare to the confidence level selected for the interv
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 11.  Experiment with different sample sizes (n_samp) and comment on how the widths of intervals change as sample size changes (increases and decreases).
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 12.  Finally, given a sample size (say, 60), how does the width of the interval change as you increase the number of bootstrap samples (`n_rep`).
     **Hint:** Does changing the number of bootstrap samples affect the standard error?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png){style="border-width:0"}</a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
