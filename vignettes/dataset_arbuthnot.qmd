@@ -20,20 +20,19 @@ filters:
 ## Where to find it
 - 
 - **Dataset name:** `arbuthnot`
-- **Location:** Loaded automatically when the `openintro` package is loaded
-- **Location:** Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets
+- **Location:** Loaded automatically when the `openintro` package is loaded. 
+Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets
+- [Download the dataset now](https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/main/datasets/arbuthnot.csv)
 
 Option 1: load this dataset from the openintro package:
 ```{webr-r}
-#| autorun: true
 #| message: false
 library(openintro)
-summary(arbuthnot)
 ```
 
 Option 2: load this dataset manually
 ```{webr-r}
-#| message: false
+#| autorun: true
 download.file("https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/arbuthnot.csv", destfile = "arbuthnot.csv")
 arbuthnot <- read.csv(file = "arbuthnot.csv")
 ```
@@ -61,16 +60,6 @@ This dataset contains historical records of births in London from 1629 to 1710, 
 - **Range**: 2,722 to 7,779
 - **Missing values**: None
 
-## Summary Statistics
-
-```{webr-r}
-#| autorun: true
-#| output: asis
-#| message: false
-library(tableone)
-CreateTableOne(data = arbuthnot, includeNA = TRUE)
-```
-
 ### Time Period Coverage
 - Start year: 1629
 - End year: 1710
@@ -86,6 +75,16 @@ CreateTableOne(data = arbuthnot, includeNA = TRUE)
 - Average girls per year: 5,535
 - Minimum total births (1650): 5,612
 - Maximum total births (1705): 16,145
+
+## Summary Statistics
+
+```{webr-r}
+#| autorun: true
+#| output: asis
+#| message: false
+library(tableone)
+CreateTableOne(data = arbuthnot, includeNA = TRUE)
+```
 
 ## Data Quality Notes
 - The dataset is complete with no missing values

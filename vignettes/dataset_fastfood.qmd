@@ -25,13 +25,13 @@ filters:
 
 Option 1: load this dataset from the openintro package:
 ```{webr-r}
-#| autorun: true
 #| message: false
 library(openintro)
 ```
 
 Option 2: load this dataset manually
 ```{webr-r}
+#| autorun: true
 download.file(
   "https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/fastfood.csv",
   destfile = "fastfood.csv"
