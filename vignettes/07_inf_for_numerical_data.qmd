@@ -62,9 +62,9 @@ Remember that you can answer this question by viewing the data in the data viewe
 ```
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 
 # Exploratory data analysis
@@ -82,9 +82,9 @@ yrbss %>%
 1.  How many observations are we missing weights from?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 
 Next, consider the possible relationship between a high schooler's weight and their physical activity.
@@ -104,9 +104,9 @@ table(yrbss$physical_3plus) #check the new variable
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 
 The box plots show how the medians of the two distributions compare, but we can also compare the means of the distributions using the following to first group the data by the `physical_3plus` variable, and then calculate the mean `weight` in these groups using the `mean` function while ignoring missing values by setting the `na.rm` argument to `TRUE`.
@@ -127,17 +127,17 @@ In order to answer this question we will conduct a hypothesis test.
     You can compute the group sizes with the `summarize` command above by defining a new variable with the definition `n()`.
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 
 4.  Write the hypotheses for testing if the average weights are different for those who exercise at least times a week and those who don't.
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 
 Next, we will work through creating a permutation distribution using tools from the **infer** package.
@@ -194,9 +194,9 @@ ggplot(data = null_dist, aes(x = stat)) +
 6.  How many of these `null_dist` permutations have a difference at least as large (or larger) as `obs_diff`?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 
 Now that you have calculated the observed statistic and generated a permutation distribution, you can calculate the p-value for your hypothesis test using the function `get_p_value()` from the infer package.
@@ -210,9 +210,9 @@ null_dist %>%
     Why do you think you get this warning message?
 
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 
 8.  Construct and record a confidence interval for the difference between the weights of those who exercise at least three times a week and those who don't, and interpret this interval in context of the data.
@@ -221,9 +221,9 @@ null_dist %>%
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 
 ------------------------------------------------------------------------
@@ -236,9 +236,9 @@ null_dist %>%
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 10. Calculate a new confidence interval for the same parameter at the 90% confidence level.
     Comment on the width of this interval versus the one obtained in the previous exercise.
@@ -247,9 +247,9 @@ null_dist %>%
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 11. Conduct a hypothesis test evaluating whether the average height is different for those who exercise at least three times a week and those who don't.
 
@@ -257,9 +257,9 @@ null_dist %>%
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 12. Now, a non-inference task: Determine the number of different options there are in the dataset for the `hours_tv_per_school_day` there are.
 
@@ -267,9 +267,9 @@ null_dist %>%
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 13. Come up with a research question evaluating the relationship between height or weight and sleep.
     Formulate the question in a way that it can be answered using a hypothesis test and/or a confidence interval.
@@ -280,9 +280,9 @@ null_dist %>%
 # Enter code here
 ```
 <form>
-  <label for="comments">Comments:</label>
-  <textarea id="comments" name="comments" class="textarea-box"></textarea>
+  <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
+
 
 ------------------------------------------------------------------------
 
