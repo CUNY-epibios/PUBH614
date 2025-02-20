@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(ggplot2)\nlibrary(openintro)\nlibrary(GGally)\nlibrary(broom)","id":1,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-1","editor-quick-suggestions":"false","comment":""}},{"code":"glimpse(evals)","id":2,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-2","editor-quick-suggestions":"false","comment":""}},{"code":"?evals","id":3,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-3","editor-quick-suggestions":"false","comment":""}},{"code":"# Enter code here","id":4,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-4","editor-quick-suggestions":"false","comment":""}},{"code":"# Enter code here","id":5,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-5","editor-quick-suggestions":"false","comment":""}},{"code":"ggplot(data = evals, aes(x = bty_avg, y = score)) +\n  geom_point()","id":6,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-6","editor-quick-suggestions":"false","comment":""}},{"code":"ggplot(data = evals, aes(x = bty_avg, y = score)) +\n  geom_jitter()","id":7,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-7","editor-quick-suggestions":"false","comment":""}},{"code":"# Enter code here","id":8,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-8","editor-quick-suggestions":"false","comment":""}},{"code":"ggplot(data = evals, aes(x = bty_avg, y = score)) +\n  geom_jitter() +\n  geom_smooth(method = \"lm\")","id":9,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-9","editor-quick-suggestions":"false","comment":""}},{"code":"ggplot(data = evals, aes(x = bty_avg, y = score)) +\n  geom_jitter() +\n  geom_smooth(method = \"lm\", se = FALSE)","id":10,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-10","editor-quick-suggestions":"false","comment":""}},{"code":"# Enter code here","id":11,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-11","editor-quick-suggestions":"false","comment":""}},{"code":"ggplot(data = evals, aes(x = bty_f1lower, y = bty_avg)) +\n  geom_point()\n\nevals %>% \n  summarise(cor(bty_avg, bty_f1lower))","id":12,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-12","editor-quick-suggestions":"false","comment":""}},{"code":"evals %>%\n  select(contains(\"bty\")) %>%\n  ggpairs()","id":13,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-13","editor-quick-suggestions":"false","comment":""}},{"code":"m_bty_gen <- lm(score ~ bty_avg + gender, data = evals)\ntidy(m_bty_gen)","id":14,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-14","editor-quick-suggestions":"false","comment":""}},{"code":"# Enter code here","id":15,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-15","editor-quick-suggestions":"false","comment":""}},{"code":"# Enter code here","id":16,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-16","editor-quick-suggestions":"false","comment":""}},{"code":"m_full <- lm(score ~ rank + gender + ethnicity + language + age + cls_perc_eval \n             + cls_students + cls_level + cls_profs + cls_credits + bty_avg, data = evals)\ntidy(m_full)","id":17,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-17","editor-quick-suggestions":"false","comment":""}},{"code":"# Enter code here","id":18,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-18","editor-quick-suggestions":"false","comment":""}},{"code":"# Enter code here","id":19,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-19","editor-quick-suggestions":"false","comment":""}},{"code":"# Enter code here","id":20,"options":{"read-only":"false","output":"true","dpi":72,"editor-font-scale":"1","fig-cap":"","context":"interactive","results":"markup","out-width":"700px","autorun":"false","classes":"","fig-width":7,"out-height":"","editor-max-height":"","message":"true","editor-word-wrap":"true","warning":"true","fig-height":5,"label":"unnamed-chunk-20","editor-quick-suggestions":"false","comment":""}}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-1","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"library(dplyr)\nlibrary(ggplot2)\nlibrary(openintro)\nlibrary(GGally)\nlibrary(broom)"},{"id":2,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-2","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"glimpse(evals)"},{"id":3,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-3","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"?evals"},{"id":4,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-4","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"# Enter code here"},{"id":5,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-5","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"# Enter code here"},{"id":6,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-6","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"ggplot(data = evals, aes(x = bty_avg, y = score)) +\n  geom_point()"},{"id":7,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-7","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"ggplot(data = evals, aes(x = bty_avg, y = score)) +\n  geom_jitter()"},{"id":8,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-8","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"# Enter code here"},{"id":9,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-9","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"ggplot(data = evals, aes(x = bty_avg, y = score)) +\n  geom_jitter() +\n  geom_smooth(method = \"lm\")"},{"id":10,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-10","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"ggplot(data = evals, aes(x = bty_avg, y = score)) +\n  geom_jitter() +\n  geom_smooth(method = \"lm\", se = FALSE)"},{"id":11,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-11","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"# Enter code here"},{"id":12,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-12","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"ggplot(data = evals, aes(x = bty_f1lower, y = bty_avg)) +\n  geom_point()\n\nevals %>% \n  summarise(cor(bty_avg, bty_f1lower))"},{"id":13,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-13","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"evals %>%\n  select(contains(\"bty\")) %>%\n  ggpairs()"},{"id":14,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-14","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"m_bty_gen <- lm(score ~ bty_avg + gender, data = evals)\ntidy(m_bty_gen)"},{"id":15,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-15","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"# Enter code here"},{"id":16,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-16","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"# Enter code here"},{"id":17,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-17","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"m_full <- lm(score ~ rank + gender + ethnicity + language + age + cls_perc_eval \n             + cls_students + cls_level + cls_profs + cls_credits + bty_avg, data = evals)\ntidy(m_full)"},{"id":18,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-18","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"# Enter code here"},{"id":19,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-19","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"# Enter code here"},{"id":20,"options":{"message":"true","comment":"","results":"markup","classes":"","dpi":72,"fig-width":7,"fig-height":5,"context":"interactive","editor-max-height":"","autorun":"false","output":"true","warning":"true","read-only":"false","fig-cap":"","out-width":"700px","editor-font-scale":"1","label":"unnamed-chunk-20","out-height":"","editor-word-wrap":"true","editor-quick-suggestions":"false"},"code":"# Enter code here"}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1684,8 +1684,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>Is this an observational study or an experiment? The original research question posed in the paper is whether beauty leads directly to the differences in course evaluations. Given the study design, is it possible to answer this question as it is phrased? If not, rephrase the question.</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="2" type="1">
 <li>Describe the distribution of <code>score</code>. Is the distribution skewed? What does that tell you about how students rate courses? Is this what you expected to see? Why, or why not?</li>
@@ -1693,8 +1692,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="3" type="1">
 <li>Excluding <code>score</code>, select two other variables and describe their relationship with each other using an appropriate visualization.</li>
@@ -1702,8 +1700,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 </section><section class="section level2"><h2 id="simple-linear-regression">Simple linear regression<a class="anchor" aria-label="anchor" href="#simple-linear-regression"></a>
 </h2>
@@ -1717,8 +1714,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="5" type="1">
 <li>Let’s see if the apparent trend in the plot is something more than natural variation. Fit a linear model called <code>m_bty</code> to predict average professor score by average beauty rating. Write out the equation for the linear model and interpret the slope. Is average beauty score a statistically significant predictor? Does it appear to be a practically significant predictor?</li>
@@ -1726,8 +1722,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <p>Add the line of the bet fit model to your plot using the following:</p>
 <div id="qwebr-insertion-location-9"></div>
@@ -1741,8 +1736,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 </section><section class="section level2"><h2 id="multiple-linear-regression">Multiple linear regression<a class="anchor" aria-label="anchor" href="#multiple-linear-regression"></a>
 </h2>
@@ -1762,15 +1756,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="8" type="1">
 <li>Is <code>bty_avg</code> still a significant predictor of <code>score</code>? Has the addition of <code>gender</code> to the model changed the parameter estimate for <code>bty_avg</code>?</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <p>Note that the estimate for <code>gender</code> is now called <code>gendermale</code>. You’ll see this name change whenever you introduce a categorical variable. The reason is that R recodes <code>gender</code> from having the values of <code>male</code> and <code>female</code> to being an indicator variable called <code>gendermale</code> that takes a value of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math> for female professors and a value of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math> for male professors. (Such variables are often referred to as “dummy” variables.)</p>
 <p>As a result, for female professors, the parameter estimate is multiplied by zero, leaving the intercept and slope form familiar from simple regression.</p>
@@ -1783,8 +1775,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>What is the equation of the line corresponding to male professors? (<em>Hint:</em> For male professors, the parameter estimate is multiplied by 1.) For two professors who received the same beauty rating, which gender tends to have the higher course evaluation score?</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <p>The decision to call the indicator variable <code>gendermale</code> instead of <code>genderfemale</code> has no deeper meaning. R simply codes the category that comes first alphabetically as a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>. (You can change the reference level of a categorical variable, which is the level that is coded as a 0, using the<code><a href="https://rdrr.io/r/stats/relevel.html" class="external-link">relevel()</a></code> function. Use <code><a href="https://rdrr.io/r/stats/relevel.html" class="external-link">?relevel</a></code> to learn more.)</p>
 <ol start="10" type="1">
@@ -1793,8 +1784,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <p>The interpretation of the coefficients in multiple regression is slightly different from that of simple regression. The estimate for <code>bty_avg</code> reflects how much higher a group of professors is expected to score if they have a beauty rating that is one point higher <em>while holding all other variables constant</em>. In this case, that translates into considering only professors of the same rank with <code>bty_avg</code> scores that are one point apart.</p>
 </section><section class="section level2"><h2 id="the-search-for-the-best-model">The search for the best model<a class="anchor" aria-label="anchor" href="#the-search-for-the-best-model"></a>
@@ -1804,8 +1794,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>Which variable would you expect to have the highest p-value in this model? Why? <em>Hint:</em> Think about which variable would you expect to not have any association with the professor score.</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <p>Let’s run the model…</p>
 <div id="qwebr-insertion-location-17"></div>
@@ -1814,15 +1803,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>Check your suspicions from the previous exercise. Include the model output in your response.</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="13" type="1">
 <li>Interpret the coefficient associated with the ethnicity variable.</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="14" type="1">
 <li>Drop one variable at a time and peek at the adjusted <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>R</mi><mn>2</mn></msup><annotation encoding="application/x-tex">R^2</annotation></semantics></math>. Removing which variable increases adjusted <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>R</mi><mn>2</mn></msup><annotation encoding="application/x-tex">R^2</annotation></semantics></math> the most? Drop the variable with the highest p-value and re-fit the model. Did the coefficients and significance of the other explanatory variables change with this variable removed? (One of the things that makes multiple regression interesting is that coefficient estimates depend on the other variables that are included in the model.) If not, what does this say about whether or not the dropped variable was collinear with the other explanatory variables?</li>
@@ -1830,8 +1817,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="15" type="1">
 <li>Using backward-selection and adjusted <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>R</mi><mn>2</mn></msup><annotation encoding="application/x-tex">R^2</annotation></semantics></math> as the selection criterion, determine the best model. You do not need to show all steps in your answer, just the output for the final model. Also, write out the linear model for predicting score based on the final model you settle on.</li>
@@ -1839,8 +1825,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="16" type="1">
 <li>Verify that the conditions for this model are reasonable using diagnostic plots.</li>
@@ -1848,29 +1833,25 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="17" type="1">
 <li>The original paper describes how these data were gathered by taking a sample of professors from the University of Texas at Austin and including all courses that they have taught. Considering that each row represents a course, could this new information have an impact on any of the conditions of linear regression?</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="18" type="1">
 <li>Based on your final model, describe the characteristics of a professor and course at University of Texas at Austin that would be associated with a high evaluation score.</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="19" type="1">
 <li>Would you be comfortable generalizing your conclusions to apply to professors generally (at any university)? Why or why not?</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 </section><section class="section level2"><h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>

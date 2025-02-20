@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"code":"library(openintro)\nsummary(arbuthnot)","options":{"results":"markup","out-height":"","message":"false","fig-width":7,"editor-max-height":"","editor-word-wrap":"true","output":"true","read-only":"false","editor-quick-suggestions":"false","warning":"true","comment":"","fig-height":5,"editor-font-scale":"1","classes":"","fig-cap":"","autorun":"true","label":"unnamed-chunk-1","dpi":72,"context":"interactive","out-width":"700px"}},{"id":2,"code":"download.file(\"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/arbuthnot.csv\", destfile = \"arbuthnot.csv\")\narbuthnot <- read.csv(file = \"arbuthnot.csv\")","options":{"results":"markup","out-height":"","message":"false","fig-width":7,"editor-max-height":"","editor-word-wrap":"true","output":"true","read-only":"false","editor-quick-suggestions":"false","warning":"true","comment":"","fig-height":5,"editor-font-scale":"1","classes":"","fig-cap":"","autorun":"false","label":"unnamed-chunk-2","dpi":72,"context":"interactive","out-width":"700px"}},{"id":3,"code":"library(tableone)\nCreateTableOne(data = arbuthnot, includeNA = TRUE)","options":{"results":"markup","out-height":"","message":"false","fig-width":7,"editor-max-height":"","editor-word-wrap":"true","output":"asis","read-only":"false","editor-quick-suggestions":"false","warning":"true","comment":"","fig-height":5,"editor-font-scale":"1","classes":"","fig-cap":"","autorun":"true","label":"unnamed-chunk-3","dpi":72,"context":"interactive","out-width":"700px"}}];
+  globalThis.qwebrCellDetails = [{"id":1,"options":{"output":"true","editor-word-wrap":"true","results":"markup","label":"unnamed-chunk-1","fig-cap":"","editor-max-height":"","fig-height":5,"editor-quick-suggestions":"false","fig-width":7,"editor-font-scale":"1","dpi":72,"context":"interactive","message":"false","out-width":"700px","comment":"","warning":"true","read-only":"false","autorun":"false","classes":"","out-height":""},"code":"library(openintro)"},{"id":2,"options":{"output":"true","editor-word-wrap":"true","results":"markup","label":"unnamed-chunk-2","fig-cap":"","editor-max-height":"","fig-height":5,"editor-quick-suggestions":"false","fig-width":7,"editor-font-scale":"1","dpi":72,"context":"interactive","message":"true","out-width":"700px","comment":"","warning":"true","read-only":"false","autorun":"true","classes":"","out-height":""},"code":"download.file(\"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/arbuthnot.csv\", destfile = \"arbuthnot.csv\")\narbuthnot <- read.csv(file = \"arbuthnot.csv\")"},{"id":3,"options":{"output":"asis","editor-word-wrap":"true","results":"markup","label":"unnamed-chunk-3","fig-cap":"","editor-max-height":"","fig-height":5,"editor-quick-suggestions":"false","fig-width":7,"editor-font-scale":"1","dpi":72,"context":"interactive","message":"false","out-width":"700px","comment":"","warning":"true","read-only":"false","autorun":"true","classes":"","out-height":""},"code":"library(tableone)\nCreateTableOne(data = arbuthnot, includeNA = TRUE)"}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1666,9 +1666,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <strong>Dataset name:</strong> <code>arbuthnot</code>
 </li>
 <li>
-<strong>Location:</strong> Loaded automatically when the <code>openintro</code> package is loaded</li>
-<li>
-<strong>Location:</strong> Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets</li>
+<strong>Location:</strong> Loaded automatically when the <code>openintro</code> package is loaded. Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets</li>
+<li><a href="https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/main/datasets/arbuthnot.csv" class="external-link">Download the dataset now</a></li>
 </ul>
 <p>Option 1: load this dataset from the openintro package:</p>
 <div id="qwebr-insertion-location-1"></div>
@@ -1714,11 +1713,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <strong>Range</strong>: 2,722 to 7,779</li>
 <li>
 <strong>Missing values</strong>: None</li>
-</ul></section></section><section class="level2"><h3 id="summary-statistics">Summary Statistics<a class="anchor" aria-label="anchor" href="#summary-statistics"></a>
-</h3>
-<div id="qwebr-insertion-location-3"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section class="level3"><h4 id="time-period-coverage">Time Period Coverage<a class="anchor" aria-label="anchor" href="#time-period-coverage"></a>
+</ul></section><section class="level3"><h4 id="time-period-coverage">Time Period Coverage<a class="anchor" aria-label="anchor" href="#time-period-coverage"></a>
 </h4>
 <ul>
 <li>Start year: 1629</li>
@@ -1737,7 +1732,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>Average girls per year: 5,535</li>
 <li>Minimum total births (1650): 5,612</li>
 <li>Maximum total births (1705): 16,145</li>
-</ul></section></section><section class="level2"><h3 id="data-quality-notes">Data Quality Notes<a class="anchor" aria-label="anchor" href="#data-quality-notes"></a>
+</ul></section></section><section class="level2"><h3 id="summary-statistics">Summary Statistics<a class="anchor" aria-label="anchor" href="#summary-statistics"></a>
+</h3>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section><section class="level2"><h3 id="data-quality-notes">Data Quality Notes<a class="anchor" aria-label="anchor" href="#data-quality-notes"></a>
 </h3>
 <ul>
 <li>The dataset is complete with no missing values</li>

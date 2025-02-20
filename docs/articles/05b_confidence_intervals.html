@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"output":"true","dpi":72,"out-width":"700px","fig-width":7,"context":"interactive","warning":"true","autorun":"false","results":"markup","comment":"","message":"true","fig-cap":"","label":"unnamed-chunk-1","editor-font-scale":"1","editor-max-height":"","fig-height":5,"read-only":"false","editor-quick-suggestions":"false","out-height":"","editor-word-wrap":"true","classes":""},"code":"library(dplyr)\nlibrary(ggplot2)\nlibrary(openintro)\nlibrary(infer)\nlibrary(purrr)"},{"id":2,"options":{"output":"true","dpi":72,"out-width":"700px","fig-width":7,"context":"interactive","warning":"true","autorun":"false","results":"markup","comment":"","message":"true","fig-cap":"","label":"unnamed-chunk-2","editor-font-scale":"1","editor-max-height":"","fig-height":5,"read-only":"false","editor-quick-suggestions":"false","out-height":"","editor-word-wrap":"true","classes":""},"code":"us_adults <- tibble(\n  climate_change_affects = c(rep(\"Yes\", 62000), rep(\"No\", 38000))\n)\nglimpse(us_adults)"},{"id":3,"options":{"output":"true","dpi":72,"out-width":"700px","fig-width":7,"context":"interactive","warning":"true","autorun":"false","results":"markup","comment":"","message":"true","fig-cap":"","label":"unnamed-chunk-3","editor-font-scale":"1","editor-max-height":"","fig-height":5,"read-only":"false","editor-quick-suggestions":"false","out-height":"","editor-word-wrap":"true","classes":""},"code":"ggplot(us_adults, aes(x = climate_change_affects)) +\n  geom_bar() +\n  labs(\n    x = \"\", y = \"\",\n    title = \"Do you think climate change is affecting your local community?\"\n  ) +\n  coord_flip() "},{"id":4,"options":{"output":"true","dpi":72,"out-width":"700px","fig-width":7,"context":"interactive","warning":"true","autorun":"false","results":"markup","comment":"","message":"true","fig-cap":"","label":"unnamed-chunk-4","editor-font-scale":"1","editor-max-height":"","fig-height":5,"read-only":"false","editor-quick-suggestions":"false","out-height":"","editor-word-wrap":"true","classes":""},"code":"us_adults %>%\n  count(climate_change_affects) %>%\n  mutate(p = n /sum(n))\nglimpse(us_adults)"},{"id":5,"options":{"output":"true","dpi":72,"out-width":"700px","fig-width":7,"context":"interactive","warning":"true","autorun":"false","results":"markup","comment":"","message":"true","fig-cap":"","label":"unnamed-chunk-5","editor-font-scale":"1","editor-max-height":"","fig-height":5,"read-only":"false","editor-quick-suggestions":"false","out-height":"","editor-word-wrap":"true","classes":""},"code":"n <- 60\nsamp <- us_adults %>%\n  sample_n(size = n)\ntable(samp)"},{"id":6,"options":{"output":"true","dpi":72,"out-width":"700px","fig-width":7,"context":"interactive","warning":"true","autorun":"false","results":"markup","comment":"","message":"true","fig-cap":"","label":"unnamed-chunk-6","editor-font-scale":"1","editor-max-height":"","fig-height":5,"read-only":"false","editor-quick-suggestions":"false","out-height":"","editor-word-wrap":"true","classes":""},"code":"samp %>%\n  specify(response = climate_change_affects, success = \"Yes\") %>%\n  generate(reps = 1000, type = \"bootstrap\") %>%\n  calculate(stat = \"prop\") %>%\n  get_ci(level = 0.95)"},{"id":7,"options":{"output":"true","dpi":72,"out-width":"700px","fig-width":7,"context":"interactive","warning":"true","autorun":"false","results":"markup","comment":"","message":"true","fig-cap":"","label":"unnamed-chunk-7","editor-font-scale":"1","editor-max-height":"","fig-height":5,"read-only":"false","editor-quick-suggestions":"false","out-height":"","editor-word-wrap":"true","classes":""},"code":"# Adjust the following parameters to change the analysis\nn_samp <- 60\nn_rep <- 1000\nconf_level <- 0.95\nn_ci <- 50\nsuccess <- \"Yes\"\np <- ifelse(success == \"Yes\", 0.62, 0.38) # Set true p\n\n#----------------------------\n# No changes below this point\n#----------------------------\n\n# Function to store confidence intervals\nstore_ci <- function(i, n, reps, conf_level, success) {\n  p <- ifelse(success == \"Yes\", 0.62, 0.38)\n  sample_data <- rbinom(n, 1, p)\n  boot_samples <- replicate(reps, mean(sample(sample_data, n, replace = TRUE)))\n  ci <- quantile(boot_samples, probs = c((1 - conf_level) / 2, 1 - (1 - conf_level) / 2))\n  tibble(x_lower = ci[1], x_upper = ci[2])\n}\n\n# Create df_ci\ndf_ci <- map_dfr(1:n_ci, store_ci, n = n_samp, reps = n_rep, conf_level = conf_level, success = success) %>%\n  mutate(\n    y_lower = 1:n_ci,\n    y_upper = 1:n_ci,\n    capture_p = ifelse(x_lower < p & x_upper > p, \"Yes\", \"No\")\n  )\n\n# Plot df_ci\nggplot(df_ci) +\n  geom_segment(aes(x = x_lower, y = y_lower, xend = x_upper, yend = y_upper, color = capture_p)) +\n  geom_point(aes(x = x_lower, y = y_lower, color = capture_p)) +\n  geom_point(aes(x = x_upper, y = y_upper, color = capture_p)) +\n  geom_vline(xintercept = p, color = \"darkgray\") +\n  labs(\n    y = \"\", x = \"Bounds of the confidence interval\",\n    color = \"Does the interval capture the true population proportion?\"\n  ) +\n  theme(legend.position = \"bottom\")"},{"id":8,"options":{"output":"true","dpi":72,"out-width":"700px","fig-width":7,"context":"interactive","warning":"true","autorun":"false","results":"markup","comment":"","message":"true","fig-cap":"","label":"unnamed-chunk-8","editor-font-scale":"1","editor-max-height":"","fig-height":5,"read-only":"false","editor-quick-suggestions":"false","out-height":"","editor-word-wrap":"true","classes":""},"code":"# Enter code here"},{"id":9,"options":{"output":"true","dpi":72,"out-width":"700px","fig-width":7,"context":"interactive","warning":"true","autorun":"false","results":"markup","comment":"","message":"true","fig-cap":"","label":"unnamed-chunk-9","editor-font-scale":"1","editor-max-height":"","fig-height":5,"read-only":"false","editor-quick-suggestions":"false","out-height":"","editor-word-wrap":"true","classes":""},"code":"# Enter code here"}];
+  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(ggplot2)\nlibrary(openintro)\nlibrary(infer)\nlibrary(purrr)","id":1,"options":{"warning":"true","fig-width":7,"editor-max-height":"","context":"interactive","results":"markup","editor-font-scale":"1","editor-word-wrap":"true","classes":"","fig-height":5,"output":"true","fig-cap":"","dpi":72,"read-only":"false","autorun":"false","comment":"","message":"true","out-height":"","out-width":"700px","label":"unnamed-chunk-1","editor-quick-suggestions":"false"}},{"code":"us_adults <- tibble(\n  climate_change_affects = c(rep(\"Yes\", 62000), rep(\"No\", 38000))\n)\nglimpse(us_adults)","id":2,"options":{"warning":"true","fig-width":7,"editor-max-height":"","context":"interactive","results":"markup","editor-font-scale":"1","editor-word-wrap":"true","classes":"","fig-height":5,"output":"true","fig-cap":"","dpi":72,"read-only":"false","autorun":"false","comment":"","message":"true","out-height":"","out-width":"700px","label":"unnamed-chunk-2","editor-quick-suggestions":"false"}},{"code":"ggplot(us_adults, aes(x = climate_change_affects)) +\n  geom_bar() +\n  labs(\n    x = \"\", y = \"\",\n    title = \"Do you think climate change is affecting your local community?\"\n  ) +\n  coord_flip() ","id":3,"options":{"warning":"true","fig-width":7,"editor-max-height":"","context":"interactive","results":"markup","editor-font-scale":"1","editor-word-wrap":"true","classes":"","fig-height":5,"output":"true","fig-cap":"","dpi":72,"read-only":"false","autorun":"false","comment":"","message":"true","out-height":"","out-width":"700px","label":"unnamed-chunk-3","editor-quick-suggestions":"false"}},{"code":"us_adults %>%\n  count(climate_change_affects) %>%\n  mutate(p = n /sum(n))\nglimpse(us_adults)","id":4,"options":{"warning":"true","fig-width":7,"editor-max-height":"","context":"interactive","results":"markup","editor-font-scale":"1","editor-word-wrap":"true","classes":"","fig-height":5,"output":"true","fig-cap":"","dpi":72,"read-only":"false","autorun":"false","comment":"","message":"true","out-height":"","out-width":"700px","label":"unnamed-chunk-4","editor-quick-suggestions":"false"}},{"code":"n <- 60\nsamp <- us_adults %>%\n  sample_n(size = n)\ntable(samp)","id":5,"options":{"warning":"true","fig-width":7,"editor-max-height":"","context":"interactive","results":"markup","editor-font-scale":"1","editor-word-wrap":"true","classes":"","fig-height":5,"output":"true","fig-cap":"","dpi":72,"read-only":"false","autorun":"false","comment":"","message":"true","out-height":"","out-width":"700px","label":"unnamed-chunk-5","editor-quick-suggestions":"false"}},{"code":"samp %>%\n  specify(response = climate_change_affects, success = \"Yes\") %>%\n  generate(reps = 1000, type = \"bootstrap\") %>%\n  calculate(stat = \"prop\") %>%\n  get_ci(level = 0.95)","id":6,"options":{"warning":"true","fig-width":7,"editor-max-height":"","context":"interactive","results":"markup","editor-font-scale":"1","editor-word-wrap":"true","classes":"","fig-height":5,"output":"true","fig-cap":"","dpi":72,"read-only":"false","autorun":"false","comment":"","message":"true","out-height":"","out-width":"700px","label":"unnamed-chunk-6","editor-quick-suggestions":"false"}},{"code":"# Adjust the following parameters to change the analysis\nn_samp <- 60\nn_rep <- 1000\nconf_level <- 0.95\nn_ci <- 50\nsuccess <- \"Yes\"\np <- ifelse(success == \"Yes\", 0.62, 0.38) # Set true p\n\n#----------------------------\n# No changes below this point\n#----------------------------\n\n# Function to store confidence intervals\nstore_ci <- function(i, n, reps, conf_level, success) {\n  p <- ifelse(success == \"Yes\", 0.62, 0.38)\n  sample_data <- rbinom(n, 1, p)\n  boot_samples <- replicate(reps, mean(sample(sample_data, n, replace = TRUE)))\n  ci <- quantile(boot_samples, probs = c((1 - conf_level) / 2, 1 - (1 - conf_level) / 2))\n  tibble(x_lower = ci[1], x_upper = ci[2])\n}\n\n# Create df_ci\ndf_ci <- map_dfr(1:n_ci, store_ci, n = n_samp, reps = n_rep, conf_level = conf_level, success = success) %>%\n  mutate(\n    y_lower = 1:n_ci,\n    y_upper = 1:n_ci,\n    capture_p = ifelse(x_lower < p & x_upper > p, \"Yes\", \"No\")\n  )\n\n# Plot df_ci\nggplot(df_ci) +\n  geom_segment(aes(x = x_lower, y = y_lower, xend = x_upper, yend = y_upper, color = capture_p)) +\n  geom_point(aes(x = x_lower, y = y_lower, color = capture_p)) +\n  geom_point(aes(x = x_upper, y = y_upper, color = capture_p)) +\n  geom_vline(xintercept = p, color = \"darkgray\") +\n  labs(\n    y = \"\", x = \"Bounds of the confidence interval\",\n    color = \"Does the interval capture the true population proportion?\"\n  ) +\n  theme(legend.position = \"bottom\")","id":7,"options":{"warning":"true","fig-width":7,"editor-max-height":"","context":"interactive","results":"markup","editor-font-scale":"1","editor-word-wrap":"true","classes":"","fig-height":5,"output":"true","fig-cap":"","dpi":72,"read-only":"false","autorun":"false","comment":"","message":"true","out-height":"","out-width":"700px","label":"unnamed-chunk-7","editor-quick-suggestions":"false"}},{"code":"# Enter code here","id":8,"options":{"warning":"true","fig-width":7,"editor-max-height":"","context":"interactive","results":"markup","editor-font-scale":"1","editor-word-wrap":"true","classes":"","fig-height":5,"output":"true","fig-cap":"","dpi":72,"read-only":"false","autorun":"false","comment":"","message":"true","out-height":"","out-width":"700px","label":"unnamed-chunk-8","editor-quick-suggestions":"false"}},{"code":"# Enter code here","id":9,"options":{"warning":"true","fig-width":7,"editor-max-height":"","context":"interactive","results":"markup","editor-font-scale":"1","editor-word-wrap":"true","classes":"","fig-height":5,"output":"true","fig-cap":"","dpi":72,"read-only":"false","autorun":"false","comment":"","message":"true","out-height":"","out-width":"700px","label":"unnamed-chunk-9","editor-quick-suggestions":"false"}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1694,15 +1694,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>What percent of the adults in your sample think climate change affects their local community? <strong>Hint:</strong> Just like we did with the population, we can calculate the proportion of those <strong>in this sample</strong> who think climate change affects their local community.</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="2" type="1">
 <li>Would you expect another student’s sample proportion to be identical to yours? Would you expect it to be similar? Why or why not?</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 </section></section><section class="level2"><h2 id="confidence-intervals">Confidence intervals<a class="anchor" aria-label="anchor" href="#confidence-intervals"></a>
 </h2>
@@ -1766,23 +1764,20 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>In the interpretation above, we used the phrase “95% confident”. What does “95% confidence” mean?</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <p>In this case, you have the rare luxury of knowing the true population proportion (62%) since you have data on the entire population.</p>
 <ol type="1">
 <li>Does your confidence interval capture the true population proportion of US adults who think climate change affects their local community? If you are working on this lab in a classroom, does your neighbor’s interval capture this value?</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="2" type="1">
 <li>Each student should have gotten a slightly different confidence interval. What proportion of those intervals would you expect to capture the true population mean? Why?</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <p>In the next part of the lab, you will collect many samples to learn more about how sample proportions and confidence intervals constructed based on those samples vary from one sample to another.</p>
 <ul>
@@ -1797,8 +1792,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>Given a sample size of 60, 1000 bootstrap samples for each interval, and 50 confidence intervals constructed (the default values for the above app), what proportion of your confidence intervals include the true population proportion? Is this proportion exactly equal to the confidence level? If not, explain why. Make sure to include your plot in your answer.</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <hr></section><section class="level2"><h2 id="more-practice">More Practice<a class="anchor" aria-label="anchor" href="#more-practice"></a>
 </h2>
@@ -1806,8 +1800,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>Choose a different confidence level than 95% (changing <code>conf_level &lt;- 0.95</code>) Would you expect a confidence interval at this level to be wider or narrower than the confidence interval you calculated at the 95% confidence level? Explain your reasoning.</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="8" type="1">
 <li>Using code from the <strong>infer</strong> package and data from the one sample you have (<code>samp</code>), find a confidence interval for the proportion of US Adults who think climate change is affecting their local community with a confidence level of your choosing (other than 95%) and interpret it.</li>
@@ -1815,15 +1808,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="9" type="1">
 <li>Calculate 50 confidence intervals at the confidence level you chose in the previous question, and plot all intervals on one plot, and calculate the proportion of intervals that include the true population proportion. How does this percentage compare to the confidence level selected for the intervals?</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="10" type="1">
 <li>Lastly, try one more (different) confidence level. First, state how you expect the width of this interval to compare to previous ones you calculated. Then, calculate the bounds of the interval using the <strong>infer</strong> package and data from <code>samp</code> and interpret it. Finally, generate many intervals and calculate the proportion of intervals that are capture the true population proportion.</li>
@@ -1831,22 +1822,19 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="11" type="1">
 <li>Experiment with different sample sizes (n_samp) and comment on how the widths of intervals change as sample size changes (increases and decreases).</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <ol start="12" type="1">
 <li>Finally, given a sample size (say, 60), how does the width of the interval change as you increase the number of bootstrap samples (<code>n_rep</code>). <strong>Hint:</strong> Does changing the number of bootstrap samples affect the standard error?</li>
 </ol>
 <form>
-<label for="comments">Comments:</label>
-<textarea id="comments" name="comments" class="textarea-box"></textarea>
+<textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
 </form>
 <p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0" alt="Creative Commons License"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
 </section><script id="quarto-html-after-body" type="application/javascript">
