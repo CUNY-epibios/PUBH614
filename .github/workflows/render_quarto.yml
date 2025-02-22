@@ -5,93 +5,118 @@ on:
     branches: [main] 
   pull_request:
     branches: [main] 
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch:
 
 jobs:
   render:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]  # Consider removing self-hosted if not needed
+        os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
 
     permissions:
-      contents: write # Permission to write contents, which is required for deployment
+      contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Pandoc (Required for Quarto)
+      - name: Setup Pandoc
         uses: r-lib/actions/setup-pandoc@v2 
 
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
         with:
-          r-version: 'latest' 
+          r-version: '4.3.2'
 
-      - name: Install Quarto (Stable Version)
+      - name: Setup R Dependencies for Windows
+        if: runner.os == 'Windows'
+        run: |
+          Rscript -e 'Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS="true")'
+
+      - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: "1.4.554"  # Pinned version to avoid 404 errors
+          version: "1.4.554"
 
       - name: Verify Quarto Installation
         run: |
-          echo "Checking Quarto version..."
-          quarto --version || { echo "Quarto installation failed!"; exit 1; }
+          quarto --version || exit 1
+        shell: bash {0}
 
       - name: Cache R Packages
         uses: actions/cache@v3
         with:
-          path: ~/.local/share/R
-          key: ${{ runner.os }}-r-packages-${{ hashFiles('**/renv.lock') }}  # Cache based on renv.lock
+          path: |
+            ~/.local/share/R
+            ${{ env.R_HOME }}/library
+          key: ${{ runner.os }}-r-packages-${{ hashFiles('**/renv.lock') }}
           restore-keys: |
             ${{ runner.os }}-r-packages-
 
       - name: Install System Dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+          if [ "${{ runner.os }}" = "Linux" ]; then
+            sudo apt-get update
+            sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+          elif [ "${{ runner.os }}" = "macOS" ]; then
+            brew install libgit2 openssl curl
+          elif [ "${{ runner.os }}" = "Windows" ]; then
+            choco install openssl -y || echo "Chocolatey install failed, continuing anyway"
+          fi
+        shell: bash {0}
+
+      - name: Verify Environment
+        run: |
+          echo "OS: ${{ runner.os }}"
+          Rscript -e 'sessionInfo()'
+          quarto --version
+        shell: bash {0}
 
       - name: Install R Dependencies
         run: |
-          echo "Installing R packages..."
-          # Install remotes package first (if not installed)
-          Rscript -e 'if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")'
-          # Install quarto-r from GitHub using remotes
+          Rscript -e 'if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes", repos = "http://cran.us.r-project.org")'
           Rscript -e 'remotes::install_github("quarto-dev/quarto-r")'
-          # Install other required packages
           Rscript -e 'install.packages(c("tidyverse", "renv"), repos = "http://cran.us.r-project.org")'
-
-          # Optional: Check if the packages were installed successfully
-          Rscript -e 'installed.packages()[,1]'
+        env:
+          R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
 
       - name: Verify Installed R Packages
         run: |
-          echo "Checking installed R packages..."
           Rscript -e 'installed.packages()[,1]'
 
       - name: Render Quarto Website
         run: |
-          echo "Rendering Quarto website..."
-          quarto render
-        continue-on-error: false  # Fail the build on render failure
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            quarto render --no-execute-daemon
+          else
+            quarto render
+          fi
+        shell: bash {0}
+        continue-on-error: false
 
       - name: Debug Render Failure
         if: failure()
         run: |
-          echo "Quarto render failed. Checking logs..."
-          ls -la _site/  # List _site directory content for potential issues
-          cat _site/*.log || echo "No log files found."  # Output logs if they exist
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            dir _site 2>nul || echo "No _site directory"
+            type _site\*.log 2>nul || echo "No log files found"
+          else
+            ls -la _site/ || echo "No _site directory"
+            cat _site/*.log || echo "No log files found"
+          fi
+        shell: bash {0}
 
       - name: Deploy to GitHub Pages
         if: success() && github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages 
-          folder: _site  # Deploy the content of _site to the gh-pages branch
-          clean: true  # Clean old files in the gh-pages branch before deployment
+          branch: gh-pages
+          folder: _site
+          clean: true
 
       - name: Notify on Failure
         if: failure()
         run: |
           echo "::error:: Quarto rendering failed! Check logs in GitHub Actions."
+        shell: bash {0}
