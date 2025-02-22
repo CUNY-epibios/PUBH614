@@ -38,7 +38,7 @@ jobs:
       - name: Install System Dependencies for webR
         run: |
           sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev qpdf pkgconfig  # Added qpdf and pkgconfig as requested
+          sudo apt-get install -y build-essential pkg-config libcurl4-openssl-dev libssl-dev libxml2-dev qpdf
 
       - name: Install Node.js (for webR JavaScript support)
         uses: actions/setup-node@v3
