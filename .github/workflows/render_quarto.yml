@@ -1,18 +1,15 @@
-name: Render Quarto Website
+name: Render Quarto webR Website
 
 on:
   push:
-    branches: [main] 
+    branches: [main]
   pull_request:
-    branches: [main] 
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   render:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest  # Using Ubuntu for consistency with your local testing
 
     permissions:
       contents: write
@@ -22,27 +19,35 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup Pandoc
-        uses: r-lib/actions/setup-pandoc@v2 
+        uses: r-lib/actions/setup-pandoc@v2  # Updated to v2 as per warning
 
       - name: Setup R
-        uses: r-lib/actions/setup-r@v2
+        uses: r-lib/actions/setup-r@v2  # Updated to v2 as per warning
         with:
-          r-version: '4.3.2'
-
-      - name: Setup R Dependencies for Windows
-        if: runner.os == 'Windows'
-        run: |
-          Rscript -e 'Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS="true")'
+          r-version: '4.3.2'  # Pinned for consistency
 
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: "1.4.554"
+          version: "1.6.41"  # Pinned to current stable release (adjust if needed, e.g., 1.7.13 pre-release)
 
       - name: Verify Quarto Installation
         run: |
           quarto --version || exit 1
-        shell: bash {0}
+
+      - name: Install System Dependencies for webR
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev qpdf pkgconfig  # Added qpdf and pkgconfig as requested
+
+      - name: Install Node.js (for webR JavaScript support)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Match webR requirements (adjust if needed)
+
+      - name: Install webR
+        run: |
+          npm install -g @r-wasm/webr  # Install webR via npm for Quarto webR support
 
       - name: Cache R Packages
         uses: actions/cache@v3
@@ -54,29 +59,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-r-packages-
 
-      - name: Install System Dependencies
-        run: |
-          if [ "${{ runner.os }}" = "Linux" ]; then
-            sudo apt-get update
-            sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
-          elif [ "${{ runner.os }}" = "macOS" ]; then
-            brew install libgit2 openssl curl
-          elif [ "${{ runner.os }}" = "Windows" ]; then
-            choco install openssl -y || echo "Chocolatey install failed, continuing anyway"
-          fi
-        shell: bash {0}
-
-      - name: Verify Environment
-        run: |
-          echo "OS: ${{ runner.os }}"
-          Rscript -e 'sessionInfo()'
-          quarto --version
-        shell: bash {0}
-
       - name: Install R Dependencies
         run: |
           Rscript -e 'if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes", repos = "http://cran.us.r-project.org")'
-          Rscript -e 'remotes::install_github("quarto-dev/quarto-r")'
+          Rscript -e 'remotes::install_github("quarto-dev/quarto-r@master")'  # Install quarto-r for Quarto R integration
           Rscript -e 'install.packages(c("tidyverse", "renv"), repos = "http://cran.us.r-project.org")'
         env:
           R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -85,27 +71,16 @@ jobs:
         run: |
           Rscript -e 'installed.packages()[,1]'
 
-      - name: Render Quarto Website
+      - name: Render Quarto webR Website
         run: |
-          if [ "${{ runner.os }}" = "Windows" ]; then
-            quarto render --no-execute-daemon
-          else
-            quarto render
-          fi
-        shell: bash {0}
+          quarto render --no-execute-daemon  # Ensure webR compatibility
         continue-on-error: false
 
       - name: Debug Render Failure
         if: failure()
         run: |
-          if [ "${{ runner.os }}" = "Windows" ]; then
-            dir _site 2>nul || echo "No _site directory"
-            type _site\*.log 2>nul || echo "No log files found"
-          else
-            ls -la _site/ || echo "No _site directory"
-            cat _site/*.log || echo "No log files found"
-          fi
-        shell: bash {0}
+          ls -la _site/ || echo "No _site directory"
+          cat _site/*.log || echo "No log files found"
 
       - name: Deploy to GitHub Pages
         if: success() && github.event_name != 'pull_request'
@@ -119,4 +94,3 @@ jobs:
         if: failure()
         run: |
           echo "::error:: Quarto rendering failed! Check logs in GitHub Actions."
-        shell: bash {0}
