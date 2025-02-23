@@ -18,9 +18,9 @@ jobs:
           sudo apt update
           sudo apt install -y --no-install-recommends software-properties-common dirmngr
 
-          # Add R repo and key (alternative method for better control)
+          # Add R repo and key for Ubuntu 22.04
           sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0xA5D0B5A3D5EC51D1
-          sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/"
+          sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/"
           sudo apt update
           sudo apt install -y r-base
 
