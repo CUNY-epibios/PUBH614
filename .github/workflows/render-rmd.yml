@@ -62,7 +62,7 @@ jobs:
       - name: Install R and Dependencies
         run: |
           # Update system package lists
-          sudo apt update -qq
+          sudo apt update
 
           # Install required system dependencies for R
           sudo apt install --no-install-recommends software-properties-common dirmngr
@@ -74,13 +74,16 @@ jobs:
           sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 
           # Install R (latest stable version)
+          sudo apt update
           sudo apt install --no-install-recommends r-base
 
           # Install R packages via apt when possible (faster & avoids compilation issues)
           sudo apt install -y r-cran-tidyverse r-cran-renv r-cran-quarto
+          sudo R -e "install.packages('renv')"
+
 
           # Fallback: Ensure missing packages are installed from CRAN
-          Rscript -e 'install.packages(setdiff(c("tidyverse", "renv", "quarto"), rownames(installed.packages())), repos="https://cloud.r-project.org")'
+          sudo Rscript -e 'install.packages(setdiff(c("tidyverse", "renv", "quarto"), rownames(installed.packages())), repos="https://cloud.r-project.org")'
         env:
           R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
 
