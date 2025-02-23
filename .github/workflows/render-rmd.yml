@@ -59,11 +59,28 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-r-packages-
 
-      - name: Install R Dependencies
+      - name: Install R and Dependencies
         run: |
-          Rscript -e 'if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes", repos = "http://cran.us.r-project.org")'
-          Rscript -e 'remotes::install_github("quarto-dev/quarto-r@master")'  # Install quarto-r for Quarto R integration
-          Rscript -e 'install.packages(c("tidyverse", "renv"), repos = "http://cran.us.r-project.org")'
+          # Update system package lists
+          sudo apt update -qq
+
+          # Install required system dependencies for R
+          sudo apt install --no-install-recommends software-properties-common dirmngr
+
+          # Add the official CRAN signing key
+          wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+
+          # Add the correct CRAN repository based on Ubuntu version
+          sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+
+          # Install R (latest stable version)
+          sudo apt install --no-install-recommends r-base
+
+          # Install R packages via apt when possible (faster & avoids compilation issues)
+          sudo apt install -y r-cran-tidyverse r-cran-renv r-cran-quarto
+
+          # Fallback: Ensure missing packages are installed from CRAN
+          Rscript -e 'install.packages(setdiff(c("tidyverse", "renv", "quarto"), rownames(installed.packages())), repos="https://cloud.r-project.org")'
         env:
           R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
 
