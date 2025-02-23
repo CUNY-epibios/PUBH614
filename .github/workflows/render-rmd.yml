@@ -16,10 +16,11 @@ jobs:
       - name: Set up R environment
         run: |
           sudo apt update
-          sudo apt install --no-install-recommends software-properties-common dirmngr
+          sudo apt install -y --no-install-recommends software-properties-common dirmngr
 
-          # Add R repo and key
-          sudo add-apt-repository -y ppa:c2d4u.team/c2d4u4.0+
+          # Add R repo and key (alternative method for better control)
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0xA5D0B5A3D5EC51D1
+          sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/"
           sudo apt update
           sudo apt install -y r-base
 
