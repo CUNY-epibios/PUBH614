@@ -48,7 +48,7 @@ it is [https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/da
 The `destfile` argument specifies what filename to use for the downloaded file.
 
 ```{webr-r}
-download.file(url = "https://raw.githubusercontent.com/CUNY-epibios/PUBH614/refs/heads/main/datasets/Stats4-%20more.csv", 
+download.file(url = "https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/Stats4-%20more.csv", 
               destfile = "Stats4- more.csv")
 ```
 
