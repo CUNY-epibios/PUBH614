@@ -7,10 +7,7 @@ Use the menu bars above:
 - **OpenIntro Labs**: Labs from [OpenIntro Statistics][OpenIntro]
 - **Other Labs**: Labs from other sources
 - **Datasets**: Codebooks for datasets used in labs
-- **Exercises**: Practice exercises (currently only contains a blank workbook that
-you can use to run R in your browser)
-
-Datasets for these labs are stored in a GitHub repository [here](https://github.com/CUNY-epibios/PUBH614/tree/main/datasets).
+- **Exercises**: contains a blank workbook for running R
 
 From these menus you can run R directly in your web browser. It is running in
 your browser, not on a remote server, so you can run it offline. 
@@ -21,27 +18,26 @@ You can also download the code to run in your own R environment.
 These labs use **[WASM]** (WebAssembly) and **[webR]** to provide a user-friendly 
 alternative for running R directly in your browser. This approach eliminates the 
 need for local installation or a Cloud service, and allows for interactive 
-coding and visualizationwithin the browser environment.
+coding and visualization within the browser environment.
 
-Running R in your web browser can sometimes lead to issues such as:
+Running R in your web browser can sometimes lead to issues such as
 
+- **Your work is not saved**: Data is stored in your browser's local storage, which is 
+separated from your local filesystem. This means that data and code are not 
+persistent across sessions, and you will lose your work if you close the browser.
+You can print the page to save your work, or copy the code to a local text file.
 - **Performance Limitations**: Browser-based execution may be slower compared to 
 local execution. Even if you have a powerful computer, your browser likely only
 supports up to 4GB of memory for WebAssembly applications.
 - **Browser Compatibility**: Ensure you are using a modern browser that supports 
 WebAssembly, such as a current version of Chrome, Firefox, Safari, or Edge.
-- **Data Storage**: Data is stored in your browser's local storage, which is 
-separated from your local filesystem. This means that data and code are not 
-persistent across sessions, and you will lose your work if you close the browser.
-You can print the page to save your work, or copy the code to a local text file.
-
 
 [webR]: https://docs.r-wasm.org/webr/latest/
 [WASM]: https://developer.mozilla.org/en-US/docs/WebAssembly
 
 # About OpenIntro Labs
 
-THe OpenIntro labs (see **OpenIntro labs** tab above) were developed by [OpenIntro Statistics][OpenIntro] and adapted for 
+OpenIntro labs (see **OpenIntro labs** tab above) were developed by [OpenIntro Statistics][OpenIntro] and adapted for 
 use on the web by Levi Waldron at CUNY SPH. OpenIntro Labs promote the 
 understanding and application of statistics through applied data analysis. 
 Labs are titled based on topic area, which correspond to particular chapters in 
@@ -55,28 +51,27 @@ The textbook as well as original versions of the labs can be found at
 
 ## What are R and CRAN?
 
-**R** is a powerful programming language and environment specifically designed 
+**R** is a powerful programming language and environment designed 
 for statistical computing and graphics. It is widely used among statisticians 
 and data scientists for data analysis and visualization. **CRAN** (Comprehensive 
 R Archive Network) is a repository that hosts R packages, which are collections 
 of R functions, data, and compiled code that extend the capabilities of R. 
 CRAN hosts more than 20,000 active packages, or libraries, each adding extra
-functionality to R [[1](https://cran.r-project.org)].
+functionality to [R](https://cran.r-project.org).
 
 ### How is R Different from SAS and SPSS?
 
 R is an open-source language, which means it is free to use and has a large 
 community contributing to its development. Unlike **SAS** and **SPSS**, which 
-are commercial software with licensing fees, R offers flexibility and a vast 
-array of packages for various statistical techniques. R is highly 
-customizable and preferred in academic and research environments for its 
-extensibility and active community support.
+are commercial software with licensing fees, R offers a vast 
+array of free add-on libraries for various statistical techniques. R valued in 
+academic and research environments for its extensibility and active community support.
 
 ## RStudio: A Powerful IDE for R
 
 [RStudio] is a popular integrated development environment (IDE) for running R. 
-It provides a user-friendly interface, tools for plotting, history, debugging, 
-and workspace management. While RStudio is powerful, it does have a learning 
+It provides a feature-rich but complex interface for data analysis and software
+development in R. While RStudio is powerful, it has a learning 
 curve, especially for those new to programming or R. You can install R and 
 RStudio for free on your own computer [here][RStudio].
 
@@ -85,7 +80,8 @@ RStudio for free on your own computer [here][RStudio].
 ## Cloud Services for Running R
 
 There are several cloud services that offer free tiers for running R, making it 
-accessible without the need for local installation:
+accessible without the need for local installation. These offer persistent storage
+and more resources than running R in your browser.
 
 - [posit.cloud] is cloud-based service by Posit (formerly RStudio) 
 that allows you to run R and RStudio using your browser. The
@@ -109,6 +105,10 @@ for improvement, please let Levi Waldron and other potential contributors know
 by [opening an issue](https://github.com/CUNY-epibios/PUBH614/issues).
 
 ## Building this site
+
+Datasets for these labs are stored 
+[here](https://github.com/CUNY-epibios/PUBH614/tree/main/datasets) and source
+code [here](https://github.com/CUNY-epibios/PUBH614/).
 
 Test individual labs from the command-line:
 ```sh

@@ -140,7 +140,7 @@ This dataset contains information about all flights that departed from NYC in 20
 
 ## Summary Statistics
 
-- `tailnum` omitted for brevity as it contains 3,490 unique values (one pereach airplane).
+- `tailnum` omitted for brevity as it contains 3,490 unique values (one for each individual airplane).
 - `dest` omitted for brevity as it contains 102 unique values.
 
 ```{webr-r}

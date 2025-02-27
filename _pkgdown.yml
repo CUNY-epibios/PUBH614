@@ -2,7 +2,7 @@ url: https://cuny-epibios.github.io/PUBH614/
 template:
   bootstrap: 5
   bootswatch: cerulean
-  light-switch: false
+  light-switch: true
 navbar:
   structure:
     left:  [intro, labs, otherlabs, datasets, exercises]
@@ -56,4 +56,4 @@ navbar:
       menu:
         - text: "Blank workbook"
           href: articles/blank_workbook.html
-extra_css: pkgdown/lab.css
+extra_css: pkgdown/extra.css
