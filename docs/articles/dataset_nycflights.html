@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"options":{"autorun":"false","dpi":72,"fig-width":7,"out-width":"700px","context":"interactive","warning":"true","read-only":"false","comment":"","editor-quick-suggestions":"false","message":"false","editor-max-height":"","out-height":"","results":"markup","classes":"","editor-word-wrap":"true","fig-cap":"","fig-height":5,"output":"true","label":"unnamed-chunk-1","editor-font-scale":"1"},"id":1,"code":"library(openintro)"},{"options":{"autorun":"true","dpi":72,"fig-width":7,"out-width":"700px","context":"interactive","warning":"true","read-only":"false","comment":"","editor-quick-suggestions":"false","message":"true","editor-max-height":"","out-height":"","results":"markup","classes":"","editor-word-wrap":"true","fig-cap":"","fig-height":5,"output":"true","label":"unnamed-chunk-2","editor-font-scale":"1"},"id":2,"code":"download.file(\n  \"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/nycflights.csv\",\n  destfile = \"nycflights.csv\"\n)\nnycflights <- read.csv(file = \"nycflights.csv\")"},{"options":{"autorun":"true","dpi":72,"fig-width":7,"out-width":"700px","context":"interactive","warning":"true","read-only":"false","comment":"","editor-quick-suggestions":"false","message":"false","editor-max-height":"","out-height":"","results":"asis","classes":"","editor-word-wrap":"true","fig-cap":"","fig-height":5,"output":"true","label":"unnamed-chunk-3","editor-font-scale":"1"},"id":3,"code":"library(tableone)\nCreateTableOne(data = nycflights[, -c(9, 12)], includeNA = TRUE)"}];
+  globalThis.qwebrCellDetails = [{"id":1,"code":"library(openintro)","options":{"context":"interactive","autorun":"false","editor-quick-suggestions":"false","message":"false","out-width":"700px","fig-width":7,"results":"markup","label":"unnamed-chunk-1","editor-word-wrap":"true","classes":"","dpi":72,"editor-max-height":"","comment":"","warning":"true","out-height":"","editor-font-scale":"1","read-only":"false","output":"true","fig-height":5,"fig-cap":""}},{"id":2,"code":"download.file(\n  \"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/nycflights.csv\",\n  destfile = \"nycflights.csv\"\n)\nnycflights <- read.csv(file = \"nycflights.csv\")","options":{"context":"interactive","autorun":"true","editor-quick-suggestions":"false","message":"true","out-width":"700px","fig-width":7,"results":"markup","label":"unnamed-chunk-2","editor-word-wrap":"true","classes":"","dpi":72,"editor-max-height":"","comment":"","warning":"true","out-height":"","editor-font-scale":"1","read-only":"false","output":"true","fig-height":5,"fig-cap":""}},{"id":3,"code":"library(tableone)\nCreateTableOne(data = nycflights[, -c(9, 12)], includeNA = TRUE)","options":{"context":"interactive","autorun":"true","editor-quick-suggestions":"false","message":"false","out-width":"700px","fig-width":7,"results":"asis","label":"unnamed-chunk-3","editor-word-wrap":"true","classes":"","dpi":72,"editor-max-height":"","comment":"","warning":"true","out-height":"","editor-font-scale":"1","read-only":"false","output":"true","fig-height":5,"fig-cap":""}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1300,7 +1300,7 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="../index.html">PUBH614</a>
 
@@ -1353,6 +1353,14 @@
 </li>
       </ul>
 <ul class="navbar-nav">
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
+<li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
+  </ul>
+</li>
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
@@ -1858,7 +1866,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </h3>
 <ul>
 <li>
-<code>tailnum</code> omitted for brevity as it contains 3,490 unique values (one pereach airplane).</li>
+<code>tailnum</code> omitted for brevity as it contains 3,490 unique values (one for each individual airplane).</li>
 <li>
 <code>dest</code> omitted for brevity as it contains 102 unique values.</li>
 </ul>

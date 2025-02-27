@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(openintro)","options":{"editor-quick-suggestions":"false","editor-word-wrap":"true","warning":"true","fig-height":5,"results":"markup","read-only":"false","label":"unnamed-chunk-1","editor-font-scale":"1","autorun":"false","context":"interactive","out-height":"","editor-max-height":"","comment":"","out-width":"700px","message":"false","dpi":72,"classes":"","output":"true","fig-width":7,"fig-cap":""},"id":1},{"code":"download.file(\n  \"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/kobe_basket.csv\",\n  destfile = \"kobe_basket.csv\"\n)\nkobe_basket <- read.csv(file = \"kobe_basket.csv\")","options":{"editor-quick-suggestions":"false","editor-word-wrap":"true","warning":"true","fig-height":5,"results":"markup","read-only":"false","label":"unnamed-chunk-2","editor-font-scale":"1","autorun":"true","context":"interactive","out-height":"","editor-max-height":"","comment":"","out-width":"700px","message":"true","dpi":72,"classes":"","output":"true","fig-width":7,"fig-cap":""},"id":2},{"code":"library(tableone)\nCreateTableOne(data = kobe_basket[, -4:-5], includeNA = TRUE)","options":{"editor-quick-suggestions":"false","editor-word-wrap":"true","warning":"true","fig-height":5,"results":"markup","read-only":"false","label":"unnamed-chunk-3","editor-font-scale":"1","autorun":"true","context":"interactive","out-height":"","editor-max-height":"","comment":"","out-width":"700px","message":"false","dpi":72,"classes":"","output":"true","fig-width":7,"fig-cap":""},"id":3}];
+  globalThis.qwebrCellDetails = [{"id":1,"code":"library(openintro)","options":{"warning":"true","output":"true","label":"unnamed-chunk-1","comment":"","autorun":"false","message":"false","editor-font-scale":"1","out-width":"700px","classes":"","editor-word-wrap":"true","fig-width":7,"context":"interactive","fig-cap":"","fig-height":5,"read-only":"false","results":"markup","editor-quick-suggestions":"false","editor-max-height":"","dpi":72,"out-height":""}},{"id":2,"code":"download.file(\n  \"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/kobe_basket.csv\",\n  destfile = \"kobe_basket.csv\"\n)\nkobe_basket <- read.csv(file = \"kobe_basket.csv\")","options":{"warning":"true","output":"true","label":"unnamed-chunk-2","comment":"","autorun":"true","message":"true","editor-font-scale":"1","out-width":"700px","classes":"","editor-word-wrap":"true","fig-width":7,"context":"interactive","fig-cap":"","fig-height":5,"read-only":"false","results":"markup","editor-quick-suggestions":"false","editor-max-height":"","dpi":72,"out-height":""}},{"id":3,"code":"library(tableone)\nCreateTableOne(data = kobe_basket[, -4:-5], includeNA = TRUE)","options":{"warning":"true","output":"true","label":"unnamed-chunk-3","comment":"","autorun":"true","message":"false","editor-font-scale":"1","out-width":"700px","classes":"","editor-word-wrap":"true","fig-width":7,"context":"interactive","fig-cap":"","fig-height":5,"read-only":"false","results":"markup","editor-quick-suggestions":"false","editor-max-height":"","dpi":72,"out-height":""}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1300,7 +1300,7 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="../index.html">PUBH614</a>
 
@@ -1353,6 +1353,14 @@
 </li>
       </ul>
 <ul class="navbar-nav">
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
+<li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
+  </ul>
+</li>
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>

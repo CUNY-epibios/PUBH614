@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"options":{"out-width":"700px","editor-quick-suggestions":"false","classes":"","out-height":"","label":"unnamed-chunk-1","editor-max-height":"","fig-height":5,"comment":"","context":"interactive","fig-width":7,"results":"markup","warning":"true","output":"true","editor-word-wrap":"true","autorun":"true","message":"true","read-only":"false","editor-font-scale":"1","fig-cap":"","dpi":72},"code":"sclc <- read.csv(file = \"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/Stats4-%20more.csv\",\n                 colClasses = c(\"factor\", \"factor\", \"factor\"))"},{"id":2,"options":{"out-width":"700px","editor-quick-suggestions":"false","classes":"","out-height":"","label":"unnamed-chunk-2","editor-max-height":"","fig-height":5,"comment":"","context":"interactive","fig-width":7,"results":"markup","warning":"true","output":"asis","editor-word-wrap":"true","autorun":"true","message":"false","read-only":"false","editor-font-scale":"1","fig-cap":"","dpi":72},"code":"library(tableone)\nCreateTableOne(data = sclc, includeNA = TRUE)"}];
+  globalThis.qwebrCellDetails = [{"options":{"out-height":"","autorun":"true","output":"true","label":"unnamed-chunk-1","read-only":"false","context":"interactive","comment":"","editor-max-height":"","out-width":"700px","warning":"true","message":"true","fig-width":7,"results":"markup","classes":"","dpi":72,"editor-font-scale":"1","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-height":5,"fig-cap":""},"id":1,"code":"sclc <- read.csv(file = \"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/Stats4-%20more.csv\",\n                 colClasses = c(\"factor\", \"factor\", \"factor\"))"},{"options":{"out-height":"","autorun":"true","output":"asis","label":"unnamed-chunk-2","read-only":"false","context":"interactive","comment":"","editor-max-height":"","out-width":"700px","warning":"true","message":"false","fig-width":7,"results":"markup","classes":"","dpi":72,"editor-font-scale":"1","editor-word-wrap":"true","editor-quick-suggestions":"false","fig-height":5,"fig-cap":""},"id":2,"code":"library(tableone)\nCreateTableOne(data = sclc, includeNA = TRUE)"}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1300,7 +1300,7 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="../index.html">PUBH614</a>
 
@@ -1353,6 +1353,14 @@
 </li>
       </ul>
 <ul class="navbar-nav">
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
+<li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
+  </ul>
+</li>
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
