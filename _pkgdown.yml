@@ -51,6 +51,8 @@ navbar:
           href: articles/dataset_yrbss.html
         - text: "NYC flights"
           href: articles/dataset_nycflights.html
+        - text: "NHANES"
+          href: articles/dataset_nhanes.html
     exercises:
       text: "Exercises"
       menu:

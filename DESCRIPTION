@@ -7,6 +7,7 @@ Description: This repository includes OpenIntro "tidy" labs from
     https://github.com/OpenIntroStat/oilabs-tidy and others. It uses Quarto and
     webr to allow students to execute R code in their web browser.
 URL: https://cuny-epibios.github.io/PUBH614
+Suggests: haven, tidyverse
 License: CC BY 4.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

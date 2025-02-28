@@ -27,8 +27,9 @@ filters:
 
 ## Getting the data
 
-Option 1: Download datasets directly from CDC:
-```{webr-r}
+Option 1: Download datasets directly from CDC. _Note: this seems to get blocked
+by the browser in webR so it is not run here_
+```
 download.file(
   "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/PBCD_J.xpt",
   destfile = "PBCD_J.xpt"
@@ -42,11 +43,11 @@ download.file(
 Option 2: Download datasets from GitHub backup:
 ```{webr-r}
 download.file(
-  "https://github.com/CUNY-epibios/PUBH614/raw/refs/heads/main/datasets/PBCD_J.xpt",
+  "https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/PBCD_J.xpt",
   destfile = "PBCD_J.xpt"
 )
 download.file(
-  "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/INS_J.xpt",
+  "https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/INS_J.xpt",
   destfile = "INS_J.xpt"
 )
 ```
@@ -98,31 +99,44 @@ head(nhanes)
 You can join two datasets like above then join a third dataset, and so on, 
 repeating as many times as you want. Just make sure to use the same participant
 ID (SEQN) and the same NHANES cycle. Here's a shorthand join of several 2021-23
-datasets, downloaded directly from NHANES then inner_joined to keep only 
-participants with all data available. These datasets are:
+datasets, downloaded then inner_joined to keep only participants for whom all 
+data are available. These datasets are:
 
-1. [Demographic Variables and Sample Weights](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics&Cycle=2021-2023)
-2. [Dietary Supplement Use 30-day - Total Dietary Supplements](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Dietary&Cycle=2021-2023)
-3. [Body Measures](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Examination&Cycle=2021-2023)
+* [Demographic Variables and Sample Weights](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics&Cycle=2021-2023)
+* [Dietary Supplement Use 30-day - Total Dietary Supplements](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Dietary&Cycle=2021-2023)
+* [Body Measures](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Examination&Cycle=2021-2023)
 
-We take advantage of the ability of `haven`'s data-loading functions to read
-data directly from a URL. Most other R data-loading functions can do this too.
+```{webr-r}
+download.file("https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/DEMO_L.xpt", destfile = "DEMO_L.xpt")
+download.file("https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/DSQTOT_L.xpt", destfile = "DSQTOT_L.xpt")
+download.file("https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/BPXO_L.xpt", destfile = "BPXO_L.xpt")
+dir()
+```
+
 The following command downloads and reads the dataset on the first line, joins 
 it with the dataset on the second line, and then joins the result with the dataset
 on the third line. 
 
 ```{webr-r}
-nhanes2 <- read_xpt("https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.xpt") %>%
-  inner_join(read_xpt("https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DSQTOT_L.xpt"), by = "SEQN") %>%
-  inner_join(read_xpt("https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BPXO_L.xpt"), by = "SEQN")
+library(haven)
+library(dplyr)
+nhanes2 <- read_xpt("DEMO_L.xpt") %>%
+  inner_join(read_xpt("DSQTOT_L.xpt"), by = "SEQN") %>%
+  inner_join(read_xpt("BPXO_L.xpt"), by = "SEQN")
 ```
-Success! The data files are directly into the `nhanes2` object _without_ saving 
-files locally. Use `readr::write_csv` or something like it if you want to save the 
-data locally.  Take a look at the dataset to see what you have:
+
+Success! If you want to save the merged `nhanes2` object, use `readr::write_csv` 
+or something like it. Take a look at the dataset to see what you have:
 
 ```{webr-r}
 glimpse(nhanes2)
 ```
+
+::: {#boxedtext}
+Note: if you are running outside of webR, you could save the step of downloading
+first, and provide the full URL instead of the filename. Most other R 
+data-loading functions can do take a URL as the filename.
+:::
 
 ## Dataset Overview
 
@@ -164,4 +178,9 @@ CreateTableOne(data = nhanes[, -1], includeNA = TRUE)
 - The dataset has missing values in the `LBXBPB` and `LBXIN` columns.
 
 ## Acknowledgements
-This codebook was drafted by Microsoft Copilot and edited by Levi Waldron.
+This codebook was drafted by Microsoft Copilot and edited by Levi Waldron. 
+
+Who am I kidding, Copilot was not very helpful with this Codebook because there 
+were too many weird issues with downloading certain files in webR. The only 
+useful things it did were the **Dataset Overview** and **Variables** sections,
+although even there I had to fix the numbers which were incorrect in its output.
