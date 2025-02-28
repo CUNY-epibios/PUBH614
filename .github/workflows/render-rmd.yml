@@ -9,91 +9,48 @@ on:
 
 jobs:
   render:
-    runs-on: ubuntu-latest  # Using Ubuntu for consistency with your local testing
+    runs-on: ubuntu-latest  # Ensure consistent testing environment with Ubuntu
 
     permissions:
-      contents: write
+      contents: write  # Grant permission to modify contents (used for deployment)
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Setup Pandoc
-        uses: r-lib/actions/setup-pandoc@v2  # Updated to v2 as per warning
-
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v2  # Updated to v2 as per warning
-        with:
-          r-version: '4.3.2'  # Pinned for consistency
+        uses: r-lib/actions/setup-pandoc@v2  # Ensure Pandoc is set up for Quarto rendering
 
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          version: "1.6.41"  # Pinned to current stable release (adjust if needed, e.g., 1.7.13 pre-release)
+          version: "1.6.41"  # Pin to current stable release
 
       - name: Verify Quarto Installation
         run: |
-          quarto --version || exit 1
-
-      - name: Install System Dependencies for webR
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential pkg-config libcurl4-openssl-dev libssl-dev libxml2-dev qpdf
+          quarto --version || exit 1  # Ensure Quarto is installed
 
       - name: Install Node.js (for webR JavaScript support)
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Match webR requirements (adjust if needed)
+          node-version: '16'  # Use Node.js version for compatibility with webR
 
       - name: Install webR
         run: |
-          npm install -g @r-wasm/webr  # Install webR via npm for Quarto webR support
+          npm install -g @r-wasm/webr  # Install webR for Quarto webR support
 
-      - name: Cache R Packages
+      - name: Cache Quarto Output
         uses: actions/cache@v3
         with:
           path: |
-            ~/.local/share/R
-            ${{ env.R_HOME }}/library
-          key: ${{ runner.os }}-r-packages-${{ hashFiles('**/renv.lock') }}
+            ~/.local/share/quarto
+          key: ${{ runner.os }}-quarto-output-${{ hashFiles('**/*.qmd') }}
           restore-keys: |
-            ${{ runner.os }}-r-packages-
-
-      - name: Install R and Dependencies
-        run: |
-          # Update system package lists
-          sudo apt update
-
-          # Install required system dependencies for R
-          sudo apt install --no-install-recommends software-properties-common dirmngr
-
-          # Add the official CRAN signing key
-          wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-
-          # Add the correct CRAN repository based on Ubuntu version
-          sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
-
-          # Install R (latest stable version)
-          sudo apt update
-          sudo apt install --no-install-recommends r-base
-
-          # Install R packages via apt when possible (faster & avoids compilation issues)
-          sudo apt install -y r-cran-tidyverse r-cran-renv r-cran-quarto
-          sudo R -e "install.packages('renv')"
-
-
-          # Fallback: Ensure missing packages are installed from CRAN
-          sudo Rscript -e 'install.packages(setdiff(c("tidyverse", "renv", "quarto"), rownames(installed.packages())), repos="https://cloud.r-project.org")'
-        env:
-          R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-
-      - name: Verify Installed R Packages
-        run: |
-          Rscript -e 'installed.packages()[,1]'
+            ${{ runner.os }}-quarto-output-
 
       - name: Render Quarto webR Website
         run: |
-          quarto render --no-execute-daemon  # Ensure webR compatibility
+          quarto render --no-execute-daemon  # Ensure compatibility with webR
         continue-on-error: false
 
       - name: Debug Render Failure
