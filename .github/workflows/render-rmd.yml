@@ -1,4 +1,4 @@
-name: Render Quarto webR Vignettes
+name: Render pkgdown Website
 
 on:
   push:
@@ -18,47 +18,37 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Pandoc
-        uses: r-lib/actions/setup-pandoc@v2  # Ensure Pandoc is set up for Quarto rendering
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2  # Ensure R is set up for pkgdown
 
-      - name: Install Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          version: "1.6.41"  # Pin to current stable release
-
-      - name: Verify Quarto Installation
+      - name: Install System Dependencies
         run: |
-          quarto --version || exit 1  # Ensure Quarto is installed
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
 
-      - name: Install Node.js (for webR JavaScript support)
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'  # Use Node.js version for compatibility with webR
-
-      - name: Install webR
+      - name: Install R Packages
         run: |
-          npm install -g @r-wasm/webr  # Install webR for Quarto webR support
+          R -e "install.packages(c('pkgdown'))"  # Install the pkgdown package
 
-      - name: Render Quarto webR Vignettes
+      - name: Build pkgdown Site (Includes Quarto Vignettes)
         run: |
-          quarto render vignettes/  # Render all .qmd files inside the vignettes/ folder
-        continue-on-error: false
+          R -e "pkgdown::build_site()"
 
-      - name: Debug Render Failure
+      - name: Debug Build Failure
         if: failure()
         run: |
-          ls -la vignettes/ || echo "No vignettes directory"
-          cat vignettes/*.log || echo "No log files found"
+          ls -la docs/ || echo "No docs directory"
+          cat docs/*.log || echo "No log files found"
 
       - name: Deploy to GitHub Pages
         if: success() && github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: vignettes  # Deploy rendered vignettes
+          folder: docs  # Where the pkgdown site is built by default
           clean: true
 
       - name: Notify on Failure
         if: failure()
         run: |
-          echo "::error:: Quarto rendering failed! Check logs in GitHub Actions."
+          echo "::error:: pkgdown rendering failed! Check logs in GitHub Actions."
