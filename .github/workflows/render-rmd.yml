@@ -9,17 +9,17 @@ on:
 
 jobs:
   render:
-    runs-on: ubuntu-latest  # Ensure consistent testing environment with Ubuntu
+    runs-on: ubuntu-latest
 
     permissions:
-      contents: write  # Grant permission to modify contents (used for deployment)
+      contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Setup R
-        uses: r-lib/actions/setup-r@v2  # Ensure R is set up for pkgdown
+        uses: r-lib/actions/setup-r@v2
 
       - name: Install System Dependencies
         run: |
@@ -28,34 +28,43 @@ jobs:
 
       - name: Install Quarto
         run: |
-          curl -sSL https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.133/quarto-1.3.133-linux-amd64.deb -o quarto.deb
+          curl -sSL https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.56/quarto-1.5.56-linux-amd64.deb -o quarto.deb
           sudo dpkg -i quarto.deb
-          sudo apt-get install -f  # Fix missing dependencies
+          sudo apt-get install -f
+        # Updated to 1.5.56 to meet webr's requirement (>=1.4.554)
+
+      - name: Install Quarto webr Extension
+        run: |
+          quarto add coatless/quarto-webr --no-prompt
+        # Installs the webr extension from its official source
 
       - name: Install R Packages (including pkgdown)
         run: |
-          R -e "install.packages('pkgdown', dependencies=TRUE)"  # Install the pkgdown package
+          R -e "install.packages('pkgdown', dependencies=TRUE)"
 
       - name: Verify R Package Installation
         run: |
-          R -e "installed.packages()"  # Verify installed R packages
+          R -e "installed.packages()"
 
       - name: Build pkgdown Site (Includes Quarto Vignettes)
         run: |
           R -e "pkgdown::build_site()"
+        env:
+          QUARTO_LOG_LEVEL: DEBUG  # Enable detailed Quarto logs
 
       - name: Debug Build Failure
         if: failure()
         run: |
           ls -la docs/ || echo "No docs directory"
           cat docs/*.log || echo "No log files found"
+          find . -name "*.log" -exec cat {} \;  # Look for Quarto logs elsewhere
 
       - name: Deploy to GitHub Pages
         if: success() && github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: docs  # Where the pkgdown site is built by default
+          folder: docs
           clean: true
 
       - name: Notify on Failure
