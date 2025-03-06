@@ -1,0 +1,88 @@
+name: Render Quarto Vignettes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+
+      - name: Install Quarto
+        run: |
+          curl -sSL https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.56/quarto-1.5.56-linux-amd64.deb -o quarto.deb
+          sudo dpkg -i quarto.deb
+          sudo apt-get install -f
+
+      - name: Install Quarto webr Extension
+        run: |
+          quarto add coatless/quarto-webr --no-prompt
+
+      - name: Install R Packages (for Quarto Rendering)
+        run: |
+          R -e "install.packages(c('knitr', 'rmarkdown', 'dplyr', 'ggplot2', 'tidyr', 'openintro'), dependencies=TRUE)"
+        # Added common packages likely needed for your vignettes
+
+      - name: Verify R Package Installation
+        run: |
+          R -e "installed.packages()"
+
+      - name: List Vignette Files
+        run: |
+          echo "Vignette files to render:"
+          ls -l vignettes/*.qmd || echo "No .qmd files found"
+
+      - name: Render All Vignettes
+        run: |
+          mkdir -p rendered_vignettes
+          for file in vignettes/*.qmd; do
+            if [ -f "$file" ]; then
+              echo "Rendering $file..."
+              quarto render "$file" --output-dir rendered_vignettes
+              if [ $? -ne 0 ]; then
+                echo "Failed to render $file"
+                exit 1
+              fi
+            else
+              echo "No .qmd files found in vignettes/"
+            fi
+          done
+        env:
+          QUARTO_LOG_LEVEL: DEBUG
+
+      - name: Debug Render Failure
+        if: failure()
+        run: |
+          ls -la rendered_vignettes/ || echo "No rendered_vignettes directory"
+          find . -name "*.log" -exec cat {} \;  # Look for Quarto logs
+
+      - name: Deploy Rendered Vignettes to GitHub Pages
+        if: success() && github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: rendered_vignettes
+          clean: true
+
+      - name: Notify on Failure
+        if: failure()
+        run: |
+          echo "::error:: Vignette rendering failed! Check logs in GitHub Actions."
