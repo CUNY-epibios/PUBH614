@@ -28,7 +28,11 @@ jobs:
 
       - name: Install R Packages
         run: |
-          R -e "install.packages(c('pkgdown'))"  # Install the pkgdown package
+          R -e "install.packages('pkgdown')"  # Install the pkgdown package
+
+      - name: Verify R Package Installation
+        run: |
+          R -e "installed.packages()"  # Verify installed R packages
 
       - name: Build pkgdown Site (Includes Quarto Vignettes)
         run: |
