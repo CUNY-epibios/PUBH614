@@ -1,4 +1,4 @@
-name: Render pkgdown Website
+name: Render Quarto Vignettes
 
 on:
   push:
@@ -31,43 +31,48 @@ jobs:
           curl -sSL https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.56/quarto-1.5.56-linux-amd64.deb -o quarto.deb
           sudo dpkg -i quarto.deb
           sudo apt-get install -f
-        # Updated to 1.5.56 to meet webr's requirement (>=1.4.554)
 
       - name: Install Quarto webr Extension
         run: |
           quarto add coatless/quarto-webr --no-prompt
-        # Installs the webr extension from its official source
 
-      - name: Install R Packages (including pkgdown)
+      - name: Install R Packages (for Quarto Rendering)
         run: |
-          R -e "install.packages('pkgdown', dependencies=TRUE)"
+          R -e "install.packages(c('knitr', 'rmarkdown'), dependencies=TRUE)"
+        # Install minimal R packages needed for Quarto rendering
 
       - name: Verify R Package Installation
         run: |
           R -e "installed.packages()"
 
-      - name: Build pkgdown Site (Includes Quarto Vignettes)
+      - name: Render All Vignettes
         run: |
-          R -e "pkgdown::build_site()"
+          mkdir -p rendered_vignettes  # Create output directory
+          for file in vignettes/*.qmd; do
+            if [ -f "$file" ]; then
+              quarto render "$file" -o "rendered_vignettes/$(basename "$file" .qmd).html"
+            else
+              echo "No .qmd files found in vignettes/"
+            fi
+          done
         env:
           QUARTO_LOG_LEVEL: DEBUG  # Enable detailed Quarto logs
 
-      - name: Debug Build Failure
+      - name: Debug Render Failure
         if: failure()
         run: |
-          ls -la docs/ || echo "No docs directory"
-          cat docs/*.log || echo "No log files found"
-          find . -name "*.log" -exec cat {} \;  # Look for Quarto logs elsewhere
+          ls -la rendered_vignettes/ || echo "No rendered_vignettes directory"
+          find . -name "*.log" -exec cat {} \;  # Look for Quarto logs
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy Rendered Vignettes to GitHub Pages
         if: success() && github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: docs
+          folder: rendered_vignettes  # Deploy the rendered files
           clean: true
 
       - name: Notify on Failure
         if: failure()
         run: |
-          echo "::error:: pkgdown rendering failed! Check logs in GitHub Actions."
+          echo "::error:: Vignette rendering failed! Check logs in GitHub Actions."
