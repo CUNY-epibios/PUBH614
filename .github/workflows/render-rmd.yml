@@ -38,25 +38,35 @@ jobs:
 
       - name: Install R Packages (for Quarto Rendering)
         run: |
-          R -e "install.packages(c('knitr', 'rmarkdown'), dependencies=TRUE)"
-        # Install minimal R packages needed for Quarto rendering
+          R -e "install.packages(c('knitr', 'rmarkdown', 'dplyr', 'ggplot2', 'tidyr', 'openintro'), dependencies=TRUE)"
+        # Added common packages likely needed for your vignettes
 
       - name: Verify R Package Installation
         run: |
           R -e "installed.packages()"
 
+      - name: List Vignette Files
+        run: |
+          echo "Vignette files to render:"
+          ls -l vignettes/*.qmd || echo "No .qmd files found"
+
       - name: Render All Vignettes
         run: |
-          mkdir -p rendered_vignettes  # Create output directory
+          mkdir -p rendered_vignettes
           for file in vignettes/*.qmd; do
             if [ -f "$file" ]; then
-              quarto render "$file" -o "rendered_vignettes/$(basename "$file" .qmd).html"
+              echo "Rendering $file..."
+              quarto render "$file" --output-dir rendered_vignettes
+              if [ $? -ne 0 ]; then
+                echo "Failed to render $file"
+                exit 1
+              fi
             else
               echo "No .qmd files found in vignettes/"
             fi
           done
         env:
-          QUARTO_LOG_LEVEL: DEBUG  # Enable detailed Quarto logs
+          QUARTO_LOG_LEVEL: DEBUG
 
       - name: Debug Render Failure
         if: failure()
@@ -69,7 +79,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: rendered_vignettes  # Deploy the rendered files
+          folder: rendered_vignettes
           clean: true
 
       - name: Notify on Failure
