@@ -18,7 +18,7 @@ filters:
 # Codebook: Arbuthnot London Births Dataset
 
 ## Where to find it
-- 
+
 - **Dataset name:** `arbuthnot`
 - **Location:** Loaded automatically when the `openintro` package is loaded. 
 Also available online at https://github.com/CUNY-epibios/PUBH614/tree/main/datasets
