@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(openintro)","options":{"editor-font-scale":"1","editor-max-height":"","fig-height":5,"results":"markup","output":"true","editor-word-wrap":"true","message":"false","context":"interactive","comment":"","fig-width":7,"dpi":72,"autorun":"false","warning":"true","label":"unnamed-chunk-1","out-width":"700px","classes":"","read-only":"false","out-height":"","fig-cap":"","editor-quick-suggestions":"false"},"id":1},{"code":"download.file(\n  \"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/nycflights.csv\",\n  destfile = \"nycflights.csv\"\n)\nnycflights <- read.csv(file = \"nycflights.csv\")","options":{"editor-font-scale":"1","editor-max-height":"","fig-height":5,"results":"markup","output":"true","editor-word-wrap":"true","message":"true","context":"interactive","comment":"","fig-width":7,"dpi":72,"autorun":"true","warning":"true","label":"unnamed-chunk-2","out-width":"700px","classes":"","read-only":"false","out-height":"","fig-cap":"","editor-quick-suggestions":"false"},"id":2},{"code":"library(tableone)\nCreateTableOne(data = nycflights[, -c(9, 12)], includeNA = TRUE)","options":{"editor-font-scale":"1","editor-max-height":"","fig-height":5,"results":"asis","output":"true","editor-word-wrap":"true","message":"false","context":"interactive","comment":"","fig-width":7,"dpi":72,"autorun":"true","warning":"true","label":"unnamed-chunk-3","out-width":"700px","classes":"","read-only":"false","out-height":"","fig-cap":"","editor-quick-suggestions":"false"},"id":3}];
+  globalThis.qwebrCellDetails = [{"options":{"comment":"","fig-cap":"","label":"unnamed-chunk-1","fig-width":7,"message":"false","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","out-height":"","fig-height":5,"autorun":"false","read-only":"false","warning":"true","classes":"","context":"interactive","editor-quick-suggestions":"false","out-width":"700px","dpi":72,"output":"true","editor-max-height":""},"code":"library(openintro)","id":1},{"options":{"comment":"","fig-cap":"","label":"unnamed-chunk-2","fig-width":7,"message":"true","editor-word-wrap":"true","editor-font-scale":"1","results":"markup","out-height":"","fig-height":5,"autorun":"true","read-only":"false","warning":"true","classes":"","context":"interactive","editor-quick-suggestions":"false","out-width":"700px","dpi":72,"output":"true","editor-max-height":""},"code":"download.file(\n  \"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/nycflights.csv\",\n  destfile = \"nycflights.csv\"\n)\nnycflights <- read.csv(file = \"nycflights.csv\")","id":2},{"options":{"comment":"","fig-cap":"","label":"unnamed-chunk-3","fig-width":7,"message":"false","editor-word-wrap":"true","editor-font-scale":"1","results":"asis","out-height":"","fig-height":5,"autorun":"true","read-only":"false","warning":"true","classes":"","context":"interactive","editor-quick-suggestions":"false","out-width":"700px","dpi":72,"output":"true","editor-max-height":""},"code":"library(tableone)\nCreateTableOne(data = nycflights[, -c(9, 12)], includeNA = TRUE)","id":3}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1350,6 +1350,12 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-exercises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Exercises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-exercises">
 <li><a class="dropdown-item" href="../articles/blank_workbook.html">Blank workbook</a></li>
+  </ul>
+</li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lectures" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Lectures</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-lectures">
+<li><a class="dropdown-item" href="../articles/lecturetable.html">Lecture notes and videos</a></li>
   </ul>
 </li>
       </ul>

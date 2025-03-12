@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"code":"library(openintro)","options":{"read-only":"false","classes":"","out-width":"700px","out-height":"","comment":"","warning":"true","context":"interactive","output":"true","label":"unnamed-chunk-1","results":"markup","dpi":72,"autorun":"false","fig-cap":"","editor-max-height":"","fig-height":5,"editor-word-wrap":"true","fig-width":7,"message":"false","editor-font-scale":"1","editor-quick-suggestions":"false"}},{"id":2,"code":"download.file(\n  \"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/kobe_basket.csv\",\n  destfile = \"kobe_basket.csv\"\n)\nkobe_basket <- read.csv(file = \"kobe_basket.csv\")","options":{"read-only":"false","classes":"","out-width":"700px","out-height":"","comment":"","warning":"true","context":"interactive","output":"true","label":"unnamed-chunk-2","results":"markup","dpi":72,"autorun":"true","fig-cap":"","editor-max-height":"","fig-height":5,"editor-word-wrap":"true","fig-width":7,"message":"true","editor-font-scale":"1","editor-quick-suggestions":"false"}},{"id":3,"code":"library(tableone)\nCreateTableOne(data = kobe_basket[, -4:-5], includeNA = TRUE)","options":{"read-only":"false","classes":"","out-width":"700px","out-height":"","comment":"","warning":"true","context":"interactive","output":"true","label":"unnamed-chunk-3","results":"markup","dpi":72,"autorun":"true","fig-cap":"","editor-max-height":"","fig-height":5,"editor-word-wrap":"true","fig-width":7,"message":"false","editor-font-scale":"1","editor-quick-suggestions":"false"}}];
+  globalThis.qwebrCellDetails = [{"id":1,"code":"library(openintro)","options":{"context":"interactive","warning":"true","fig-cap":"","comment":"","out-height":"","output":"true","editor-font-scale":"1","autorun":"false","editor-word-wrap":"true","message":"false","results":"markup","classes":"","read-only":"false","dpi":72,"fig-width":7,"label":"unnamed-chunk-1","out-width":"700px","editor-quick-suggestions":"false","editor-max-height":"","fig-height":5}},{"id":2,"code":"download.file(\n  \"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/kobe_basket.csv\",\n  destfile = \"kobe_basket.csv\"\n)\nkobe_basket <- read.csv(file = \"kobe_basket.csv\")","options":{"context":"interactive","warning":"true","fig-cap":"","comment":"","out-height":"","output":"true","editor-font-scale":"1","autorun":"true","editor-word-wrap":"true","message":"true","results":"markup","classes":"","read-only":"false","dpi":72,"fig-width":7,"label":"unnamed-chunk-2","out-width":"700px","editor-quick-suggestions":"false","editor-max-height":"","fig-height":5}},{"id":3,"code":"library(tableone)\nCreateTableOne(data = kobe_basket[, -4:-5], includeNA = TRUE)","options":{"context":"interactive","warning":"true","fig-cap":"","comment":"","out-height":"","output":"true","editor-font-scale":"1","autorun":"true","editor-word-wrap":"true","message":"false","results":"markup","classes":"","read-only":"false","dpi":72,"fig-width":7,"label":"unnamed-chunk-3","out-width":"700px","editor-quick-suggestions":"false","editor-max-height":"","fig-height":5}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1350,6 +1350,12 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-exercises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Exercises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-exercises">
 <li><a class="dropdown-item" href="../articles/blank_workbook.html">Blank workbook</a></li>
+  </ul>
+</li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lectures" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Lectures</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-lectures">
+<li><a class="dropdown-item" href="../articles/lecturetable.html">Lecture notes and videos</a></li>
   </ul>
 </li>
       </ul>

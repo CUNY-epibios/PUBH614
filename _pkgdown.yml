@@ -5,9 +5,14 @@ template:
   light-switch: true
 navbar:
   structure:
-    left:  [intro, labs, otherlabs, datasets, exercises]
+    left:  [intro, labs, otherlabs, datasets, exercises, lectures]
     right: [github, lightswitch, search]
   components:
+    lectures:
+      text: "Lectures"
+      menu:
+        - text: "Lecture notes and videos"
+          href: articles/lecturetable.html
     labs:
       text: "OpenIntro Labs"
       menu:

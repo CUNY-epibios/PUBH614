@@ -46,7 +46,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(openintro)","id":1,"options":{"fig-width":7,"editor-quick-suggestions":"false","warning":"true","output":"true","dpi":72,"results":"markup","comment":"","editor-font-scale":"1","read-only":"false","classes":"","fig-height":5,"message":"false","context":"interactive","editor-max-height":"","label":"unnamed-chunk-1","out-width":"700px","fig-cap":"","out-height":"","editor-word-wrap":"true","autorun":"false"}},{"code":"download.file(\n  \"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/fastfood.csv\",\n  destfile = \"fastfood.csv\"\n)\nfastfood <- read.csv(file = \"fastfood.csv\")","id":2,"options":{"fig-width":7,"editor-quick-suggestions":"false","warning":"true","output":"true","dpi":72,"results":"markup","comment":"","editor-font-scale":"1","read-only":"false","classes":"","fig-height":5,"message":"true","context":"interactive","editor-max-height":"","label":"unnamed-chunk-2","out-width":"700px","fig-cap":"","out-height":"","editor-word-wrap":"true","autorun":"true"}},{"code":"library(tableone)\nCreateTableOne(data = fastfood[, -2], includeNA = TRUE)","id":3,"options":{"fig-width":7,"editor-quick-suggestions":"false","warning":"true","output":"true","dpi":72,"results":"markup","comment":"","editor-font-scale":"1","read-only":"false","classes":"","fig-height":5,"message":"false","context":"interactive","editor-max-height":"","label":"unnamed-chunk-3","out-width":"700px","fig-cap":"","out-height":"","editor-word-wrap":"true","autorun":"true"}}];
+  globalThis.qwebrCellDetails = [{"code":"library(openintro)","options":{"fig-cap":"","label":"unnamed-chunk-1","editor-word-wrap":"true","editor-font-scale":"1","editor-quick-suggestions":"false","dpi":72,"warning":"true","out-height":"","message":"false","comment":"","results":"markup","autorun":"false","output":"true","read-only":"false","fig-width":7,"classes":"","editor-max-height":"","out-width":"700px","context":"interactive","fig-height":5},"id":1},{"code":"download.file(\n  \"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/fastfood.csv\",\n  destfile = \"fastfood.csv\"\n)\nfastfood <- read.csv(file = \"fastfood.csv\")","options":{"fig-cap":"","label":"unnamed-chunk-2","editor-word-wrap":"true","editor-font-scale":"1","editor-quick-suggestions":"false","dpi":72,"warning":"true","out-height":"","message":"true","comment":"","results":"markup","autorun":"true","output":"true","read-only":"false","fig-width":7,"classes":"","editor-max-height":"","out-width":"700px","context":"interactive","fig-height":5},"id":2},{"code":"library(tableone)\nCreateTableOne(data = fastfood[, -2], includeNA = TRUE)","options":{"fig-cap":"","label":"unnamed-chunk-3","editor-word-wrap":"true","editor-font-scale":"1","editor-quick-suggestions":"false","dpi":72,"warning":"true","out-height":"","message":"false","comment":"","results":"markup","autorun":"true","output":"true","read-only":"false","fig-width":7,"classes":"","editor-max-height":"","out-width":"700px","context":"interactive","fig-height":5},"id":3}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1350,6 +1350,12 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-exercises" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Exercises</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-exercises">
 <li><a class="dropdown-item" href="../articles/blank_workbook.html">Blank workbook</a></li>
+  </ul>
+</li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lectures" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Lectures</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-lectures">
+<li><a class="dropdown-item" href="../articles/lecturetable.html">Lecture notes and videos</a></li>
   </ul>
 </li>
       </ul>

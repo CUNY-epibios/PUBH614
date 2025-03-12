@@ -22,7 +22,8 @@ articles:
   dataset_nycflights: dataset_nycflights.html
   dataset_sclc: dataset_sclc.html
   dataset_yrbss: dataset_yrbss.html
-last_built: 2025-02-28T14:56Z
+  lecturetable: lecturetable.html
+last_built: 2025-03-12T20:24Z
 urls:
   reference: https://cuny-epibios.github.io/PUBH614/reference
   article: https://cuny-epibios.github.io/PUBH614/articles
