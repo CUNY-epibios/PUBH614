@@ -113,6 +113,59 @@ table(samp)
 
 
 ## Confidence intervals
+In this section, we will generate a bootstrap sample and calculate the bootstrap proportion for the group that believes climate change affects their local community.
+
+```{webr-r}
+# Load necessary libraries
+library(dplyr)
+library(purrr)
+library(ggplot2)
+
+# Load dataset `samp` from the CSV file
+samp <- read.csv("./datasets/samp.csv")
+
+# Check if the column exists
+if (!"climate_change_affects" %in% colnames(samp)) {
+  stop("The column 'climate_change_affects' is not in the dataset!")
+}
+
+# Step 1: Generate a bootstrap sample
+set.seed(123)
+n <- nrow(samp)
+bootstrap_sample <- samp %>% sample_n(size = n, replace = TRUE)
+
+# Check the first few rows of the bootstrap sample
+head(bootstrap_sample)
+
+# Step 2: Calculate the bootstrap proportion for the “Yes” category
+p_hat_bootstrap <- bootstrap_sample %>%
+  count(climate_change_affects) %>%
+  mutate(p = n / sum(n)) %>%
+  filter(climate_change_affects == "Yes") %>%
+  pull(p)
+
+# Check the result of p_hat_bootstrap
+p_hat_bootstrap
+
+# Step 3: Repeat the process to generate many bootstrap samples
+bootstrap_proportions <- map_dbl(1:1000, ~{
+  bootstrap_sample <- samp %>% sample_n(size = n, replace = TRUE)  # Generate a new bootstrap sample
+  p_hat_bootstrap <- bootstrap_sample %>%
+    count(climate_change_affects) %>%
+    mutate(p = n / sum(n)) %>%
+    filter(climate_change_affects == "Yes") %>%
+    pull(p)
+  return(p_hat_bootstrap)
+})
+
+# Visualize the bootstrap distribution
+ggplot(data.frame(bootstrap_proportions), aes(x = bootstrap_proportions)) +
+  geom_histogram(binwidth = 0.01, fill = "skyblue", color = "black") +
+  labs(title = "Bootstrap Distribution of Proportions", 
+       x = "Proportion who think climate change affects their local community", 
+       y = "Frequency")
+```
+
 
 Return for a moment to the question that first motivated this lab: based on this sample, what can you infer about the population?
 With just one sample, the best estimate of the proportion of US adults who think climate change affects their local community would be the sample proportion, usually denoted as $\hat{p}$ (here we are calling it `p_hat`).
