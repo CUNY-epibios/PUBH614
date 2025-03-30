@@ -58,25 +58,36 @@ jobs:
             echo "SKIP_RENDER=false" >> $GITHUB_ENV
           fi
 
+      - name: Debug Modified Files
+        run: cat modified_files.txt || echo "No modified files found!"
+
+      - name: Debug Directory Structure
+        run: ls -R vignettes/
+
+      - name: Clean Modified Files List
+        run: sed -i '/^$/d' modified_files.txt  # Remove empty lines
+
       - name: Render Modified Vignettes
-        if: ${{ env.SKIP_RENDER != 'true' }}  # Checking SKIP_RENDER correctly
+        if: env.SKIP_RENDER != 'true'
         run: |
           mkdir -p rendered_vignettes
           while IFS= read -r file; do
-            if [[ -n "$file" ]]; then
+            if [[ -n "$file" && -f "$file" ]]; then
               echo "Rendering $file..."
               quarto render "$file" --output-dir rendered_vignettes
               if [ $? -ne 0 ]; then
                 echo "Failed to render $file"
                 exit 1
               fi
+            else
+              echo "File not found: $file"
             fi
           done < modified_files.txt
         env:
           QUARTO_LOG_LEVEL: DEBUG
 
       - name: Deploy Rendered Vignettes to GitHub Pages
-        if: ${{ github.event_name != 'pull_request' && env.SKIP_RENDER != 'true' && job.status == 'success' }}  # Correct usage of job.status
+        if: github.event_name != 'pull_request' && env.SKIP_RENDER != 'true' && success()
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
