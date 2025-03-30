@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 2  # Ensure we have the previous commit for git diff
 
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
@@ -39,43 +41,42 @@ jobs:
       - name: Install R Packages (for Quarto Rendering)
         run: |
           R -e "install.packages(c('knitr', 'rmarkdown', 'dplyr', 'ggplot2', 'tidyr', 'openintro'), dependencies=TRUE)"
-        # Added common packages likely needed for your vignettes
 
       - name: Verify R Package Installation
         run: |
           R -e "installed.packages()"
 
-      - name: List Vignette Files
+      - name: Find Modified Vignettes
+        id: get_modified_files
         run: |
-          echo "Vignette files to render:"
-          ls -l vignettes/*.qmd || echo "No .qmd files found"
+          git diff --name-only HEAD^ HEAD | grep '^vignettes/.*\.qmd$' > modified_files.txt || true
+          if [ ! -s modified_files.txt ]; then
+            echo "No vignettes modified. Skipping rendering."
+            echo "SKIP_RENDER=true" >> $GITHUB_ENV
+          else
+            echo "Modified files found:" && cat modified_files.txt
+            echo "SKIP_RENDER=false" >> $GITHUB_ENV
+          fi
 
-      - name: Render All Vignettes
+      - name: Render Modified Vignettes
+        if: ${{ env.SKIP_RENDER != 'true' }}  # Checking SKIP_RENDER correctly
         run: |
           mkdir -p rendered_vignettes
-          for file in vignettes/*.qmd; do
-            if [ -f "$file" ]; then
+          while IFS= read -r file; do
+            if [[ -n "$file" ]]; then
               echo "Rendering $file..."
               quarto render "$file" --output-dir rendered_vignettes
               if [ $? -ne 0 ]; then
                 echo "Failed to render $file"
                 exit 1
               fi
-            else
-              echo "No .qmd files found in vignettes/"
             fi
-          done
+          done < modified_files.txt
         env:
           QUARTO_LOG_LEVEL: DEBUG
 
-      - name: Debug Render Failure
-        if: failure()
-        run: |
-          ls -la rendered_vignettes/ || echo "No rendered_vignettes directory"
-          find . -name "*.log" -exec cat {} \;  # Look for Quarto logs
-
       - name: Deploy Rendered Vignettes to GitHub Pages
-        if: success() && github.event_name != 'pull_request'
+        if: ${{ github.event_name != 'pull_request' && env.SKIP_RENDER != 'true' && job.status == 'success' }}  # Correct usage of job.status
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
