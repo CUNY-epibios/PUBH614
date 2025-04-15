@@ -32,7 +32,9 @@ jobs:
             libjpeg-dev \
             libfreetype6-dev \
             libharfbuzz-dev \
-            libfribidi-dev
+            libfribidi-dev \
+            libfontconfig1-dev \
+            libmagick++-dev
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -58,7 +60,7 @@ jobs:
 
       - name: Install R Packages (for Quarto Rendering and pkgdown)
         run: |
-          R -e "install.packages(c('knitr', 'rmarkdown', 'dplyr', 'ggplot2', 'tidyr', 'openintro', 'pkgdown'), dependencies=TRUE)"
+          R -e "install.packages(c('knitr', 'rmarkdown', 'dplyr', 'ggplot2', 'tidyr', 'openintro', 'pkgdown', 'ragg', 'units', 'magick', 'systemfonts', 'textshaping', 'svglite', 'sf'), dependencies=TRUE)"
 
       - name: Verify R Package Installation
         run: |
