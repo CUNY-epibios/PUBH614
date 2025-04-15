@@ -24,7 +24,15 @@ jobs:
       - name: Install System Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+          sudo apt-get install -y \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev \
+            libpng-dev \
+            libjpeg-dev \
+            libfreetype6-dev \
+            libharfbuzz-dev \
+            libfribidi-dev
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -64,6 +72,7 @@ jobs:
       - name: Render Markdown and Quarto Files, Copy Others
         run: |
           mkdir -p rendered_output
+          quarto check install
           find . -type f -not -path "./rendered_output/*" -not -path "./.git/*" -not -name "*.html" | while read -r file; do
             if [ -f "$file" ]; then
               mkdir -p "rendered_output/$(dirname "$file")"
