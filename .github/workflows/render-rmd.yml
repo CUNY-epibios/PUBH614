@@ -113,7 +113,9 @@ jobs:
 
       - name: Build pkgdown Site
         run: |
-          R -e "pkgdown::build_site(dest = 'rendered_output/docs')"
+          mkdir -p rendered_output/docs
+          R -e "pkgdown::build_site()"
+          cp -r docs/* rendered_output/docs/
         env:
           R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
 
