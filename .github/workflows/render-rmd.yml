@@ -49,48 +49,61 @@ jobs:
         run: |
           quarto add coatless/quarto-webr --no-prompt
 
-      - name: Install R Packages using pak
+      - name: Debug Quarto webr Extension
         run: |
-          install.packages("pak", repos = "https://cloud.r-project.org")
-          pak::pkg_install(c("knitr", "rmarkdown", "dplyr", "ggplot2", "tidyr", "openintro", "pkgdown"))
-        shell: Rscript {0}
+          echo "Listing Quarto webr extension files:"
+          ls -la _extensions/coatless/webr/
+          echo "Contents of _extension.yml:"
+          cat _extensions/coatless/webr/_extension.yml
+
+      - name: Install R Packages (for Quarto Rendering and pkgdown)
+        run: |
+          R -e "install.packages(c('knitr', 'rmarkdown', 'dplyr', 'ggplot2', 'tidyr', 'openintro', 'pkgdown'), dependencies=TRUE)"
+
+      - name: Verify R Package Installation
+        run: |
+          R -e "installed.packages()"
 
       - name: List All Files
         run: |
           echo "Files to process:"
-          find . -type f -not -path "./rendered_output/*" -not -path "./.git/*" -not -name "*.html" -ls || echo "No files found"
+          find . -type f \
+            -not -path "./rendered_output/*" \
+            -not -path "./.git/*" \
+            -not -path "./_extensions/*" \
+            -not -name "*.html" -ls || echo "No files found"
 
       - name: Render Markdown and Quarto Files, Copy Others
         run: |
           mkdir -p rendered_output
           quarto check install
-          find . -type f -not -path "./rendered_output/*" -not -path "./.git/*" -not -name "*.html" | while read -r file; do
+          find . -type f \
+            -not -path "./rendered_output/*" \
+            -not -path "./.git/*" \
+            -not -path "./_extensions/*" \
+            -not -name "*.html" | while read -r file; do
             if [ -f "$file" ]; then
-              case "$file" in
-                *README.md|*CODE_OF_CONDUCT.md|*LICENSE.md)
-                  echo "Skipping $file..."
-                  continue
-                  ;;
-              esac
-
               mkdir -p "rendered_output/$(dirname "$file")"
-
               if [[ "$file" == *.qmd ]]; then
                 echo "Rendering Quarto file $file..."
-                quarto render "$file" --output-dir "rendered_output/$(dirname "$file")" || {
-                  echo "::error file=$file::Failed to render Quarto file"
+                quarto render "$file" --output-dir "rendered_output/$(dirname "$file")"
+                if [ $? -ne 0 ]; then
+                  echo "Failed to render $file"
                   exit 1
-                }
-              elif [[ "$file" == *.md ]]; then
+                fi
+              elif [[ "$file" == *.md && "$file" != *README.md && "$file" != *CODE_OF_CONDUCT.md && "$file" != *LICENSE.md ]]; then
                 echo "Rendering Markdown file $file..."
-                quarto render "$file" --output-dir "rendered_output/$(dirname "$file")" || {
-                  echo "::error file=$file::Failed to render Markdown file"
+                quarto render "$file" --output-dir "rendered_output/$(dirname "$file")"
+                if [ $? -ne 0 ]; then
+                  echo "Failed to render $file"
                   exit 1
-                }
+                fi
               else
                 echo "Copying $file..."
                 cp "$file" "rendered_output/$file"
               fi
+            else
+              echo "No files found in project"
             fi
           done
         env:
@@ -98,19 +111,15 @@ jobs:
 
       - name: Build pkgdown Site
         run: |
-          R -e "pkgdown::build_site(dest_dir = 'rendered_output/docs')"
+          R -e "pkgdown::build_site(dest = 'rendered_output/docs')"
         env:
           R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
 
       - name: Debug Render Failure
         if: failure()
         run: |
-          echo "Rendered Output Contents:"
           ls -la rendered_output/ || echo "No rendered_output directory"
-          echo "Looking for log files..."
-          find . -name "*.log" -exec echo "--- {} ---" \; -exec cat {} \;
-          echo "Scanning .qmd files for Errors:"
-          grep -i -r "error" ./*.qmd || echo "No errors found in .qmd files"
+          find . -name "*.log" -exec cat {} \;
 
       - name: Deploy Entire Project to GitHub Pages
         if: success() && github.event_name != 'pull_request'
