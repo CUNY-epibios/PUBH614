@@ -47,16 +47,23 @@ jobs:
       - name: List All Files
         run: |
           echo "Files to process:"
-          find . -type f -not -path "./rendered_output/*" -not -path "./.git/*" -not -path "./docs/*" -ls || echo "No files found"
+          find . -type f -not -path "./rendered_output/*" -not -path "./.git/*" -not -name "*.html" -ls || echo "No files found"
 
       - name: Render Markdown and Quarto Files, Copy Others
         run: |
           mkdir -p rendered_output
-          find . -type f -not -path "./rendered_output/*" -not -path "./.git/*" -not -path "./docs/*" | while read -r file; do
+          find . -type f -not -path "./rendered_output/*" -not -path "./.git/*" -not -name "*.html" | while read -r file; do
             if [ -f "$file" ]; then
               mkdir -p "rendered_output/$(dirname "$file")"
-              if [[ "$file" == *.qmd || "$file" == *.md ]]; then
-                echo "Rendering $file..."
+              if [[ "$file" == *.qmd ]]; then
+                echo "Rendering Quarto file $file..."
+                quarto render "$file" --output-dir "rendered_output/$(dirname "$file")"
+                if [ $? -ne 0 ]; then
+                  echo "Failed to render $file"
+                  exit 1
+                fi
+              elif [[ "$file" == *.md && "$file" != *README.md && "$file" != *CODE_OF_CONDUCT.md && "$file" != *LICENSE.md ]]; then
+                echo "Rendering Markdown file $file..."
                 quarto render "$file" --output-dir "rendered_output/$(dirname "$file")"
                 if [ $? -ne 0 ]; then
                   echo "Failed to render $file"
