@@ -26,6 +26,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
       - name: Install Quarto
         run: |
           curl -sSL https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.56/quarto-1.5.56-linux-amd64.deb -o quarto.deb
@@ -35,6 +40,13 @@ jobs:
       - name: Install Quarto webr Extension
         run: |
           quarto add coatless/quarto-webr --no-prompt
+
+      - name: Debug Quarto webr Extension
+        run: |
+          echo "Listing Quarto webr extension files:"
+          ls -la _extensions/coatless/webr/
+          echo "Contents of _extension.yml:"
+          cat _extensions/coatless/webr/_extension.yml
 
       - name: Install R Packages (for Quarto Rendering and pkgdown)
         run: |
