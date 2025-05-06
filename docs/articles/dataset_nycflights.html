@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Codebook for NYC Flights Dataset • PUBH614</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -46,7 +45,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"code":"library(openintro)","options":{"label":"unnamed-chunk-1","context":"interactive","dpi":72,"comment":"","editor-max-height":"","out-height":"","output":"true","read-only":"false","editor-font-scale":"1","editor-word-wrap":"true","fig-width":7,"autorun":"false","editor-quick-suggestions":"false","classes":"","warning":"true","fig-cap":"","message":"false","fig-height":5,"out-width":"700px","results":"markup"}},{"id":2,"code":"download.file(\n  \"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/nycflights.csv\",\n  destfile = \"nycflights.csv\"\n)\nnycflights <- read.csv(file = \"nycflights.csv\")","options":{"label":"unnamed-chunk-2","context":"interactive","dpi":72,"comment":"","editor-max-height":"","out-height":"","output":"true","read-only":"false","editor-font-scale":"1","editor-word-wrap":"true","fig-width":7,"autorun":"true","editor-quick-suggestions":"false","classes":"","warning":"true","fig-cap":"","message":"true","fig-height":5,"out-width":"700px","results":"markup"}},{"id":3,"code":"library(tableone)\nCreateTableOne(data = nycflights[, -c(9, 12)], includeNA = TRUE)","options":{"label":"unnamed-chunk-3","context":"interactive","dpi":72,"comment":"","editor-max-height":"","out-height":"","output":"true","read-only":"false","editor-font-scale":"1","editor-word-wrap":"true","fig-width":7,"autorun":"true","editor-quick-suggestions":"false","classes":"","warning":"true","fig-cap":"","message":"false","fig-height":5,"out-width":"700px","results":"asis"}}];
+  globalThis.qwebrCellDetails = [{"code":"library(openintro)","options":{"results":"markup","comment":"","out-width":"700px","context":"interactive","message":"false","read-only":"false","dpi":72,"fig-width":7,"warning":"true","editor-word-wrap":"true","label":"unnamed-chunk-1","fig-height":5,"fig-cap":"","autorun":"false","editor-quick-suggestions":"false","editor-font-scale":"1","output":"true","out-height":"","editor-max-height":"","classes":""},"id":1},{"code":"download.file(\n  \"https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/refs/heads/main/datasets/nycflights.csv\",\n  destfile = \"nycflights.csv\"\n)\nnycflights <- read.csv(file = \"nycflights.csv\")","options":{"results":"markup","comment":"","out-width":"700px","context":"interactive","message":"true","read-only":"false","dpi":72,"fig-width":7,"warning":"true","editor-word-wrap":"true","label":"unnamed-chunk-2","fig-height":5,"fig-cap":"","autorun":"true","editor-quick-suggestions":"false","editor-font-scale":"1","output":"true","out-height":"","editor-max-height":"","classes":""},"id":2},{"code":"library(tableone)\nCreateTableOne(data = nycflights[, -c(9, 12)], includeNA = TRUE)","options":{"results":"asis","comment":"","out-width":"700px","context":"interactive","message":"false","read-only":"false","dpi":72,"fig-width":7,"warning":"true","editor-word-wrap":"true","label":"unnamed-chunk-3","fig-height":5,"fig-cap":"","autorun":"true","editor-quick-suggestions":"false","editor-font-scale":"1","output":"true","out-height":"","editor-max-height":"","classes":""},"id":3}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -2113,7 +2112,7 @@ qwebrInstance.then(
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
 </div>
 
     </footer>

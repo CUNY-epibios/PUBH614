@@ -1,5 +1,5 @@
 pandoc: 3.1.3
-pkgdown: 2.1.1
+pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   01_intro_to_r: 01_intro_to_r.html
@@ -23,7 +23,7 @@ articles:
   dataset_sclc: dataset_sclc.html
   dataset_yrbss: dataset_yrbss.html
   lecturetable: lecturetable.html
-last_built: 2025-04-16T15:09Z
+last_built: 2025-05-06T19:33Z
 urls:
   reference: https://cuny-epibios.github.io/PUBH614/reference
   article: https://cuny-epibios.github.io/PUBH614/articles
