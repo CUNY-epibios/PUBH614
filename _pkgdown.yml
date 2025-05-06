@@ -1,0 +1,66 @@
+url: https://cuny-epibios.github.io/PUBH614/
+template:
+  bootstrap: 5
+  bootswatch: cerulean
+  light-switch: true
+navbar:
+  structure:
+    left:  [intro, labs, otherlabs, datasets, exercises, lectures]
+    right: [github, lightswitch, search]
+  components:
+    lectures:
+      text: "Lectures"
+      menu:
+        - text: "Lecture notes and videos"
+          href: articles/lecturetable.html
+    labs:
+      text: "OpenIntro Labs"
+      menu:
+        - text: "01 Introduction to R"
+          href: articles/01_intro_to_r.html
+        - text: "02 Introduction to Data"
+          href: articles/02_intro_to_data.html
+        - text: "03 Probability"
+          href: articles/03_probability.html
+        - text: "04 The Normal Distribution"
+          href: articles/04_normal_distribution.html
+        - text: "05a Sampling Distributions"
+          href: articles/05a_sampling_distributions.html
+        - text: "05b Confidence Intervals"
+          href: articles/05b_confidence_intervals.html
+        - text: "06 Inference for Categorical Data"
+          href: articles/06_inf_for_categorical_data.html
+        - text: "07 Inference for Numerical Data"
+          href: articles/07_inf_for_numerical_data.html
+        - text: "08 Linear Regression"
+          href: articles/08_simple_regression.html
+        - text: "09 Multiple Regression"
+          href: articles/09_multiple_regression.html
+    otherlabs:
+      text: "Other Labs"
+      menu:
+        - text: "04b Logistic Regression"
+          href: articles/04b_logistic.html
+    datasets:
+      text: "Datasets"
+      menu:
+        - text: "Arbuthnot"
+          href: articles/dataset_arbuthnot.html
+        - text: "Small-cell lung cancer"
+          href: articles/dataset_sclc.html
+        - text: "Fast food"
+          href: articles/dataset_fastfood.html
+        - text: "Kobe Bryant Baskets"
+          href: articles/dataset_kobe.html
+        - text: "Youth Risk Behavior Surveillance System"
+          href: articles/dataset_yrbss.html
+        - text: "NYC flights"
+          href: articles/dataset_nycflights.html
+        - text: "NHANES"
+          href: articles/dataset_nhanes.html
+    exercises:
+      text: "Exercises"
+      menu:
+        - text: "Blank workbook"
+          href: articles/blank_workbook.html
+extra_css: pkgdown/extra.css
