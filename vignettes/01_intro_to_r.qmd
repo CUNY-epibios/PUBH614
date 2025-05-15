@@ -10,11 +10,16 @@ vignette: >
   %\VignetteIndexEntry{01. Introduction to R}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+format: live-html
 engine: knitr
-filters:
-  - webr
+webr:
+  packages:
+    - dplyr
+    - openintro
+    - ggplot2
 ---
 
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
 # A note about this lab
 
@@ -22,7 +27,7 @@ If you are viewing this lab on [https://cuny-epibios.github.io/PUBH614/](https:/
 enter, edit, and run the R code directly in your web browser. Try it! Also try 
 changing the value assigned to `x`, and try some different calculator-like commands.
 
-```{webr-r}
+```{webr}
 x = 2
 x + 2
 ```
@@ -35,7 +40,8 @@ you will use into your working environment, and the openintro package
 which provides the `arbuthnot` dataset used in this lab. Don't worry about the
 warnings and messages it produces, they aren't important in this case.
 
-```{webr-r}
+```{webr}
+#| autorun: true
 library(dplyr)
 library(openintro)
 ```
@@ -46,8 +52,9 @@ We are choosing to use the tidyverse package because it consists of a set of pac
 
 To get started, let's take a peek at the data.
 
-```{webr-r}
-arbuthnot
+```{webr}
+#| autorun: true
+arbuthnot |> head()
 ```
 
 Again, you can run the code above by:
@@ -72,7 +79,7 @@ Note that the row numbers in the first column are not part of Arbuthnot's data. 
 
 You can see the dimensions of this data frame as well as the names of the variables and the first few observations by inserting the name of the dataset into the `glimpse()` function, as seen below:
 
-```{webr-r}
+```{webr}
 glimpse(arbuthnot)
 ```
 
@@ -84,7 +91,7 @@ We can see that there are 82 observations and 3 variables in this dataset. The v
 
 Let's start to examine the data a little more closely. We can access the data in a single column of a data frame by extracting the column with a `$`. For example, the code below extracts the `boys` column from the `arbuthnot` data frame.
 
-```{webr-r}
+```{webr}
 arbuthnot$boys
 ```
 
@@ -92,9 +99,31 @@ This command will only show the number of boys baptized each year. `R` interpret
 
 1.  What command would you use to extract just the counts of girls baptized? Try it out!
 
-```{webr-r}
-# enter code here
+```{webr}
+#| exercise: ex_1
+## enter code here
 ```
+
+```{webr}
+#| exercise: ex_1
+#| check: true
+if (identical(.result, arbuthnot$girls)) {
+    list(correct = TRUE, message = "Nice work!")
+} else {
+    list(correct = FALSE, message = "Incorrect. Try again.")
+}
+```
+
+::: { .hint exercise="ex_1"}
+::: { .callout-note collapse="FALSE}
+## Hint 1
+
+What symbols are used to extract columns from a `data.frame`?
+What is the name of the variable you are trying to extract?
+
+:::
+:::
+
 
 Notice that the way `R` has printed these data is different. When we looked at the complete data frame, we saw 82 rows, one on each line of the display. These data have been extracted from the data frame, so they are no longer structured in a table with other variables. Instead, these data are displayed one right after another. Objects that print out in this way are called *vectors*; similar to the vectors you have seen in mathematics courses, vectors represent a list of numbers. `R` has added numbers displayed in [brackets] along the left side of the printout to indicate each entry's location within the vector. For example, 5218 follows `[1]`, indicating that `5218` is the first entry in the vector. If `[43]` was displayed at the beginning of a line, that indicate that the first number displayed on that line would correspond to the 43<sup>rd</sup> entry in that vector.
 
@@ -102,7 +131,7 @@ Notice that the way `R` has printed these data is different. When we looked at t
 
 `R` has some powerful functions for making graphics. We use the `ggplot2` package
 to create a simple plot of the number of girls baptized per year with the following code. 
-```{webr-r}
+```{webr}
 library(ggplot2)
 ggplot(data = arbuthnot, aes(x = year, y = girls)) + 
   geom_point()
@@ -124,7 +153,7 @@ These commands will build a blank plot, with the variables you assigned to the x
 
 Since we want to scatterplot, we use `geom_point()`. This tells `ggplot()` that each data point should be represented by one point on the plot. If you wanted to visualize the above plot using a line graph instead of a scatterplot, you would replace `geom_point()` with `geom_line()`. This tells `ggplot()` to draw a line from each observation with the next observation (sequentially).
 
-```{webr-r}
+```{webr}
 ggplot(data = arbuthnot, aes(x = year, y = girls)) +
   geom_line()
 ```
@@ -140,7 +169,7 @@ Use the plot to address the following question:
 
 You might wonder how you are supposed to know the syntax for the `ggplot()` function. Thankfully, `R` documents all of its functions extensively. To learn what a function does and how to use it (e.g. the function's arguments), just type in a question mark followed by the name of the function that you're interested in into the console. Type the following in your console:
 
-```{webr-r}
+```{webr}
 ?ggplot
 ```
 
@@ -150,13 +179,13 @@ Notice that the help file comes to the forefront, replacing the plot in the lowe
 
 Now, suppose we want to plot the total number of baptisms. To compute this, we could use the fact that we can use `R` as a big calculator. To do this, we can type in mathematical expressions such as the below calculation into the console.
 
-```{webr-r}
+```{webr}
 5218 + 4683
 ```
 
 This calculation would provide us with the total number of baptisms in 1629. We could then repeat this calculation once for each year. This would probably take us a while, but luckily there is a faster way! If we add the vector for baptisms for boys to that of girls, `R` can compute each of these sums simultaneously.
 
-```{webr-r}
+```{webr}
 arbuthnot$boys + arbuthnot$girls
 ```
 
@@ -166,7 +195,7 @@ What you will see is a list of 82 numbers. These numbers appear as a list, becau
 
 We are interested in using this new vector of the total number of baptisms to generate some plots, so we'll want to save it as a permanent column in our data frame. We can do this using the following code:
 
-```{webr-r}
+```{webr}
 arbuthnot <- arbuthnot %>%
   mutate(total = boys + girls)
 ```
@@ -188,7 +217,7 @@ This is equivalent to going through each row and adding up the `boys` and `girls
 **Where is the new variable?** You can use `ls()` to see the contents of your
 environment:
 
-```{webr-r}
+```{webr}
 ls()
 ```
 </div>
@@ -199,33 +228,33 @@ See the [arbuthnot codebook](dataset_arbuthnot.html).
 
 You can make a line plot of the total number of baptisms per year with the following code:
 
-```{webr-r}
+```{webr}
 ggplot(data = arbuthnot, aes(x = year, y = total)) + 
   geom_line()
 ```
 
 In an similar fashion, once you know the total number of baptisms for boys and girls in 1629, you can compute the ratio of the number of boys to the number of girls baptized with the following code:
 
-```{webr-r}
+```{webr}
 5218 / 4683
 ```
 
 Alternatively, you could calculate this ratio for every year by acting on the complete `boys` and `girls` columns, and then save those calculations into a new variable named `boy_to_girl_ratio`:
 
-```{webr-r}
+```{webr}
 arbuthnot <- arbuthnot %>%
   mutate(boy_to_girl_ratio = boys / girls)
 ```
 
 You can also compute the proportion of newborns that are boys in 1629 with the following code:
 
-```{webr-r}
+```{webr}
 5218 / (5218 + 4683)
 ```
 
 Or you can compute this for all years simultaneously and add it as a new variable named `boy_ratio` to the dataset:
 
-```{webr-r}
+```{webr}
 arbuthnot <- arbuthnot %>%
   mutate(boy_ratio = boys / total)
 ```
@@ -234,7 +263,7 @@ Notice that rather than dividing by `boys + girls` we are using the `total` vari
 
 3.  Now, generate a plot of the proportion of boys born over time. What do you see?
 
-```{webr-r}
+```{webr}
 # Enter code here
 ```
 <form>
@@ -249,7 +278,7 @@ Notice that rather than dividing by `boys + girls` we are using the `total` vari
 
 Finally, in addition to simple mathematical operators like subtraction and division, you can ask R to make comparisons like greater than, `>`, less than, `<`, and equality, `==`. For example, we can create a new variable called `more_boys` that tells us whether the number of births of boys outnumbered that of girls in each year with the following code:
 
-```{webr-r}
+```{webr}
 arbuthnot <- arbuthnot %>%
   mutate(more_boys = boys > girls)
 ```
@@ -264,7 +293,7 @@ To find the minimum and maximum values of columns, you can use the functions `mi
 
 Here's an example of how to find the minimum and maximum amount of boy births in a year:
 
-```{webr-r}
+```{webr}
 arbuthnot %>%
   summarize(min = min(boys),
             max = max(boys)
@@ -274,7 +303,7 @@ arbuthnot %>%
 Answer the following questions with the `present` data frame:
 
 1.  What years are included in this data set? What are the dimensions of the data frame? What are the variable (column) names?
-```{webr-r}
+```{webr}
 # Enter code here
 ```
 <form>
@@ -283,7 +312,7 @@ Answer the following questions with the `present` data frame:
 
 
 2.  How do these counts compare to Arbuthnot's? Are they of a similar magnitude?
-```{webr-r}
+```{webr}
 # Enter code here
 ```
 <form>
@@ -292,7 +321,7 @@ Answer the following questions with the `present` data frame:
 
 
 3.  Make a plot that displays the proportion of boys born over time. What do you see? Does Arbuthnot's observation about boys being born in greater proportion than girls hold up in the U.S.? Include the plot in your response. *Hint:* You should be able to reuse your code from Exercise 3 above, just replace the name of the data frame.
-```{webr-r}
+```{webr}
 # Enter code here
 ```
 <form>
@@ -302,7 +331,7 @@ Answer the following questions with the `present` data frame:
 
 4.  In what year did we see the most total number of births in the U.S.? *Hint:* First calculate the totals and save it as a new variable. Then, sort your dataset in descending order based on the `total` column. You can do this interactively in the data viewer by clicking on the arrows next to the variable names. To include the sorted result in your report you will need to use two new functions. First we use `arrange()` to sorting the variable. Then we can arrange the data in a descending order with another function, `desc()`, for descending order. The sample code is provided below.
 
-```{webr-r}
+```{webr}
 # Sample code:
 present %>%
   arrange(desc(total))
