@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>07. Inference for numerical data • PUBH614</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -46,7 +45,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-1","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":1,"code":"library(dplyr)\nlibrary(ggplot2)\nlibrary(openintro)\nlibrary(infer)\nlibrary(skimr)"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-2","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":2,"code":"data(yrbss)"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-3","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":3,"code":"?yrbss"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-4","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":4,"code":"# Enter code here"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-5","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":5,"code":"yrbss %>% \n  skim()"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-6","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":6,"code":"yrbss <- yrbss %>% \n  mutate(physical_3plus = if_else(physically_active_7d > 2, \"yes\", \"no\"))\ntable(yrbss$physical_3plus) #check the new variable"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-7","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":7,"code":"# Enter code here"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-8","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":8,"code":"yrbss %>%\n  group_by(physical_3plus) %>%\n  summarise(mean_weight = mean(weight, na.rm = TRUE))"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-9","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":9,"code":"obs_diff <- yrbss %>%\n  filter(!is.na(weight)) %>%\n  filter(!is.na(physical_3plus)) %>%\n  specify(weight ~ physical_3plus) %>%\n  calculate(stat = \"diff in means\", order = c(\"yes\", \"no\"))"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-10","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":10,"code":"null_dist <- yrbss %>%\n  filter(!is.na(weight)) %>%\n  filter(!is.na(physical_3plus)) %>%\n  specify(weight ~ physical_3plus) %>%\n  hypothesize(null = \"independence\") %>%\n  generate(reps = 1000, type = \"permute\") %>%\n  calculate(stat = \"diff in means\", order = c(\"yes\", \"no\"))\nnull_dist #take a look"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-11","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":11,"code":"ggplot(data = null_dist, aes(x = stat)) +\n  geom_histogram(bins = 30)"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-12","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":12,"code":"# Enter code here"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-13","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":13,"code":"null_dist %>%\n  get_p_value(obs_stat = obs_diff, direction = \"two_sided\")"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-14","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":14,"code":"# Enter code here"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-15","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":15,"code":"# Enter code here"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-16","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":16,"code":"# Enter code here"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-17","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":17,"code":"# Enter code here"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-18","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":18,"code":"# Enter code here"},{"options":{"fig-cap":"","message":"true","editor-word-wrap":"true","editor-quick-suggestions":"false","dpi":72,"editor-max-height":"","output":"true","editor-font-scale":"1","out-height":"","autorun":"false","warning":"true","fig-width":7,"fig-height":5,"comment":"","results":"markup","label":"unnamed-chunk-19","out-width":"700px","read-only":"false","context":"interactive","classes":""},"id":19,"code":"# Enter code here"}];
+  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(ggplot2)\nlibrary(openintro)\nlibrary(infer)\nlibrary(skimr)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"data(yrbss)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"?yrbss","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"yrbss %>% \n  skim()","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"yrbss <- yrbss %>% \n  mutate(physical_3plus = if_else(physically_active_7d > 2, \"yes\", \"no\"))\ntable(yrbss$physical_3plus) #check the new variable","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"yrbss %>%\n  group_by(physical_3plus) %>%\n  summarise(mean_weight = mean(weight, na.rm = TRUE))","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"obs_diff <- yrbss %>%\n  filter(!is.na(weight)) %>%\n  filter(!is.na(physical_3plus)) %>%\n  specify(weight ~ physical_3plus) %>%\n  calculate(stat = \"diff in means\", order = c(\"yes\", \"no\"))","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"null_dist <- yrbss %>%\n  filter(!is.na(weight)) %>%\n  filter(!is.na(physical_3plus)) %>%\n  specify(weight ~ physical_3plus) %>%\n  hypothesize(null = \"independence\") %>%\n  generate(reps = 1000, type = \"permute\") %>%\n  calculate(stat = \"diff in means\", order = c(\"yes\", \"no\"))\nnull_dist #take a look","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = null_dist, aes(x = stat)) +\n  geom_histogram(bins = 30)","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"null_dist %>%\n  get_p_value(obs_stat = obs_diff, direction = \"two_sided\")","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1827,107 +1826,89 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <hr>
 <p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0" alt="Creative Commons License"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
 </section><script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'light-border',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config);
-  }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
       }
-    } else {
-      return undefined;
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config);
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
         });
-        return popup.innerHTML;
-      });
+      }
     }
-  }
-});
-</script><script type="module">
+  });
+  </script><script type="module">
 // Handle cell initialization initialization
 qwebrCellDetails.map(
   (entry) => {
@@ -2052,7 +2033,7 @@ qwebrInstance.then(
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>

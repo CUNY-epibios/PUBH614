@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>03. Probability • PUBH614</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -46,7 +45,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(openintro)","options":{"classes":"","context":"interactive","label":"unnamed-chunk-1","output":"true","message":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","editor-word-wrap":"true","results":"markup","out-width":"700px","dpi":72,"fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","editor-font-scale":"1","out-height":"","warning":"true","comment":""},"id":1},{"code":"glimpse(kobe_basket)","options":{"classes":"","context":"interactive","label":"unnamed-chunk-2","output":"true","message":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","editor-word-wrap":"true","results":"markup","out-width":"700px","dpi":72,"fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","editor-font-scale":"1","out-height":"","warning":"true","comment":""},"id":2},{"code":"kobe_streak <- calc_streak(kobe_basket$shot)","options":{"classes":"","context":"interactive","label":"unnamed-chunk-3","output":"true","message":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","editor-word-wrap":"true","results":"markup","out-width":"700px","dpi":72,"fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","editor-font-scale":"1","out-height":"","warning":"true","comment":""},"id":3},{"code":"library(ggplot2)\nggplot(data = kobe_streak, aes(x = length)) +\n  geom_bar()","options":{"classes":"","context":"interactive","label":"unnamed-chunk-4","output":"true","message":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","editor-word-wrap":"true","results":"markup","out-width":"700px","dpi":72,"fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","editor-font-scale":"1","out-height":"","warning":"true","comment":""},"id":4},{"code":"coin_outcomes <- c(\"heads\", \"tails\")\nsample(coin_outcomes, size = 1, replace = TRUE)","options":{"classes":"","context":"interactive","label":"unnamed-chunk-5","output":"true","message":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","editor-word-wrap":"true","results":"markup","out-width":"700px","dpi":72,"fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","editor-font-scale":"1","out-height":"","warning":"true","comment":""},"id":5},{"code":"sim_fair_coin <- sample(coin_outcomes, size = 100, replace = TRUE)","options":{"classes":"","context":"interactive","label":"unnamed-chunk-6","output":"true","message":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","editor-word-wrap":"true","results":"markup","out-width":"700px","dpi":72,"fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","editor-font-scale":"1","out-height":"","warning":"true","comment":""},"id":6},{"code":"sim_fair_coin\ntable(sim_fair_coin)","options":{"classes":"","context":"interactive","label":"unnamed-chunk-7","output":"true","message":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","editor-word-wrap":"true","results":"markup","out-width":"700px","dpi":72,"fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","editor-font-scale":"1","out-height":"","warning":"true","comment":""},"id":7},{"code":"sim_unfair_coin <- sample(coin_outcomes, size = 100, replace = TRUE, \n                          prob = c(0.2, 0.8))","options":{"classes":"","context":"interactive","label":"unnamed-chunk-8","output":"true","message":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","editor-word-wrap":"true","results":"markup","out-width":"700px","dpi":72,"fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","editor-font-scale":"1","out-height":"","warning":"true","comment":""},"id":8},{"code":"set.seed(35797)                 # make sure to change the seed","options":{"classes":"","context":"interactive","label":"unnamed-chunk-9","output":"true","message":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","editor-word-wrap":"true","results":"markup","out-width":"700px","dpi":72,"fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","editor-font-scale":"1","out-height":"","warning":"true","comment":""},"id":9},{"code":"?sample","options":{"classes":"","context":"interactive","label":"unnamed-chunk-10","output":"true","message":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","editor-word-wrap":"true","results":"markup","out-width":"700px","dpi":72,"fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","editor-font-scale":"1","out-height":"","warning":"true","comment":""},"id":10},{"code":"shot_outcomes <- c(\"H\", \"M\")\nsim_basket <- sample(shot_outcomes, size = 1, replace = TRUE)","options":{"classes":"","context":"interactive","label":"unnamed-chunk-11","output":"true","message":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","editor-word-wrap":"true","results":"markup","out-width":"700px","dpi":72,"fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","editor-font-scale":"1","out-height":"","warning":"true","comment":""},"id":11},{"code":"# Enter code here","options":{"classes":"","context":"interactive","label":"unnamed-chunk-12","output":"true","message":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","editor-word-wrap":"true","results":"markup","out-width":"700px","dpi":72,"fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","editor-font-scale":"1","out-height":"","warning":"true","comment":""},"id":12},{"code":"# Enter code here","options":{"classes":"","context":"interactive","label":"unnamed-chunk-13","output":"true","message":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","editor-word-wrap":"true","results":"markup","out-width":"700px","dpi":72,"fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","editor-font-scale":"1","out-height":"","warning":"true","comment":""},"id":13},{"code":"# Enter code here","options":{"classes":"","context":"interactive","label":"unnamed-chunk-14","output":"true","message":"true","editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","editor-word-wrap":"true","results":"markup","out-width":"700px","dpi":72,"fig-height":5,"fig-cap":"","fig-width":7,"autorun":"false","editor-font-scale":"1","out-height":"","warning":"true","comment":""},"id":14}];
+  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(openintro)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"glimpse(kobe_basket)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"kobe_streak <- calc_streak(kobe_basket$shot)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"library(ggplot2)\nggplot(data = kobe_streak, aes(x = length)) +\n  geom_bar()","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"coin_outcomes <- c(\"heads\", \"tails\")\nsample(coin_outcomes, size = 1, replace = TRUE)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sim_fair_coin <- sample(coin_outcomes, size = 100, replace = TRUE)","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sim_fair_coin\ntable(sim_fair_coin)","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sim_unfair_coin <- sample(coin_outcomes, size = 100, replace = TRUE, \n                          prob = c(0.2, 0.8))","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"set.seed(35797)                 # make sure to change the seed","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"?sample","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"shot_outcomes <- c(\"H\", \"M\")\nsim_basket <- sample(shot_outcomes, size = 1, replace = TRUE)","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1672,7 +1671,22 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   };
 
 }
-</script><section class="section level2"><h2 id="the-hot-hand">The Hot Hand<a class="anchor" aria-label="anchor" href="#the-hot-hand"></a>
+</script><section class="section level2"><h2 id="ai-powered-features-in-google-colab">AI-Powered Features in Google Colab<a class="anchor" aria-label="anchor" href="#ai-powered-features-in-google-colab"></a>
+</h2>
+<p>You can also complete this lab using a <a href="https://colab.research.google.com/drive/1e4QdnViznqex0enPhHjsJ8_BAroemCxg?usp=drive_link" class="external-link">Google Colab version</a> version that offers AI-powered features like code generation, explanation, and error debugging.</p>
+</section><section class="section level2"><h2 id="learning-objectives">Learning Objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"></a>
+</h2>
+<p>By the end of this lab, you should be able to:</p>
+<ul>
+<li>Understand the concepts of independent and dependent events in probability.</li>
+<li>Learn how to simulate random events (e.g., coin flips, basketball shots) in R.</li>
+<li>Use the <code><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample()</a></code> function for simulations, including specifying probabilities for different outcomes.</li>
+<li>Understand the purpose and use of <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> for ensuring the reproducibility of simulations.</li>
+<li>Calculate shooting streak lengths from a sequence of outcomes using the <code>calc_streak()</code> function.</li>
+<li>Visualize the distribution of data, such as streak lengths, using <code>geom_bar()</code> from the <code>ggplot2</code> package.</li>
+<li>Compare observed data (e.g., Kobe Bryant’s shooting streaks) to simulated data (e.g., from an independent shooter model).</li>
+<li>Use these comparisons to make informal inferences about whether observed patterns might be due to chance or another underlying process (like a “hot hand”).</li>
+</ul></section><section class="section level2"><h2 id="the-hot-hand">The Hot Hand<a class="anchor" aria-label="anchor" href="#the-hot-hand"></a>
 </h2>
 <p>Basketball players who make several baskets in succession are described as having a <em>hot hand</em>. Fans and players have long believed in the hot hand phenomenon, which refutes the assumption that each shot is independent of the next. However, <a href="http://www.sciencedirect.com/science/article/pii/0010028585900106" class="external-link">a 1985 paper</a> by Gilovich, Vallone, and Tversky collected evidence that contradicted this belief and showed that successive shots are independent events. This paper started a great controversy that continues to this day, as you can see by Googling <em>hot hand basketball</em>.</p>
 <p>We do not expect to resolve this controversy today. However, in this lab we’ll apply one approach to answering questions like this. The goals for this lab are to (1) think about the effects of independent and dependent events, (2) learn how to simulate shooting streaks in R, and (3) to compare a simulation to actual data in order to determine if the hot hand phenomenon appears to be real.</p>
@@ -1795,107 +1809,89 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <hr>
 <p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0" alt="Creative Commons License"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
 </section></section><script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'light-border',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config);
-  }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
       }
-    } else {
-      return undefined;
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config);
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
         });
-        return popup.innerHTML;
-      });
+      }
     }
-  }
-});
-</script><script type="module">
+  });
+  </script><script type="module">
 // Handle cell initialization initialization
 qwebrCellDetails.map(
   (entry) => {
@@ -2020,7 +2016,7 @@ qwebrInstance.then(
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>

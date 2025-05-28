@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>02. Introduction to Data • PUBH614</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -46,7 +45,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"code":"library(dplyr)\nlibrary(openintro)","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-1","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":2,"code":"data(nycflights)","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-2","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":3,"code":"names(nycflights)","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-3","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":4,"code":"?nycflights","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-4","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":5,"code":"glimpse(nycflights)","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-5","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":6,"code":"library(ggplot2)\nggplot(data = nycflights, aes(x = dep_delay)) +\n  geom_histogram()","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-6","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":7,"code":"ggplot(data = nycflights, aes(x = dep_delay)) +\n  geom_histogram(binwidth = 15)\nggplot(data = nycflights, aes(x = dep_delay)) +\n  geom_histogram(binwidth = 150)","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-7","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":8,"code":"lax_flights <- nycflights %>%\n  filter(dest == \"LAX\")\nggplot(data = lax_flights, aes(x = dep_delay)) +\n  geom_histogram()","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-8","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":9,"code":"lax_flights %>%\n  summarise(mean_dd   = mean(dep_delay), \n            median_dd = median(dep_delay), \n            n         = n())","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-9","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":10,"code":"sfo_feb_flights <- nycflights %>%\n  filter(dest == \"SFO\", month == 2)","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-10","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":11,"code":"# Enter code here","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-11","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":12,"code":"# Enter code here","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-12","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":13,"code":"sfo_feb_flights %>%\n  group_by(origin) %>%\n  summarise(median_dd = median(dep_delay), iqr_dd = IQR(dep_delay), n_flights = n())","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-13","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":14,"code":"# Enter code here","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-14","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":15,"code":"nycflights %>%\n  group_by(month) %>%\n  summarise(mean_dd = mean(dep_delay)) %>%\n  arrange(desc(mean_dd))","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-15","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":16,"code":"nycflights <- nycflights %>%\n  mutate(dep_type = ifelse(dep_delay < 5, \"on time\", \"delayed\"))","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-16","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":17,"code":"nycflights %>%\n  group_by(origin) %>%\n  summarise(ot_dep_rate = sum(dep_type == \"on time\") / n()) %>%\n  arrange(desc(ot_dep_rate))","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-17","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":18,"code":"ggplot(data = nycflights, aes(x = origin, fill = dep_type)) +\n  geom_bar()","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-18","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":19,"code":"# Enter code here","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-19","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":20,"code":"# Enter code here","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","read-only":"false","output":"true","fig-width":7,"out-width":"700px","label":"unnamed-chunk-20","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}},{"id":21,"code":"dl_aa_ua <- nycflights %>%\n  filter(carrier == \"AA\" | carrier == \"DL\" | carrier == \"UA\")\nggplot(data = dl_aa_ua, aes(x = dep_delay, y = arr_delay, color = carrier)) +\n  geom_point()","options":{"context":"interactive","warning":"true","results":"markup","comment":"","fig-cap":"","fig.width":"7","read-only":"false","output":"true","fig.height":"4","fig-width":7,"out-width":"700px","label":"unnamed-chunk-21","editor-word-wrap":"true","fig-height":5,"classes":"","message":"true","editor-max-height":"","autorun":"false","dpi":72,"editor-font-scale":"1","out-height":"","editor-quick-suggestions":"false"}}];
+  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(openintro)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"data(nycflights)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"names(nycflights)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"?nycflights","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"glimpse(nycflights)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"library(ggplot2)\nggplot(data = nycflights, aes(x = dep_delay)) +\n  geom_histogram()","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = nycflights, aes(x = dep_delay)) +\n  geom_histogram(binwidth = 15)\nggplot(data = nycflights, aes(x = dep_delay)) +\n  geom_histogram(binwidth = 150)","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"lax_flights <- nycflights %>%\n  filter(dest == \"LAX\")\nggplot(data = lax_flights, aes(x = dep_delay)) +\n  geom_histogram()","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"lax_flights %>%\n  summarise(mean_dd   = mean(dep_delay), \n            median_dd = median(dep_delay), \n            n         = n())","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sfo_feb_flights <- nycflights %>%\n  filter(dest == \"SFO\", month == 2)","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sfo_feb_flights %>%\n  group_by(origin) %>%\n  summarise(median_dd = median(dep_delay), iqr_dd = IQR(dep_delay), n_flights = n())","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"nycflights %>%\n  group_by(month) %>%\n  summarise(mean_dd = mean(dep_delay)) %>%\n  arrange(desc(mean_dd))","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"nycflights <- nycflights %>%\n  mutate(dep_type = ifelse(dep_delay < 5, \"on time\", \"delayed\"))","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"nycflights %>%\n  group_by(origin) %>%\n  summarise(ot_dep_rate = sum(dep_type == \"on time\") / n()) %>%\n  arrange(desc(ot_dep_rate))","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = nycflights, aes(x = origin, fill = dep_type)) +\n  geom_bar()","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dl_aa_ua <- nycflights %>%\n  filter(carrier == \"AA\" | carrier == \"DL\" | carrier == \"UA\")\nggplot(data = dl_aa_ua, aes(x = dep_delay, y = arr_delay, color = carrier)) +\n  geom_point()","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"fig.height":"4","fig.width":"7","label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1672,8 +1671,35 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   };
 
 }
-</script><p>Some define statistics as the field that focuses on turning information into knowledge. The first step in that process is to summarize and describe the raw information – the data. In this lab we explore flights, specifically a random sample of domestic flights that departed from the three major New York City airports in 2013. We will generate simple graphical and numerical summaries of data on these flights and explore delay times. Since this is a large data set, along the way you’ll also learn the indispensable skills of data processing and subsetting.</p>
-<section class="section level2"><h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
+</script><section class="section level2"><h2 id="ai-powered-features-in-google-colab">AI-Powered Features in Google Colab<a class="anchor" aria-label="anchor" href="#ai-powered-features-in-google-colab"></a>
+</h2>
+<p>You can also complete this lab using a <a href="https://colab.research.google.com/drive/1rhUUiP4wuJFH6L8-VLEv1O-IYVYMsSPF?usp=drive_link" class="external-link">Google Colab version</a> version that offers AI-powered features like code generation, explanation, and error debugging.</p>
+<section class="level2"><h3 id="learning-objectives">Learning Objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"></a>
+</h3>
+<p>By the end of this lab, you should be able to:</p>
+<ul>
+<li>Set up a Google Colab notebook to run R code.</li>
+<li>Install and load essential R packages (<code>openintro</code>, <code>dplyr</code>, <code>ggplot2</code>).</li>
+<li>Load datasets into your R environment (specifically, the <code>nycflights</code> dataset).</li>
+<li>Understand the basic structure of a data frame, including observations (rows) and variables (columns).</li>
+<li>Inspect data frames using functions like <code><a href="https://rdrr.io/r/base/names.html" class="external-link">names()</a></code>, <code>glimpse()</code>, and the help operator <code>?</code>.</li>
+<li>Subset data effectively using <code><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter()</a></code> with single and multiple logical conditions (e.g., <code>==</code>, <code>&gt;</code>, <code>&amp;</code>, <code>|</code>).</li>
+<li>Calculate summary statistics (e.g., mean, median, IQR, count) for datasets and grouped data using <code>summarise()</code> and <code>group_by()</code>.</li>
+<li>Create new variables and add them to a data frame using <code>mutate()</code> and conditional logic with <code><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse()</a></code>.</li>
+<li>Sort data frames based on column values using <code>arrange()</code>.</li>
+<li>Generate and interpret basic data visualizations with <code>ggplot2</code>, including:
+<ul>
+<li>Histograms (<code>geom_histogram()</code>) to understand the distribution of a single numerical variable.</li>
+<li>Scatter plots (<code>geom_point()</code>) to explore relationships between two numerical variables.</li>
+<li>Bar plots (<code>geom_bar()</code>) to visualize categorical data.</li>
+</ul>
+</li>
+<li>Apply these data manipulation and visualization skills to explore and answer questions about real-world data.</li>
+<li>Utilize R’s help features to learn about functions.</li>
+</ul></section></section><section class="section level2"><h2 id="introduction-to-data">Introduction to Data<a class="anchor" aria-label="anchor" href="#introduction-to-data"></a>
+</h2>
+<p>Some define statistics as the field that focuses on turning information into knowledge. The first step in that process is to summarize and describe the raw information – the data. In this lab we explore flights, specifically a random sample of domestic flights that departed from the three major New York City airports in 2013. We will generate simple graphical and numerical summaries of data on these flights and explore delay times. Since this is a large data set, along the way you’ll also learn the indispensable skills of data processing and subsetting.</p>
+</section><section class="section level2"><h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
 <section class="level2"><h3 id="load-packages">Load packages<a class="anchor" aria-label="anchor" href="#load-packages"></a>
 </h3>
@@ -1908,107 +1934,89 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <hr>
 <p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0" alt="Creative Commons License"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
 </section><script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'light-border',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config);
-  }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
       }
-    } else {
-      return undefined;
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config);
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
         });
-        return popup.innerHTML;
-      });
+      }
     }
-  }
-});
-</script><script type="module">
+  });
+  </script><script type="module">
 // Handle cell initialization initialization
 qwebrCellDetails.map(
   (entry) => {
@@ -2133,7 +2141,7 @@ qwebrInstance.then(
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
