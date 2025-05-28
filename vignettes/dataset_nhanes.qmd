@@ -15,6 +15,8 @@ filters:
   - webr
 ---
 
+_Note_: you can also do this lab and upload local files on its [Google Colab version](https://colab.research.google.com/drive/1zX4r8djrtjntCm4mYkKrIK4DvKUuzKMb?usp=drive_link).
+
 # Codebook: NHANES Dataset
 
 - **Dataset names:** `PBCD_J.xpt` and `INS_J.xpt`

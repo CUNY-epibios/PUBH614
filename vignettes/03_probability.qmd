@@ -15,6 +15,22 @@ filters:
   - webr
 ---
 
+# AI-Powered Features in Google Colab
+
+You can also complete this lab using a [Google Colab version](https://colab.research.google.com/drive/1e4QdnViznqex0enPhHjsJ8_BAroemCxg?usp=drive_link) version that offers AI-powered features like code generation, explanation, and error debugging.
+
+# Learning Objectives
+
+By the end of this lab, you should be able to:
+
+* Understand the concepts of independent and dependent events in probability.
+* Learn how to simulate random events (e.g., coin flips, basketball shots) in R.
+* Use the `sample()` function for simulations, including specifying probabilities for different outcomes.
+* Understand the purpose and use of `set.seed()` for ensuring the reproducibility of simulations.
+* Calculate shooting streak lengths from a sequence of outcomes using the `calc_streak()` function.
+* Visualize the distribution of data, such as streak lengths, using `geom_bar()` from the `ggplot2` package.
+* Compare observed data (e.g., Kobe Bryant's shooting streaks) to simulated data (e.g., from an independent shooter model).
+* Use these comparisons to make informal inferences about whether observed patterns might be due to chance or another underlying process (like a "hot hand").
 
 
 # The Hot Hand

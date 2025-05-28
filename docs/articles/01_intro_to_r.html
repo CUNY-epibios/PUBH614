@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>01. Introduction to R • PUBH614</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -46,7 +45,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"id":1,"code":"x = 2\nx + 2","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-1","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":2,"code":"library(dplyr)\nlibrary(openintro)","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-2","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":3,"code":"arbuthnot","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-3","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":4,"code":"glimpse(arbuthnot)","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-4","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":5,"code":"arbuthnot$boys","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-5","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":6,"code":"# enter code here","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-6","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":7,"code":"library(ggplot2)\nggplot(data = arbuthnot, aes(x = year, y = girls)) + \n  geom_point()","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-7","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":8,"code":"ggplot(data = arbuthnot, aes(x = year, y = girls)) +\n  geom_line()","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-8","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":9,"code":"?ggplot","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-9","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":10,"code":"5218 + 4683","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-10","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":11,"code":"arbuthnot$boys + arbuthnot$girls","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-11","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":12,"code":"arbuthnot <- arbuthnot %>%\n  mutate(total = boys + girls)","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-12","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":13,"code":"ls()","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-13","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":14,"code":"ggplot(data = arbuthnot, aes(x = year, y = total)) + \n  geom_line()","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-14","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":15,"code":"5218 / 4683","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-15","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":16,"code":"arbuthnot <- arbuthnot %>%\n  mutate(boy_to_girl_ratio = boys / girls)","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-16","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":17,"code":"5218 / (5218 + 4683)","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-17","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":18,"code":"arbuthnot <- arbuthnot %>%\n  mutate(boy_ratio = boys / total)","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-18","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":19,"code":"# Enter code here","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-19","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":20,"code":"arbuthnot <- arbuthnot %>%\n  mutate(more_boys = boys > girls)","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-20","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":21,"code":"arbuthnot %>%\n  summarize(min = min(boys),\n            max = max(boys)\n            )","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-21","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":22,"code":"# Enter code here","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-22","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":23,"code":"# Enter code here","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-23","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":24,"code":"# Enter code here","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-24","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}},{"id":25,"code":"# Sample code:\npresent %>%\n  arrange(desc(total))","options":{"editor-quick-suggestions":"false","comment":"","editor-word-wrap":"true","label":"unnamed-chunk-25","dpi":72,"editor-font-scale":"1","results":"markup","out-width":"700px","output":"true","context":"interactive","read-only":"false","warning":"true","fig-cap":"","classes":"","out-height":"","autorun":"false","message":"true","fig-width":7,"editor-max-height":"","fig-height":5}}];
+  globalThis.qwebrCellDetails = [{"code":"x = 2\nx + 2","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"library(dplyr)\nlibrary(openintro)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"arbuthnot","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"glimpse(arbuthnot)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"arbuthnot$boys","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# enter code here","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"library(ggplot2)\nggplot(data = arbuthnot, aes(x = year, y = girls)) + \n  geom_point()","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = arbuthnot, aes(x = year, y = girls)) +\n  geom_line()","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"?ggplot","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"5218 + 4683","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"arbuthnot$boys + arbuthnot$girls","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"arbuthnot <- arbuthnot %>%\n  mutate(total = boys + girls)","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ls()","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(data = arbuthnot, aes(x = year, y = total)) + \n  geom_line()","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"5218 / 4683","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"arbuthnot <- arbuthnot %>%\n  mutate(boy_to_girl_ratio = boys / girls)","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"5218 / (5218 + 4683)","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"arbuthnot <- arbuthnot %>%\n  mutate(boy_ratio = boys / total)","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"arbuthnot <- arbuthnot %>%\n  mutate(more_boys = boys > girls)","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"arbuthnot %>%\n  summarize(min = min(boys),\n            max = max(boys)\n            )","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":22,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-22","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":23,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-23","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":24,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-24","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Sample code:\npresent %>%\n  arrange(desc(total))","id":25,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-25","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1674,10 +1673,31 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script><section class="section level2"><h2 id="a-note-about-this-lab">A note about this lab<a class="anchor" aria-label="anchor" href="#a-note-about-this-lab"></a>
 </h2>
-<p>If you are viewing this lab on <a href="https://cuny-epibios.github.io/PUBH614/">https://cuny-epibios.github.io/PUBH614/</a>, you can enter, edit, and run the R code directly in your web browser. Try it! Also try changing the value assigned to <code>x</code>, and try some different calculator-like commands.</p>
+<section class="level2"><h3 id="ai-powered-features-in-google-colab">AI-Powered Features in Google Colab<a class="anchor" aria-label="anchor" href="#ai-powered-features-in-google-colab"></a>
+</h3>
+<p>You can also complete this lab using a <a href="https://colab.research.google.com/drive/1fSMjejmmCjpCNgIPNzOG8JrJlBp2UCwU?usp=drive_link" class="external-link">Google Colab version</a> version that offers AI-powered features like code generation, explanation, and error debugging. It is a <a href="https://jupyter.org/" class="external-link">Jupyter notebook</a> that runs on Google servers and uses your Google Drive storage.</p>
+</section><section class="level2"><h3 id="interactive-coding-in-your-web-browser">Interactive Coding in Your Web Browser<a class="anchor" aria-label="anchor" href="#interactive-coding-in-your-web-browser"></a>
+</h3>
+<p>If you’re viewing this lab on <a href="https://cuny-epibios.github.io/PUBH614/">https://cuny-epibios.github.io/PUBH614/</a>, you can directly enter, edit, and run R code in your web browser. Feel free to experiment by changing the value assigned to <code>x</code> or trying different calculator-like commands.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section><section class="section level2"><h2 id="loading-packages">Loading packages<a class="anchor" aria-label="anchor" href="#loading-packages"></a>
+</section></section><section class="section level2"><h2 id="learning-objectives">Learning Objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"></a>
+</h2>
+<p>By the end of this lab, you should be able to:</p>
+<ul>
+<li>Install and load essential R packages (specifically <code>openintro</code>, <code>dplyr</code>, and <code>ggplot2</code>).</li>
+<li>Understand and use fundamental R syntax for basic calculations and variable assignment.</li>
+<li>Load and inspect data frames using commands like typing the data frame name and <code>glimpse()</code>.</li>
+<li>Access and work with individual columns within a data frame using the <code>$</code> operator.</li>
+<li>Perform vectorized operations in R to apply calculations across entire columns.</li>
+<li>Add new calculated columns to a data frame using the <code>dplyr</code> function <code>mutate()</code>.</li>
+<li>Understand the purpose and syntax of the pipe operator (<code>%&gt;%</code>).</li>
+<li>Create basic data visualizations, specifically scatter plots and line plots, using <code>ggplot2</code>.</li>
+<li>Perform summary calculations on data frames using the <code>dplyr</code> function <code>summarize()</code>.</li>
+<li>Sort data frames based on column values using the <code>dplyr</code> function <code>arrange()</code>.</li>
+<li>Identify and troubleshoot common errors in R, including case sensitivity and simple typos.</li>
+<li>Interpret basic trends and patterns from data visualizations and summary statistics.</li>
+</ul></section><section class="section level2"><h2 id="loading-packages">Loading packages<a class="anchor" aria-label="anchor" href="#loading-packages"></a>
 </h2>
 <p>Load packages with the <code>library</code> function. The following line loads the <code>dplyr</code> library, which provides data manipulation functions that you will use into your working environment, and the openintro package which provides the <code>arbuthnot</code> dataset used in this lab. Don’t worry about the warnings and messages it produces, they aren’t important in this case.</p>
 <div id="qwebr-insertion-location-2"></div>
@@ -1865,107 +1885,89 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <hr>
 <p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0" alt="Creative Commons License"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
 </section><script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'light-border',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config);
-  }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
       }
-    } else {
-      return undefined;
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config);
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
         });
-        return popup.innerHTML;
-      });
+      }
     }
-  }
-});
-</script><script type="module">
+  });
+  </script><script type="module">
 // Handle cell initialization initialization
 qwebrCellDetails.map(
   (entry) => {
@@ -2080,7 +2082,8 @@ qwebrInstance.then(
     );
   }
 );
-</script></main>
+</script></main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
@@ -2089,7 +2092,7 @@ qwebrInstance.then(
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>

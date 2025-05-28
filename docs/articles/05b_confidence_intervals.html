@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>05b. Foundations for statistical inference - Confidence intervals • PUBH614</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -46,7 +45,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(ggplot2)\nlibrary(openintro)\nlibrary(infer)\nlibrary(purrr)","id":1,"options":{"editor-font-scale":"1","editor-quick-suggestions":"false","output":"true","out-width":"700px","editor-max-height":"","context":"interactive","autorun":"false","message":"true","results":"markup","fig-height":5,"fig-width":7,"editor-word-wrap":"true","out-height":"","warning":"true","comment":"","label":"unnamed-chunk-1","classes":"","dpi":72,"fig-cap":"","read-only":"false"}},{"code":"us_adults <- tibble(\n  climate_change_affects = c(rep(\"Yes\", 62000), rep(\"No\", 38000))\n)\nglimpse(us_adults)","id":2,"options":{"editor-font-scale":"1","editor-quick-suggestions":"false","output":"true","out-width":"700px","editor-max-height":"","context":"interactive","autorun":"false","message":"true","results":"markup","fig-height":5,"fig-width":7,"editor-word-wrap":"true","out-height":"","warning":"true","comment":"","label":"unnamed-chunk-2","classes":"","dpi":72,"fig-cap":"","read-only":"false"}},{"code":"ggplot(us_adults, aes(x = climate_change_affects)) +\n  geom_bar() +\n  labs(\n    x = \"\", y = \"\",\n    title = \"Do you think climate change is affecting your local community?\"\n  ) +\n  coord_flip() ","id":3,"options":{"editor-font-scale":"1","editor-quick-suggestions":"false","output":"true","out-width":"700px","editor-max-height":"","context":"interactive","autorun":"false","message":"true","results":"markup","fig-height":5,"fig-width":7,"editor-word-wrap":"true","out-height":"","warning":"true","comment":"","label":"unnamed-chunk-3","classes":"","dpi":72,"fig-cap":"","read-only":"false"}},{"code":"us_adults %>%\n  count(climate_change_affects) %>%\n  mutate(p = n /sum(n))\nglimpse(us_adults)","id":4,"options":{"editor-font-scale":"1","editor-quick-suggestions":"false","output":"true","out-width":"700px","editor-max-height":"","context":"interactive","autorun":"false","message":"true","results":"markup","fig-height":5,"fig-width":7,"editor-word-wrap":"true","out-height":"","warning":"true","comment":"","label":"unnamed-chunk-4","classes":"","dpi":72,"fig-cap":"","read-only":"false"}},{"code":"n <- 60\nsamp <- us_adults %>%\n  sample_n(size = n)\ntable(samp)","id":5,"options":{"editor-font-scale":"1","editor-quick-suggestions":"false","output":"true","out-width":"700px","editor-max-height":"","context":"interactive","autorun":"false","message":"true","results":"markup","fig-height":5,"fig-width":7,"editor-word-wrap":"true","out-height":"","warning":"true","comment":"","label":"unnamed-chunk-5","classes":"","dpi":72,"fig-cap":"","read-only":"false"}},{"code":"samp %>%\n  specify(response = climate_change_affects, success = \"Yes\") %>%\n  generate(reps = 1000, type = \"bootstrap\") %>%\n  calculate(stat = \"prop\") %>%\n  get_ci(level = 0.95)","id":6,"options":{"editor-font-scale":"1","editor-quick-suggestions":"false","output":"true","out-width":"700px","editor-max-height":"","context":"interactive","autorun":"false","message":"true","results":"markup","fig-height":5,"fig-width":7,"editor-word-wrap":"true","out-height":"","warning":"true","comment":"","label":"unnamed-chunk-6","classes":"","dpi":72,"fig-cap":"","read-only":"false"}},{"code":"# Adjust the following parameters to change the analysis\nn_samp <- 60\nn_rep <- 1000\nconf_level <- 0.95\nn_ci <- 50\nsuccess <- \"Yes\"\np <- ifelse(success == \"Yes\", 0.62, 0.38) # Set true p\n\n#----------------------------\n# No changes below this point\n#----------------------------\n\n# Function to store confidence intervals\nstore_ci <- function(i, n, reps, conf_level, success) {\n  p <- ifelse(success == \"Yes\", 0.62, 0.38)\n  sample_data <- rbinom(n, 1, p)\n  boot_samples <- replicate(reps, mean(sample(sample_data, n, replace = TRUE)))\n  ci <- quantile(boot_samples, probs = c((1 - conf_level) / 2, 1 - (1 - conf_level) / 2))\n  tibble(x_lower = ci[1], x_upper = ci[2])\n}\n\n# Create df_ci\ndf_ci <- map_dfr(1:n_ci, store_ci, n = n_samp, reps = n_rep, conf_level = conf_level, success = success) %>%\n  mutate(\n    y_lower = 1:n_ci,\n    y_upper = 1:n_ci,\n    capture_p = ifelse(x_lower < p & x_upper > p, \"Yes\", \"No\")\n  )\n\n# Plot df_ci\nggplot(df_ci) +\n  geom_segment(aes(x = x_lower, y = y_lower, xend = x_upper, yend = y_upper, color = capture_p)) +\n  geom_point(aes(x = x_lower, y = y_lower, color = capture_p)) +\n  geom_point(aes(x = x_upper, y = y_upper, color = capture_p)) +\n  geom_vline(xintercept = p, color = \"darkgray\") +\n  labs(\n    y = \"\", x = \"Bounds of the confidence interval\",\n    color = \"Does the interval capture the true population proportion?\"\n  ) +\n  theme(legend.position = \"bottom\")","id":7,"options":{"editor-font-scale":"1","editor-quick-suggestions":"false","output":"true","out-width":"700px","editor-max-height":"","context":"interactive","autorun":"false","message":"true","results":"markup","fig-height":5,"fig-width":7,"editor-word-wrap":"true","out-height":"","warning":"true","comment":"","label":"unnamed-chunk-7","classes":"","dpi":72,"fig-cap":"","read-only":"false"}},{"code":"# Enter code here","id":8,"options":{"editor-font-scale":"1","editor-quick-suggestions":"false","output":"true","out-width":"700px","editor-max-height":"","context":"interactive","autorun":"false","message":"true","results":"markup","fig-height":5,"fig-width":7,"editor-word-wrap":"true","out-height":"","warning":"true","comment":"","label":"unnamed-chunk-8","classes":"","dpi":72,"fig-cap":"","read-only":"false"}},{"code":"# Enter code here","id":9,"options":{"editor-font-scale":"1","editor-quick-suggestions":"false","output":"true","out-width":"700px","editor-max-height":"","context":"interactive","autorun":"false","message":"true","results":"markup","fig-height":5,"fig-width":7,"editor-word-wrap":"true","out-height":"","warning":"true","comment":"","label":"unnamed-chunk-9","classes":"","dpi":72,"fig-cap":"","read-only":"false"}}];
+  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(ggplot2)\nlibrary(openintro)\nlibrary(infer)\nlibrary(purrr)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"us_adults <- tibble(\n  climate_change_affects = c(rep(\"Yes\", 62000), rep(\"No\", 38000))\n)\nglimpse(us_adults)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ggplot(us_adults, aes(x = climate_change_affects)) +\n  geom_bar() +\n  labs(\n    x = \"\", y = \"\",\n    title = \"Do you think climate change is affecting your local community?\"\n  ) +\n  coord_flip() ","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"us_adults %>%\n  count(climate_change_affects) %>%\n  mutate(p = n /sum(n))\nglimpse(us_adults)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"n <- 60\nsamp <- us_adults %>%\n  sample_n(size = n)\ntable(samp)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Load necessary libraries\nlibrary(dplyr)\nlibrary(purrr)\nlibrary(ggplot2)\n\n# Load dataset `samp` from the CSV file\nsamp <- read.csv(\"./datasets/samp.csv\")\n\n# Check if the column exists\nif (!\"climate_change_affects\" %in% colnames(samp)) {\n  stop(\"The column 'climate_change_affects' is not in the dataset!\")\n}\n\n# Step 1: Generate a bootstrap sample\nset.seed(123)\nn <- nrow(samp)\nbootstrap_sample <- samp %>% sample_n(size = n, replace = TRUE)\n\n# Check the first few rows of the bootstrap sample\nhead(bootstrap_sample)\n\n# Step 2: Calculate the bootstrap proportion for the “Yes” category\np_hat_bootstrap <- bootstrap_sample %>%\n  count(climate_change_affects) %>%\n  mutate(p = n / sum(n)) %>%\n  filter(climate_change_affects == \"Yes\") %>%\n  pull(p)\n\n# Check the result of p_hat_bootstrap\np_hat_bootstrap\n\n# Step 3: Repeat the process to generate many bootstrap samples\nbootstrap_proportions <- map_dbl(1:1000, ~{\n  bootstrap_sample <- samp %>% sample_n(size = n, replace = TRUE)  # Generate a new bootstrap sample\n  p_hat_bootstrap <- bootstrap_sample %>%\n    count(climate_change_affects) %>%\n    mutate(p = n / sum(n)) %>%\n    filter(climate_change_affects == \"Yes\") %>%\n    pull(p)\n  return(p_hat_bootstrap)\n})\n\n# Visualize the bootstrap distribution\nggplot(data.frame(bootstrap_proportions), aes(x = bootstrap_proportions)) +\n  geom_histogram(binwidth = 0.01, fill = \"skyblue\", color = \"black\") +\n  labs(title = \"Bootstrap Distribution of Proportions\", \n       x = \"Proportion who think climate change affects their local community\", \n       y = \"Frequency\")","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"samp %>%\n  specify(response = climate_change_affects, success = \"Yes\") %>%\n  generate(reps = 1000, type = \"bootstrap\") %>%\n  calculate(stat = \"prop\") %>%\n  get_ci(level = 0.95)","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Adjust the following parameters to change the analysis\nn_samp <- 60\nn_rep <- 1000\nconf_level <- 0.95\nn_ci <- 50\nsuccess <- \"Yes\"\np <- ifelse(success == \"Yes\", 0.62, 0.38) # Set true p\n\n#----------------------------\n# No changes below this point\n#----------------------------\n\n# Function to store confidence intervals\nstore_ci <- function(i, n, reps, conf_level, success) {\n  p <- ifelse(success == \"Yes\", 0.62, 0.38)\n  sample_data <- rbinom(n, 1, p)\n  boot_samples <- replicate(reps, mean(sample(sample_data, n, replace = TRUE)))\n  ci <- quantile(boot_samples, probs = c((1 - conf_level) / 2, 1 - (1 - conf_level) / 2))\n  tibble(x_lower = ci[1], x_upper = ci[2])\n}\n\n# Create df_ci\ndf_ci <- map_dfr(1:n_ci, store_ci, n = n_samp, reps = n_rep, conf_level = conf_level, success = success) %>%\n  mutate(\n    y_lower = 1:n_ci,\n    y_upper = 1:n_ci,\n    capture_p = ifelse(x_lower < p & x_upper > p, \"Yes\", \"No\")\n  )\n\n# Plot df_ci\nggplot(df_ci) +\n  geom_segment(aes(x = x_lower, y = y_lower, xend = x_upper, yend = y_upper, color = capture_p)) +\n  geom_point(aes(x = x_lower, y = y_lower, color = capture_p)) +\n  geom_point(aes(x = x_upper, y = y_upper, color = capture_p)) +\n  geom_vline(xintercept = p, color = \"darkgray\") +\n  labs(\n    y = \"\", x = \"Bounds of the confidence interval\",\n    color = \"Does the interval capture the true population proportion?\"\n  ) +\n  theme(legend.position = \"bottom\")","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Enter code here","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
   </script><script type="module">
   // Declare startupMessageQWebR globally
@@ -1719,6 +1718,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </form>
 </section></section><section class="level2"><h2 id="confidence-intervals">Confidence intervals<a class="anchor" aria-label="anchor" href="#confidence-intervals"></a>
 </h2>
+<p>In this section, we will generate a bootstrap sample and calculate the bootstrap proportion for the group that believes climate change affects their local community.</p>
+<div id="qwebr-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Return for a moment to the question that first motivated this lab: based on this sample, what can you infer about the population? With just one sample, the best estimate of the proportion of US adults who think climate change affects their local community would be the sample proportion, usually denoted as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>p</mi><mo accent="true">̂</mo></mover><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math> (here we are calling it <code>p_hat</code>). That serves as a good <strong>point estimate</strong>, but it would be useful to also communicate how uncertain you are of that estimate. This uncertainty can be quantified using a <strong>confidence interval</strong>.</p>
 <p>One way of calculating a confidence interval for a population proportion is based on the Central Limit Theorem, as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo>±</mo><msup><mi>z</mi><mo>⋆</mo></msup><mi>S</mi><msub><mi>E</mi><mover><mi>p</mi><mo accent="true">̂</mo></mover></msub></mrow><annotation encoding="application/x-tex">\hat{p} \pm z^\star SE_{\hat{p}}</annotation></semantics></math> is, or more precisely, as <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo>±</mo><msup><mi>z</mi><mo>⋆</mo></msup><msqrt><mfrac><mrow><mover><mi>p</mi><mo accent="true">̂</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mover><mi>p</mi><mo accent="true">̂</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mi>n</mi></mfrac></msqrt></mrow><annotation encoding="application/x-tex"> \hat{p} \pm z^\star \sqrt{ \frac{\hat{p} (1-\hat{p})}{n} } </annotation></semantics></math></p>
 <p>Another way is using simulation, or to be more specific, using <strong>bootstrapping</strong>. The term <strong>bootstrapping</strong> comes from the phrase “pulling oneself up by one’s bootstraps”, which is a metaphor for accomplishing an impossible task without any outside help. In this case the impossible task is estimating a population parameter (the unknown population proportion), and we’ll accomplish it using data from only the given sample. Note that this notion of saying something about a population parameter using only information from an observed sample is the crux of statistical inference, it is not limited to bootstrapping.</p>
@@ -1764,7 +1766,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </tbody>
 </table>
 <p>This code will find the 95 percent confidence interval for proportion of US adults who think climate change affects their local community.</p>
-<div id="qwebr-insertion-location-6"></div>
+<div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ul>
 <li>In <code>specify</code> we specify the <code>response</code> variable and the level of that variable we are calling a <code>success</code>.</li>
@@ -1801,7 +1803,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>Repeat these steps 50 times.</li>
 </ul>
 <p>Doing this would require learning programming concepts like iteration so that you can automate repeating running the code you’ve developed so far many times to obtain many (50) confidence intervals. In order to keep the programming simpler, we are providing the interactive app below that basically does this for you and created a plot similar to Figure 5.6 on <a href="https://www.openintro.org/os" class="external-link">OpenIntro Statistics, 4th Edition (page 182)</a>.</p>
-<div id="qwebr-insertion-location-7"></div>
+<div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ol start="6" type="1">
 <li>Given a sample size of 60, 1000 bootstrap samples for each interval, and 50 confidence intervals constructed (the default values for the above app), what proportion of your confidence intervals include the true population proportion? Is this proportion exactly equal to the confidence level? If not, explain why. Make sure to include your plot in your answer.</li>
@@ -1820,7 +1822,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ol start="8" type="1">
 <li>Using code from the <strong>infer</strong> package and data from the one sample you have (<code>samp</code>), find a confidence interval for the proportion of US Adults who think climate change is affecting their local community with a confidence level of your choosing (other than 95%) and interpret it.</li>
 </ol>
-<div id="qwebr-insertion-location-8"></div>
+<div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
 <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
@@ -1834,7 +1836,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ol start="10" type="1">
 <li>Lastly, try one more (different) confidence level. First, state how you expect the width of this interval to compare to previous ones you calculated. Then, calculate the bounds of the interval using the <strong>infer</strong> package and data from <code>samp</code> and interpret it. Finally, generate many intervals and calculate the proportion of intervals that are capture the true population proportion.</li>
 </ol>
-<div id="qwebr-insertion-location-9"></div>
+<div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <form>
 <textarea id="comments" name="comments" class="textarea-box" rows="4" cols="50" placeholder="Write your comment here..."></textarea>
@@ -1853,107 +1855,89 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </form>
 <p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" style="border-width:0" alt="Creative Commons License"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
 </section><script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'light-border',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config);
-  }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
       }
-    } else {
-      return undefined;
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config);
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
         });
-        return popup.innerHTML;
-      });
+      }
     }
-  }
-});
-</script><script type="module">
+  });
+  </script><script type="module">
 // Handle cell initialization initialization
 qwebrCellDetails.map(
   (entry) => {
@@ -2078,7 +2062,7 @@ qwebrInstance.then(
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
