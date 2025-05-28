@@ -18,14 +18,35 @@ filters:
 
 # A note about this lab
 
-If you are viewing this lab on [https://cuny-epibios.github.io/PUBH614/](https://cuny-epibios.github.io/PUBH614/), you can 
-enter, edit, and run the R code directly in your web browser. Try it! Also try 
-changing the value assigned to `x`, and try some different calculator-like commands.
+## AI-Powered Features in Google Colab
+
+You can also complete this lab using a [Google Colab version](https://colab.research.google.com/drive/1fSMjejmmCjpCNgIPNzOG8JrJlBp2UCwU?usp=drive_link) version that offers AI-powered features like code generation, explanation, and error debugging. It is a [Jupyter notebook](https://jupyter.org/) that runs on Google servers and uses your Google Drive storage.
+
+## Interactive Coding in Your Web Browser
+
+If you're viewing this lab on [https://cuny-epibios.github.io/PUBH614/](https://cuny-epibios.github.io/PUBH614/), you can directly enter, edit, and run R code in your web browser. Feel free to experiment by changing the value assigned to `x` or trying different calculator-like commands.
 
 ```{webr-r}
 x = 2
 x + 2
 ```
+
+# Learning Objectives
+
+By the end of this lab, you should be able to:
+
+*   Install and load essential R packages (specifically `openintro`, `dplyr`, and `ggplot2`).
+*   Understand and use fundamental R syntax for basic calculations and variable assignment.
+*   Load and inspect data frames using commands like typing the data frame name and `glimpse()`.
+*   Access and work with individual columns within a data frame using the `$` operator.
+*   Perform vectorized operations in R to apply calculations across entire columns.
+*   Add new calculated columns to a data frame using the `dplyr` function `mutate()`.
+*   Understand the purpose and syntax of the pipe operator (`%>%`).
+*   Create basic data visualizations, specifically scatter plots and line plots, using `ggplot2`.
+*   Perform summary calculations on data frames using the `dplyr` function `summarize()`.
+*   Sort data frames based on column values using the `dplyr` function `arrange()`.
+*   Identify and troubleshoot common errors in R, including case sensitivity and simple typos.
+*   Interpret basic trends and patterns from data visualizations and summary statistics.
 
 # Loading packages
 

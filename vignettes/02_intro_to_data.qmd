@@ -15,6 +15,31 @@ filters:
   - webr
 ---
 
+# AI-Powered Features in Google Colab
+
+You can also complete this lab using a [Google Colab version](https://colab.research.google.com/drive/1rhUUiP4wuJFH6L8-VLEv1O-IYVYMsSPF?usp=drive_link) version that offers AI-powered features like code generation, explanation, and error debugging.
+
+## Learning Objectives
+
+By the end of this lab, you should be able to:
+
+* Set up a Google Colab notebook to run R code.
+* Install and load essential R packages (`openintro`, `dplyr`, `ggplot2`).
+* Load datasets into your R environment (specifically, the `nycflights` dataset).
+* Understand the basic structure of a data frame, including observations (rows) and variables (columns).
+* Inspect data frames using functions like `names()`, `glimpse()`, and the help operator `?`.
+* Subset data effectively using `filter()` with single and multiple logical conditions (e.g., `==`, `>`, `&`, `|`).
+* Calculate summary statistics (e.g., mean, median, IQR, count) for datasets and grouped data using `summarise()` and `group_by()`.
+* Create new variables and add them to a data frame using `mutate()` and conditional logic with `ifelse()`.
+* Sort data frames based on column values using `arrange()`.
+* Generate and interpret basic data visualizations with `ggplot2`, including:
+    * Histograms (`geom_histogram()`) to understand the distribution of a single numerical variable.
+    * Scatter plots (`geom_point()`) to explore relationships between two numerical variables.
+    * Bar plots (`geom_bar()`) to visualize categorical data.
+* Apply these data manipulation and visualization skills to explore and answer questions about real-world data.
+* Utilize R's help features to learn about functions.
+
+# Introduction to Data
 
 Some define statistics as the field that focuses on turning information into knowledge.
 The first step in that process is to summarize and describe the raw information -- the data.
