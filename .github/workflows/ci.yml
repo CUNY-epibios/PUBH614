@@ -437,7 +437,7 @@ jobs:
     - name: Install Quarto
       uses: quarto-dev/quarto-actions/setup@v2
       with:
-        version: '1.4.554'
+        version: '1.8.24'
     
     - name: Install R dependencies
       run: |
@@ -454,12 +454,14 @@ jobs:
       shell: bash
     
     - name: Build pkgdown site
-      run: |
-        pkgdown::build_site()
-        echo "Pkgdown site built successfully"
+      run: pkgdown::build_site()
       shell: Rscript {0}
       env:
         GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Confirm pkgdown success
+      run: echo "Pkgdown site built successfully"
+      shell: bash
     
     - name: Create beta release
       id: create_release
@@ -593,12 +595,14 @@ jobs:
       shell: Rscript {0}
     
     - name: Build pkgdown site
-      run: |
-        pkgdown::build_site()
-        echo "Pkgdown site built successfully"
+      run: pkgdown::build_site()
       shell: Rscript {0}
       env:
         GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Confirm pkgdown success
+      run: echo "Pkgdown site built successfully"
+      shell: bash
     
     - name: Deploy to GitHub Pages (PR Preview)
       uses: peaceiris/actions-gh-pages@v3
@@ -730,12 +734,14 @@ jobs:
       shell: bash
     
     - name: Build pkgdown site
-      run: |
-        pkgdown::build_site()
-        echo "Pkgdown site built successfully"
+      run: pkgdown::build_site()
       shell: Rscript {0}
       env:
         GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Confirm pkgdown success
+      run: echo "Pkgdown site built successfully"
+      shell: bash
     
     - name: Generate changelog
       id: changelog
