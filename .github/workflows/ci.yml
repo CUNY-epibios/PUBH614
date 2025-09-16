@@ -7,13 +7,6 @@ on:
     types: [opened, synchronize, reopened, closed]
     branches: [ main, develop ]
   workflow_dispatch:
-
-permissions:
-  contents: read
-  pull-requests: write
-  issues: write
-  checks: write
-  statuses: write
     inputs:
       workflow_type:
         description: 'Type of workflow to run'
@@ -46,6 +39,13 @@ permissions:
   schedule:
     # Run daily at 2 AM UTC to catch any issues
     - cron: '0 2 * * *'
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  checks: write
+  statuses: write
 
 jobs:
   # =============================================================================
