@@ -7,6 +7,13 @@ on:
     types: [opened, synchronize, reopened, closed]
     branches: [ main, develop ]
   workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  checks: write
+  statuses: write
     inputs:
       workflow_type:
         description: 'Type of workflow to run'
@@ -539,7 +546,7 @@ jobs:
         asset_content_type: application/zip
     
     - name: Comment on PR
-      if: needs.analyze-changes.outputs.is-pr == 'true'
+      if: needs.analyze-changes.outputs.is-pr == 'true' && github.event.pull_request.head.repo.fork == false
       uses: actions/github-script@v7
       with:
         script: |
@@ -632,6 +639,7 @@ jobs:
         retention-days: 7
     
     - name: Comment PR with preview info
+      if: github.event.pull_request.head.repo.fork == false
       uses: actions/github-script@v7
       with:
         script: |
@@ -667,6 +675,30 @@ jobs:
             ---
             *This preview will be automatically updated when you push new commits to this PR.*`
           });
+    
+    - name: Log preview info (fallback for forked PRs)
+      if: github.event.pull_request.head.repo.fork == true
+      run: |
+        echo "## 🌐 Preview Site Generated!" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**PR:** #${{ github.event.pull_request.number }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Branch:** ${{ github.event.pull_request.head.ref }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### What's included:" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Complete pkgdown website built" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ All Quarto documents rendered" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Interactive R code execution (via webR)" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### How to preview:" >> $GITHUB_STEP_SUMMARY
+        echo "1. Go to the **Actions** tab in this PR" >> $GITHUB_STEP_SUMMARY
+        echo "2. Download the **pr-preview-docs-${{ github.event.pull_request.number }}** artifact" >> $GITHUB_STEP_SUMMARY
+        echo "3. Extract the zip file locally" >> $GITHUB_STEP_SUMMARY
+        echo "4. Open \`index.html\` in your browser" >> $GITHUB_STEP_SUMMARY
+        echo "5. Navigate through all sections to test the changes" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Note:** Comments cannot be posted on forked PRs for security reasons." >> $GITHUB_STEP_SUMMARY
+      shell: bash
 
   # =============================================================================
   # PRODUCTION RELEASE
