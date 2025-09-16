@@ -11,7 +11,7 @@ This directory contains a single, comprehensive GitHub Actions workflow that aut
 
 **Purpose:** Complete project validation and deployment automation
 
-### 🎯 Key Features
+###  Key Features
 
 #### **Smart Change Detection**
 - Automatically analyzes what files changed
@@ -25,20 +25,20 @@ This directory contains a single, comprehensive GitHub Actions workflow that aut
 - **Pkgdown Building:** Complete website generation and validation
 - **File Validation:** Permissions, security, formatting, and integrity checks
 
-#### **Beta Release System** 🧪
+#### **Beta Release System** 
 - **Automatic beta releases** for every Pull Request
 - **Downloadable R packages** for easy testing
 - **Preview websites** for testing changes
 - **PR comments** with testing instructions
 - **Automatic cleanup** when PRs are closed
 
-#### **Production Release Automation** 🚀
+#### **Production Release Automation** 
 - **Automatic version bumping** on main branch pushes
 - **GitHub releases** with changelog generation
 - **Production deployment** to GitHub Pages
 - **Manual release triggers** with version control
 
-### 🔧 Workflow Jobs
+###  Workflow Jobs
 
 1. **`analyze-changes`** - Detects file changes and determines what to run
 2. **`r-package-checks`** - R package validation, linting, and testing
@@ -71,7 +71,7 @@ The workflows use `dorny/paths-filter` to detect what types of files changed:
 - Saves CI time and resources
 - Provides clear feedback on what was checked
 
-## Beta Release Testing 🧪
+## Beta Release Testing 
 
 ### Automatic Beta Releases
 When you create a Pull Request, the system automatically:
