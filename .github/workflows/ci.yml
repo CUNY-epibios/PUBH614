@@ -231,7 +231,7 @@ jobs:
         sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev pandoc
     
     - name: Install Quarto
-      uses: quarto-dev/quarto-actions/setup@v1
+      uses: quarto-dev/quarto-actions/setup@v2
       with:
         version: 'latest'
     
@@ -302,7 +302,7 @@ jobs:
         sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev pandoc
     
     - name: Install Quarto
-      uses: quarto-dev/quarto-actions/setup@v1
+      uses: quarto-dev/quarto-actions/setup@v2
       with:
         version: 'latest'
     
@@ -435,7 +435,7 @@ jobs:
         sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev pandoc
     
     - name: Install Quarto
-      uses: quarto-dev/quarto-actions/setup@v1
+      uses: quarto-dev/quarto-actions/setup@v2
       with:
         version: 'latest'
     
@@ -582,7 +582,7 @@ jobs:
         sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev pandoc
     
     - name: Install Quarto
-      uses: quarto-dev/quarto-actions/setup@v1
+      uses: quarto-dev/quarto-actions/setup@v2
       with:
         version: 'latest'
     
@@ -667,7 +667,7 @@ jobs:
         sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev pandoc
     
     - name: Install Quarto
-      uses: quarto-dev/quarto-actions/setup@v1
+      uses: quarto-dev/quarto-actions/setup@v2
       with:
         version: 'latest'
     
