@@ -233,7 +233,7 @@ jobs:
     - name: Install Quarto
       uses: quarto-dev/quarto-actions/setup@v2
       with:
-        version: 'latest'
+        version: '1.4.550'
     
     - name: Install R dependencies
       run: |
@@ -304,7 +304,7 @@ jobs:
     - name: Install Quarto
       uses: quarto-dev/quarto-actions/setup@v2
       with:
-        version: 'latest'
+        version: '1.4.550'
     
     - name: Install R dependencies
       run: |
@@ -437,7 +437,7 @@ jobs:
     - name: Install Quarto
       uses: quarto-dev/quarto-actions/setup@v2
       with:
-        version: 'latest'
+        version: '1.4.550'
     
     - name: Install R dependencies
       run: |
@@ -584,7 +584,7 @@ jobs:
     - name: Install Quarto
       uses: quarto-dev/quarto-actions/setup@v2
       with:
-        version: 'latest'
+        version: '1.4.550'
     
     - name: Install R dependencies
       run: |
@@ -669,7 +669,7 @@ jobs:
     - name: Install Quarto
       uses: quarto-dev/quarto-actions/setup@v2
       with:
-        version: 'latest'
+        version: '1.4.550'
     
     - name: Install R dependencies
       run: |
