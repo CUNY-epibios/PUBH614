@@ -1,0 +1,101 @@
+name: Quarto Document Rendering
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  render-quarto:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: 'release'
+        use-public-rspm: true
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev pandoc
+    
+    - name: Install Quarto
+      uses: quarto-dev/quarto-actions/setup@v1
+      with:
+        version: 'latest'
+    
+    - name: Install R dependencies
+      run: |
+        install.packages(c("quarto", "tidyverse", "haven", "webr"))
+        remotes::install_deps(dependencies = TRUE)
+      shell: Rscript {0}
+    
+    - name: Render all Quarto documents
+      run: |
+        # Find all .qmd files in vignettes directory
+        find vignettes -name "*.qmd" -type f | while read file; do
+          echo "Rendering $file"
+          quarto render "$file" --to html
+        done
+      shell: bash
+    
+    - name: Check for rendering errors
+      run: |
+        # Check if any .qmd files failed to render
+        find vignettes -name "*.qmd" -type f | while read file; do
+          html_file="${file%.qmd}.html"
+          if [ ! -f "$html_file" ]; then
+            echo "ERROR: Failed to render $file"
+            exit 1
+          fi
+        done
+      shell: bash
+    
+    - name: Upload rendered documents
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: rendered-quarto-docs
+        path: vignettes/*.html
+        retention-days: 30
+
+  validate-quarto:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: 'release'
+        use-public-rspm: true
+    
+    - name: Install Quarto
+      uses: quarto-dev/quarto-actions/setup@v1
+      with:
+        version: 'latest'
+    
+    - name: Install R dependencies
+      run: |
+        install.packages(c("quarto", "tidyverse", "haven", "webr"))
+        remotes::install_deps(dependencies = TRUE)
+      shell: Rscript {0}
+    
+    - name: Validate Quarto documents
+      run: |
+        # Check Quarto document syntax
+        find vignettes -name "*.qmd" -type f | while read file; do
+          echo "Validating $file"
+          quarto check "$file" || {
+            echo "ERROR: Validation failed for $file"
+            exit 1
+          }
+        done
+      shell: bash

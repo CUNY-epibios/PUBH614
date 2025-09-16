@@ -1,0 +1,150 @@
+name: Smart Change Detection
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  analyze-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      has-r-changes: ${{ steps.changes.outputs.r-files }}
+      has-quarto-changes: ${{ steps.changes.outputs.quarto-files }}
+      has-data-changes: ${{ steps.changes.outputs.data-files }}
+      has-config-changes: ${{ steps.changes.outputs.config-files }}
+      has-docs-changes: ${{ steps.changes.outputs.docs-files }}
+      change-summary: ${{ steps.analyze.outputs.summary }}
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Detect file changes
+      uses: dorny/paths-filter@v2
+      id: changes
+      with:
+        filters: |
+          r-files:
+            - '**/*.R'
+            - 'DESCRIPTION'
+            - 'NAMESPACE'
+            - 'man/**'
+          quarto-files:
+            - 'vignettes/**/*.qmd'
+          data-files:
+            - 'datasets/**'
+          config-files:
+            - '_pkgdown.yml'
+            - 'pkgdown/**'
+            - '.github/**'
+          docs-files:
+            - 'docs/**'
+            - 'vignettes/**/*.html'
+    
+    - name: Analyze changes
+      id: analyze
+      run: |
+        echo "## Change Analysis" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        summary=""
+        
+        if [ "${{ steps.changes.outputs.r-files }}" == "true" ]; then
+          echo "✅ R package files changed" >> $GITHUB_STEP_SUMMARY
+          summary="${summary}R package changes detected. "
+        fi
+        
+        if [ "${{ steps.changes.outputs.quarto-files }}" == "true" ]; then
+          echo "✅ Quarto documents changed" >> $GITHUB_STEP_SUMMARY
+          summary="${summary}Quarto documents changed. "
+        fi
+        
+        if [ "${{ steps.changes.outputs.data-files }}" == "true" ]; then
+          echo "✅ Data files changed" >> $GITHUB_STEP_SUMMARY
+          summary="${summary}Data files changed. "
+        fi
+        
+        if [ "${{ steps.changes.outputs.config-files }}" == "true" ]; then
+          echo "✅ Configuration files changed" >> $GITHUB_STEP_SUMMARY
+          summary="${summary}Configuration files changed. "
+        fi
+        
+        if [ "${{ steps.changes.outputs.docs-files }}" == "true" ]; then
+          echo "✅ Documentation files changed" >> $GITHUB_STEP_SUMMARY
+          summary="${summary}Documentation files changed. "
+        fi
+        
+        echo "summary=${summary}" >> $GITHUB_OUTPUT
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Recommended actions:**" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.changes.outputs.r-files }}" == "true" ]; then
+          echo "- Run R package checks" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ steps.changes.outputs.quarto-files }}" == "true" ]; then
+          echo "- Render Quarto documents" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ steps.changes.outputs.config-files }}" == "true" ] || [ "${{ steps.changes.outputs.quarto-files }}" == "true" ]; then
+          echo "- Rebuild pkgdown site" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ steps.changes.outputs.data-files }}" == "true" ]; then
+          echo "- Validate data files" >> $GITHUB_STEP_SUMMARY
+        fi
+
+  run-r-checks:
+    needs: analyze-changes
+    if: ${{ needs.analyze-changes.outputs.has-r-changes == 'true' }}
+    uses: ./.github/workflows/r-package-checks.yml
+
+  run-quarto-checks:
+    needs: analyze-changes
+    if: ${{ needs.analyze-changes.outputs.has-quarto-changes == 'true' }}
+    uses: ./.github/workflows/quarto-render.yml
+
+  run-pkgdown-checks:
+    needs: analyze-changes
+    if: ${{ needs.analyze-changes.outputs.has-config-changes == 'true' || needs.analyze-changes.outputs.has-quarto-changes == 'true' }}
+    uses: ./.github/workflows/pkgdown-build.yml
+
+  run-file-validation:
+    needs: analyze-changes
+    if: ${{ needs.analyze-changes.outputs.has-data-changes == 'true' || needs.analyze-changes.outputs.has-docs-changes == 'true' }}
+    uses: ./.github/workflows/file-validation.yml
+
+  run-beta-release:
+    needs: analyze-changes
+    if: ${{ github.event_name == 'pull_request' && needs.analyze-changes.outputs.any-changes == 'true' }}
+    uses: ./.github/workflows/beta-release.yml
+
+  run-pr-deployment:
+    needs: analyze-changes
+    if: ${{ github.event_name == 'pull_request' && needs.analyze-changes.outputs.has-quarto-changes == 'true' || needs.analyze-changes.outputs.has-config-changes == 'true' }}
+    uses: ./.github/workflows/pr-deployment.yml
+
+  final-summary:
+    needs: [analyze-changes, run-r-checks, run-quarto-checks, run-pkgdown-checks, run-file-validation, run-beta-release, run-pr-deployment]
+    if: always()
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Generate final summary
+      run: |
+        echo "## 🎯 Smart Check Results" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Changes detected:** ${{ needs.analyze-changes.outputs.change-summary }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Workflow Results:" >> $GITHUB_STEP_SUMMARY
+        echo "| Check Type | Status |" >> $GITHUB_STEP_SUMMARY
+        echo "|------------|--------|" >> $GITHUB_STEP_SUMMARY
+        echo "| R Package | ${{ needs.run-r-checks.result || 'Skipped' }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| Quarto | ${{ needs.run-quarto-checks.result || 'Skipped' }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| Pkgdown | ${{ needs.run-pkgdown-checks.result || 'Skipped' }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| File Validation | ${{ needs.run-file-validation.result || 'Skipped' }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| Beta Release | ${{ needs.run-beta-release.result || 'Skipped' }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| PR Deployment | ${{ needs.run-pr-deployment.result || 'Skipped' }} |" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,147 @@
+name: File Validation and Formatting
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  validate-files:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Check file permissions
+      run: |
+        echo "Checking file permissions..."
+        find . -type f -name "*.sh" -not -perm 755 | while read file; do
+          echo "WARNING: $file should be executable"
+        done
+      shell: bash
+    
+    - name: Check for large files
+      run: |
+        echo "Checking for large files (>50MB)..."
+        find . -type f -size +50M -not -path "./.git/*" | while read file; do
+          echo "WARNING: Large file detected: $file"
+        done
+      shell: bash
+    
+    - name: Check for binary files in text directories
+      run: |
+        echo "Checking for binary files in text directories..."
+        find vignettes datasets -type f -exec file {} \; | grep -v "text\|empty" | while read line; do
+          file=$(echo "$line" | cut -d: -f1)
+          type=$(echo "$line" | cut -d: -f2)
+          echo "WARNING: Binary file in text directory: $file ($type)"
+        done
+      shell: bash
+    
+    - name: Validate CSV files
+      run: |
+        echo "Validating CSV files..."
+        find datasets -name "*.csv" -type f | while read file; do
+          echo "Checking $file"
+          # Check if CSV has headers
+          if ! head -1 "$file" | grep -q ","; then
+            echo "WARNING: $file may not be a valid CSV"
+          fi
+        done
+      shell: bash
+    
+    - name: Validate XML/HTML files
+      run: |
+        echo "Validating XML/HTML files..."
+        find . -name "*.xml" -o -name "*.html" | while read file; do
+          echo "Checking $file"
+          if ! xmllint --noout "$file" 2>/dev/null; then
+            echo "WARNING: $file may not be valid XML/HTML"
+          fi
+        done
+      shell: bash
+    
+    - name: Check for TODO/FIXME comments
+      run: |
+        echo "Checking for TODO/FIXME comments..."
+        find . -name "*.R" -o -name "*.qmd" -o -name "*.md" | while read file; do
+          if grep -n -i "TODO\|FIXME\|XXX\|HACK" "$file"; then
+            echo "Found TODO/FIXME in $file"
+          fi
+        done
+      shell: bash
+    
+    - name: Check for hardcoded paths
+      run: |
+        echo "Checking for hardcoded paths..."
+        find . -name "*.R" -o -name "*.qmd" | while read file; do
+          if grep -n "/home/\|C:\\\|/Users/" "$file"; then
+            echo "WARNING: Hardcoded path found in $file"
+          fi
+        done
+      shell: bash
+
+  format-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: 'release'
+        use-public-rspm: true
+    
+    - name: Install formatting tools
+      run: |
+        install.packages(c("styler", "formatR"))
+      shell: Rscript {0}
+    
+    - name: Check R code formatting
+      run: |
+        # Check if R files are properly formatted
+        find . -name "*.R" -not -path "./.git/*" | while read file; do
+          echo "Checking formatting of $file"
+          Rscript -e "styler::style_file('$file', dry = 'on')" || {
+            echo "WARNING: $file may need formatting"
+          }
+        done
+      shell: bash
+    
+    - name: Check for trailing whitespace
+      run: |
+        echo "Checking for trailing whitespace..."
+        find . -name "*.R" -o -name "*.qmd" -o -name "*.md" -o -name "*.yml" -o -name "*.yaml" | while read file; do
+          if grep -n "[[:space:]]$" "$file"; then
+            echo "WARNING: Trailing whitespace found in $file"
+          fi
+        done
+      shell: bash
+
+  security-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Check for secrets
+      run: |
+        echo "Checking for potential secrets..."
+        # Check for common secret patterns
+        if grep -r -i "password\|secret\|key\|token" --include="*.R" --include="*.qmd" --include="*.md" . | grep -v "TODO\|FIXME"; then
+          echo "WARNING: Potential secrets found in files"
+        fi
+      shell: bash
+    
+    - name: Check for dangerous functions
+      run: |
+        echo "Checking for potentially dangerous functions..."
+        find . -name "*.R" | while read file; do
+          if grep -n "system\|shell\|eval\|parse" "$file"; then
+            echo "WARNING: Potentially dangerous function found in $file"
+          fi
+        done
+      shell: bash

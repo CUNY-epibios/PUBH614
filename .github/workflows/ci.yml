@@ -1,0 +1,136 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ main, develop, 'feature/*', 'hotfix/*' ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    # Run daily at 2 AM UTC to catch any issues
+    - cron: '0 2 * * *'
+
+jobs:
+  quick-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: 'release'
+        use-public-rspm: true
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+    
+    - name: Install R dependencies
+      run: |
+        install.packages(c("remotes", "lintr"))
+        remotes::install_deps(dependencies = TRUE)
+      shell: Rscript {0}
+    
+    - name: Quick R package check
+      run: |
+        # Quick check without vignettes and manual
+        rcmdcheck::rcmdcheck(args = c("--no-manual", "--no-vignettes", "--no-codoc", "--no-examples"), error_on = "error")
+      shell: Rscript {0}
+    
+    - name: Lint R files
+      run: |
+        lintr::lint_package()
+      shell: Rscript {0}
+
+  quarto-quick-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: 'release'
+        use-public-rspm: true
+    
+    - name: Install Quarto
+      uses: quarto-dev/quarto-actions/setup@v1
+      with:
+        version: 'latest'
+    
+    - name: Install R dependencies
+      run: |
+        install.packages(c("quarto", "tidyverse", "haven", "webr"))
+        remotes::install_deps(dependencies = TRUE)
+      shell: Rscript {0}
+    
+    - name: Validate Quarto documents
+      run: |
+        # Check syntax of all .qmd files
+        find vignettes -name "*.qmd" -type f | while read file; do
+          echo "Validating $file"
+          quarto check "$file" || {
+            echo "ERROR: Validation failed for $file"
+            exit 1
+          }
+        done
+      shell: bash
+
+  file-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Check file integrity
+      run: |
+        echo "Checking for common file issues..."
+        
+        # Check for empty files
+        find . -type f -empty -not -path "./.git/*" | while read file; do
+          echo "WARNING: Empty file found: $file"
+        done
+        
+        # Check for files with unusual permissions
+        find . -type f -perm /111 -name "*.md" -o -name "*.txt" -o -name "*.csv" | while read file; do
+          echo "WARNING: Text file is executable: $file"
+        done
+        
+        # Check for very long lines
+        find . -name "*.R" -o -name "*.qmd" -o -name "*.md" | while read file; do
+          if awk 'length > 1000' "$file" | head -1; then
+            echo "WARNING: Very long lines found in $file"
+          fi
+        done
+      shell: bash
+
+  dependency-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: 'release'
+        use-public-rspm: true
+    
+    - name: Check package dependencies
+      run: |
+        # Check if DESCRIPTION file is valid
+        Rscript -e "desc::desc()"
+        
+        # Check for missing dependencies
+        remotes::install_deps(dependencies = TRUE, upgrade = "never")
+        
+        # Check for circular dependencies
+        Rscript -e "if (requireNamespace('cyclocomp', quietly = TRUE)) cyclocomp::cyclocomp_package()"
+      shell: Rscript {0}

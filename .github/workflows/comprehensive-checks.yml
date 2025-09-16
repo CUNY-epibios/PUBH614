@@ -1,0 +1,98 @@
+name: Comprehensive Project Checks
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+    inputs:
+      check_type:
+        description: 'Type of check to run'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+        - all
+        - r-package
+        - quarto
+        - pkgdown
+        - files
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      r-files: ${{ steps.changes.outputs.r-files }}
+      quarto-files: ${{ steps.changes.outputs.quarto-files }}
+      config-files: ${{ steps.changes.outputs.config-files }}
+      data-files: ${{ steps.changes.outputs.data-files }}
+      any-changes: ${{ steps.changes.outputs.any-changes }}
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Detect changed files
+      uses: dorny/paths-filter@v2
+      id: changes
+      with:
+        filters: |
+          r-files:
+            - '**/*.R'
+            - 'DESCRIPTION'
+            - 'NAMESPACE'
+            - 'man/**'
+          quarto-files:
+            - 'vignettes/**/*.qmd'
+            - 'vignettes/**/*.html'
+          config-files:
+            - '_pkgdown.yml'
+            - 'pkgdown/**'
+            - '.github/**'
+          data-files:
+            - 'datasets/**'
+            - 'docs/**'
+
+  r-package-checks:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.any-changes == 'true' && (needs.detect-changes.outputs.r-files == 'true' || needs.detect-changes.outputs.config-files == 'true' || github.event.inputs.check_type == 'r-package' || github.event.inputs.check_type == 'all') }}
+    uses: ./.github/workflows/r-package-checks.yml
+
+  quarto-checks:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.any-changes == 'true' && (needs.detect-changes.outputs.quarto-files == 'true' || needs.detect-changes.outputs.config-files == 'true' || github.event.inputs.check_type == 'quarto' || github.event.inputs.check_type == 'all') }}
+    uses: ./.github/workflows/quarto-render.yml
+
+  pkgdown-checks:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.any-changes == 'true' && (needs.detect-changes.outputs.config-files == 'true' || needs.detect-changes.outputs.quarto-files == 'true' || github.event.inputs.check_type == 'pkgdown' || github.event.inputs.check_type == 'all') }}
+    uses: ./.github/workflows/pkgdown-build.yml
+
+  file-validation:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.any-changes == 'true' && (needs.detect-changes.outputs.data-files == 'true' || github.event.inputs.check_type == 'files' || github.event.inputs.check_type == 'all') }}
+    uses: ./.github/workflows/file-validation.yml
+
+  summary:
+    needs: [detect-changes, r-package-checks, quarto-checks, pkgdown-checks, file-validation]
+    if: always()
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Check results summary
+      run: |
+        echo "## Project Check Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Changed Files Detected:" >> $GITHUB_STEP_SUMMARY
+        echo "- R files: ${{ needs.detect-changes.outputs.r-files }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Quarto files: ${{ needs.detect-changes.outputs.quarto-files }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Config files: ${{ needs.detect-changes.outputs.config-files }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Data files: ${{ needs.detect-changes.outputs.data-files }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Workflow Results:" >> $GITHUB_STEP_SUMMARY
+        echo "- R Package Checks: ${{ needs.r-package-checks.result }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Quarto Rendering: ${{ needs.quarto-checks.result }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Pkgdown Build: ${{ needs.pkgdown-checks.result }}" >> $GITHUB_STEP_SUMMARY
+        echo "- File Validation: ${{ needs.file-validation.result }}" >> $GITHUB_STEP_SUMMARY
