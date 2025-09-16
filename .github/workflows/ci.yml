@@ -638,64 +638,19 @@ jobs:
         path: docs/
         retention-days: 7
     
-    - name: Comment PR with preview info
-      if: github.event.pull_request.head.repo.fork == false
-      uses: actions/github-script@v7
-      with:
-        script: |
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: `## 🌐 Preview Site Generated!
-            
-            **PR:** #${context.issue.number}
-            **Branch:** ${context.payload.pull_request.head.ref}
-            **Commit:** ${context.payload.pull_request.head.sha}
-            
-            ### What's included:
-            - ✅ Complete pkgdown website built
-            - ✅ All Quarto documents rendered
-            - ✅ Interactive R code execution (via webR)
-            
-            ### How to preview:
-            1. Go to the **Actions** tab in this PR
-            2. Download the **pr-preview-docs-${context.issue.number}** artifact
-            3. Extract the zip file locally
-            4. Open \`index.html\` in your browser
-            5. Navigate through all sections to test the changes
-            
-            ### Testing checklist:
-            - [ ] All Quarto labs load correctly
-            - [ ] Interactive R code executes properly
-            - [ ] All links work correctly
-            - [ ] Documentation is up to date
-            - [ ] No broken images or missing resources
-            
-            ---
-            *This preview will be automatically updated when you push new commits to this PR.*`
-          });
     
     - name: Log preview info (fallback for forked PRs)
       if: github.event.pull_request.head.repo.fork == true
       run: |
-        echo "## 🌐 Preview Site Generated!" >> $GITHUB_STEP_SUMMARY
+        echo "## 🚀 Beta Release & Preview Available!" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "**PR:** #${{ github.event.pull_request.number }}" >> $GITHUB_STEP_SUMMARY
         echo "**Branch:** ${{ github.event.pull_request.head.ref }}" >> $GITHUB_STEP_SUMMARY
         echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        echo "### What's included:" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ Complete pkgdown website built" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ All Quarto documents rendered" >> $GITHUB_STEP_SUMMARY
-        echo "- ✅ Interactive R code execution (via webR)" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "### How to preview:" >> $GITHUB_STEP_SUMMARY
-        echo "1. Go to the **Actions** tab in this PR" >> $GITHUB_STEP_SUMMARY
-        echo "2. Download the **pr-preview-docs-${{ github.event.pull_request.number }}** artifact" >> $GITHUB_STEP_SUMMARY
-        echo "3. Extract the zip file locally" >> $GITHUB_STEP_SUMMARY
-        echo "4. Open \`index.html\` in your browser" >> $GITHUB_STEP_SUMMARY
-        echo "5. Navigate through all sections to test the changes" >> $GITHUB_STEP_SUMMARY
+        echo "### Downloads available in Actions tab:" >> $GITHUB_STEP_SUMMARY
+        echo "- **pr-preview-docs-${{ github.event.pull_request.number }}** - Website preview" >> $GITHUB_STEP_SUMMARY
+        echo "- **beta-release** job - R package download link" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "**Note:** Comments cannot be posted on forked PRs for security reasons." >> $GITHUB_STEP_SUMMARY
       shell: bash
