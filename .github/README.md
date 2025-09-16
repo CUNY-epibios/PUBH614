@@ -1,86 +1,55 @@
-# GitHub Actions Workflows
+# GitHub Actions Workflow
 
-This directory contains GitHub Actions workflows that automatically check and validate the entire project whenever changes are made.
+This directory contains a single, comprehensive GitHub Actions workflow that automatically checks and validates the entire project whenever changes are made.
 
-## Workflows Overview
+## Single Workflow: `ci.yml` - Comprehensive CI/CD Pipeline
 
-### 1. `ci.yml` - Continuous Integration
-**Triggers:** Every push and pull request, plus daily at 2 AM UTC
-**Purpose:** Quick checks to catch issues early
-**Features:**
-- Quick R package validation
-- Quarto document syntax checking
-- File integrity checks
-- Dependency validation
+**Triggers:** 
+- Every push and pull request to main/develop branches
+- Manual dispatch with specific workflow types
+- Daily scheduled runs at 2 AM UTC
 
-### 2. `smart-checks.yml` - Intelligent Change Detection
-**Triggers:** Push and pull requests to main/develop branches
-**Purpose:** Runs only relevant checks based on what files changed
-**Features:**
-- Analyzes changed files
-- Runs appropriate workflows based on file types
-- Provides detailed change summaries
+**Purpose:** Complete project validation and deployment automation
+
+### 🎯 Key Features
+
+#### **Smart Change Detection**
+- Automatically analyzes what files changed
+- Runs only relevant checks based on file types
 - Optimizes CI time by skipping unnecessary checks
+- Provides detailed change summaries and recommendations
 
-### 3. `comprehensive-checks.yml` - Full Project Validation
-**Triggers:** Push, pull requests, and manual dispatch
-**Purpose:** Complete project validation with manual control
-**Features:**
-- All R package checks (linting, testing, building)
-- Complete Quarto document rendering
-- Full pkgdown website build
-- Comprehensive file validation
-- Manual trigger with specific check types
+#### **Comprehensive Validation**
+- **R Package Checks:** Linting, testing, building on multiple R versions
+- **Quarto Rendering:** Document validation and HTML generation
+- **Pkgdown Building:** Complete website generation and validation
+- **File Validation:** Permissions, security, formatting, and integrity checks
 
-### 4. Individual Workflows
+#### **Beta Release System** 🧪
+- **Automatic beta releases** for every Pull Request
+- **Downloadable R packages** for easy testing
+- **Preview websites** for testing changes
+- **PR comments** with testing instructions
+- **Automatic cleanup** when PRs are closed
 
-#### `r-package-checks.yml`
-- R CMD check on multiple R versions
-- Code linting with `lintr`
-- Test coverage analysis
-- Package building validation
+#### **Production Release Automation** 🚀
+- **Automatic version bumping** on main branch pushes
+- **GitHub releases** with changelog generation
+- **Production deployment** to GitHub Pages
+- **Manual release triggers** with version control
 
-#### `quarto-render.yml`
-- Renders all Quarto documents to HTML
-- Validates Quarto syntax
-- Checks for rendering errors
-- Uploads rendered documents as artifacts
+### 🔧 Workflow Jobs
 
-#### `pkgdown-build.yml`
-- Builds complete pkgdown website
-- Validates website structure
-- Deploys to GitHub Pages (main branch only)
-- Uploads built site as artifacts
-
-#### `file-validation.yml`
-- File permission checks
-- Large file detection
-- Binary file validation
-- CSV file structure validation
-- Security checks for secrets
-- Code formatting validation
-
-#### `beta-release.yml` 🆕
-- **Creates beta releases for PR testing**
-- Builds R package and pkgdown site
-- Uploads package as downloadable artifact
-- Comments on PR with testing instructions
-- Updates release when PR is updated
-- Cleans up when PR is closed
-
-#### `pr-deployment.yml` 🆕
-- **Creates preview website for PRs**
-- Deploys pkgdown site to GitHub Pages
-- Creates unique URL for each PR
-- Comments on PR with preview link
-- Perfect for testing website changes
-
-#### `release.yml` 🆕
-- **Automated releases on main branch**
-- Bumps version automatically
-- Creates GitHub releases with changelog
-- Deploys to production GitHub Pages
-- Supports manual release triggers
+1. **`analyze-changes`** - Detects file changes and determines what to run
+2. **`r-package-checks`** - R package validation, linting, and testing
+3. **`quarto-render`** - Quarto document rendering and validation
+4. **`pkgdown-build`** - Website building and validation
+5. **`file-validation`** - File integrity and security checks
+6. **`beta-release`** - Creates beta releases for PR testing
+7. **`pr-deployment`** - Deploys preview websites for PRs
+8. **`production-release`** - Handles production releases and deployment
+9. **`cleanup-beta-releases`** - Cleans up old beta releases
+10. **`final-summary`** - Generates comprehensive results summary
 
 ## How It Works
 
@@ -128,24 +97,36 @@ For PRs with website changes:
 
 ## Manual Workflow Dispatch
 
-You can manually trigger the comprehensive checks with different options:
+You can manually trigger specific parts of the workflow:
 
 1. Go to Actions tab in GitHub
-2. Select "Comprehensive Project Checks"
+2. Select "Comprehensive CI/CD Pipeline"
 3. Click "Run workflow"
-4. Choose check type:
-   - `all`: Run all checks
+4. Choose workflow type:
+   - `smart`: Run smart checks based on changes (default)
+   - `full`: Run all checks regardless of changes
    - `r-package`: Only R package checks
    - `quarto`: Only Quarto rendering
    - `pkgdown`: Only website building
    - `files`: Only file validation
+   - `beta-release`: Create beta release for specific PR
+   - `release`: Create production release
 
 ### Manual Beta Release
-You can also create a beta release manually:
+To create a beta release for a specific PR:
 1. Go to Actions tab
-2. Select "Beta Release for PR Testing"
+2. Select "Comprehensive CI/CD Pipeline"
 3. Click "Run workflow"
-4. Enter the PR number you want to create a beta release for
+4. Choose `beta-release` as workflow type
+5. Enter the PR number you want to create a beta release for
+
+### Manual Production Release
+To create a production release:
+1. Go to Actions tab
+2. Select "Comprehensive CI/CD Pipeline"
+3. Click "Run workflow"
+4. Choose `release` as workflow type
+5. Select release type: `patch`, `minor`, `major`, or `prerelease`
 
 ## Artifacts
 
