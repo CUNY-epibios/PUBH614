@@ -233,7 +233,7 @@ jobs:
     - name: Install Quarto
       uses: quarto-dev/quarto-actions/setup@v2
       with:
-        version: '1.5.0'
+        version: '1.8.24'
     
     - name: Install R dependencies
       run: |
