@@ -41,11 +41,12 @@ on:
     - cron: '0 2 * * *'
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
   issues: write
   checks: write
   statuses: write
+  pages: write
 
 jobs:
   # =============================================================================
@@ -635,12 +636,20 @@ jobs:
       run: echo "Pkgdown site built successfully"
       shell: bash
     
+    - name: Upload docs as artifact for PR preview
+      uses: actions/upload-artifact@v4
+      with:
+        name: pr-preview-docs-${{ needs.analyze-changes.outputs.pr-number }}
+        path: docs/
+        retention-days: 7
+    
     - name: Deploy to GitHub Pages (PR Preview)
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./docs
         destination_dir: pr-${{ needs.analyze-changes.outputs.pr-number }}
+        force_orphan: true
     
     - name: Comment PR with live preview URL
       if: github.event.pull_request.head.repo.fork == false
