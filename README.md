@@ -2,6 +2,8 @@
 
 # Quick-start
 
+See these labs in [Google Colab](https://drive.google.com/drive/folders/1VHk6f8M6hq2C1vrBSF333JAo8_K6jpp_)
+
 Use the menu bars above:
 
 - **OpenIntro Labs**: Labs from [OpenIntro Statistics][OpenIntro]
