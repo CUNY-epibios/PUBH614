@@ -1,0 +1,172 @@
+# Codebook for fastfood dataset
+
+## Codebook: Fast Food Nutrition Dataset
+
+### Where to find it
+
+- **Dataset name:** `fastfood`
+- **Location:** Loaded automatically when the `openintro` package is
+  loaded. Also available online at
+  https://github.com/CUNY-epibios/PUBH614/tree/main/datasets
+- [Download the dataset
+  now](https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/main/datasets/fastfood.csv)
+
+Option 1: load this dataset from the openintro package:
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Option 2: load this dataset manually
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+### Dataset Overview
+
+This dataset contains nutritional information for various fast food
+items from different restaurants. The dataset includes multiple
+observations with 17 variables.
+
+### Variables
+
+#### restaurant
+
+- **Description**: Name of the restaurant
+- **Type**: Categorical
+- **Values**: Various restaurant names (e.g., Mcdonalds, Chick Fil-A,
+  Sonic, etc.)
+- **Missing values**: None
+
+#### item
+
+- **Description**: Name of the food item
+- **Type**: Categorical
+- **Values**: Various food item names (e.g., Big Mac, Chicken Sandwich,
+  etc.)
+- **Missing values**: None
+- **Note**: Each value is unique
+
+#### calories
+
+- **Description**: Total calories in the food item
+- **Type**: Numeric
+- **Values**: Range from 20 to 2430
+- **Missing values**: None
+
+#### cal_fat
+
+- **Description**: Calories from fat
+- **Type**: Numeric
+- **Values**: Range from 0 to 1270
+- **Missing values**: None
+
+#### total_fat
+
+- **Description**: Total fat content in grams
+- **Type**: Numeric
+- **Values**: Range from 0 to 141
+- **Missing values**: None
+
+#### sat_fat
+
+- **Description**: Saturated fat content in grams
+- **Type**: Numeric
+- **Values**: Range from 0 to 47
+- **Missing values**: None
+
+#### trans_fat
+
+- **Description**: Trans fat content in grams
+- **Type**: Numeric
+- **Values**: Range from 0 to 8
+- **Missing values**: None
+
+#### cholesterol
+
+- **Description**: Cholesterol content in milligrams
+- **Type**: Numeric
+- **Values**: Range from 0 to 805
+- **Missing values**: None
+
+#### sodium
+
+- **Description**: Sodium content in milligrams
+- **Type**: Numeric
+- **Values**: Range from 0 to 6080
+- **Missing values**: None
+
+#### total_carb
+
+- **Description**: Total carbohydrate content in grams
+- **Type**: Numeric
+- **Values**: Range from 0 to 156
+- **Missing values**: none
+
+#### fiber
+
+- **Description**: Dietary fiber content in grams
+- **Type**: Numeric
+- **Values**: Range from 0 to 17
+- **Missing values**: 12
+
+#### sugar
+
+- **Description**: Sugar content in grams
+- **Type**: Numeric
+- **Values**: Range from 0 to 87
+- **Missing values**: None
+
+#### protein
+
+- **Description**: Protein content in grams
+- **Type**: Numeric
+- **Values**: Range from 0 to 186
+- **Missing values**: 1
+
+#### vit_a
+
+- **Description**: Vitamin A content as a percentage of daily value
+- **Type**: Numeric
+- **Values**: Range from 0 to 180
+- **Missing values**: 214
+
+#### vit_c
+
+- **Description**: Vitamin C content as a percentage of daily value
+- **Type**: Numeric
+- **Values**: Range from 0 to 400
+- **Missing values**: 210
+
+#### calcium
+
+- **Description**: Calcium content as a percentage of daily value
+- **Type**: Numeric
+- **Values**: Range from 0 to 290
+- **Missing values**: 210
+
+#### salad
+
+- **Description**: Indicates if the item is a salad
+- **Type**: Categorical
+- **Values**: - Other = Not a salad
+- **Missing values**: None
+
+### Summary Statistics
+
+`item` omitted for brevity since each value is unique.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+### Data Quality Notes
+
+- The dataset has 301 complete cases and 214 observations with missing
+  values.
+- All variables are coded consistently.
+- Nutritional values are provided in standard units (grams, milligrams,
+  percentages).
+
+### Acknowledgements
+
+This codebook was drafted by Microsoft Copilot and edited by Levi
+Waldron.

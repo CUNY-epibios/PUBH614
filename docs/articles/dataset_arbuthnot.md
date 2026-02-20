@@ -1,0 +1,102 @@
+# Codebook for arbuthnot dataset
+
+## Codebook: Arbuthnot London Births Dataset
+
+### Where to find it
+
+- **Dataset name:** `arbuthnot`
+- **Location:** Loaded automatically when the `openintro` package is
+  loaded. Also available online at
+  https://github.com/CUNY-epibios/PUBH614/tree/main/datasets
+- [Download the dataset
+  now](https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/main/datasets/arbuthnot.csv)
+
+Option 1: load this dataset from the openintro package:
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Option 2: load this dataset manually
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+### Dataset Overview
+
+This dataset contains historical records of births in London from 1629
+to 1710, as recorded by John Arbuthnot. The dataset includes 82
+observations with 4 variables, documenting the number of boys and girls
+christened each year.
+
+### Variables
+
+#### year
+
+- **Description**: Calendar year of birth records
+- **Type**: Numeric (integer)
+- **Range**: 1629 to 1710
+- **Missing values**: None
+
+#### boys
+
+- **Description**: Number of male children christened in London
+- **Type**: Numeric (integer)
+- **Range**: 2,890 to 8,426
+- **Missing values**: None
+
+#### girls
+
+- **Description**: Number of female children christened in London
+- **Type**: Numeric (integer)
+- **Range**: 2,722 to 7,779
+- **Missing values**: None
+
+#### Time Period Coverage
+
+- Start year: 1629
+- End year: 1710
+- Total years: 82
+
+#### Birth Totals
+
+- Total boys christened: 484,382
+- Total girls christened: 453,841
+- Overall boy/girl ratio: 1.067
+
+#### Annual Averages
+
+- Average boys per year: 5,907
+- Average girls per year: 5,535
+- Minimum total births (1650): 5,612
+- Maximum total births (1705): 16,145
+
+### Summary Statistics
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+### Data Quality Notes
+
+- The dataset is complete with no missing values
+- All counts are positive integers
+- Consistent annual records for the entire period
+- Data represents christenings rather than all births, so actual birth
+  numbers may have been higher
+
+### Historical Context
+
+This dataset was compiled by John Arbuthnot (1667-1735), a Scottish
+physician, mathematician, and satirist. He used these records to study
+the ratio of male to female births, making it one of the earliest known
+applications of statistical reasoning to a scientific question.
+
+### Source
+
+The original data comes from the London Bills of Mortality, which
+recorded christenings, burials, and causes of death in London parishes
+from the 16th to 19th centuries.
+
+### Acknowledgements
+
+This codebook was drafted by Microsoft Copilot and edited by Levi
+Waldron.

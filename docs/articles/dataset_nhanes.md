@@ -1,0 +1,170 @@
+# Codebook and example merging for NHANES Datasets
+
+*Note*: you can also do this lab and upload local files on its [Google
+Colab
+version](https://colab.research.google.com/drive/1zX4r8djrtjntCm4mYkKrIK4DvKUuzKMb?usp=drive_link).
+
+## Codebook: NHANES Dataset
+
+- **Dataset names:** `PBCD_J.xpt` and `INS_J.xpt`
+- **Location:** NHANES datasets and codebooks for all years are
+  available [here](https://wwwn.cdc.gov/nchs/nhanes/Default.aspx).
+  - There is a [single-page list of all download links and
+    codebooks](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx).
+  - Direct download links from CDC for the 2017-18
+    [PBCD_J.xpt](https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/PBCD_J.xpt)
+    and
+    [INS_J.xpt](https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/INS_J.xpt)
+  - Backup download links from GitHub for the same
+    [PBCD_J.xpt](https://github.com/CUNY-epibios/PUBH614/raw/refs/heads/main/datasets/PBCD_J.xpt)
+    and
+    [INS_J.xpt](https://github.com/CUNY-epibios/PUBH614/raw/refs/heads/main/datasets/INS_J.xpt)
+  - Codebooks for
+    [PBCD_J](https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/PBCD_J.htm)
+    and
+    [INS_J](https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/INS_J.htm)
+
+### Getting the data
+
+Option 1: Download datasets directly from CDC. *Note: this seems to get
+blocked by the browser in webR so it is not run here*
+
+    download.file(
+      "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/PBCD_J.xpt",
+      destfile = "PBCD_J.xpt"
+    )
+    download.file(
+      "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/INS_J.xpt",
+      destfile = "INS_J.xpt"
+    )
+
+Option 2: Download datasets from GitHub backup:
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+You then need to load and then merge, or join, these datasets into a
+single file. First, load them using the
+[haven](https://haven.tidyverse.org/) package which can import data from
+SAS, SPSS, and STATA formats.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Now join the two datasets, matching by the partipant ID column `SEQN`.
+This uses `full_join` from the incredible user-friendly and powerful
+[join
+functions](https://dplyr.tidyverse.org/articles/base.html?q=join#two-table-verbs)
+from the [dplyr](https://dplyr.tidyverse.org/) package.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+`full_join` means that all partipants in the `SEQN` column will be
+maintained, even if a participant exists only in one of the two
+datasets. There are other options, for example `inner_join` keeps only
+participants present in both datasets, and `left_join` keeps only
+partipants present in the first dataset (the first dataset being
+whichever you specify as the first argument to the join function). See
+the `dplyr` help on [two table
+verbs](https://dplyr.tidyverse.org/articles/base.html?q=join#two-table-verbs)
+for more information.
+
+Finally, you may want to simplify the dataset using
+[`dplyr::select`](https://dplyr.tidyverse.org/reference/select.html) to
+select only the columns you intend to use. You don’t need the `dplyr::`
+but I like to include it because if you forgot
+[`library(dplyr)`](https://dplyr.tidyverse.org) or
+[`library(tidyverse)`](https://tidyverse.tidyverse.org) you would
+accidentally use `select` from base R, which has different usage and
+would give you an error.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+### Getting and joining other NHANES datasets
+
+You can join two datasets like above then join a third dataset, and so
+on, repeating as many times as you want. Just make sure to use the same
+participant ID (SEQN) and the same NHANES cycle. Here’s a shorthand join
+of several 2021-23 datasets, downloaded then inner_joined to keep only
+participants for whom all data are available. These datasets are:
+
+- [Demographic Variables and Sample
+  Weights](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics&Cycle=2021-2023)
+- [Dietary Supplement Use 30-day - Total Dietary
+  Supplements](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Dietary&Cycle=2021-2023)
+- [Body
+  Measures](https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Examination&Cycle=2021-2023)
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+The following command downloads and reads the dataset on the first line,
+joins it with the dataset on the second line, and then joins the result
+with the dataset on the third line.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Success! If you want to save the merged `nhanes2` object, use
+[`readr::write_csv`](https://readr.tidyverse.org/reference/write_delim.html)
+or something like it. Take a look at the dataset to see what you have:
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Note: if you are running outside of webR, you could save the step of
+downloading first, and provide the full URL instead of the filename.
+Most other R data-loading functions can do take a URL as the filename.
+
+### Dataset Overview
+
+The `nhanes` dataset contains three variables from the 2017-18 NHANES
+dataset. The dataset includes 8,366 observations with 3 variables.
+
+### Variables
+
+#### SEQN
+
+- **Description**: Sequence number
+- **Type**: Numeric
+- **Values**: Various sequence numbers, e.g., 93703, 93704, etc.
+- **Missing values**: 0
+
+#### LBXBPB
+
+- **Description**: Blood lead level (ug/dL)
+- **Type**: Numeric
+- **Values**: Various blood lead levels, e.g., 2.98, 0.74, etc.
+- **Missing values**: 1,482
+
+#### LBXIN
+
+- **Description**: Insulin level (uU/mL)
+- **Type**: Numeric
+- **Values**: Various insulin levels, e.g., 9.72, 5.28, etc.
+- **Missing values**: 5,541
+
+### Summary Statistics
+
+- `SEQN` omitted for brevity as it contains unique values for each
+  observation.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+### Data Quality Notes
+
+- The dataset has missing values in the `LBXBPB` and `LBXIN` columns.
+
+### Acknowledgements
+
+This codebook was drafted by Microsoft Copilot and edited by Levi
+Waldron.
+
+Who am I kidding, Copilot was not very helpful with this Codebook
+because there were too many weird issues with downloading certain files
+in webR. The only useful things it did were the **Dataset Overview** and
+**Variables** sections, although even there I had to fix the numbers
+which were incorrect in its output.

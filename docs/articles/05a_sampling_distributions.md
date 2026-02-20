@@ -1,0 +1,297 @@
+# 05a. Foundations for statistical inference - Sampling distributions
+
+In this lab, you will investigate the ways in which the statistics from
+a random sample of data can serve as point estimates for population
+parameters. We’re interested in formulating a *sampling distribution* of
+our estimate in order to learn about the properties of the estimate,
+such as its distribution.
+
+**Setting a seed:** We will take some random samples and build sampling
+distributions in this lab, which means you should set a seed at the
+start of your lab. If this concept is new to you, review the lab on
+probability.
+
+## Getting Started
+
+### Load packages
+
+In this lab, we will explore and visualize the data using the
+**tidyverse** suite of packages. We will also use the **infer** package
+for resampling.
+
+Let’s load the packages.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+### The data
+
+A 2019 Gallup report states the following:
+
+> The premise that scientific progress benefits people has been embodied
+> in discoveries throughout the ages – from the development of
+> vaccinations to the explosion of technology in the past few decades,
+> resulting in billions of supercomputers now resting in the hands and
+> pockets of people worldwide. Still, not everyone around the world
+> feels science benefits them personally.
+>
+> **Source:** [World Science Day: Is Knowledge
+> Power?](https://news.gallup.com/opinion/gallup/268121/world-science-day-knowledge-power.aspx)
+
+The Wellcome Global Monitor finds that 20% of people globally do not
+believe that the work scientists do benefits people like them. In this
+lab, you will assume this 20% is a true population proportion and learn
+about how sample proportions can vary from sample to sample by taking
+smaller samples from the population. We will first create our population
+assuming a population size of 100,000. This means 20,000 (20%) of the
+population think the work scientists do does not benefit them personally
+and the remaining 80,000 think it does.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+The name of the data frame is `global_monitor` and the name of the
+variable that contains responses to the question *“Do you believe that
+the work scientists do benefit people like you?”* is `scientist_work`.
+
+We can quickly visualize the distribution of these responses using a bar
+plot.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+We can also obtain summary statistics to confirm we constructed the data
+frame correctly.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+## The unknown sampling distribution
+
+In this lab, you have access to the entire population, but this is
+rarely the case in real life. Gathering information on an entire
+population is often extremely costly or impossible. Because of this, we
+often take a sample of the population and use that to understand the
+properties of the population.
+
+If you are interested in estimating the proportion of people who don’t
+think the work scientists do benefits them, you can use the `sample_n`
+command to survey the population.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+This command collects a simple random sample of size 50 from the
+`global_monitor` dataset, and assigns the result to `samp1`. This is
+similar to randomly drawing names from a hat that contains the names of
+all in the population. Working with these 50 names is considerably
+simpler than working with all 100,000 people in the population.
+
+1.  Describe the distribution of responses in this sample. How does it
+    compare to the distribution of responses in the population.
+    **Hint:** Although the `sample_n` function takes a random sample of
+    observations (i.e. rows) from the dataset, you can still refer to
+    the variables in the dataset with the same names. Code you presented
+    earlier for visualizing and summarising the population data will
+    still be useful for the sample, however be careful to not label your
+    proportion `p` since you’re now calculating a sample statistic, not
+    a population parameters. You can customize the label of the
+    statistics to indicate that it comes from the sample.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+If you’re interested in estimating the proportion of all people who do
+not believe that the work scientists do benefits them, but you do not
+have access to the population data, your best single guess is the sample
+proportion.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Depending on which 50 people you selected, your estimate could be a bit
+above or a bit below the true population proportion of 80%. In general,
+though, the sample proportion turns out to be a pretty good estimate of
+the true population proportion, and you were able to get it by sampling
+less than 1% of the population.
+
+1.  Would you expect the sample proportion to match the sample
+    proportion of another student’s sample? Why, or why not? If the
+    answer is no, would you expect the proportions to be somewhat
+    different or very different?
+
+&nbsp;
+
+2.  Take a second sample, also of size 50, and call it `samp2`. How does
+    the sample proportion of `samp2` compare with that of `samp1`?
+    Suppose we took two more samples, one of size 100 and one of
+    size 1000. Which would you think would provide a more accurate
+    estimate of the population proportion?
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Not surprisingly, every time you take another random sample, you might
+get a different sample proportion. It’s useful to get a sense of just
+how much variability you should expect when estimating the population
+mean this way. The distribution of sample proportions, called the
+*sampling distribution (of the proportion)*, can help you understand
+this variability. In this lab, because you have access to the
+population, you can build up the sampling distribution for the sample
+proportion by repeating the above steps many times. Here, we use R to
+take 15,000 different samples of size 50 from the population, calculate
+the proportion of responses in each sample, filter for only the *Doesn’t
+benefit* responses, and store each result in a vector called
+`sample_props50`. Note that we specify that `replace = TRUE` since
+sampling distributions are constructed by sampling with replacement.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+And we can visualize the distribution of these proportions with a
+histogram.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Next, you will review how this set of code works.
+
+1.  How many elements are there in `sample_props50`? Describe the
+    sampling distribution, and be sure to specifically note its center.
+    Make sure to include a plot of the distribution in your answer.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+## Interlude: Sampling distributions
+
+The idea behind the `rep_sample_n` function is *repetition*. Earlier,
+you took a single sample of size `n` (50) from the population of all
+people in the population. With this new function, you can repeat this
+sampling procedure `rep` times in order to build a distribution of a
+series of sample statistics, which is called the **sampling
+distribution**.
+
+Note that in practice one rarely gets to build true sampling
+distributions, because one rarely has access to data from the entire
+population.
+
+Without the `rep_sample_n` function, this would be painful. We would
+have to manually run the following code 15,000 times
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+as well as store the resulting sample proportions each time in a
+separate vector.
+
+Note that for each of the 15,000 times we computed a proportion, we did
+so from a **different** sample!
+
+1.  To make sure you understand how sampling distributions are built,
+    and exactly what the `rep_sample_n` function does, try modifying the
+    code to create a sampling distribution of **25 sample proportions**
+    from **samples of size 10**, and put them in a data frame named
+    `sample_props_small`. Print the output. How many observations are
+    there in this object called `sample_props_small`? What does each
+    observation represent?
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+## Sample size and the sampling distribution
+
+Mechanics aside, let’s return to the reason we used the `rep_sample_n`
+function: to compute a sampling distribution, specifically, the sampling
+distribution of the proportions from samples of 50 people.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+The sampling distribution that you computed tells you much about
+estimating the true proportion of people who think that the work
+scientists do doesn’t benefit them. Because the sample proportion is an
+unbiased estimator, the sampling distribution is centered at the true
+population proportion, and the spread of the distribution indicates how
+much variability is incurred by sampling only 50 people at a time from
+the population.
+
+In the remainder of this section, you will work on getting a sense of
+the effect that sample size has on your sampling distribution.
+
+1.  Use the code below to create sampling distributions of proportions
+    of *Doesn’t benefit* from samples of size 10, 50, and 100. Use 5,000
+    simulations. What does each observation in the sampling distribution
+    represent? How does the mean, standard error, and shape of the
+    sampling distribution change as the sample size increases? How (if
+    at all) do these values change if you increase the number of
+    simulations? (You do not need to include plots in your answer.)
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+------------------------------------------------------------------------
+
+## More Practice
+
+So far, you have only focused on estimating the proportion of those you
+think the work scientists doesn’t benefit them. Now, you’ll try to
+estimate the proportion of those who think it does.
+
+Note that while you might be able to answer some of these questions
+using the app, you are expected to write the required code and produce
+the necessary plots and summary statistics. You are welcome to use the
+app for exploration.
+
+1.  Take a sample of size 15 from the population and calculate the
+    proportion of people in this sample who think the work scientists do
+    enchances their lives. Using this sample, what is your best point
+    estimate of the population proportion of people who think the work
+    scientists do enchances their lives?
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+2.  Since you have access to the population, simulate the sampling
+    distribution of proportion of those who think the work scientists do
+    enhances their lives for samples of size 15 by taking 2000 samples
+    from the population of size 15 and computing 2000 sample
+    proportions. Store these proportions in as `sample_props15`. Plot
+    the data, then describe the shape of this sampling distribution.
+    Based on this sampling distribution, what would you guess the true
+    proportion of those who think the work scientists do enhances their
+    lives to be? Finally, calculate and report the population
+    proportion.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+3.  Change your sample size from 15 to 150, then compute the sampling
+    distribution using the same method as above, and store these
+    proportions in a new object called `sample_props150`. Describe the
+    shape of this sampling distribution and compare it to the sampling
+    distribution for a sample size of 15. Based on this sampling
+    distribution, what would you guess to be the true proportion of
+    those who think the work scientists do enhances their lives?
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+4.  Of the sampling distributions from 2 and 3, which has a smaller
+    spread? If you’re concerned with making estimates that are more
+    often close to the true value, would you prefer a sampling
+    distribution with a large or small spread?
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+------------------------------------------------------------------------
+
+[![Creative Commons
+License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)  
+This work is licensed under a [Creative Commons Attribution-ShareAlike
+4.0 International
+License](http://creativecommons.org/licenses/by-sa/4.0/).

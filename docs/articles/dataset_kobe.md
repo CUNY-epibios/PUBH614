@@ -1,0 +1,96 @@
+# Codebook for kobe_basket dataset
+
+## Codebook: Kobe Bryant Basketball Dataset
+
+### Where to find it
+
+- **Dataset name:** `kobe_basket`
+- **Location:** Loaded automatically when the `openintro` package is
+  loaded. Also available online at
+  https://github.com/CUNY-epibios/PUBH614/tree/main/datasets
+- [Download the dataset
+  now](https://media.githubusercontent.com/media/CUNY-epibios/PUBH614/main/datasets/kobe_basket.csv)
+
+Option 1: load this dataset from the openintro package:
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Option 2: load this dataset manually
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+### Dataset Overview
+
+This dataset contains information about Kobe Bryant’s basketball shots,
+including the opponent, game details, shot description, and whether the
+shot was made or missed. The dataset includes multiple observations with
+6 variables.
+
+### Variables
+
+#### vs
+
+- **Description**: Opponent team
+- **Type**: Categorical
+- **Values**: Various team abbreviations (e.g., ORL, MIA, etc.)
+- **Missing values**: None
+
+#### game
+
+- **Description**: Game number
+- **Type**: Numeric
+- **Values**: Range from 1 to 5
+- **Missing values**: None
+
+#### quarter
+
+- **Description**: Quarter of the game
+- **Type**: Numeric
+- **Values**: Range from 1 to 4, including overtime (OT)
+- **Missing values**: None
+
+#### time
+
+- **Description**: Time remaining in the quarter
+- **Type**: Categorical
+- **Values**: Various time values (e.g., 9:47, 0:00, etc.)
+- **Missing values**: None
+
+#### description
+
+- **Description**: Description of the shot
+- **Type**: Categorical
+- **Values**: Various shot descriptions (e.g., “Kobe Bryant makes 4-foot
+  two point shot”, “Kobe Bryant misses jumper”, etc.)
+- **Missing values**: None
+
+#### shot
+
+- **Description**: Whether the shot was made or missed
+
+- **Type**: Categorical
+
+- **Values**: - H = Hit (made)
+
+- - M = Miss (missed)
+
+- **Missing values**: None
+
+### Summary Statistics
+
+`time` and `description` omitted for brevity.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+### Data Quality Notes
+
+- The dataset is complete with no missing values.
+- All variables are coded consistently.
+
+### Acknowledgements
+
+This codebook was drafted by Microsoft Copilot and edited by Levi
+Waldron.

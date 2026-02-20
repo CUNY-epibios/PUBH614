@@ -1,0 +1,377 @@
+# 02. Introduction to Data
+
+## AI-Powered Features in Google Colab
+
+You can also complete this lab using a [Google Colab
+version](https://colab.research.google.com/drive/1rhUUiP4wuJFH6L8-VLEv1O-IYVYMsSPF?usp=drive_link)
+version that offers AI-powered features like code generation,
+explanation, and error debugging.
+
+### Learning Objectives
+
+By the end of this lab, you should be able to:
+
+- Set up a Google Colab notebook to run R code.
+- Install and load essential R packages (`openintro`, `dplyr`,
+  `ggplot2`).
+- Load datasets into your R environment (specifically, the `nycflights`
+  dataset).
+- Understand the basic structure of a data frame, including observations
+  (rows) and variables (columns).
+- Inspect data frames using functions like
+  [`names()`](https://rdrr.io/r/base/names.html), `glimpse()`, and the
+  help operator `?`.
+- Subset data effectively using
+  [`filter()`](https://rdrr.io/r/stats/filter.html) with single and
+  multiple logical conditions (e.g., `==`, `>`, `&`, `|`).
+- Calculate summary statistics (e.g., mean, median, IQR, count) for
+  datasets and grouped data using `summarise()` and `group_by()`.
+- Create new variables and add them to a data frame using `mutate()` and
+  conditional logic with
+  [`ifelse()`](https://rdrr.io/r/base/ifelse.html).
+- Sort data frames based on column values using `arrange()`.
+- Generate and interpret basic data visualizations with `ggplot2`,
+  including:
+  - Histograms (`geom_histogram()`) to understand the distribution of a
+    single numerical variable.
+  - Scatter plots (`geom_point()`) to explore relationships between two
+    numerical variables.
+  - Bar plots (`geom_bar()`) to visualize categorical data.
+- Apply these data manipulation and visualization skills to explore and
+  answer questions about real-world data.
+- Utilize R’s help features to learn about functions.
+
+## Introduction to Data
+
+Some define statistics as the field that focuses on turning information
+into knowledge. The first step in that process is to summarize and
+describe the raw information – the data. In this lab we explore flights,
+specifically a random sample of domestic flights that departed from the
+three major New York City airports in 2013. We will generate simple
+graphical and numerical summaries of data on these flights and explore
+delay times. Since this is a large data set, along the way you’ll also
+learn the indispensable skills of data processing and subsetting.
+
+## Getting started
+
+### Load packages
+
+In this lab, we will explore and visualize the data using the
+**tidyverse** suite of packages. The data can be found in the companion
+package for OpenIntro labs, **openintro**.
+
+Let’s load the packages.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+### The data
+
+The [Bureau of Transportation
+Statistics](http://www.rita.dot.gov/bts/about/) (BTS) is a statistical
+agency that is a part of the Research and Innovative Technology
+Administration (RITA). As its name implies, BTS collects and makes
+transportation data available, such as the flights data we will be
+working with in this lab.
+
+First, we’ll view the `nycflights` data frame. Type the following in
+your console to load the data:
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+The data set `nycflights` that shows up in your workspace is a *data
+matrix*, with each row representing an *observation* and each column
+representing a *variable*. R calls this data format a **data frame**,
+which is a term that will be used throughout the labs. For this data
+set, each *observation* is a single flight.
+
+To view the names of the variables, type the command
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+This returns the names of the variables in this data frame. The
+**codebook** (description of the variables) can be accessed by pulling
+up the help file:
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+One of the variables refers to the carrier (i.e. airline) of the flight,
+which is coded according to the following system.
+
+- `carrier`: Two letter carrier abbreviation.
+
+  - `9E`: Endeavor Air Inc.
+  - `AA`: American Airlines Inc.
+  - `AS`: Alaska Airlines Inc.
+  - `B6`: JetBlue Airways
+  - `DL`: Delta Air Lines Inc.
+  - `EV`: ExpressJet Airlines Inc.
+  - `F9`: Frontier Airlines Inc.
+  - `FL`: AirTran Airways Corporation
+  - `HA`: Hawaiian Airlines Inc.
+  - `MQ`: Envoy Air
+  - `OO`: SkyWest Airlines Inc.
+  - `UA`: United Air Lines Inc.
+  - `US`: US Airways Inc.
+  - `VX`: Virgin America
+  - `WN`: Southwest Airlines Co.
+  - `YV`: Mesa Airlines Inc.
+
+Remember that you can use `glimpse` to take a quick peek at your data to
+understand its contents better.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+The `nycflights` data frame is a massive trove of information. Let’s
+think about some questions we might want to answer with these data:
+
+- How delayed were flights that were headed to Los Angeles?
+- How do departure delays vary by month?
+- Which of the three major NYC airports has the best on time percentage
+  for departing flights?
+
+## Analysis
+
+### Departure delays
+
+Let’s start by examining the distribution of departure delays of all
+flights with a histogram.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+This function says to plot the `dep_delay` variable from the
+`nycflights` data frame on the x-axis. It also defines a `geom` (short
+for geometric object), which describes the type of plot you will
+produce.
+
+Histograms are generally a very good way to see the shape of a single
+distribution of numerical data, but that shape can change depending on
+how the data is split between the different bins. You can easily define
+the binwidth you want to use:
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+1.  Look carefully at these three histograms. How do they compare? Are
+    features revealed in one that are obscured in another?
+
+If you want to visualize only delays of flights headed to Los Angeles,
+you need to first `filter` the data for flights with that destination
+(`dest == "LAX"`) and then make a histogram of the departure delays of
+only those flights.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Let’s decipher these two commands (OK, so it might look like four lines,
+but the first two physical lines of code are actually part of the same
+command. It’s common to add a break to a new line after `%>%` to help
+readability).
+
+- Command 1: Take the `nycflights` data frame, `filter` for flights
+  headed to LAX, and save the result as a new data frame called
+  `lax_flights`.
+
+  - `==` means “if it’s equal to”.
+  - `LAX` is in quotation marks since it is a character string.
+
+- Command 2: Basically the same `ggplot` call from earlier for making a
+  histogram, except that it uses the smaller data frame for flights
+  headed to LAX instead of all flights.
+
+**Logical operators:** Filtering for certain observations (e.g. flights
+from a particular airport) is often of interest in data frames where we
+might want to examine observations with certain characteristics
+separately from the rest of the data. To do so, you can use the `filter`
+function and a series of **logical operators**. The most commonly used
+logical operators for data analysis are as follows:
+
+- `==` means “equal to”
+- `!=` means “not equal to”
+- `>` or `<` means “greater than” or “less than”
+- `>=` or `<=` means “greater than or equal to” or “less than or equal
+  to”
+
+You can also obtain numerical summaries for these flights:
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Note that in the `summarise` function you created a list of three
+different numerical summaries that you were interested in. The names of
+these elements are user defined, like `mean_dd`, `median_dd`, `n`, and
+you can customize these names as you like (just don’t use spaces in your
+names). Calculating these summary statistics also requires that you know
+the function calls. Note that `n()` reports the sample size.
+
+**Summary statistics:** Some useful function calls for summary
+statistics for a single numerical variable are as follows:
+
+- `mean`
+- `median`
+- `sd`
+- `var`
+- `IQR`
+- `min`
+- `max`
+
+Note that each of these functions takes a single vector as an argument
+and returns a single value.
+
+You can also filter based on multiple criteria. Suppose you are
+interested in flights headed to San Francisco (SFO) in February:
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Note that you can separate the conditions using commas if you want
+flights that are both headed to SFO **and** in February. If you are
+interested in either flights headed to SFO **or** in February, you can
+use the `|` instead of the comma.
+
+1.  Create a new data frame that includes flights headed to SFO in
+    February, and save this data frame as `sfo_feb_flights`. How many
+    flights meet these criteria?
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+2.  Describe the distribution of the **arrival** delays of these flights
+    using a histogram and appropriate summary statistics. **Hint:** The
+    summary statistics you use should depend on the shape of the
+    distribution.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Another useful technique is quickly calculating summary statistics for
+various groups in your data frame. For example, we can modify the above
+command using the `group_by` function to get the same summary stats for
+each origin airport:
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+Here, we first grouped the data by `origin` and then calculated the
+summary statistics.
+
+1.  Calculate the median and interquartile range for `arr_delay`s of
+    flights in in the `sfo_feb_flights` data frame, grouped by carrier.
+    Which carrier has the most variable arrival delays?
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+### Departure delays by month
+
+Which month would you expect to have the highest average delay departing
+from an NYC airport?
+
+Let’s think about how you could answer this question:
+
+- First, calculate monthly averages for departure delays. With the new
+  language you are learning, you could
+
+  - `group_by` months, then
+  - `summarise` mean departure delays.
+
+- Then, you could to `arrange` these average delays in `desc`ending
+  order.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+1.  Suppose you really dislike departure delays and you want to schedule
+    your travel in a month that minimizes your potential departure delay
+    leaving NYC. One option is to choose the month with the lowest mean
+    departure delay. Another option is to choose the month with the
+    lowest median departure delay. What are the pros and cons of these
+    two choices?
+
+### On time departure rate for NYC airports
+
+Suppose you will be flying out of NYC and want to know which of the
+three major NYC airports has the best on time departure rate of
+departing flights. Also supposed that for you, a flight that is delayed
+for less than 5 minutes is basically “on time”. You consider any flight
+delayed for 5 minutes of more to be “delayed”.
+
+In order to determine which airport has the best on time departure rate,
+you can
+
+- first classify each flight as “on time” or “delayed”,
+- then group flights by origin airport,
+- then calculate on time departure rates for each origin airport,
+- and finally arrange the airports in descending order for on time
+  departure percentage.
+
+Let’s start with classifying each flight as “on time” or “delayed” by
+creating a new variable with the `mutate` function.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+The first argument in the `mutate` function is the name of the new
+variable we want to create, in this case `dep_type`. Then if
+`dep_delay < 5`, we classify the flight as `"on time"` and `"delayed"`
+if not, i.e. if the flight is delayed for 5 or more minutes.
+
+Note that we are also overwriting the `nycflights` data frame with the
+new version of this data frame that includes the new `dep_type`
+variable.
+
+We can handle all of the remaining steps in one code chunk:
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+1.  If you were selecting an airport simply based on on time departure
+    percentage, which NYC airport would you choose to fly out of?
+
+You can also visualize the distribution of on-time departure rate across
+the three airports using a segmented bar plot.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+------------------------------------------------------------------------
+
+## More Practice
+
+1.  Mutate the data frame so that it includes a new variable that
+    contains the average speed, `avg_speed` traveled by the plane for
+    each flight (in mph). **Hint:** Average speed can be calculated as
+    distance divided by number of hours of travel, and note that
+    `air_time` is given in minutes.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+2.  Make a scatterplot of `avg_speed` vs. `distance`. Describe the
+    relationship between average speed and distance. **Hint:** Use
+    `geom_point()`.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+3.  Create a scatterplot. **Hint:** The data frame plotted only contains
+    flights from American Airlines, Delta Airlines, and United Airlines,
+    and the points are `color`ed by `carrier`. Once you create the plot,
+    determine (roughly) what the cutoff point is for departure delays
+    where you can still expect to get to your destination on time.
+
+Please enable JavaScript to experience the dynamic code cell content on
+this page.
+
+------------------------------------------------------------------------
+
+[![Creative Commons
+License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)  
+This work is licensed under a [Creative Commons Attribution-ShareAlike
+4.0 International
+License](http://creativecommons.org/licenses/by-sa/4.0/).
