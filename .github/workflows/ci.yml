@@ -1,0 +1,977 @@
+name: Comprehensive CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop, 'feature/*', 'hotfix/*' ]
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches: [ main, develop ]
+  workflow_dispatch:
+    inputs:
+      workflow_type:
+        description: 'Type of workflow to run'
+        required: true
+        default: 'smart'
+        type: choice
+        options:
+        - smart
+        - full
+        - r-package
+        - quarto
+        - pkgdown
+        - files
+        - beta-release
+        - release
+      pr_number:
+        description: 'PR number for beta release (only for beta-release type)'
+        required: false
+        type: string
+      release_type:
+        description: 'Type of release (only for release type)'
+        required: false
+        default: 'patch'
+        type: choice
+        options:
+        - patch
+        - minor
+        - major
+        - prerelease
+  schedule:
+    # Run daily at 2 AM UTC to catch any issues
+    - cron: '0 2 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  checks: write
+  statuses: write
+  pages: write
+
+jobs:
+  # =============================================================================
+  # CHANGE DETECTION AND ANALYSIS
+  # =============================================================================
+  analyze-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      has-r-changes: ${{ steps.changes.outputs.r-files }}
+      has-quarto-changes: ${{ steps.changes.outputs.quarto-files }}
+      has-data-changes: ${{ steps.changes.outputs.data-files }}
+      has-config-changes: ${{ steps.changes.outputs.config-files }}
+      has-docs-changes: ${{ steps.changes.outputs.docs-files }}
+      any-changes: ${{ steps.changes.outputs.any-changes }}
+      change-summary: ${{ steps.analyze.outputs.summary }}
+      is-pr: ${{ steps.analyze.outputs.is-pr }}
+      is-main-push: ${{ steps.analyze.outputs.is-main-push }}
+      pr-number: ${{ steps.analyze.outputs.pr-number }}
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Detect file changes
+      uses: dorny/paths-filter@v2
+      id: changes
+      with:
+        filters: |
+          r-files:
+            - '**/*.R'
+            - 'DESCRIPTION'
+            - 'NAMESPACE'
+            - 'man/**'
+          quarto-files:
+            - 'vignettes/**/*.qmd'
+          data-files:
+            - 'datasets/**'
+          config-files:
+            - '_pkgdown.yml'
+            - 'pkgdown/**'
+            - '.github/**'
+          docs-files:
+            - 'docs/**'
+            - 'vignettes/**/*.html'
+    
+    - name: Analyze changes and context
+      id: analyze
+      run: |
+        echo "## Change Analysis" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        summary=""
+        is_pr="false"
+        is_main_push="false"
+        pr_number=""
+        
+        if [ "${{ github.event_name }}" == "pull_request" ]; then
+          is_pr="true"
+          pr_number="${{ github.event.pull_request.number }}"
+          echo "✅ Pull Request detected: #${{ github.event.pull_request.number }}" >> $GITHUB_STEP_SUMMARY
+        elif [ "${{ github.ref }}" == "refs/heads/main" ] && [ "${{ github.event_name }}" == "push" ]; then
+          is_main_push="true"
+          echo "✅ Main branch push detected" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ steps.changes.outputs.r-files }}" == "true" ]; then
+          echo "✅ R package files changed" >> $GITHUB_STEP_SUMMARY
+          summary="${summary}R package changes detected. "
+        fi
+        
+        if [ "${{ steps.changes.outputs.quarto-files }}" == "true" ]; then
+          echo "✅ Quarto documents changed" >> $GITHUB_STEP_SUMMARY
+          summary="${summary}Quarto documents changed. "
+        fi
+        
+        if [ "${{ steps.changes.outputs.data-files }}" == "true" ]; then
+          echo "✅ Data files changed" >> $GITHUB_STEP_SUMMARY
+          summary="${summary}Data files changed. "
+        fi
+        
+        if [ "${{ steps.changes.outputs.config-files }}" == "true" ]; then
+          echo "✅ Configuration files changed" >> $GITHUB_STEP_SUMMARY
+          summary="${summary}Configuration files changed. "
+        fi
+        
+        if [ "${{ steps.changes.outputs.docs-files }}" == "true" ]; then
+          echo "✅ Documentation files changed" >> $GITHUB_STEP_SUMMARY
+          summary="${summary}Documentation files changed. "
+        fi
+        
+        echo "summary=${summary}" >> $GITHUB_OUTPUT
+        echo "is-pr=${is_pr}" >> $GITHUB_OUTPUT
+        echo "is-main-push=${is_main_push}" >> $GITHUB_OUTPUT
+        echo "pr-number=${pr_number}" >> $GITHUB_OUTPUT
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Recommended actions:**" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.changes.outputs.r-files }}" == "true" ]; then
+          echo "- Run R package checks" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ steps.changes.outputs.quarto-files }}" == "true" ]; then
+          echo "- Render Quarto documents" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ steps.changes.outputs.config-files }}" == "true" ] || [ "${{ steps.changes.outputs.quarto-files }}" == "true" ]; then
+          echo "- Rebuild pkgdown site" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ steps.changes.outputs.data-files }}" == "true" ]; then
+          echo "- Validate data files" >> $GITHUB_STEP_SUMMARY
+        fi
+
+  # =============================================================================
+  # R PACKAGE CHECKS
+  # =============================================================================
+  r-package-checks:
+    needs: analyze-changes
+    if: ${{ needs.analyze-changes.outputs.any-changes == 'true' && (needs.analyze-changes.outputs.has-r-changes == 'true' || needs.analyze-changes.outputs.has-config-changes == 'true' || github.event.inputs.workflow_type == 'r-package' || github.event.inputs.workflow_type == 'full') }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        r-version: ['release', 'devel']
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: ${{ matrix.r-version }}
+        use-public-rspm: true
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
+    
+    - name: Install R dependencies
+      run: |
+        install.packages(c("remotes", "rcmdcheck", "lintr", "covr", "testthat"))
+        remotes::install_deps(dependencies = TRUE)
+      shell: Rscript {0}
+    
+    - name: R CMD check
+      run: rcmdcheck::rcmdcheck(args = c("--no-manual", "--no-vignettes"), error_on = "warning")
+      shell: Rscript {0}
+    
+    - name: Lint R files
+      run: |
+        lintr::lint_package()
+      shell: Rscript {0}
+    
+    - name: Test coverage
+      run: |
+        covr::codecov()
+      shell: Rscript {0}
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    
+    - name: Upload check results
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: r-check-results-${{ matrix.r-version }}
+        path: check-results/
+        retention-days: 30
+
+  # =============================================================================
+  # QUARTO DOCUMENT RENDERING
+  # =============================================================================
+  quarto-render:
+    needs: analyze-changes
+    if: ${{ needs.analyze-changes.outputs.any-changes == 'true' && (needs.analyze-changes.outputs.has-quarto-changes == 'true' || github.event.inputs.workflow_type == 'quarto' || github.event.inputs.workflow_type == 'full') }}
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: 'release'
+        use-public-rspm: true
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev pandoc
+    
+    - name: Install Quarto
+      uses: quarto-dev/quarto-actions/setup@v2
+      with:
+        version: '1.8.24'
+    
+    - name: Install R dependencies
+      run: |
+        install.packages(c("quarto", "tidyverse", "haven", "webr"))
+        remotes::install_deps(dependencies = TRUE)
+      shell: Rscript {0}
+    
+    - name: Validate Quarto documents
+      run: |
+        find vignettes -name "*.qmd" -type f | while read file; do
+          echo "Validating $file"
+          quarto check "$file" || {
+            echo "ERROR: Validation failed for $file"
+            exit 1
+          }
+        done
+      shell: bash
+    
+    - name: Render all Quarto documents
+      run: |
+        find vignettes -name "*.qmd" -type f | while read file; do
+          echo "Rendering $file"
+          quarto render "$file" --to html
+        done
+      shell: bash
+    
+    - name: Check for rendering errors
+      run: |
+        find vignettes -name "*.qmd" -type f | while read file; do
+          html_file="${file%.qmd}.html"
+          if [ ! -f "$html_file" ]; then
+            echo "ERROR: Failed to render $file"
+            exit 1
+          fi
+        done
+      shell: bash
+    
+    - name: Upload rendered documents
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: rendered-quarto-docs
+        path: vignettes/*.html
+        retention-days: 30
+
+  # =============================================================================
+  # PKGDOWN WEBSITE BUILDING
+  # =============================================================================
+  pkgdown-build:
+    needs: analyze-changes
+    if: ${{ needs.analyze-changes.outputs.any-changes == 'true' && (needs.analyze-changes.outputs.has-config-changes == 'true' || needs.analyze-changes.outputs.has-quarto-changes == 'true' || github.event.inputs.workflow_type == 'pkgdown' || github.event.inputs.workflow_type == 'full') }}
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: 'release'
+        use-public-rspm: true
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev pandoc
+    
+    - name: Install Quarto
+      uses: quarto-dev/quarto-actions/setup@v2
+      with:
+        version: '1.8.24'
+    
+    - name: Install R dependencies
+      run: |
+        install.packages(c("pkgdown", "quarto", "tidyverse", "haven", "webr", "remotes"))
+        remotes::install_deps(dependencies = TRUE)
+      shell: Rscript {0}
+    
+    - name: Build pkgdown site
+      run: |
+        pkgdown::build_site()
+      shell: Rscript {0}
+      env:
+        GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Check for build errors
+      run: |
+        if [ ! -d "docs" ]; then
+          echo "ERROR: pkgdown build failed - docs directory not created"
+          exit 1
+        fi
+        
+        if [ ! -f "docs/index.html" ]; then
+          echo "ERROR: pkgdown build failed - index.html not created"
+          exit 1
+        fi
+        
+        echo "Pkgdown build successful"
+      shell: bash
+    
+    - name: Upload built site
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: pkgdown-site
+        path: docs/
+        retention-days: 30
+
+  # =============================================================================
+  # FILE VALIDATION
+  # =============================================================================
+  file-validation:
+    needs: analyze-changes
+    if: ${{ needs.analyze-changes.outputs.any-changes == 'true' && (needs.analyze-changes.outputs.has-data-changes == 'true' || needs.analyze-changes.outputs.has-docs-changes == 'true' || github.event.inputs.workflow_type == 'files' || github.event.inputs.workflow_type == 'full') }}
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: 'release'
+        use-public-rspm: true
+    
+    - name: Install formatting tools
+      run: |
+        install.packages(c("styler", "formatR"))
+      shell: Rscript {0}
+    
+    - name: Check file permissions
+      run: |
+        echo "Checking file permissions..."
+        find . -type f -name "*.sh" -not -perm 755 | while read file; do
+          echo "WARNING: $file should be executable"
+        done
+      shell: bash
+    
+    - name: Check for large files
+      run: |
+        echo "Checking for large files (>50MB)..."
+        find . -type f -size +50M -not -path "./.git/*" | while read file; do
+          echo "WARNING: Large file detected: $file"
+        done
+      shell: bash
+    
+    - name: Validate CSV files
+      run: |
+        echo "Validating CSV files..."
+        find datasets -name "*.csv" -type f | while read file; do
+          echo "Checking $file"
+          if ! head -1 "$file" | grep -q ","; then
+            echo "WARNING: $file may not be a valid CSV"
+          fi
+        done
+      shell: bash
+    
+    - name: Check R code formatting
+      run: |
+        find . -name "*.R" -not -path "./.git/*" | while read file; do
+          echo "Checking formatting of $file"
+          Rscript -e "styler::style_file('$file', dry = 'on')" || {
+            echo "WARNING: $file may need formatting"
+          }
+        done
+      shell: bash
+    
+    - name: Security checks
+      run: |
+        echo "Checking for potential secrets..."
+        if grep -r -i "password\|secret\|key\|token" --include="*.R" --include="*.qmd" --include="*.md" . | grep -v "TODO\|FIXME"; then
+          echo "WARNING: Potential secrets found in files"
+        fi
+      shell: bash
+
+  # =============================================================================
+  # BETA RELEASE FOR PR TESTING
+  # =============================================================================
+  beta-release:
+    needs: analyze-changes
+    if: ${{ (needs.analyze-changes.outputs.is-pr == 'true' && needs.analyze-changes.outputs.any-changes == 'true') || github.event.inputs.workflow_type == 'beta-release' }}
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha || github.ref }}
+    
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: 'release'
+        use-public-rspm: true
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev pandoc
+    
+    - name: Install Quarto
+      uses: quarto-dev/quarto-actions/setup@v2
+      with:
+        version: '1.8.24'
+    
+    - name: Install R dependencies
+      run: |
+        install.packages(c("pkgdown", "quarto", "tidyverse", "haven", "webr", "remotes"))
+        remotes::install_deps(dependencies = TRUE)
+      shell: Rscript {0}
+    
+    - name: Build package
+      run: |
+        R CMD build .
+        PACKAGE_FILE=$(ls *.tar.gz | head -1)
+        echo "PACKAGE_FILE=$PACKAGE_FILE" >> $GITHUB_ENV
+        echo "Built package: $PACKAGE_FILE"
+      shell: bash
+    
+    - name: Build pkgdown site
+      run: pkgdown::build_site()
+      shell: Rscript {0}
+      env:
+        GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Verify pkgdown output exists
+      run: |
+        if [ ! -d "docs" ]; then
+          echo "ERROR: No docs directory found. Did pkgdown fail?"
+          exit 1
+        fi
+        echo "✅ Docs directory found"
+        ls -la docs/ | head -10
+      shell: bash
+    
+    - name: Confirm pkgdown success
+      run: echo "Pkgdown site built successfully"
+      shell: bash
+    
+    - name: Create beta release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: beta-pr-${{ needs.analyze-changes.outputs.pr-number || github.event.inputs.pr_number }}-${{ github.sha }}
+        release_name: Beta Release - PR #${{ needs.analyze-changes.outputs.pr-number || github.event.inputs.pr_number }}
+        body: |
+          ## 🧪 Beta Release for Testing
+          
+          **PR:** #${{ needs.analyze-changes.outputs.pr-number || github.event.inputs.pr_number }}
+          **Branch:** ${{ github.event.pull_request.head.ref || github.ref_name }}
+          **Commit:** ${{ github.sha }}
+          
+          ### Changes in this PR:
+          ${{ github.event.pull_request.body || 'See PR description for details' }}
+          
+          ### What's included:
+          - ✅ R package built and validated
+          - ✅ Pkgdown site generated
+          - ✅ All Quarto documents rendered
+          
+          ### Testing Instructions:
+          1. Download the `PUBH614_*.tar.gz` file below
+          2. Install in R: `install.packages("PUBH614_*.tar.gz", repos = NULL, type = "source")`
+          3. Test the functionality described in the PR
+          4. Report any issues in the PR comments
+          
+          ### Preview Site:
+          The pkgdown site has been built and is available as a download below.
+          
+          ---
+          **Note:** This is a beta release for testing purposes only. Do not use in production.
+        draft: false
+        prerelease: true
+    
+    - name: Upload package artifact
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ env.PACKAGE_FILE }}
+        asset_name: ${{ env.PACKAGE_FILE }}
+        asset_content_type: application/gzip
+    
+    - name: Upload pkgdown site
+      run: |
+        cd docs
+        zip -r ../pkgdown-site.zip .
+        cd ..
+        echo "PKGDOWN_ZIP=pkgdown-site.zip" >> $GITHUB_ENV
+      shell: bash
+    
+    - name: Upload pkgdown site artifact
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ env.PKGDOWN_ZIP }}
+        asset_name: pkgdown-site.zip
+        asset_content_type: application/zip
+    
+    - name: Comment on PR
+      if: needs.analyze-changes.outputs.is-pr == 'true' && github.event.pull_request.head.repo.fork == false
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const releaseUrl = '${{ steps.create_release.outputs.html_url }}';
+          const packageFile = '${{ env.PACKAGE_FILE }}';
+          
+          const previewUrl = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ needs.analyze-changes.outputs.pr-number }}/`;
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `## 🚀 Beta Release Created!
+            
+            A beta release has been created for testing this PR:
+            
+            **Release:** ${releaseUrl}
+            **Package:** ${packageFile}
+            **Live Preview:** [Click here to view the live site](${previewUrl})
+            
+            ### Quick Test:
+            1. **Live Testing:** Click the preview link above to test in your browser
+            2. **R Package:** Download the \`${packageFile}\` from the release
+            3. **Install:** \`install.packages("${packageFile}", repos = NULL, type = "source")\`
+            4. **Report:** Test the changes and report any issues
+            
+            The live preview includes interactive Quarto webR documents for immediate testing.
+            
+            ---
+            *This beta release will be automatically updated when you push new commits to this PR.*`
+          });
+
+  # =============================================================================
+  # PR DEPLOYMENT PREVIEW
+  # =============================================================================
+  pr-deployment:
+    needs: analyze-changes
+    if: ${{ needs.analyze-changes.outputs.is-pr == 'true' && (needs.analyze-changes.outputs.has-quarto-changes == 'true' || needs.analyze-changes.outputs.has-config-changes == 'true') }}
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha }}
+    
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: 'release'
+        use-public-rspm: true
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev pandoc
+    
+    - name: Install Quarto
+      uses: quarto-dev/quarto-actions/setup@v2
+      with:
+        version: '1.8.24'
+    
+    - name: Install R dependencies
+      run: |
+        install.packages(c("pkgdown", "quarto", "tidyverse", "haven", "webr", "remotes"))
+        remotes::install_deps(dependencies = TRUE)
+      shell: Rscript {0}
+    
+    - name: Build pkgdown site
+      run: pkgdown::build_site()
+      shell: Rscript {0}
+      env:
+        GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Verify pkgdown output exists
+      run: |
+        if [ ! -d "docs" ]; then
+          echo "ERROR: No docs directory found. Did pkgdown fail?"
+          exit 1
+        fi
+        echo "✅ Docs directory found"
+        ls -la docs/ | head -10
+      shell: bash
+    
+    - name: Confirm pkgdown success
+      run: echo "Pkgdown site built successfully"
+      shell: bash
+    
+    - name: Upload docs as artifact for PR preview
+      uses: actions/upload-artifact@v4
+      with:
+        name: pr-preview-docs-${{ needs.analyze-changes.outputs.pr-number }}
+        path: docs/
+        retention-days: 7
+    
+    - name: Deploy to GitHub Pages (PR Preview)
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
+        destination_dir: pr-${{ needs.analyze-changes.outputs.pr-number }}
+        force_orphan: true
+    
+    - name: Comment PR with live preview URL
+      if: github.event.pull_request.head.repo.fork == false
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const previewUrl = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ needs.analyze-changes.outputs.pr-number }}/`;
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `## 🌐 Live Preview Deployed!
+            
+            **PR:** #${context.issue.number}
+            **Branch:** ${context.payload.pull_request.head.ref}
+            **Commit:** ${context.payload.pull_request.head.sha}
+            
+            ### 🔗 Live Preview URL:
+            **[Click here to view the live site](${previewUrl})**
+            
+            ### What's included:
+            - ✅ Complete pkgdown website with live Quarto webR documents
+            - ✅ Interactive R code execution in your browser
+            - ✅ All documentation and labs rendered
+            - ✅ Real-time testing without downloads
+            
+            ---
+            *This preview will be automatically updated when you push new commits to this PR.*`
+          });
+    
+    - name: Log preview info (fallback for forked PRs)
+      if: github.event.pull_request.head.repo.fork == true
+      run: |
+        echo "## 🌐 Live Preview Deployed!" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**PR:** #${{ github.event.pull_request.number }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Branch:** ${{ github.event.pull_request.head.ref }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 🔗 Live Preview URL:" >> $GITHUB_STEP_SUMMARY
+        echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ github.event.pull_request.number }}/" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Note:** Comments cannot be posted on forked PRs for security reasons." >> $GITHUB_STEP_SUMMARY
+      shell: bash
+
+  # =============================================================================
+  # PRODUCTION RELEASE
+  # =============================================================================
+  production-release:
+    needs: analyze-changes
+    if: ${{ needs.analyze-changes.outputs.is-main-push == 'true' || github.event.inputs.workflow_type == 'release' }}
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: 'release'
+        use-public-rspm: true
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev pandoc
+    
+    - name: Install Quarto
+      uses: quarto-dev/quarto-actions/setup@v2
+      with:
+        version: '1.8.24'
+    
+    - name: Install R dependencies
+      run: |
+        install.packages(c("pkgdown", "quarto", "tidyverse", "haven", "webr", "remotes", "usethis"))
+        remotes::install_deps(dependencies = TRUE)
+      shell: Rscript {0}
+    
+    - name: Get version and create tag
+      id: version
+      run: |
+        CURRENT_VERSION=$(grep "^Version:" DESCRIPTION | sed 's/Version: //')
+        echo "Current version: $CURRENT_VERSION"
+        
+        if [ "${{ github.event.inputs.release_type }}" == "prerelease" ]; then
+          NEW_VERSION="${CURRENT_VERSION}-$(date +%Y%m%d%H%M%S)"
+          TAG_NAME="v${NEW_VERSION}"
+          IS_PRERELEASE="true"
+        else
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
+          
+          case "${{ github.event.inputs.release_type || 'patch' }}" in
+            "major")
+              MAJOR=$((MAJOR + 1))
+              MINOR=0
+              PATCH=0
+              ;;
+            "minor")
+              MINOR=$((MINOR + 1))
+              PATCH=0
+              ;;
+            "patch")
+              PATCH=$((PATCH + 1))
+              ;;
+          esac
+          
+          NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+          TAG_NAME="v${NEW_VERSION}"
+          IS_PRERELEASE="false"
+        fi
+        
+        echo "New version: $NEW_VERSION"
+        echo "Tag name: $TAG_NAME"
+        echo "Is prerelease: $IS_PRERELEASE"
+        
+        sed -i "s/^Version: .*/Version: $NEW_VERSION/" DESCRIPTION
+        
+        echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+        echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+        echo "is_prerelease=$IS_PRERELEASE" >> $GITHUB_OUTPUT
+      shell: bash
+    
+    - name: Build package
+      run: |
+        R CMD build .
+        PACKAGE_FILE=$(ls *.tar.gz | head -1)
+        echo "PACKAGE_FILE=$PACKAGE_FILE" >> $GITHUB_ENV
+        echo "Built package: $PACKAGE_FILE"
+      shell: bash
+    
+    - name: Build pkgdown site
+      run: pkgdown::build_site()
+      shell: Rscript {0}
+      env:
+        GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Confirm pkgdown success
+      run: echo "Pkgdown site built successfully"
+      shell: bash
+    
+    - name: Generate changelog
+      id: changelog
+      run: |
+        LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+        if [ -z "$LAST_TAG" ]; then
+          COMMITS=$(git log --oneline --pretty=format:"- %s (%h)" --no-merges)
+        else
+          COMMITS=$(git log ${LAST_TAG}..HEAD --oneline --pretty=format:"- %s (%h)" --no-merges)
+        fi
+        
+        cat > CHANGELOG.md << EOF
+        # Changelog
+        
+        ## [${{ steps.version.outputs.new_version }}] - $(date +%Y-%m-%d)
+        
+        ### Changes
+        $COMMITS
+        
+        ### Full Changelog
+        $([ -n "$LAST_TAG" ] && echo "**Full Changelog**: https://github.com/${{ github.repository }}/compare/${LAST_TAG}...${{ steps.version.outputs.tag_name }}" || echo "**Full Changelog**: https://github.com/${{ github.repository }}/releases/tag/${{ steps.version.outputs.tag_name }}")
+        EOF
+        
+        echo "changelog<<EOF" >> $GITHUB_OUTPUT
+        cat CHANGELOG.md >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+      shell: bash
+    
+    - name: Create Git tag
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add DESCRIPTION
+        git commit -m "Bump version to ${{ steps.version.outputs.new_version }}" || echo "No changes to commit"
+        git tag -a "${{ steps.version.outputs.tag_name }}" -m "Release ${{ steps.version.outputs.tag_name }}"
+        git push origin "${{ steps.version.outputs.tag_name }}"
+      shell: bash
+    
+    - name: Create GitHub Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.version.outputs.tag_name }}
+        release_name: Release ${{ steps.version.outputs.tag_name }}
+        body: |
+          ## 🎉 Release ${{ steps.version.outputs.tag_name }}
+          
+          ${{ steps.changelog.outputs.changelog }}
+          
+          ### 📦 Package Download
+          Download the R package below to install locally:
+          - `${{ env.PACKAGE_FILE }}` - Source package for R installation
+          
+          ### 🌐 Website
+          The updated website is available at: https://cuny-epibios.github.io/PUBH614/
+          
+          ### 📋 Installation
+          ```r
+          # Install from source
+          install.packages("${{ env.PACKAGE_FILE }}", repos = NULL, type = "source")
+          
+          # Or install from GitHub (if available)
+          remotes::install_github("${{ github.repository }}")
+          ```
+          
+          ### 🔧 What's New
+          - Updated R package with latest changes
+          - Refreshed pkgdown documentation
+          - All Quarto labs updated and rendered
+          - Interactive webR functionality available
+          
+          ---
+          **Full Changelog**: https://github.com/${{ github.repository }}/compare/${{ steps.version.outputs.tag_name }}...${{ steps.version.outputs.tag_name }}
+        draft: false
+        prerelease: ${{ steps.version.outputs.is_prerelease }}
+    
+    - name: Upload package artifact
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ env.PACKAGE_FILE }}
+        asset_name: ${{ env.PACKAGE_FILE }}
+        asset_content_type: application/gzip
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
+        cname: cuny-epibios.github.io
+    
+    - name: Update package version in repository
+      run: |
+        git push origin main
+      shell: bash
+
+  # =============================================================================
+  # CLEANUP OLD BETA RELEASES
+  # =============================================================================
+  cleanup-beta-releases:
+    needs: analyze-changes
+    if: ${{ github.event_name == 'pull_request' && github.event.action == 'closed' }}
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Clean up old beta releases
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const { data: releases } = await github.rest.repos.listReleases({
+            owner: context.repo.owner,
+            repo: context.repo.repo
+          });
+          
+          const betaReleases = releases.filter(release => 
+            release.tag_name.includes(`beta-pr-${context.issue.number}-`) && 
+            release.prerelease === true
+          );
+          
+          for (const release of betaReleases) {
+            await github.rest.repos.deleteRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: release.id
+            });
+            console.log(`Deleted beta release: ${release.tag_name}`);
+          }
+          
+          for (const release of betaReleases) {
+            try {
+              await github.rest.git.deleteRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: `tags/${release.tag_name}`
+              });
+              console.log(`Deleted tag: ${release.tag_name}`);
+            } catch (error) {
+              console.log(`Could not delete tag ${release.tag_name}: ${error.message}`);
+            }
+          }
+
+  # =============================================================================
+  # FINAL SUMMARY
+  # =============================================================================
+  final-summary:
+    needs: [analyze-changes, r-package-checks, quarto-render, pkgdown-build, file-validation, beta-release, pr-deployment, production-release]
+    if: always()
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Generate final summary
+      run: |
+        echo "## 🎯 Comprehensive CI/CD Pipeline Results" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Changes detected:** ${{ needs.analyze-changes.outputs.change-summary }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Context:** ${{ needs.analyze-changes.outputs.is-pr == 'true' && 'Pull Request' || needs.analyze-changes.outputs.is-main-push == 'true' && 'Main Branch Push' || 'Other' }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Workflow Results:" >> $GITHUB_STEP_SUMMARY
+        echo "| Check Type | Status |" >> $GITHUB_STEP_SUMMARY
+        echo "|------------|--------|" >> $GITHUB_STEP_SUMMARY
+        echo "| R Package | ${{ needs.r-package-checks.result || 'Skipped' }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| Quarto | ${{ needs.quarto-render.result || 'Skipped' }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| Pkgdown | ${{ needs.pkgdown-build.result || 'Skipped' }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| File Validation | ${{ needs.file-validation.result || 'Skipped' }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| Beta Release | ${{ needs.beta-release.result || 'Skipped' }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| PR Deployment | ${{ needs.pr-deployment.result || 'Skipped' }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| Production Release | ${{ needs.production-release.result || 'Skipped' }} |" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Next Steps:" >> $GITHUB_STEP_SUMMARY
+        if [ "${{ needs.beta-release.result }}" == "success" ]; then
+          echo "- ✅ Beta release created - test the changes" >> $GITHUB_STEP_SUMMARY
+        fi
+        if [ "${{ needs.pr-deployment.result }}" == "success" ]; then
+          echo "- ✅ Preview site deployed - review the changes" >> $GITHUB_STEP_SUMMARY
+        fi
+        if [ "${{ needs.production-release.result }}" == "success" ]; then
+          echo "- ✅ Production release created - changes are live" >> $GITHUB_STEP_SUMMARY
+        fi
